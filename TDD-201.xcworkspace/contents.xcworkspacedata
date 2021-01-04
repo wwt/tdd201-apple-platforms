@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:BehaviorDrivenDevelopment/BehaviorDrivenDevelopment.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SpecificationFramework/SpecificationFramework.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MockingFramework/MockingFramework.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:IntegrationTesting/IntegrationTesting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MutationTesting/MutationTesting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DealingWith3rdPartyFrameworks/DealingWith3rdPartyFrameworks.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ContractTesting/ContractTesting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftPMLib">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftUI/SwiftUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UIKitWithStoryboard/UIKitWithStoryboard.xcodeproj">
+   </FileRef>
+</Workspace>
