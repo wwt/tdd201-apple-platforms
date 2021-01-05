@@ -1,34 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "container:"
+      name = "Data Persistance">
+      <FileRef
+         location = "group:WriteToUserDefaults/WriteToUserDefaults.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:WriteToFile/WriteToFile.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:CoreData/CoreData.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Networking">
+      <FileRef
+         location = "group:ContractTesting/ContractTesting.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:IntegrationTesting/IntegrationTesting.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:HTTPStubbing/HTTPStubbing.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Combine/Combine.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Libraries">
+      <FileRef
+         location = "group:DealingWith3rdPartyFrameworks/DealingWith3rdPartyFrameworks.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:SwiftPMLib">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Executable Specifications">
+      <FileRef
+         location = "group:SpecificationFramework/SpecificationFramework.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:BehaviorDrivenDevelopment/BehaviorDrivenDevelopment.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "UITesting">
+      <FileRef
+         location = "group:SwiftUI/SwiftUI.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:UIKitWithStoryboard/UIKitWithStoryboard.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "MocksStubsSpies">
+      <FileRef
+         location = "group:MockingFramework/MockingFramework.xcodeproj">
+      </FileRef>
+   </Group>
    <FileRef
-      location = "group:BehaviorDrivenDevelopment/BehaviorDrivenDevelopment.xcodeproj">
+      location = "group:DependencyInjection/DependencyInjection.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SpecificationFramework/SpecificationFramework.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:MockingFramework/MockingFramework.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:IntegrationTesting/IntegrationTesting.xcodeproj">
+      location = "group:BigAwfulLegacySpaghettiMess/BigAwfulLegacySpaghettiMess.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:MutationTesting/MutationTesting.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:DealingWith3rdPartyFrameworks/DealingWith3rdPartyFrameworks.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:ContractTesting/ContractTesting.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SwiftPMLib">
-   </FileRef>
-   <FileRef
-      location = "group:SwiftUI/SwiftUI.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:UIKitWithStoryboard/UIKitWithStoryboard.xcodeproj">
    </FileRef>
 </Workspace>
