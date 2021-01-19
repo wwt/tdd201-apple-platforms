@@ -5,18 +5,21 @@
       location = "container:"
       name = "Data Persistance">
       <FileRef
+         location = "group:CoreDataExample/CoreDataExample.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:WriteToUserDefaults/WriteToUserDefaults.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:WriteToFile/WriteToFile.xcodeproj">
       </FileRef>
-      <FileRef
-         location = "group:CoreData/CoreData.xcodeproj">
-      </FileRef>
    </Group>
    <Group
       location = "container:"
       name = "Networking">
+      <FileRef
+         location = "group:CombineWithREST/CombineWithREST.xcodeproj">
+      </FileRef>
       <FileRef
          location = "group:ContractTesting/ContractTesting.xcodeproj">
       </FileRef>
@@ -25,9 +28,6 @@
       </FileRef>
       <FileRef
          location = "group:HTTPStubbing/HTTPStubbing.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Combine/Combine.xcodeproj">
       </FileRef>
    </Group>
    <Group
@@ -54,7 +54,7 @@
       location = "container:"
       name = "UITesting">
       <FileRef
-         location = "group:SwiftUI/SwiftUI.xcodeproj">
+         location = "group:SwiftUIExample/SwiftUIExample.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:UIKitWithStoryboard/UIKitWithStoryboard.xcodeproj">
@@ -75,5 +75,8 @@
    </FileRef>
    <FileRef
       location = "group:MutationTesting/MutationTesting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

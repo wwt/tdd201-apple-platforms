@@ -1,0 +1,29 @@
+PODS:
+  - Cuckoo (1.4.1):
+    - Cuckoo/Swift (= 1.4.1)
+  - Cuckoo/OCMock (1.4.1):
+    - Cuckoo/Swift
+    - OCMock (= 3.4.3)
+  - Cuckoo/Swift (1.4.1)
+  - OCMock (3.4.3)
+  - Swinject (2.7.1)
+
+DEPENDENCIES:
+  - Cuckoo
+  - Cuckoo/OCMock
+  - Swinject
+
+SPEC REPOS:
+  trunk:
+    - Cuckoo
+    - OCMock
+    - Swinject
+
+SPEC CHECKSUMS:
+  Cuckoo: 4625f7f54d9bb880123270e8969898d6c1d036b5
+  OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
+
+PODFILE CHECKSUM: d7fec9cfe81ba03fff4d9902ff2d7e75db7c6047
+
+COCOAPODS: 1.10.0

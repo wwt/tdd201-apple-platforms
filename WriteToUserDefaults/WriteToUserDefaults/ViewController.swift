@@ -9,11 +9,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @DependencyInjected var userDefaults:UserDefaults?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        _ = userDefaults?.integer(forKey: "accountBalance")
     }
 
-
+    func saveBalance() {
+        userDefaults?.setValue(100, forKey: "accountBalance")
+    }
 }
 
