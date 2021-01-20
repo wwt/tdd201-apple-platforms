@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2708424BD075F3F70607ABEF /* Pods_HTTPStubbing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB212DC04D65DA107278ABE0 /* Pods_HTTPStubbing.framework */; };
+		372136B2AE2311CA1460CEE7 /* Pods_HTTPStubbing_HTTPStubbingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A779572EA4BF436E9D705D06 /* Pods_HTTPStubbing_HTTPStubbingTests.framework */; };
+		CA4504D525B8A93400153FC4 /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4504D425B8A93400153FC4 /* URLRequestExtensions.swift */; };
+		CA4504DD25B8A99900153FC4 /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4504DC25B8A99900153FC4 /* StubAPIResponse.swift */; };
+		CA45050B25B8B39C00153FC4 /* SomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45050A25B8B39C00153FC4 /* SomeModel.swift */; };
+		CA45050F25B8BD7200153FC4 /* WaitUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45050E25B8BD7200153FC4 /* WaitUntil.swift */; };
 		CAA1C6A425A3927F00E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C6A325A3927F00E3F686 /* AppDelegate.swift */; };
 		CAA1C6A625A3927F00E3F686 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C6A525A3927F00E3F686 /* SceneDelegate.swift */; };
 		CAA1C6A825A3927F00E3F686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C6A725A3927F00E3F686 /* ViewController.swift */; };
@@ -27,6 +33,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08535800CCCFAE2D3AFF8D2A /* Pods-HTTPStubbing-HTTPStubbingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTTPStubbing-HTTPStubbingTests.release.xcconfig"; path = "Target Support Files/Pods-HTTPStubbing-HTTPStubbingTests/Pods-HTTPStubbing-HTTPStubbingTests.release.xcconfig"; sourceTree = "<group>"; };
+		77B8F36C42331C7EE9349AD0 /* Pods-HTTPStubbing-HTTPStubbingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTTPStubbing-HTTPStubbingTests.debug.xcconfig"; path = "Target Support Files/Pods-HTTPStubbing-HTTPStubbingTests/Pods-HTTPStubbing-HTTPStubbingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		80EC68B8E36C18A2EEC5FD31 /* Pods-HTTPStubbing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTTPStubbing.debug.xcconfig"; path = "Target Support Files/Pods-HTTPStubbing/Pods-HTTPStubbing.debug.xcconfig"; sourceTree = "<group>"; };
+		929A52B732E02AD25F890153 /* Pods-HTTPStubbing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTTPStubbing.release.xcconfig"; path = "Target Support Files/Pods-HTTPStubbing/Pods-HTTPStubbing.release.xcconfig"; sourceTree = "<group>"; };
+		A779572EA4BF436E9D705D06 /* Pods_HTTPStubbing_HTTPStubbingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HTTPStubbing_HTTPStubbingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA4504D425B8A93400153FC4 /* URLRequestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtensions.swift; sourceTree = "<group>"; };
+		CA4504DC25B8A99900153FC4 /* StubAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAPIResponse.swift; sourceTree = "<group>"; };
+		CA45050A25B8B39C00153FC4 /* SomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeModel.swift; sourceTree = "<group>"; };
+		CA45050E25B8BD7200153FC4 /* WaitUntil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitUntil.swift; sourceTree = "<group>"; };
 		CAA1C6A025A3927F00E3F686 /* HTTPStubbing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTTPStubbing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C6A325A3927F00E3F686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAA1C6A525A3927F00E3F686 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,8 +53,7 @@
 		CAA1C6B625A3928000E3F686 /* HTTPStubbingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTTPStubbingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C6BA25A3928000E3F686 /* HTTPStubbingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStubbingTests.swift; sourceTree = "<group>"; };
 		CAA1C6BC25A3928000E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CAA1C6C525A3928000E3F686 /* HTTPStubbingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStubbingUITests.swift; sourceTree = "<group>"; };
-		CAA1C6C725A3928000E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB212DC04D65DA107278ABE0 /* Pods_HTTPStubbing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HTTPStubbing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2708424BD075F3F70607ABEF /* Pods_HTTPStubbing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,19 +69,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				372136B2AE2311CA1460CEE7 /* Pods_HTTPStubbing_HTTPStubbingTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6399167B837FABD33472B612 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB212DC04D65DA107278ABE0 /* Pods_HTTPStubbing.framework */,
+				A779572EA4BF436E9D705D06 /* Pods_HTTPStubbing_HTTPStubbingTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		77A51B41B9C614BCA6799269 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				80EC68B8E36C18A2EEC5FD31 /* Pods-HTTPStubbing.debug.xcconfig */,
+				929A52B732E02AD25F890153 /* Pods-HTTPStubbing.release.xcconfig */,
+				77B8F36C42331C7EE9349AD0 /* Pods-HTTPStubbing-HTTPStubbingTests.debug.xcconfig */,
+				08535800CCCFAE2D3AFF8D2A /* Pods-HTTPStubbing-HTTPStubbingTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		CAA1C69725A3927F00E3F686 = {
 			isa = PBXGroup;
 			children = (
 				CAA1C6A225A3927F00E3F686 /* HTTPStubbing */,
 				CAA1C6B925A3928000E3F686 /* HTTPStubbingTests */,
-				CAA1C6C425A3928000E3F686 /* HTTPStubbingUITests */,
 				CAA1C6A125A3927F00E3F686 /* Products */,
+				77A51B41B9C614BCA6799269 /* Pods */,
+				6399167B837FABD33472B612 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +127,7 @@
 				CAA1C6AC25A3928000E3F686 /* Assets.xcassets */,
 				CAA1C6AE25A3928000E3F686 /* LaunchScreen.storyboard */,
 				CAA1C6B125A3928000E3F686 /* Info.plist */,
+				CA45050A25B8B39C00153FC4 /* SomeModel.swift */,
 			);
 			path = HTTPStubbing;
 			sourceTree = "<group>";
@@ -98,17 +137,11 @@
 			children = (
 				CAA1C6BA25A3928000E3F686 /* HTTPStubbingTests.swift */,
 				CAA1C6BC25A3928000E3F686 /* Info.plist */,
+				CA4504D425B8A93400153FC4 /* URLRequestExtensions.swift */,
+				CA4504DC25B8A99900153FC4 /* StubAPIResponse.swift */,
+				CA45050E25B8BD7200153FC4 /* WaitUntil.swift */,
 			);
 			path = HTTPStubbingTests;
-			sourceTree = "<group>";
-		};
-		CAA1C6C425A3928000E3F686 /* HTTPStubbingUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CAA1C6C525A3928000E3F686 /* HTTPStubbingUITests.swift */,
-				CAA1C6C725A3928000E3F686 /* Info.plist */,
-			);
-			path = HTTPStubbingUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +151,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAA1C6CA25A3928000E3F686 /* Build configuration list for PBXNativeTarget "HTTPStubbing" */;
 			buildPhases = (
+				0B3C59B11C0D71E3F0C883AE /* [CP] Check Pods Manifest.lock */,
 				CAA1C69C25A3927F00E3F686 /* Sources */,
 				CAA1C69D25A3927F00E3F686 /* Frameworks */,
 				CAA1C69E25A3927F00E3F686 /* Resources */,
@@ -135,9 +169,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAA1C6CD25A3928000E3F686 /* Build configuration list for PBXNativeTarget "HTTPStubbingTests" */;
 			buildPhases = (
+				07D0B2D12B273151C43CB43C /* [CP] Check Pods Manifest.lock */,
 				CAA1C6B225A3928000E3F686 /* Sources */,
 				CAA1C6B325A3928000E3F686 /* Frameworks */,
 				CAA1C6B425A3928000E3F686 /* Resources */,
+				F4149F8AE2BFD0CCAF5CBE7C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -206,6 +242,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07D0B2D12B273151C43CB43C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HTTPStubbing-HTTPStubbingTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0B3C59B11C0D71E3F0C883AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HTTPStubbing-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4149F8AE2BFD0CCAF5CBE7C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HTTPStubbing-HTTPStubbingTests/Pods-HTTPStubbing-HTTPStubbingTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HTTPStubbing-HTTPStubbingTests/Pods-HTTPStubbing-HTTPStubbingTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HTTPStubbing-HTTPStubbingTests/Pods-HTTPStubbing-HTTPStubbingTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CAA1C69C25A3927F00E3F686 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -214,6 +314,7 @@
 				CAA1C6A825A3927F00E3F686 /* ViewController.swift in Sources */,
 				CAA1C6A425A3927F00E3F686 /* AppDelegate.swift in Sources */,
 				CAA1C6A625A3927F00E3F686 /* SceneDelegate.swift in Sources */,
+				CA45050B25B8B39C00153FC4 /* SomeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +322,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA4504D525B8A93400153FC4 /* URLRequestExtensions.swift in Sources */,
 				CAA1C6BB25A3928000E3F686 /* HTTPStubbingTests.swift in Sources */,
+				CA4504DD25B8A99900153FC4 /* StubAPIResponse.swift in Sources */,
+				CA45050F25B8BD7200153FC4 /* WaitUntil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +477,7 @@
 		};
 		CAA1C6CB25A3928000E3F686 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80EC68B8E36C18A2EEC5FD31 /* Pods-HTTPStubbing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -392,6 +497,7 @@
 		};
 		CAA1C6CC25A3928000E3F686 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 929A52B732E02AD25F890153 /* Pods-HTTPStubbing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -411,6 +517,7 @@
 		};
 		CAA1C6CE25A3928000E3F686 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77B8F36C42331C7EE9349AD0 /* Pods-HTTPStubbing-HTTPStubbingTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -433,6 +540,7 @@
 		};
 		CAA1C6CF25A3928000E3F686 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08535800CCCFAE2D3AFF8D2A /* Pods-HTTPStubbing-HTTPStubbingTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

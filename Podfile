@@ -34,3 +34,13 @@ target 'DependencyInjection' do
         pod 'Cuckoo'
     end
 end
+
+target 'HTTPStubbing' do
+  project 'HTTPStubbing/HTTPStubbing.xcodeproj'
+  use_frameworks!
+
+  target 'HTTPStubbingTests' do
+    pod 'OHHTTPStubs/Swift'
+  end
+  
+end

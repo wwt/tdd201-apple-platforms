@@ -9,11 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+    var model:SomeModel?
 
+    func makeNetworkRequest() {
+        URLSession.shared.dataTask(with: URL(string: "https://api.fake.com/users/me")!) { (data, res, err) in
+            guard let data = data else { return }
+            self.model = try? JSONDecoder().decode(SomeModel.self, from: data)
+        }.resume()
+    }
 
 }
 

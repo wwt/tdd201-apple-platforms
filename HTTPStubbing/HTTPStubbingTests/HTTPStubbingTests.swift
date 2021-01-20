@@ -8,26 +8,34 @@
 import XCTest
 @testable import HTTPStubbing
 
+extension SomeModel: Equatable {
+    public static func == (lhs:SomeModel, rhs:SomeModel) -> Bool {
+        guard let lhsSerialized = try? JSONEncoder().encode(lhs),
+              let rhsSerialized = try? JSONEncoder().encode(rhs) else {
+            return false
+        }
+        
+        return lhsSerialized == rhsSerialized
+    }
+}
+
 class HTTPStubbingTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testMakingANetworkRequestDeserializesModels() {
+        let expectedModel = SomeModel(name: "Joe", age: 35, email: "Joe.Blow@fake.com")
+        let json = try! JSONEncoder().encode(expectedModel)
+        StubAPIResponse(request: .init(.get, urlString: "https://api.fake.com/users/me"),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest {
+                XCTAssertEqual($0.url?.absoluteString, "https://api.fake.com/users/me")
+            }
+        
+        let controller = ViewController()
+        controller.makeNetworkRequest()
+        
+        waitUntil(controller.model != nil)
+        XCTAssertEqual(controller.model, expectedModel)
     }
 
 }

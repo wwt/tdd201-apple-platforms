@@ -5,13 +5,13 @@
       location = "container:"
       name = "Data Persistance">
       <FileRef
-         location = "group:CoreDataExample/CoreDataExample.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:WriteToUserDefaults/WriteToUserDefaults.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:WriteToFile/WriteToFile.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:CoreDataExample/CoreDataExample.xcodeproj">
       </FileRef>
    </Group>
    <Group
