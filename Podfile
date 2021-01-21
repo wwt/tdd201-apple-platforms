@@ -55,6 +55,7 @@ target 'ContractTesting' do
   target 'ContractTestingTests' do
     pod 'OHHTTPStubs/Swift'
     pod 'PactConsumerSwift'
+    pod 'Fakery'
   end
 end
 
