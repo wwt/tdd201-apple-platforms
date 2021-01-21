@@ -50,4 +50,21 @@ class ViewControllerTests: XCTestCase {
         verify(mock, times(1)).fetchProfile.get()
         XCTAssertNil(ref)
     }
+    
+    func testFetchingProfileWhenThereIsAnError() {
+        let err = API.IdentityService.FetchProfileError.apiBorked
+        let mock = MockIdentityServiceProtocol()
+            .registerIn(container: Container.default)
+        stub(mock) { stub in
+            _ = when(stub.fetchProfile.get
+                        .thenReturn(Result.Publisher(.failure(err))
+                                        .eraseToAnyPublisher()))
+        }
+        let testViewController = ViewController()
+
+        testViewController.fetchProfile()
+        
+        verify(mock, times(1)).fetchProfile.get()
+        XCTAssertEqual(testViewController.fakeErrorLabel, err.localizedDescription)
+    }
 }

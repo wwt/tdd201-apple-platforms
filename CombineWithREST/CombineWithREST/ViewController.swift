@@ -21,7 +21,8 @@ class ViewController: UIViewController {
             switch result {
                 case .success(let profile):
                     self?.fakeNameLabel = [profile.firstName, profile.lastName].compactMap { $0 }.joined(separator: " ")
-                case .failure(_): break
+                case .failure(let err):
+                    self?.fakeErrorLabel = err.localizedDescription
             }
         })
         .store(in: &ongoingCalls)

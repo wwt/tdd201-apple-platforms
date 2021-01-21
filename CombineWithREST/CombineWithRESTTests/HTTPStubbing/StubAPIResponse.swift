@@ -8,7 +8,7 @@
 import Foundation
 import OHHTTPStubs
 
-@testable import HTTPStubbing
+@testable import CombineWithREST
 
 extension URLRequest: Identifiable {
     public var id:String {
