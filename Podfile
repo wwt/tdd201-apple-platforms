@@ -35,6 +35,29 @@ target 'DependencyInjection' do
     end
 end
 
+target 'CombineWithREST' do
+  project 'CombineWithREST/CombineWithREST.xcodeproj'
+  use_frameworks!
+
+  pod 'Swinject'
+  
+  target 'CombineWithRESTTests' do
+    pod 'OHHTTPStubs/Swift'
+    pod 'Cuckoo'
+    pod 'Fakery'
+  end
+end
+
+target 'ContractTesting' do
+  project 'ContractTesting/ContractTesting.xcodeproj'
+  use_frameworks!
+  
+  target 'ContractTestingTests' do
+    pod 'OHHTTPStubs/Swift'
+    pod 'PactConsumerSwift'
+  end
+end
+
 target 'HTTPStubbing' do
   project 'HTTPStubbing/HTTPStubbing.xcodeproj'
   use_frameworks!
