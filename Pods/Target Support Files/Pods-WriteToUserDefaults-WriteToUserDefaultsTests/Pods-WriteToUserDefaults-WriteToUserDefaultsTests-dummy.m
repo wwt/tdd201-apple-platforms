@@ -1,5 +1,0 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_WriteToUserDefaults_WriteToUserDefaultsTests : NSObject
-@end
-@implementation PodsDummy_Pods_WriteToUserDefaults_WriteToUserDefaultsTests
-@end

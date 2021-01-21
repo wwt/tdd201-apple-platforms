@@ -1,6 +1,0 @@
-framework module Pods_HTTPStubbing {
-  umbrella header "Pods-HTTPStubbing-umbrella.h"
-
-  export *
-  module * { export * }
-}

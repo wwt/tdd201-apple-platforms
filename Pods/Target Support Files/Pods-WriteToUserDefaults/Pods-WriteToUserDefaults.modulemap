@@ -1,6 +1,0 @@
-framework module Pods_WriteToUserDefaults {
-  umbrella header "Pods-WriteToUserDefaults-umbrella.h"
-
-  export *
-  module * { export * }
-}
