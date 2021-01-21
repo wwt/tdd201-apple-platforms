@@ -1,0 +1,1 @@
+pact-mock-service stop
