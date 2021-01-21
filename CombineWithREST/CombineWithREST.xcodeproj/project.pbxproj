@@ -44,6 +44,7 @@
 		CA4505EA25B8D34800153FC4 /* UserProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505E925B8D34800153FC4 /* UserProfileTests.swift */; };
 		CA4505F025B8D38400153FC4 /* UserProfileConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505EF25B8D38400153FC4 /* UserProfileConvenience.swift */; };
 		CA45061025B8D3B300153FC4 /* IdentityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45060F25B8D3B300153FC4 /* IdentityServiceTests.swift */; };
+		CAF26DC825B9F57A009025A6 /* ContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF26DC725B9F57A009025A6 /* ContractTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		CA4505E925B8D34800153FC4 /* UserProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTests.swift; sourceTree = "<group>"; };
 		CA4505EF25B8D38400153FC4 /* UserProfileConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileConvenience.swift; sourceTree = "<group>"; };
 		CA45060F25B8D3B300153FC4 /* IdentityServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityServiceTests.swift; sourceTree = "<group>"; };
+		CAF26DC725B9F57A009025A6 /* ContractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				CA45042325B79A1000153FC4 /* Info.plist */,
 				CA45054D25B8C53700153FC4 /* WaitUntil.swift */,
 				CA4505CA25B8CE7800153FC4 /* TestPublisher.swift */,
+				CAF26DC725B9F57A009025A6 /* ContractTests.swift */,
 			);
 			path = CombineWithRESTTests;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				CA4505C725B8CE4300153FC4 /* RetryOnTests.swift in Sources */,
 				CA45042225B79A1000153FC4 /* CombineWithRESTTests.swift in Sources */,
 				CA4505E325B8D26300153FC4 /* URLRequestExtensionsTests.swift in Sources */,
+				CAF26DC825B9F57A009025A6 /* ContractTests.swift in Sources */,
 				CA45055225B8C54800153FC4 /* URLRequestExtensions.swift in Sources */,
 				CA4505D725B8D1D400153FC4 /* MockExtensions.swift in Sources */,
 				CA45054A25B8C52500153FC4 /* StubAPIResponse.swift in Sources */,
