@@ -15,5 +15,4 @@ struct API {
     enum AuthorizationError:Error {
         case unauthorized
     }
-    static var container = Container()
 }

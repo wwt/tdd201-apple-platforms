@@ -45,6 +45,8 @@
 		CA4505F025B8D38400153FC4 /* UserProfileConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505EF25B8D38400153FC4 /* UserProfileConvenience.swift */; };
 		CA45061025B8D3B300153FC4 /* IdentityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45060F25B8D3B300153FC4 /* IdentityServiceTests.swift */; };
 		CAF26DC825B9F57A009025A6 /* ContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF26DC725B9F57A009025A6 /* ContractTests.swift */; };
+		CAF26DD325BA2C55009025A6 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF26DD225BA2C55009025A6 /* GeneratedMocks.swift */; };
+		CAF26DD925BA2CFF009025A6 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF26DD825BA2CFF009025A6 /* ViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		CA4505EF25B8D38400153FC4 /* UserProfileConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileConvenience.swift; sourceTree = "<group>"; };
 		CA45060F25B8D3B300153FC4 /* IdentityServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityServiceTests.swift; sourceTree = "<group>"; };
 		CAF26DC725B9F57A009025A6 /* ContractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTests.swift; sourceTree = "<group>"; };
+		CAF26DD225BA2C55009025A6 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		CAF26DD825BA2CFF009025A6 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +193,7 @@
 		CA45042025B79A1000153FC4 /* CombineWithRESTTests */ = {
 			isa = PBXGroup;
 			children = (
+				CAF26DD225BA2C55009025A6 /* GeneratedMocks.swift */,
 				CA45060E25B8D3A900153FC4 /* APIs */,
 				CA4505E825B8D34000153FC4 /* Models */,
 				CA4505D525B8D1C100153FC4 /* Extensions */,
@@ -200,6 +205,7 @@
 				CA45054D25B8C53700153FC4 /* WaitUntil.swift */,
 				CA4505CA25B8CE7800153FC4 /* TestPublisher.swift */,
 				CAF26DC725B9F57A009025A6 /* ContractTests.swift */,
+				CAF26DD825BA2CFF009025A6 /* ViewControllerTests.swift */,
 			);
 			path = CombineWithRESTTests;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 			buildConfigurationList = CA45043425B79A1000153FC4 /* Build configuration list for PBXNativeTarget "CombineWithRESTTests" */;
 			buildPhases = (
 				482C00488371484835BD3587 /* [CP] Check Pods Manifest.lock */,
+				CAF26DCD25BA2C14009025A6 /* Generate Mocks */,
 				CA45041925B79A1000153FC4 /* Sources */,
 				CA45041A25B79A1000153FC4 /* Frameworks */,
 				CA45041B25B79A1000153FC4 /* Resources */,
@@ -485,6 +492,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CAF26DCD25BA2C14009025A6 /* Generate Mocks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Mocks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/APIs/IdentityService.swift\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -528,6 +553,8 @@
 				CA45054A25B8C52500153FC4 /* StubAPIResponse.swift in Sources */,
 				CA4505CB25B8CE7800153FC4 /* TestPublisher.swift in Sources */,
 				CA45061025B8D3B300153FC4 /* IdentityServiceTests.swift in Sources */,
+				CAF26DD925BA2CFF009025A6 /* ViewControllerTests.swift in Sources */,
+				CAF26DD325BA2C55009025A6 /* GeneratedMocks.swift in Sources */,
 				CA45054E25B8C53700153FC4 /* WaitUntil.swift in Sources */,
 				CA4505C125B8CE2A00153FC4 /* IdentityAPIOperatorsTests.swift in Sources */,
 				CA45057625B8C90D00153FC4 /* APITests.swift in Sources */,

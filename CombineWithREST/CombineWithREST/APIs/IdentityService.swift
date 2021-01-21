@@ -13,6 +13,10 @@ protocol IdentityServiceProtocol: RESTAPIProtocol {
 }
 
 extension IdentityServiceProtocol {
+    var baseURL:String {
+        "https://some.identityservice.com/api"
+    }
+    
     var fetchProfile: AnyPublisher<Result<User.Profile, API.IdentityService.FetchProfileError>, Never> {
         self.get(endpoint: "/me", requestModifier: {
             $0.addingBearerAuthorization(token: User.accessToken)

@@ -34,8 +34,6 @@
 		CA45049B25B79A7800153FC4 /* SwiftUIExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleTests.swift; sourceTree = "<group>"; };
 		CA4504A125B79A7900153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA4504AA25B79A7900153FC4 /* SwiftUIExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleUITests.swift; sourceTree = "<group>"; };
-		CA4504AC25B79A7900153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +59,6 @@
 			children = (
 				CA45048C25B79A7800153FC4 /* SwiftUIExample */,
 				CA45049E25B79A7900153FC4 /* SwiftUIExampleTests */,
-				CA4504A925B79A7900153FC4 /* SwiftUIExampleUITests */,
 				CA45048B25B79A7800153FC4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,15 +99,6 @@
 				CA4504A125B79A7900153FC4 /* Info.plist */,
 			);
 			path = SwiftUIExampleTests;
-			sourceTree = "<group>";
-		};
-		CA4504A925B79A7900153FC4 /* SwiftUIExampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CA4504AA25B79A7900153FC4 /* SwiftUIExampleUITests.swift */,
-				CA4504AC25B79A7900153FC4 /* Info.plist */,
-			);
-			path = SwiftUIExampleUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
