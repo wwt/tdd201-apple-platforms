@@ -2,7 +2,7 @@
 //  ViewControllerTests.swift
 //  WriteToUserDefaultsTests
 //
-//  Created by thompsty on 1/15/21.
+//  Created by thompsty on 1/30/21.
 //
 
 import Foundation
@@ -12,22 +12,23 @@ import Swinject
 
 @testable import WriteToUserDefaults
 
+fileprivate typealias Keys = ViewController.Keys
+
 class ViewControllerTests: XCTestCase {
-    struct Keys {
-        struct UserDefaults {
-            static let accountBalance = "accountBalance"
-        }
-    }
-    
-    var controller: ViewController!
+    var controller:ViewController!
     
     override func setUpWithError() throws {
         controller = ViewController()
+        Container.default.removeAll()
     }
     
-    func testViewControllerReadsFromUserDefaults_OnViewDidLoad() {
+    func testUserDefaultKeys() {
+        XCTAssertEqual(Keys.UserDefaults.accountBalance, "accountBalance")
+    }
+    
+    func testAccountBalanceIsReadFromUserDefaults_OnViewDidLoad() {
         let mock = objcStub(for: UserDefaults.self) { (stubber, mock) in
-            stubber.when(mock.integer(forKey: Keys.UserDefaults.accountBalance)).thenReturn(100)
+            stubber.when(mock.integer(forKey: Keys.UserDefaults.accountBalance)).thenReturn(30)
         }
         Container.default.register(UserDefaults.self) { _ in mock }
         
@@ -42,7 +43,7 @@ class ViewControllerTests: XCTestCase {
         }
         Container.default.register(UserDefaults.self) { _ in mock }
         
-        controller.saveBalance()
+        controller.buttonPressed()
         
         objcVerify(mock.setValue(100, forKey: Keys.UserDefaults.accountBalance))
     }

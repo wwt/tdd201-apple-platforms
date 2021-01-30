@@ -2,7 +2,7 @@
 //  DependencyInjectionTests.swift
 //  DependencyInjectionTests
 //
-//  Created by thompsty on 1/4/21.
+//  Created by thompsty on 1/30/21.
 //
 
 import XCTest
@@ -20,7 +20,7 @@ class DependencyInjectionTests: XCTestCase {
 //    func testAppSetsUpCorrectDependenciesAtLaunch() {
 //        let delegate = UIApplication.shared.delegate as? AppDelegate
 //        _ = delegate?.application(UIApplication.shared, didFinishLaunchingWithOptions: [:])
-//        
+//
 //        XCTAssertNotNil(delegate, "Test invalid, app delegate nil")
 //        XCTAssert(Container.default.resolve(UserDefaults.self) === UserDefaults.standard)
 //    }

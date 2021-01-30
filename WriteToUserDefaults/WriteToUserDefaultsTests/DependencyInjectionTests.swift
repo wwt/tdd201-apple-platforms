@@ -16,16 +16,18 @@ class DependencyInjectionTests: XCTestCase {
     
     override func setUpWithError() throws {
         Self.customContainer = Container()
+        Container.default.removeAll()
     }
     
-    func testAppSetsUpCorrectDependenciesAtLaunch() {
-        let delegate = UIApplication.shared.delegate as? AppDelegate
-        _ = delegate?.application(UIApplication.shared, didFinishLaunchingWithOptions: [:])
+    func testDependenciesAreSetupCorrectly_OnAppLaunch() {
+        let delegate = UIApplication.shared.delegate
+        let actualDidFinishLaunching = delegate?.application?(UIApplication.shared, didFinishLaunchingWithOptions: [:])
         
-        XCTAssertNotNil(delegate, "Test invalid, app delegate nil")
-        XCTAssert(Container.default.resolve(UserDefaults.self) === UserDefaults.standard)
+        XCTAssertNotNil(delegate)
+        XCTAssertEqual(actualDidFinishLaunching, true, "expected didFinishLaunching to return true")
+        XCTAssert(Container.default.resolve(UserDefaults.self) === UserDefaults.standard, "expected dependency injection to resolve to UserDefaults.standard")
     }
-    
+
     func testDefaultContainerAlwaysReturnsTheSameContainer() {
         let c1 = Container.default
         let c2 = Container.default

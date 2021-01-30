@@ -17,8 +17,15 @@ class ViewController: UIViewController {
         _ = userDefaults?.integer(forKey: "accountBalance")
     }
 
-    func saveBalance() {
-        userDefaults?.setValue(100, forKey: "accountBalance")
+    func buttonPressed() {
+        userDefaults?.setValue(100, forKey: Keys.UserDefaults.accountBalance)
     }
 }
 
+extension ViewController {
+    enum Keys {
+        enum UserDefaults {
+            static let accountBalance = "accountBalance"
+        }
+    }
+}

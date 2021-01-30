@@ -15,9 +15,8 @@
 		CA75BA9525A3C0D800930AB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA75BA9325A3C0D800930AB1 /* Main.storyboard */; };
 		CA75BA9725A3C0D900930AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA75BA9625A3C0D900930AB1 /* Assets.xcassets */; };
 		CA75BA9A25A3C0D900930AB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA75BA9825A3C0D900930AB1 /* LaunchScreen.storyboard */; };
-		CA75BAA525A3C0D900930AB1 /* WriteToUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75BAA425A3C0D900930AB1 /* WriteToUserDefaultsTests.swift */; };
+		CA83BF1325C5FBB10088A3C0 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BF1225C5FBB10088A3C0 /* ViewControllerTests.swift */; };
 		CABCBDAB25B1F9E90043AB44 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCBDAA25B1F9E90043AB44 /* ContainerExtensions.swift */; };
-		CABCBDB125B1FA350043AB44 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCBDB025B1FA350043AB44 /* ViewControllerTests.swift */; };
 		CABCBDB625B1FBA50043AB44 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCBDB525B1FBA50043AB44 /* DependencyInjected.swift */; };
 		CABCBDBE25B1FC620043AB44 /* DependencyInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCBDBD25B1FC620043AB44 /* DependencyInjectionTests.swift */; };
 /* End PBXBuildFile section */
@@ -47,10 +46,9 @@
 		CA75BA9925A3C0D900930AB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA75BA9B25A3C0D900930AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA75BAA025A3C0D900930AB1 /* WriteToUserDefaultsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WriteToUserDefaultsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA75BAA425A3C0D900930AB1 /* WriteToUserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteToUserDefaultsTests.swift; sourceTree = "<group>"; };
 		CA75BAA625A3C0D900930AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA83BF1225C5FBB10088A3C0 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 		CABCBDAA25B1F9E90043AB44 /* ContainerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerExtensions.swift; sourceTree = "<group>"; };
-		CABCBDB025B1FA350043AB44 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 		CABCBDB525B1FBA50043AB44 /* DependencyInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjected.swift; sourceTree = "<group>"; };
 		CABCBDBD25B1FC620043AB44 /* DependencyInjectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionTests.swift; sourceTree = "<group>"; };
 		F829853F1C6950F05B0F670D /* Pods-WriteToUserDefaults-WriteToUserDefaultsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WriteToUserDefaults-WriteToUserDefaultsTests.release.xcconfig"; path = "Target Support Files/Pods-WriteToUserDefaults-WriteToUserDefaultsTests/Pods-WriteToUserDefaults-WriteToUserDefaultsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,10 +133,9 @@
 		CA75BAA325A3C0D900930AB1 /* WriteToUserDefaultsTests */ = {
 			isa = PBXGroup;
 			children = (
-				CA75BAA425A3C0D900930AB1 /* WriteToUserDefaultsTests.swift */,
 				CA75BAA625A3C0D900930AB1 /* Info.plist */,
-				CABCBDB025B1FA350043AB44 /* ViewControllerTests.swift */,
 				CABCBDBD25B1FC620043AB44 /* DependencyInjectionTests.swift */,
+				CA83BF1225C5FBB10088A3C0 /* ViewControllerTests.swift */,
 			);
 			path = WriteToUserDefaultsTests;
 			sourceTree = "<group>";
@@ -349,8 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CABCBDB125B1FA350043AB44 /* ViewControllerTests.swift in Sources */,
-				CA75BAA525A3C0D900930AB1 /* WriteToUserDefaultsTests.swift in Sources */,
+				CA83BF1325C5FBB10088A3C0 /* ViewControllerTests.swift in Sources */,
 				CABCBDBE25B1FC620043AB44 /* DependencyInjectionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WriteToUserDefaults/WriteToUserDefaults.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WriteToUserDefaults/Info.plist;
@@ -517,6 +514,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = WWT.WriteToUserDefaults;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -528,6 +526,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WriteToUserDefaults/WriteToUserDefaults.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WriteToUserDefaults/Info.plist;
@@ -538,6 +537,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = WWT.WriteToUserDefaults;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -68,8 +68,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAA1C67425A3926B00E3F686"
-               BuildableName = "DependencyInjectionTests.xctest"
-               BlueprintName = "DependencyInjectionTests"
+               BuildableName = "OLD_DependencyInjectionTests.xctest"
+               BlueprintName = "OLD_DependencyInjectionTests"
                ReferencedContainer = "container:DependencyInjection/DependencyInjection.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -1,9 +1,9 @@
 workspace 'TDD-201'
 
-platform :ios, '11.0'
 inhibit_all_warnings!
 
 target 'MockingFramework' do
+  platform :ios, '11.0'
   project 'MockingFramework/MockingFramework.xcodeproj'
   use_frameworks!
   
@@ -13,13 +13,13 @@ target 'MockingFramework' do
 end
 
 target 'WriteToUserDefaults' do
+  platform :ios, '11.0'
   project 'WriteToUserDefaults/WriteToUserDefaults.xcodeproj'
   use_frameworks!
   
   pod 'Swinject'
   
   target 'WriteToUserDefaultsTests' do
-    pod 'Cuckoo'
     pod 'Cuckoo/OCMock'
   end
 end
@@ -28,14 +28,20 @@ target 'DependencyInjection' do
   project 'DependencyInjection/DependencyInjection.xcodeproj'
   use_frameworks!
   
-  pod 'Swinject'
+  def shared_pods
+    pod 'Swinject'
+  end
+
+  shared_pods
   
   target 'DependencyInjectionTests' do
+    shared_pods
     pod 'Cuckoo'
   end
 end
 
 target 'CombineWithREST' do
+  platform :ios, '11.0'
   project 'CombineWithREST/CombineWithREST.xcodeproj'
   use_frameworks!
   
@@ -50,6 +56,7 @@ target 'CombineWithREST' do
 end
 
 target 'ContractTesting' do
+  platform :ios, '11.0'
   project 'ContractTesting/ContractTesting.xcodeproj'
   use_frameworks!
   
@@ -61,6 +68,7 @@ target 'ContractTesting' do
 end
 
 target 'HTTPStubbing' do
+  platform :ios, '11.0'
   project 'HTTPStubbing/HTTPStubbing.xcodeproj'
   use_frameworks!
   
