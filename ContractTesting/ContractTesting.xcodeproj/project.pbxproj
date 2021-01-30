@@ -541,7 +541,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ACF4FBB12AE34C41F8EBAADD /* Pods-ContractTesting-ContractTestingTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KRX3M99K22;
@@ -564,7 +563,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89F9192BA3EC7F91003D55E6 /* Pods-ContractTesting-ContractTestingTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KRX3M99K22;

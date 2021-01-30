@@ -25,17 +25,13 @@ target 'WriteToUserDefaults' do
 end
 
 target 'DependencyInjection' do
+  platform :macos, '10.15'
   project 'DependencyInjection/DependencyInjection.xcodeproj'
   use_frameworks!
   
-  def shared_pods
-    pod 'Swinject'
-  end
+  pod 'Swinject'
 
-  shared_pods
-  
   target 'DependencyInjectionTests' do
-    shared_pods
     pod 'Cuckoo'
   end
 end

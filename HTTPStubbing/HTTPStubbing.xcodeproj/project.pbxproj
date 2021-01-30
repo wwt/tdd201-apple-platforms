@@ -521,7 +521,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 77B8F36C42331C7EE9349AD0 /* Pods-HTTPStubbing-HTTPStubbingTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KRX3M99K22;
@@ -544,7 +543,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 08535800CCCFAE2D3AFF8D2A /* Pods-HTTPStubbing-HTTPStubbingTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KRX3M99K22;

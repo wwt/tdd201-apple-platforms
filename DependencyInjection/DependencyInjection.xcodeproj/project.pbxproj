@@ -513,7 +513,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E401F09C7F356DA67E4CF6B /* Pods-DependencyInjection-DependencyInjectionTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KRX3M99K22;
@@ -533,7 +532,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C8BEFB42CB8AA85218EB02B /* Pods-DependencyInjection-DependencyInjectionTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KRX3M99K22;

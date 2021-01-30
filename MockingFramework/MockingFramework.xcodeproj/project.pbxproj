@@ -532,7 +532,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 52376FA4813B5C20EA21C408 /* Pods-MockingFramework-MockingFrameworkTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KRX3M99K22;
@@ -555,7 +554,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A15AFB35006E6CD11342B8BC /* Pods-MockingFramework-MockingFrameworkTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KRX3M99K22;
