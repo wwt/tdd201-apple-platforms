@@ -17,12 +17,12 @@ struct DependencyInjected<Value> {
         name = nil
         container = Container.default
     }
-    public init(wrappedValue value: Value? = nil, name:String) {
+    public init(name:String) {
         self.name = name
         container = Container.default
     }
     
-    public init(wrappedValue value: Value? = nil, container containerGetter:@autoclosure () -> Container, name:String? = nil) {
+    public init(container containerGetter:@autoclosure () -> Container, name:String? = nil) {
         self.name = name
         container = containerGetter()
     }
