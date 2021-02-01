@@ -71,6 +71,9 @@
       location = "group:DependencyInjection/DependencyInjection.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:DateTimesSuck/DateTimesSuck.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:BigAwfulLegacySpaghettiMess/BigAwfulLegacySpaghettiMess.xcodeproj">
    </FileRef>
    <FileRef
