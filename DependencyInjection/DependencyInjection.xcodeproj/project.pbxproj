@@ -515,7 +515,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KRX3M99K22;
+				DEVELOPMENT_TEAM = SJ5ZU3R8K7;
 				INFOPLIST_FILE = DependencyInjectionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

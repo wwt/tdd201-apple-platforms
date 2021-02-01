@@ -97,4 +97,22 @@ class DependencyInjectionTests: XCTestCase {
         var s = SomeStruct() //NOTE: Need a mutable reference since a DependencyInjected var is lazy
         XCTAssertEqual(s.name, expectedName)
     }
+    
+    func testPropertyWrapperResolvesOnlyOnce() {
+        class FakeReferenceClass {
+            
+        }
+        Self.customContainer.register(FakeReferenceClass.self, name: "resolve") { _ in FakeReferenceClass() }
+        class SomeClass {
+            @DependencyInjected(container: DependencyInjectionTests.customContainer, name: "resolve") var name:FakeReferenceClass?
+        }
+        struct SomeStruct {
+            @DependencyInjected(container: DependencyInjectionTests.customContainer, name: "resolve") var name:FakeReferenceClass?
+        }
+        let someClass = SomeClass()
+        XCTAssert(someClass.name === someClass.name, "Expected name to be the same instance each time accessed") // WORDS ARE HARD
+        var s = SomeStruct() //NOTE: Need a mutable reference since a DependencyInjected var is lazy
+        XCTAssert(s.name === s.name, "Expected name to be the same instance each time accessed") 
+    }
+    
 }
