@@ -68,13 +68,19 @@
       </FileRef>
    </Group>
    <FileRef
-      location = "group:BigAwfulLegacySpaghettiMess/BigAwfulLegacySpaghettiMess.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:DependencyInjection/DependencyInjection.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:BigAwfulLegacySpaghettiMess/BigAwfulLegacySpaghettiMess.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:MutationTesting/MutationTesting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:watchOSExample/watchOSExample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:tvOSExample/tvOSExample.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
