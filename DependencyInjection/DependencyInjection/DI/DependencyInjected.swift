@@ -22,9 +22,9 @@ struct DependencyInjected<Value> {
         container = Container.default
     }
     
-    public init(container containerGetter:@autoclosure () -> Container, name:String? = nil) {
+    public init(container:Container, name:String? = nil) {
         self.name = name
-        container = containerGetter()
+        self.container = container
     }
     
     public lazy var wrappedValue: Value? = {
