@@ -99,9 +99,7 @@ class DependencyInjectionTests: XCTestCase {
     }
     
     func testPropertyWrapperIsLazyLoaded() {
-        class FakeReferenceClass {
-            
-        }
+        class FakeReferenceClass { }
         Self.customContainer.register(FakeReferenceClass.self, name: "resolve") { _ in FakeReferenceClass() }
         class SomeClass {
             @DependencyInjected(container: DependencyInjectionTests.customContainer, name: "resolve") var name:FakeReferenceClass?
