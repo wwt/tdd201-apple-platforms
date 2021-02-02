@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00D1A67E25C9C5630002728A /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A67C25C9C5630002728A /* DependencyInjected.swift */; };
-		00D1A67F25C9C5630002728A /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A67D25C9C5630002728A /* ContainerExtensions.swift */; };
 		00D1A68325C9C5AB0002728A /* DependencyInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A68225C9C5AB0002728A /* DependencyInjectionTests.swift */; };
 		00D1A68A25C9C80E0002728A /* NotesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A68925C9C80E0002728A /* NotesService.swift */; };
 		00D1A6B525C9DD690002728A /* TestFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A6B425C9DD690002728A /* TestFileManager.swift */; };
@@ -24,6 +22,8 @@
 		CA75BA6625A3C0B600930AB1 /* WriteToFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75BA6525A3C0B600930AB1 /* WriteToFileTests.swift */; };
 		CA9B145025C9F61C00854956 /* DataMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B144F25C9F61C00854956 /* DataMatcher.swift */; };
 		CA9B145625C9F68D00854956 /* FileManagementHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B145525C9F68D00854956 /* FileManagementHelpers.swift */; };
+		CA9B146025C9FB3000854956 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B145E25C9FB3000854956 /* ContainerExtensions.swift */; };
+		CA9B146125C9FB3000854956 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B145F25C9FB3000854956 /* DependencyInjected.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00D1A67C25C9C5630002728A /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = ../../../DependencyInjection/DependencyInjection/DI/DependencyInjected.swift; sourceTree = "<group>"; };
-		00D1A67D25C9C5630002728A /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = ../../../DependencyInjection/DependencyInjection/DI/ContainerExtensions.swift; sourceTree = "<group>"; };
 		00D1A68225C9C5AB0002728A /* DependencyInjectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjectionTests.swift; sourceTree = "<group>"; };
 		00D1A68925C9C80E0002728A /* NotesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesService.swift; sourceTree = "<group>"; };
 		00D1A6B425C9DD690002728A /* TestFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFileManager.swift; sourceTree = "<group>"; };
@@ -62,6 +60,8 @@
 		CA75BA6725A3C0B600930AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA9B144F25C9F61C00854956 /* DataMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatcher.swift; sourceTree = "<group>"; };
 		CA9B145525C9F68D00854956 /* FileManagementHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagementHelpers.swift; sourceTree = "<group>"; };
+		CA9B145E25C9FB3000854956 /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerExtensions.swift; sourceTree = "<group>"; };
+		CA9B145F25C9FB3000854956 /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjected.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,15 +84,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00D1A67B25C9C5460002728A /* DependencyInjection */ = {
-			isa = PBXGroup;
-			children = (
-				00D1A67D25C9C5630002728A /* ContainerExtensions.swift */,
-				00D1A67C25C9C5630002728A /* DependencyInjected.swift */,
-			);
-			path = DependencyInjection;
-			sourceTree = "<group>";
-		};
 		00D1A68825C9C8020002728A /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,8 +136,8 @@
 		CA75BA4D25A3C0B500930AB1 /* WriteToFile */ = {
 			isa = PBXGroup;
 			children = (
+				CA9B145D25C9FB3000854956 /* DependencyInjection */,
 				00D1A68825C9C8020002728A /* Services */,
-				00D1A67B25C9C5460002728A /* DependencyInjection */,
 				CA75BA4E25A3C0B500930AB1 /* AppDelegate.swift */,
 				CA75BA5025A3C0B500930AB1 /* SceneDelegate.swift */,
 				CA75BA5225A3C0B500930AB1 /* ViewController.swift */,
@@ -178,6 +169,16 @@
 				CA9B145525C9F68D00854956 /* FileManagementHelpers.swift */,
 			);
 			path = CuckooHelpers;
+			sourceTree = "<group>";
+		};
+		CA9B145D25C9FB3000854956 /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				CA9B145E25C9FB3000854956 /* ContainerExtensions.swift */,
+				CA9B145F25C9FB3000854956 /* DependencyInjected.swift */,
+			);
+			name = DependencyInjection;
+			path = ../../DependencyInjection/DependencyInjection/DependencyInjection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,12 +385,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00D1A67E25C9C5630002728A /* DependencyInjected.swift in Sources */,
+				CA9B146125C9FB3000854956 /* DependencyInjected.swift in Sources */,
+				CA9B146025C9FB3000854956 /* ContainerExtensions.swift in Sources */,
 				CA75BA5325A3C0B500930AB1 /* ViewController.swift in Sources */,
 				CA75BA4F25A3C0B500930AB1 /* AppDelegate.swift in Sources */,
 				00D1A68A25C9C80E0002728A /* NotesService.swift in Sources */,
 				CA75BA5125A3C0B500930AB1 /* SceneDelegate.swift in Sources */,
-				00D1A67F25C9C5630002728A /* ContainerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

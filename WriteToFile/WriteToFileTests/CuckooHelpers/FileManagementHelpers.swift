@@ -16,10 +16,10 @@ extension Dictionary: OptionalMatchable where Key == FileAttributeKey, Value == 
     public typealias OptionalMatchedType = [FileAttributeKey : Any]
 }
 
-func anyFileAttributes() -> ParameterMatcher<[FileAttributeKey : Any]> {
+public func anyFileAttributes() -> ParameterMatcher<[FileAttributeKey : Any]> {
     return ParameterMatcher<[FileAttributeKey : Any]>()
 }
 
-func anyFileAttributes() -> ParameterMatcher<[FileAttributeKey : Any]?> {
+public func anyFileAttributes() -> ParameterMatcher<[FileAttributeKey : Any]?> {
     return ParameterMatcher<[FileAttributeKey : Any]?>()
 }

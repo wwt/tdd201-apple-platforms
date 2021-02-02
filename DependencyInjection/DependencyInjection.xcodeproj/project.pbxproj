@@ -16,8 +16,8 @@
 		CA91E7B125C61B0E0027C6CC /* DependencyInjection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA91E7A725C61B0E0027C6CC /* DependencyInjection.framework */; };
 		CA91E7B625C61B0E0027C6CC /* DependencyInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91E7B525C61B0E0027C6CC /* DependencyInjectionTests.swift */; };
 		CA91E7B825C61B0E0027C6CC /* DependencyInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = CA91E7AA25C61B0E0027C6CC /* DependencyInjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA91E7E725C61B490027C6CC /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91E7E625C61B490027C6CC /* ContainerExtensions.swift */; };
-		CA91E7E925C61B540027C6CC /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91E7E825C61B540027C6CC /* DependencyInjected.swift */; };
+		CA9B147C25C9FB7100854956 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B147A25C9FB7100854956 /* ContainerExtensions.swift */; };
+		CA9B147D25C9FB7100854956 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B147B25C9FB7100854956 /* DependencyInjected.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +46,8 @@
 		CA91E7B025C61B0E0027C6CC /* DependencyInjectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DependencyInjectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA91E7B525C61B0E0027C6CC /* DependencyInjectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionTests.swift; sourceTree = "<group>"; };
 		CA91E7B725C61B0E0027C6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA91E7E625C61B490027C6CC /* ContainerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerExtensions.swift; sourceTree = "<group>"; };
-		CA91E7E825C61B540027C6CC /* DependencyInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjected.swift; sourceTree = "<group>"; };
+		CA9B147A25C9FB7100854956 /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = DependencyInjection/DependencyInjection/ContainerExtensions.swift; sourceTree = SOURCE_ROOT; };
+		CA9B147B25C9FB7100854956 /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = DependencyInjection/DependencyInjection/DependencyInjected.swift; sourceTree = SOURCE_ROOT; };
 		D0D6DAF1629D2487B5E94FFE /* Pods-DependencyInjection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependencyInjection.release.xcconfig"; path = "Target Support Files/Pods-DependencyInjection/Pods-DependencyInjection.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,8 +155,8 @@
 		CA91E7E325C61B290027C6CC /* DI */ = {
 			isa = PBXGroup;
 			children = (
-				CA91E7E625C61B490027C6CC /* ContainerExtensions.swift */,
-				CA91E7E825C61B540027C6CC /* DependencyInjected.swift */,
+				CA9B147A25C9FB7100854956 /* ContainerExtensions.swift */,
+				CA9B147B25C9FB7100854956 /* DependencyInjected.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -337,9 +337,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA9B147D25C9FB7100854956 /* DependencyInjected.swift in Sources */,
+				CA9B147C25C9FB7100854956 /* ContainerExtensions.swift in Sources */,
 				00D1A5F725C8C6770002728A /* UserService.swift in Sources */,
-				CA91E7E925C61B540027C6CC /* DependencyInjected.swift in Sources */,
-				CA91E7E725C61B490027C6CC /* ContainerExtensions.swift in Sources */,
 				00D1A5A625C8BD7E0002728A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
