@@ -22,16 +22,16 @@ class WriteToFileTests: XCTestCase {
     func testNoteIsCreatedToFile() throws {
         let mock = MockFileManager()
         let expectedPath = UUID().uuidString
-        let expectedContent: Data? = UUID().uuidString.data(using: .utf8)
+        let expectedContent = UUID().uuidString.data(using: .utf8)
+        let expectedAttributes: [FileAttributeKey : Any]? = nil
         stub(mock) { (stub) in
-            when(stub.createFile(atPath: anyString(), contents: any(Data.self), attributes: any()))
-                .thenReturn(true)
+            when(stub.createFile(atPath: anyString(), contents: anyData(), attributes: anyFileAttributes())).thenReturn(true)
         }
         Container.default.register(Foundation.FileManager.self) { _ in mock }
         
         try service.createNote(at: expectedPath, contents: expectedContent)
         
-        verify(mock, times(1)).createFile(atPath: expectedPath, contents: expectedContent, attributes: [:])
+        verify(mock, times(1)).createFile(atPath: expectedPath, contents: expectedContent, attributes: expectedAttributes)
     }
     
     func testNoteIsReadFromFile() throws {

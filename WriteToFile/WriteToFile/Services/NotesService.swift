@@ -20,7 +20,7 @@ class NotesService {
     }
     
     func createNote(at path: String, contents data: Data?) throws {
-        
+        fileManager?.createFile(atPath: path, contents: data)
     }
 }
 

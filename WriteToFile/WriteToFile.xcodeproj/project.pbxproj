@@ -22,6 +22,8 @@
 		CA75BA5825A3C0B600930AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA75BA5725A3C0B600930AB1 /* Assets.xcassets */; };
 		CA75BA5B25A3C0B600930AB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA75BA5925A3C0B600930AB1 /* LaunchScreen.storyboard */; };
 		CA75BA6625A3C0B600930AB1 /* WriteToFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75BA6525A3C0B600930AB1 /* WriteToFileTests.swift */; };
+		CA9B145025C9F61C00854956 /* DataMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B144F25C9F61C00854956 /* DataMatcher.swift */; };
+		CA9B145625C9F68D00854956 /* FileManagementHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B145525C9F68D00854956 /* FileManagementHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		CA75BA6125A3C0B600930AB1 /* WriteToFileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WriteToFileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA75BA6525A3C0B600930AB1 /* WriteToFileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteToFileTests.swift; sourceTree = "<group>"; };
 		CA75BA6725A3C0B600930AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA9B144F25C9F61C00854956 /* DataMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMatcher.swift; sourceTree = "<group>"; };
+		CA9B145525C9F68D00854956 /* FileManagementHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagementHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,7 @@
 		CA75BA6425A3C0B600930AB1 /* WriteToFileTests */ = {
 			isa = PBXGroup;
 			children = (
+				CA9B144E25C9F61000854956 /* CuckooHelpers */,
 				00D1A6BB25C9DE340002728A /* GeneratedMocks.swift */,
 				00D1A68225C9C5AB0002728A /* DependencyInjectionTests.swift */,
 				CA75BA6525A3C0B600930AB1 /* WriteToFileTests.swift */,
@@ -164,6 +169,15 @@
 				00D1A6B425C9DD690002728A /* TestFileManager.swift */,
 			);
 			path = WriteToFileTests;
+			sourceTree = "<group>";
+		};
+		CA9B144E25C9F61000854956 /* CuckooHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				CA9B144F25C9F61C00854956 /* DataMatcher.swift */,
+				CA9B145525C9F68D00854956 /* FileManagementHelpers.swift */,
+			);
+			path = CuckooHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,9 +397,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA9B145025C9F61C00854956 /* DataMatcher.swift in Sources */,
 				00D1A6B525C9DD690002728A /* TestFileManager.swift in Sources */,
 				00D1A68325C9C5AB0002728A /* DependencyInjectionTests.swift in Sources */,
 				CA75BA6625A3C0B600930AB1 /* WriteToFileTests.swift in Sources */,
+				CA9B145625C9F68D00854956 /* FileManagementHelpers.swift in Sources */,
 				00D1A6BC25C9DE340002728A /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
