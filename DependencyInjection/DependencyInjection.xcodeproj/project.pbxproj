@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00D1A5A625C8BD7E0002728A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A5A525C8BD7E0002728A /* User.swift */; };
+		00D1A5F225C8C32F0002728A /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A5F125C8C32F0002728A /* UserTests.swift */; };
+		00D1A5F725C8C6770002728A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A5F625C8C6770002728A /* UserService.swift */; };
+		00D1A5FB25C8C68D0002728A /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A5FA25C8C68D0002728A /* UserServiceTests.swift */; };
 		446BB3E8BE6DC0072F471310 /* Pods_DependencyInjection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB26E3FABD54BC82885ADE9 /* Pods_DependencyInjection.framework */; };
 		9168FB3F010F52E45EF885ED /* Pods_DependencyInjection_DependencyInjectionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 300F2E1ACE6C6687648E07F9 /* Pods_DependencyInjection_DependencyInjectionTests.framework */; };
 		CA91E7B125C61B0E0027C6CC /* DependencyInjection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA91E7A725C61B0E0027C6CC /* DependencyInjection.framework */; };
@@ -27,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00D1A5A525C8BD7E0002728A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		00D1A5F125C8C32F0002728A /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		00D1A5F625C8C6770002728A /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		00D1A5FA25C8C68D0002728A /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
 		300F2E1ACE6C6687648E07F9 /* Pods_DependencyInjection_DependencyInjectionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DependencyInjection_DependencyInjectionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A03B602735D33767E0511F8 /* Pods-DependencyInjection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependencyInjection.debug.xcconfig"; path = "Target Support Files/Pods-DependencyInjection/Pods-DependencyInjection.debug.xcconfig"; sourceTree = "<group>"; };
 		5E401F09C7F356DA67E4CF6B /* Pods-DependencyInjection-DependencyInjectionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependencyInjection-DependencyInjectionTests.debug.xcconfig"; path = "Target Support Files/Pods-DependencyInjection-DependencyInjectionTests/Pods-DependencyInjection-DependencyInjectionTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -64,6 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00D1A5A425C8BD720002728A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				00D1A5A525C8BD7E0002728A /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		00D1A5F525C8C6680002728A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				00D1A5F625C8C6770002728A /* UserService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		4693815DBD6B39481094261D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +132,8 @@
 		CA91E7A925C61B0E0027C6CC /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
+				00D1A5F525C8C6680002728A /* Services */,
+				00D1A5A425C8BD720002728A /* Models */,
 				CA91E7E325C61B290027C6CC /* DI */,
 				CA91E7AA25C61B0E0027C6CC /* DependencyInjection.h */,
 				CA91E7AB25C61B0E0027C6CC /* Info.plist */,
@@ -120,6 +146,8 @@
 			children = (
 				CA91E7B525C61B0E0027C6CC /* DependencyInjectionTests.swift */,
 				CA91E7B725C61B0E0027C6CC /* Info.plist */,
+				00D1A5F125C8C32F0002728A /* UserTests.swift */,
+				00D1A5FA25C8C68D0002728A /* UserServiceTests.swift */,
 			);
 			path = DependencyInjectionTests;
 			sourceTree = "<group>";
@@ -309,8 +337,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00D1A5F725C8C6770002728A /* UserService.swift in Sources */,
 				CA91E7E925C61B540027C6CC /* DependencyInjected.swift in Sources */,
 				CA91E7E725C61B490027C6CC /* ContainerExtensions.swift in Sources */,
+				00D1A5A625C8BD7E0002728A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +348,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00D1A5F225C8C32F0002728A /* UserTests.swift in Sources */,
 				CA91E7B625C61B0E0027C6CC /* DependencyInjectionTests.swift in Sources */,
+				00D1A5FB25C8C68D0002728A /* UserServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

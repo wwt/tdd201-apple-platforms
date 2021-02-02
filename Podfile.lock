@@ -21,6 +21,11 @@ PODS:
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
   - PactConsumerSwift (0.10.0)
+  - Realm (10.5.1):
+    - Realm/Headers (= 10.5.1)
+  - Realm/Headers (10.5.1)
+  - RealmSwift (10.5.1):
+    - Realm (= 10.5.1)
   - Swinject (2.7.1)
 
 DEPENDENCIES:
@@ -29,6 +34,7 @@ DEPENDENCIES:
   - Fakery
   - OHHTTPStubs/Swift
   - PactConsumerSwift
+  - RealmSwift
   - Swinject
 
 SPEC REPOS:
@@ -38,6 +44,8 @@ SPEC REPOS:
     - OCMock
     - OHHTTPStubs
     - PactConsumerSwift
+    - Realm
+    - RealmSwift
     - Swinject
 
 SPEC CHECKSUMS:
@@ -46,8 +54,10 @@ SPEC CHECKSUMS:
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   PactConsumerSwift: af7bbf91a4f4bd3d251c8d8b2ac31e596ae61705
+  Realm: 77fcb4e0b9f2963ea06f584749a0d7dc9cab95e1
+  RealmSwift: 6abe6aa6cd8b70cc1a87afcb9232cabea74ff1ac
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 8224afc788ba6049e316349c3949e1e3df0f0e1f
+PODFILE CHECKSUM: 98813fd4daacea63c5ca8605111be83aa7edee26
 
 COCOAPODS: 1.10.0

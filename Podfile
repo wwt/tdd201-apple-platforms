@@ -30,9 +30,10 @@ target 'DependencyInjection' do
   use_frameworks!
   
   pod 'Swinject'
-
+  pod 'RealmSwift'
+  
   target 'DependencyInjectionTests' do
-    pod 'Cuckoo'
+    
   end
 end
 
