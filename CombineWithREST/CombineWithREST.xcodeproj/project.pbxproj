@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00D1A65025C9A61C0002728A /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A64E25C9A61C0002728A /* ContainerExtensions.swift */; };
+		00D1A65125C9A61C0002728A /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A64F25C9A61C0002728A /* DependencyInjected.swift */; };
 		2E30E671B4AE5C5C684A255B /* Pods_CombineWithREST.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24088C7D63D164FBE167A839 /* Pods_CombineWithREST.framework */; };
 		4B4D30352F3855E83B9614FB /* Pods_CombineWithREST_CombineWithRESTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFFD79E45284CC76EA1F016 /* Pods_CombineWithREST_CombineWithRESTTests.framework */; };
 		CA45040B25B79A0F00153FC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45040A25B79A0F00153FC4 /* AppDelegate.swift */; };
@@ -33,8 +35,6 @@
 		CA4505A325B8CBE700153FC4 /* JSONDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505A225B8CBE700153FC4 /* JSONDecode.swift */; };
 		CA4505A725B8CBFE00153FC4 /* RetryOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505A625B8CBFE00153FC4 /* RetryOn.swift */; };
 		CA4505AB25B8CC2900153FC4 /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505AA25B8CC2900153FC4 /* URLRequestExtensions.swift */; };
-		CA4505B625B8CDCC00153FC4 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505B525B8CDCC00153FC4 /* ContainerExtensions.swift */; };
-		CA4505BC25B8CDD500153FC4 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505BB25B8CDD500153FC4 /* DependencyInjected.swift */; };
 		CA4505C125B8CE2A00153FC4 /* IdentityAPIOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505C025B8CE2A00153FC4 /* IdentityAPIOperatorsTests.swift */; };
 		CA4505C725B8CE4300153FC4 /* RetryOnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505C625B8CE4300153FC4 /* RetryOnTests.swift */; };
 		CA4505CB25B8CE7800153FC4 /* TestPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505CA25B8CE7800153FC4 /* TestPublisher.swift */; };
@@ -60,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00D1A64E25C9A61C0002728A /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = ../../../DependencyInjection/DependencyInjection/DI/ContainerExtensions.swift; sourceTree = "<group>"; };
+		00D1A64F25C9A61C0002728A /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = ../../../DependencyInjection/DependencyInjection/DI/DependencyInjected.swift; sourceTree = "<group>"; };
 		096C5D9757A186DDDA29D410 /* Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig"; path = "Target Support Files/Pods-CombineWithREST-CombineWithRESTTests/Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig"; sourceTree = "<group>"; };
 		22886F30A917329AE0DA3CEF /* Pods-CombineWithREST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineWithREST.release.xcconfig"; path = "Target Support Files/Pods-CombineWithREST/Pods-CombineWithREST.release.xcconfig"; sourceTree = "<group>"; };
 		24088C7D63D164FBE167A839 /* Pods_CombineWithREST.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CombineWithREST.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,8 +96,6 @@
 		CA4505A225B8CBE700153FC4 /* JSONDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecode.swift; sourceTree = "<group>"; };
 		CA4505A625B8CBFE00153FC4 /* RetryOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryOn.swift; sourceTree = "<group>"; };
 		CA4505AA25B8CC2900153FC4 /* URLRequestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtensions.swift; sourceTree = "<group>"; };
-		CA4505B525B8CDCC00153FC4 /* ContainerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerExtensions.swift; sourceTree = "<group>"; };
-		CA4505BB25B8CDD500153FC4 /* DependencyInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjected.swift; sourceTree = "<group>"; };
 		CA4505C025B8CE2A00153FC4 /* IdentityAPIOperatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityAPIOperatorsTests.swift; sourceTree = "<group>"; };
 		CA4505C625B8CE4300153FC4 /* RetryOnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryOnTests.swift; sourceTree = "<group>"; };
 		CA4505CA25B8CE7800153FC4 /* TestPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPublisher.swift; sourceTree = "<group>"; };
@@ -262,8 +262,8 @@
 		CA4505B425B8CDC300153FC4 /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
-				CA4505B525B8CDCC00153FC4 /* ContainerExtensions.swift */,
-				CA4505BB25B8CDD500153FC4 /* DependencyInjected.swift */,
+				00D1A64E25C9A61C0002728A /* ContainerExtensions.swift */,
+				00D1A64F25C9A61C0002728A /* DependencyInjected.swift */,
 			);
 			path = DependencyInjection;
 			sourceTree = "<group>";
@@ -520,10 +520,10 @@
 				CA45058525B8CA4900153FC4 /* IdentityService.swift in Sources */,
 				CA4505AB25B8CC2900153FC4 /* URLRequestExtensions.swift in Sources */,
 				CA45040F25B79A0F00153FC4 /* ViewController.swift in Sources */,
-				CA4505B625B8CDCC00153FC4 /* ContainerExtensions.swift in Sources */,
+				00D1A65025C9A61C0002728A /* ContainerExtensions.swift in Sources */,
 				CA4505A725B8CBFE00153FC4 /* RetryOn.swift in Sources */,
 				CA45059F25B8CBD400153FC4 /* IdentityAPIOperators.swift in Sources */,
-				CA4505BC25B8CDD500153FC4 /* DependencyInjected.swift in Sources */,
+				00D1A65125C9A61C0002728A /* DependencyInjected.swift in Sources */,
 				CA45057025B8C7FF00153FC4 /* BaseAPI.swift in Sources */,
 				CA45057F25B8C98700153FC4 /* URLSessionExtensions.swift in Sources */,
 				CA45059225B8CAA600153FC4 /* Address.swift in Sources */,
