@@ -13,10 +13,10 @@ import Swinject
 @testable import DependencyInjection
 
 class UserServiceTests: XCTestCase {
-    var testObject:UserService!
+    var service:UserService!
     
     override func setUpWithError() throws {
-        testObject = UserService()
+        service = UserService()
         Container.default.removeAll()
     }
     
@@ -30,7 +30,7 @@ class UserServiceTests: XCTestCase {
         
         Container.default.register(Realm.self) { _ in realm }
         
-        let users = try testObject.getUsers()
+        let users = try service.getUsers()
     
         XCTAssertEqual(users.count, 2)
         XCTAssertEqual(users.first?.id, user1.id)
@@ -42,7 +42,7 @@ class UserServiceTests: XCTestCase {
     }
     
     func testServiceThrowsConnectionFailure_DatabaseIsNotInjected() throws {
-        XCTAssertThrowsError(try testObject.getUsers()) { error in
+        XCTAssertThrowsError(try service.getUsers()) { error in
             XCTAssertEqual(error as? UserService.DatabaseError, UserService.DatabaseError.connectionFailure)
         }
     }

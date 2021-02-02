@@ -12,6 +12,18 @@ target 'MockingFramework' do
   end
 end
 
+target 'WriteToFile' do
+  platform :ios, '11.0'
+  project 'WriteToFile/WriteToFile.xcodeproj'
+  use_frameworks!
+  
+  pod 'Swinject'
+  
+  target 'WriteToFileTests' do
+    pod 'Cuckoo'
+  end
+end
+
 target 'WriteToUserDefaults' do
   platform :ios, '11.0'
   project 'WriteToUserDefaults/WriteToUserDefaults.xcodeproj'

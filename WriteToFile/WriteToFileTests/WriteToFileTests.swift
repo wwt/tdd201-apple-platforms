@@ -6,28 +6,65 @@
 //
 
 import XCTest
+import Swinject
+import Cuckoo
+
 @testable import WriteToFile
 
 class WriteToFileTests: XCTestCase {
-
+    var service: NotesService!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        service = NotesService()
+        Container.default.removeAll()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+  
+    func testNoteIsCreatedToFile() throws {
+        let mock = MockFileManager()
+        let expectedPath = UUID().uuidString
+        let expectedContent: Data? = UUID().uuidString.data(using: .utf8)
+        stub(mock) { (stub) in
+            when(stub.createFile(atPath: anyString(), contents: any(Data.self), attributes: any()))
+                .thenReturn(true)
+        }
+        Container.default.register(Foundation.FileManager.self) { _ in mock }
+        
+        try service.createNote(at: expectedPath, contents: expectedContent)
+        
+        verify(mock, times(1)).createFile(atPath: expectedPath, contents: expectedContent, attributes: [:])
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testNoteIsReadFromFile() throws {
+        let expectedNoteContent:Data? = UUID().uuidString.data(using: .utf8)
+        let mock = MockFileManager()
+        let path = UUID().uuidString
+        stub(mock) { (stub) in
+            when(stub.contents(atPath: anyString())).thenReturn(expectedNoteContent)
+        }
+        Container.default.register(Foundation.FileManager.self) { _ in mock }
+        
+        switch service.readNote(at: path) {
+        case .failure(_):
+            XCTFail("You done failed")
+        case .success(let data):
+            XCTAssertEqual(data, expectedNoteContent)
+        }
+        
+        verify(mock, times(1)).contents(atPath: path)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testNoteIsReadHasNoDataReturnsFailure() throws {
+        let mock = MockFileManager()
+        stub(mock) { (stub) in
+            when(stub.contents(atPath: anyString())).thenReturn(nil)
+        }
+        Container.default.register(Foundation.FileManager.self) { _ in mock }
+        
+        switch service.readNote(at: "pathy") {
+        case .failure(let error):
+            XCTAssertEqual(error, .unableToReadFromFile)
+        case .success(_):
+            XCTFail("Expecting failure with error")
         }
     }
-
 }
