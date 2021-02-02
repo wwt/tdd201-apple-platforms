@@ -30,7 +30,7 @@ class UserServiceTests: XCTestCase {
         
         Container.default.register(Realm.self) { _ in realm }
         
-        let users = testObject.getUsers()
+        let users = try testObject.getUsers()
     
         XCTAssertEqual(users.count, 2)
         XCTAssertEqual(users.first?.id, user1.id)
@@ -39,5 +39,11 @@ class UserServiceTests: XCTestCase {
         XCTAssertEqual(users.last?.id, user2.id)
         XCTAssertEqual(users.last?.firstName, user2.firstName)
         XCTAssertEqual(users.last?.lastName, user2.lastName)
+    }
+    
+    func testServiceThrowsConnectionFailure_DatabaseIsNotInjected() throws {
+        XCTAssertThrowsError(try testObject.getUsers()) { error in
+            XCTAssertEqual(error as? UserService.DatabaseError, UserService.DatabaseError.connectionFailure)
+        }
     }
 }

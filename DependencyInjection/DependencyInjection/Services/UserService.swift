@@ -11,7 +11,16 @@ import RealmSwift
 struct UserService {
     @DependencyInjected var database:Realm?
     
-    mutating func getUsers() -> [User] {
-        return Array(database!.objects(User.self))
+    mutating func getUsers() throws -> [User] {
+        guard let database = database else {
+            throw DatabaseError.connectionFailure
+        }
+        return Array(database.objects(User.self))
+    }
+}
+
+extension UserService {
+    enum DatabaseError: Error {
+        case connectionFailure
     }
 }
