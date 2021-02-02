@@ -19,12 +19,16 @@ class NotesService {
     }
     
     func createNote(at path: String, contents data: Data?) throws {
-        fileManager?.createFile(atPath: path, contents: data)
+        guard let succeeded = fileManager?.createFile(atPath: path, contents: data),
+              succeeded else {
+            throw FileError.unableToWriteToFile
+        }
     }
 }
 
 extension NotesService {
     enum FileError: Error {
         case unableToReadFromFile
+        case unableToWriteToFile
     }
 }

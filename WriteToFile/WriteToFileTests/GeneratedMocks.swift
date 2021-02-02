@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: WriteToFileTests/MockFileManager.swift at 2021-02-02 21:43:22 +0000
+// MARK: - Mocks generated from file: WriteToFileTests/MockFileManager.swift at 2021-02-02 22:12:10 +0000
 
 //
 //  MockFileManager.swift

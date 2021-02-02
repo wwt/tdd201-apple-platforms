@@ -34,6 +34,37 @@ class WriteToFileTests: XCTestCase {
         verify(mock, times(1)).createFile(atPath: expectedPath, contents: expectedContent, attributes: expectedAttributes)
     }
     
+    func testNoteIsNotCreatedThrowsError() throws {
+        let mock = MockFileManager()
+        let expectedPath = UUID().uuidString
+        let expectedContent = UUID().uuidString.data(using: .utf8)
+        let expectedAttributes: [FileAttributeKey : Any]? = nil
+        stub(mock) { (stub) in
+            when(stub.createFile(atPath: anyString(), contents: anyData(), attributes: anyFileAttributes())).thenReturn(false)
+        }
+        Container.default.register(Foundation.FileManager.self) { _ in mock }
+        
+        XCTAssertThrowsError(try service.createNote(at: expectedPath, contents: expectedContent)) { error in
+            XCTAssertEqual(error as? NotesService.FileError, NotesService.FileError.unableToWriteToFile)
+        }
+        verify(mock, times(1)).createFile(atPath: expectedPath, contents: expectedContent, attributes: expectedAttributes)
+    }
+    
+    func testFileManagerDoesNotExist_CreateThrowsError() throws {
+        XCTAssertThrowsError(try service.createNote(at: "", contents: nil)) { err in
+            XCTAssertEqual(err as? NotesService.FileError, .unableToWriteToFile)
+        }
+    }
+
+    func testFileManagerDoesNotExist_ReadReturnsFailure() throws {
+        switch service.readNote(at: "") {
+        case .failure(let err):
+            XCTAssertEqual(err, .unableToReadFromFile)
+        case .success(_):
+            XCTFail("This was not supposed to be successful, you have no FileManager")
+        }
+    }
+    
     func testNoteIsReadFromFile() throws {
         let expectedNoteContent:Data? = UUID().uuidString.data(using: .utf8)
         let mock = MockFileManager()
