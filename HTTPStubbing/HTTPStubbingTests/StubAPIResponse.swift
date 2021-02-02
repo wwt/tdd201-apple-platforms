@@ -20,6 +20,15 @@ fileprivate extension Array {
     }
 }
 
+extension Result where Success: Hashable {
+    var hashValue:Int {
+        switch self {
+            case .success(let hashable): return hashable.hashValue
+            case .failure(let err): return err.localizedDescription.hashValue
+        }
+    }
+}
+
 class StubAPIResponse {
     var results = [String: [Result<Data, Error>]]()
     var responses = [String: [HTTPURLResponse]]()
@@ -35,7 +44,7 @@ class StubAPIResponse {
     
     @discardableResult func thenRespondWith(request:URLRequest, statusCode:Int, result:Result<Data, Error>? = nil, headers:[String : String]? = nil) -> Self {
         guard let url = request.url else { return self }
-        let id = "\(request.hashValue)|\(statusCode)|\(String(describing: result))|\(String(describing: headers))"
+        let id = "\(request.hashValue)|\(statusCode)|\(String(describing: result?.hashValue))|\(String(describing: headers?.hashValue))"
         ids.append(id)
         if let res = result {
             results[id, default: []].insert(res, at: 0)
