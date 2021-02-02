@@ -18,7 +18,7 @@ class WriteToFileTests: XCTestCase {
         service = NotesService()
         Container.default.removeAll()
     }
-  
+    
     func testNoteIsCreatedToFile() throws {
         let mock = MockFileManager()
         let expectedPath = UUID().uuidString
@@ -44,8 +44,8 @@ class WriteToFileTests: XCTestCase {
         Container.default.register(Foundation.FileManager.self) { _ in mock }
         
         switch service.readNote(at: path) {
-        case .failure(_):
-            XCTFail("You done failed")
+        case .failure(let err):
+            XCTFail("readNote should have succeeded, unexpected error: \(err)")
         case .success(let data):
             XCTAssertEqual(data, expectedNoteContent)
         }
@@ -61,8 +61,8 @@ class WriteToFileTests: XCTestCase {
         Container.default.register(Foundation.FileManager.self) { _ in mock }
         
         switch service.readNote(at: "pathy") {
-        case .failure(let error):
-            XCTAssertEqual(error, .unableToReadFromFile)
+        case .failure(let err):
+            XCTAssertEqual(err, .unableToReadFromFile)
         case .success(_):
             XCTFail("Expecting failure with error")
         }

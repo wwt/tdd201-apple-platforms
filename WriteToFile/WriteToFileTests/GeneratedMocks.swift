@@ -1,7 +1,7 @@
-// MARK: - Mocks generated from file: WriteToFileTests/TestFileManager.swift at 2021-02-02 21:10:19 +0000
+// MARK: - Mocks generated from file: WriteToFileTests/MockFileManager.swift at 2021-02-02 21:43:22 +0000
 
 //
-//  TestFileManager.swift
+//  MockFileManager.swift
 //  WriteToFileTests
 //
 //  Created by Heather Meadow on 2/2/21.
