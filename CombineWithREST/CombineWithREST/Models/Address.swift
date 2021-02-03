@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Address : Codable, Equatable {
+struct Address: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case line1
         case line2
@@ -15,7 +15,7 @@ struct Address : Codable, Equatable {
         case state = "stateOrProvince"
         case zip = "zipCode"
     }
-    
+
     var line1: String
     var line2: String
     var city: String

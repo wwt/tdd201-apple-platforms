@@ -9,13 +9,13 @@ import UIKit
 import Combine
 
 class ViewController: UIViewController {
-    @DependencyInjected var identityService:IdentityServiceProtocol?
-    
+    @DependencyInjected var identityService: IdentityServiceProtocol?
+
     var ongoingCalls = Set<AnyCancellable>()
-    
+
     var fakeNameLabel: String?
     var fakeErrorLabel: String?
-    
+
     func fetchProfile() {
         identityService?.fetchProfile.sink(receiveValue: { [weak self] (result) in
             switch result {
@@ -28,4 +28,3 @@ class ViewController: UIViewController {
         .store(in: &ongoingCalls)
     }
 }
-

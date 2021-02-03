@@ -25,14 +25,14 @@ class UserProfileTests: XCTestCase {
         XCTAssertEqual(profile.address?.state, "CA")
         XCTAssertEqual(profile.address?.zip, "80202")
     }
-    
+
     func testProfileDecodedFromMinimalJSON() throws {
         let profile = try JSONDecoder().decode(User.Profile.self, from: bareMinimum)
         XCTAssertEqual(profile.firstName, "Joe")
         XCTAssertEqual(profile.email, "Tyler.Keith.Thompson@gmail.com")
         XCTAssertEqual(profile.createdDate, DateFormatter("yyyy-MM-dd'T'HH:mm:ss.SSS").date(from: "2018-07-26T19:33:46.6818918"))
     }
-    
+
     func testProfileCannotCreateIfInvalidDateFormatUsedForCreatedDate() {
         let data = Data(
             """
@@ -46,11 +46,11 @@ class UserProfileTests: XCTestCase {
                 "createdDate": "totallyfake",
             }
             """.utf8)
-        
+
         XCTAssertThrowsError(try JSONDecoder().decode(User.Profile.self, from: data)) { error in
             XCTAssert(error is DecodingError)
             if let err = error as? DecodingError {
-                switch (err) {
+                switch err {
                 case .typeMismatch(let type, let context):
                     XCTAssert(type is Date.Type)
                     XCTAssertEqual(User.Profile.CodingKeys.createdDate.rawValue, context.codingPath.first?.stringValue)
@@ -59,7 +59,7 @@ class UserProfileTests: XCTestCase {
             }
         }
     }
-    
+
     func testProfileCannotCreateIfInvalidDateFormatUsedForDateOfBirth() {
         let data = Data(
             """
@@ -74,11 +74,11 @@ class UserProfileTests: XCTestCase {
                 "createdDate": "2018-07-26T19:33:46.6818918",
             }
             """.utf8)
-        
+
         XCTAssertThrowsError(try JSONDecoder().decode(User.Profile.self, from: data)) { error in
             XCTAssert(error is DecodingError)
             if let err = error as? DecodingError {
-                switch (err) {
+                switch err {
                 case .typeMismatch(let type, let context):
                     XCTAssert(type is Date.Type)
                     XCTAssertEqual(User.Profile.SelfKeys.dateOfBirth.rawValue, context.codingPath.first?.stringValue)
@@ -90,7 +90,7 @@ class UserProfileTests: XCTestCase {
 }
 
 extension UserProfileTests {
-    var validProfileJSON:Data {
+    var validProfileJSON: Data {
         Data("""
         {
             "self": {
@@ -118,8 +118,8 @@ extension UserProfileTests {
         }
         """.utf8)
     }
-    
-    var bareMinimum:Data {
+
+    var bareMinimum: Data {
         Data("""
         {
             "self": {

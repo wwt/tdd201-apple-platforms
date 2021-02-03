@@ -13,23 +13,23 @@ import Combine
 
 class IdentityServiceTests: XCTestCase {
     var ongoingCalls = Set<AnyCancellable>()
-    
+
     override func setUp() {
         ongoingCalls.forEach { $0.cancel() }
         ongoingCalls.removeAll()
     }
-    
+
     func testIdentityServiceUsesURLSessionDefaultConfiguration() {
         XCTAssertEqual(API.IdentityService().urlSession, URLSession.shared)
     }
-    
+
     func testProfileIsFetchedFromAPI() {
         StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
                         statusCode: 200,
                         result: .success(validProfileJSON.data(using: .utf8)!))
-        
+
         let api = API.IdentityService()
-        
+
         var called = false
         api.fetchProfile.sink { (result) in
             switch result {
@@ -50,32 +50,32 @@ class IdentityServiceTests: XCTestCase {
             }
             called = true
         }.store(in: &ongoingCalls)
-        
+
         waitUntil(0.3, called)
         XCTAssert(called)
     }
-    
+
     func testFetchProfileThrowsAPIBorkedError() {
         StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
                         statusCode: 200,
                         result: .success(Data("Invalid".utf8)))
-        
+
         let api = API.IdentityService()
-        
+
         var called = false
         api.fetchProfile.sink { (result) in
             switch result {
-            case .success(_): XCTFail("Should not have a successful profile")
+            case .success: XCTFail("Should not have a successful profile")
             case .failure(let error):
                 XCTAssertEqual(API.IdentityService.FetchProfileError.apiBorked, error)
             }
             called = true
         }.store(in: &ongoingCalls)
-        
+
         waitUntil(0.3, called)
         XCTAssert(called)
     }
-    
+
     func testFetchProfileRetriesOnUnauthorizedResponse() {
         StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
                         statusCode: 401)
@@ -85,7 +85,7 @@ class IdentityServiceTests: XCTestCase {
                              result: .success(validRefreshResponse))
             .thenVerifyRequest { request in
                 XCTAssertEqual(request.httpMethod, "POST")
-                XCTAssertEqual(request.bodySteamAsData(), try? JSONSerialization.data(withJSONObject: ["refreshToken":User.refreshToken], options: []))
+                XCTAssertEqual(request.bodySteamAsData(), try? JSONSerialization.data(withJSONObject: ["refreshToken": User.refreshToken], options: []))
             }
             .thenRespondWith(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
                              statusCode: 200,
@@ -96,23 +96,23 @@ class IdentityServiceTests: XCTestCase {
                 XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/json")
                 XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer \(User.accessToken)")
             }
-        
+
         let api = API.IdentityService()
-        
+
         var called = false
         api.fetchProfile.sink { (result) in
             switch result {
             case .success(let profile): XCTAssertEqual(profile.firstName, "Joe")
-            case .failure(_):
+            case .failure:
                 XCTFail("Should not have an error")
             }
             called = true
         }.store(in: &ongoingCalls)
-        
+
         waitUntil(called)
         XCTAssert(called)
     }
-    
+
     func testFetchProfileFailsOnUnauthorizedResponseIfRefreshFails() {
         // swiftlint:disable force_try
         StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
@@ -123,27 +123,27 @@ class IdentityServiceTests: XCTestCase {
             .thenRespondWith(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
                              statusCode: 200,
                              result: .success(validProfileJSON.data(using: .utf8)!))
-        
+
         // swiftlint:enable force_try
         let api = API.IdentityService()
-        
+
         var called = false
         api.fetchProfile.sink { (result) in
             switch result {
-            case .success(_): XCTFail("Should not have successful response")
+            case .success: XCTFail("Should not have successful response")
             case .failure(let error):
                 XCTAssertEqual(API.IdentityService.FetchProfileError.apiBorked, error)
             }
             called = true
         }.store(in: &ongoingCalls)
-        
+
         waitUntil(called)
         XCTAssert(called)
     }
 }
 
 extension IdentityServiceTests {
-    var validRefreshResponse:Data {
+    var validRefreshResponse: Data {
         Data("""
             {
                 "result" : {
@@ -152,8 +152,8 @@ extension IdentityServiceTests {
             }
             """.utf8)
     }
-    
-    var validProfileJSON:String {
+
+    var validProfileJSON: String {
         """
         {
             "self": {

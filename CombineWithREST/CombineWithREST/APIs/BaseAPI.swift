@@ -12,7 +12,7 @@ struct API {
     enum URLError: Error {
         case unableToCreateURL
     }
-    enum AuthorizationError:Error {
+    enum AuthorizationError: Error {
         case unauthorized
     }
 }

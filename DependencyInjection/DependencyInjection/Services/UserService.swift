@@ -9,8 +9,8 @@ import Foundation
 import RealmSwift
 
 struct UserService {
-    @DependencyInjected var database:Realm?
-    
+    @DependencyInjected var database: Realm?
+
     mutating func getUsers() throws -> [User] {
         guard let database = database else {
             throw DatabaseError.connectionFailure

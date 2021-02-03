@@ -16,10 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupDependencyInjection()
         return true
     }
-    
+
     private func setupDependencyInjection() {
         Container.default.register(UserDefaults.self) { _ in UserDefaults.standard }
     }
-    
-}
 
+}

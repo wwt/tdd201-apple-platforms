@@ -8,8 +8,8 @@
 import Foundation
 
 extension User {
-    class Profile:Decodable {
-        var firstName:String
+    class Profile: Decodable {
+        var firstName: String
         var lastName: String?
         var preferredName: String?
         var createdDate: Date
@@ -17,7 +17,7 @@ extension User {
         var isVerified: Bool
         var email: String
         var dateOfBirth: Date?
-        
+
         required init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             let dateString = try values.decode(String.self, forKey: .createdDate)
@@ -28,16 +28,16 @@ extension User {
                                                  DecodingError.Context(codingPath: [CodingKeys.createdDate],
                                                                        debugDescription: "Unable to parse createdDate with Date formatter (yyyy-MM-dd'T'HH:mm:ss.SSS)"))
             }
-            
+
             isVerified = try values.decode(Bool.self, forKey: .isVerified)
-            
+
             let selfContainer = try values.nestedContainer(keyedBy: SelfKeys.self, forKey: .selfObject)
             firstName = try selfContainer.decode(String.self, forKey: .firstName)
             lastName = try selfContainer.decodeIfPresent(String.self, forKey: .lastName)
             preferredName = try selfContainer.decodeIfPresent(String.self, forKey: .preferredName)
             email = try selfContainer.decode(String.self, forKey: .email)
             address = try selfContainer.decodeIfPresent(Address.self, forKey: .address)
-            
+
             if let dateString = try selfContainer.decodeIfPresent(String.self, forKey: .dateOfBirth) {
                 if let date = DateFormatter("yyyy-MM-dd'T'HH:mm:ss").date(from: dateString) {
                     dateOfBirth = date
@@ -57,7 +57,7 @@ extension User.Profile {
         case isVerified
         case selfObject = "self"
     }
-    
+
     enum SelfKeys: String, CodingKey {
         case firstName
         case lastName

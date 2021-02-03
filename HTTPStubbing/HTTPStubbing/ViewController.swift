@@ -9,14 +9,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var model:SomeModel?
+    var model: SomeModel?
 
     func makeNetworkRequest() {
-        URLSession.shared.dataTask(with: URL(string: "https://api.fake.com/users/me")!) { (data, res, err) in
+        URLSession.shared.dataTask(with: URL(string: "https://api.fake.com/users/me")!) { (data, _, _) in
             guard let data = data else { return }
             self.model = try? JSONDecoder().decode(SomeModel.self, from: data)
         }.resume()
     }
 
 }
-

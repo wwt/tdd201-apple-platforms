@@ -9,17 +9,17 @@ import Foundation
 import Cuckoo
 
 extension Dictionary: OptionalMatchable where Key == FileAttributeKey, Value == Any {
-    public var optionalMatcher: ParameterMatcher<[FileAttributeKey : Any]?> {
+    public var optionalMatcher: ParameterMatcher<[FileAttributeKey: Any]?> {
         ParameterMatcher<[FileAttributeKey: Any]?>()
     }
-    
-    public typealias OptionalMatchedType = [FileAttributeKey : Any]
+
+    public typealias OptionalMatchedType = [FileAttributeKey: Any]
 }
 
-public func anyFileAttributes() -> ParameterMatcher<[FileAttributeKey : Any]> {
-    return ParameterMatcher<[FileAttributeKey : Any]>()
+public func anyFileAttributes() -> ParameterMatcher<[FileAttributeKey: Any]> {
+    return ParameterMatcher<[FileAttributeKey: Any]>()
 }
 
-public func anyFileAttributes() -> ParameterMatcher<[FileAttributeKey : Any]?> {
-    return ParameterMatcher<[FileAttributeKey : Any]?>()
+public func anyFileAttributes() -> ParameterMatcher<[FileAttributeKey: Any]?> {
+    return ParameterMatcher<[FileAttributeKey: Any]?>()
 }

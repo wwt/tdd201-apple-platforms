@@ -25,11 +25,11 @@ class ViewControllerTests: XCTestCase {
         let testViewController = ViewController()
 
         testViewController.fetchProfile()
-        
+
         verify(mock, times(1)).fetchProfile.get()
         XCTAssertEqual(testViewController.fakeNameLabel, [expectedProfile.firstName, expectedProfile.lastName].compactMap { $0 }.joined(separator: " "))
     }
-    
+
     func testFetchingProfileDoesNotRetainAStrongReference() {
         let mock = MockIdentityServiceProtocol()
             .registerIn(container: Container.default)
@@ -39,18 +39,18 @@ class ViewControllerTests: XCTestCase {
                                         .delay(for: .seconds(10), scheduler: RunLoop.main)
                                         .eraseToAnyPublisher()))
         }
-        var testViewController:ViewController? = ViewController()
+        var testViewController: ViewController? = ViewController()
         XCTAssertEqual(testViewController?.ongoingCalls.count, 0)
         weak var ref = testViewController
-        
+
         testViewController?.fetchProfile()
         XCTAssertEqual(testViewController?.ongoingCalls.count, 1)
         testViewController = nil
-        
+
         verify(mock, times(1)).fetchProfile.get()
         XCTAssertNil(ref)
     }
-    
+
     func testFetchingProfileWhenThereIsAnError() {
         let err = API.IdentityService.FetchProfileError.apiBorked
         let mock = MockIdentityServiceProtocol()
@@ -63,7 +63,7 @@ class ViewControllerTests: XCTestCase {
         let testViewController = ViewController()
 
         testViewController.fetchProfile()
-        
+
         verify(mock, times(1)).fetchProfile.get()
         XCTAssertEqual(testViewController.fakeErrorLabel, err.localizedDescription)
     }

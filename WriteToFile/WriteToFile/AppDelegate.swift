@@ -15,9 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupDependencyInjection()
         return true
     }
-    
+
     private func setupDependencyInjection() {
         Container.default.register(FileManager.self) { _ in FileManager.default }
     }
 }
-

@@ -9,12 +9,12 @@ import XCTest
 @testable import HTTPStubbing
 
 extension SomeModel: Equatable {
-    public static func == (lhs:SomeModel, rhs:SomeModel) -> Bool {
+    public static func == (lhs: SomeModel, rhs: SomeModel) -> Bool {
         guard let lhsSerialized = try? JSONEncoder().encode(lhs),
               let rhsSerialized = try? JSONEncoder().encode(rhs) else {
             return false
         }
-        
+
         return lhsSerialized == rhsSerialized
     }
 }
@@ -30,10 +30,10 @@ class HTTPStubbingTests: XCTestCase {
             .thenVerifyRequest {
                 XCTAssertEqual($0.url?.absoluteString, "https://api.fake.com/users/me")
             }
-        
+
         let controller = ViewController()
         controller.makeNetworkRequest()
-        
+
         waitUntil(controller.model != nil)
         XCTAssertEqual(controller.model, expectedModel)
     }

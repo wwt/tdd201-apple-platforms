@@ -9,11 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @DependencyInjected var userDefaults:UserDefaults?
-    
+    @DependencyInjected var userDefaults: UserDefaults?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         _ = userDefaults?.integer(forKey: "accountBalance")
     }
 

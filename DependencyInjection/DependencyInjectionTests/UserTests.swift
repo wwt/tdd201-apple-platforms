@@ -10,18 +10,17 @@ import XCTest
 
 @testable import DependencyInjection
 
-class UserTests:XCTestCase {
-    
-    
+class UserTests: XCTestCase {
+
     func testUserCanBeInitialized() {
         let expectedID = 10
         let expectedFirstName = UUID().uuidString
         let expectedLastName = UUID().uuidString
         let user = User(id: expectedID, firstName: expectedFirstName, lastName: expectedLastName)
-        
+
         XCTAssertEqual(user.id, expectedID)
         XCTAssertEqual(user.firstName, expectedFirstName)
         XCTAssertEqual(user.lastName, expectedLastName)
-        
+
     }
 }

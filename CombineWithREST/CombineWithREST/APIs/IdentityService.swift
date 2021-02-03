@@ -13,10 +13,10 @@ protocol IdentityServiceProtocol: RESTAPIProtocol {
 }
 
 extension IdentityServiceProtocol {
-    var baseURL:String {
+    var baseURL: String {
         "https://some.identityservice.com/api"
     }
-    
+
     var fetchProfile: AnyPublisher<Result<User.Profile, API.IdentityService.FetchProfileError>, Never> {
         self.get(endpoint: "/me", requestModifier: {
             $0.addingBearerAuthorization(token: User.accessToken)
@@ -31,14 +31,14 @@ extension IdentityServiceProtocol {
         .catch { error in Just(.failure((error as? API.IdentityService.FetchProfileError) ?? .apiBorked)) }
         .eraseToAnyPublisher()
     }
-    
-    private var refresh:URLSession.ErasedDataTaskPublisher {
-        post(endpoint: "/auth/refresh", body: try? JSONSerialization.data(withJSONObject: ["refreshToken":User.refreshToken], options: []), requestModifier: {
+
+    private var refresh: URLSession.ErasedDataTaskPublisher {
+        post(endpoint: "/auth/refresh", body: try? JSONSerialization.data(withJSONObject: ["refreshToken": User.refreshToken], options: []), requestModifier: {
             $0.acceptingJSON()
                 .sendingJSON()
         }).unwrapResultJSONFromAPI()
         .tryMap { v -> URLSession.ErasedDataTaskPublisher.Output in
-            let json = try? JSONSerialization.jsonObject(with: v.data, options: []) as? [String:Any]
+            let json = try? JSONSerialization.jsonObject(with: v.data, options: []) as? [String: Any]
             guard let accessToken = json?["accessToken"] as? String else {
                 throw API.AuthorizationError.unauthorized
             }
@@ -51,7 +51,7 @@ extension IdentityServiceProtocol {
 extension API {
     struct IdentityService: IdentityServiceProtocol {
         var baseURL = "https://some.identityservice.com/api"
-        
+
         enum FetchProfileError: Error {
             case apiBorked
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 struct SomeModel: Codable {
-    var name:String
-    var age:UInt
-    var email:String
+    var name: String
+    var age: UInt
+    var email: String
 }

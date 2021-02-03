@@ -13,19 +13,19 @@ import Combine
 
 class IdentityAPIOperatorsTests: XCTestCase {
     var subscribers = Set<AnyCancellable>()
-    
+
     func testRetryOnceOnUnauthorizedResponseThrowsErrorWhenNotAuthorized() {
         // swiftlint:disable:next force_try
         let data = try! JSONSerialization.data(withJSONObject: [
             "errors": [
-                ["extensions" : [
-                    "code" : "not-authorized"
+                ["extensions": [
+                    "code": "not-authorized"
                 ]]
             ]
         ], options: [])
-        
+
         var called = false
-        let send:(data:Data, response:URLResponse) = (data: data, response: HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!)
+        let send:(data: Data, response: URLResponse) = (data: data, response: HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!)
         Just(send)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
@@ -39,11 +39,11 @@ class IdentityAPIOperatorsTests: XCTestCase {
                 }
             }) { _ in }
             .store(in: &subscribers)
-        
+
         waitUntil(called)
         XCTAssert(called)
     }
-    
+
     func testRetryOnceOnUnauthorizedResponseRetriesRequestWhenItGetsAnUnauthorizedResponse() {
         let json = """
         {
@@ -54,9 +54,9 @@ class IdentityAPIOperatorsTests: XCTestCase {
         """.data(using: .utf8)!
         let baseURL = "https://www.google.com"
         StubAPIResponse(request: .init(.get, urlString: baseURL + "/get"), statusCode: 200, result: .success(json), headers: nil)
-        
+
         let api = API.JSONPlaceHolder(baseURL: baseURL)
-        
+
         var called = 0
         api.get(endpoint: "get")
             .tryMap { x in
@@ -73,11 +73,11 @@ class IdentityAPIOperatorsTests: XCTestCase {
                 }
             }) { _ in }
             .store(in: &subscribers)
-        
+
         waitUntil(called > 0)
         XCTAssertEqual(called, 2)
     }
-    
+
     func testRetryOnceOnUnauthorizedResponse_RetriesRequestWhenItGetsAnUnauthorizedResponse_AndSucceedsIfTheFirstCallCanBeCompletedSuccessfully() {
         let json = """
         {
@@ -89,9 +89,9 @@ class IdentityAPIOperatorsTests: XCTestCase {
         let baseURL = "https://www.google.com"
         StubAPIResponse(request: .init(.get, urlString: baseURL + "/get"), statusCode: 200, result: .success(json), headers: nil)
             .thenRespondWith(request: .init(.get, urlString: baseURL + "/get"), statusCode: 200, result: .success(Data("".utf8)), headers: nil)
-        
+
         let api = API.JSONPlaceHolder(baseURL: baseURL)
-        
+
         var called = 0
         var finishCalled = false
         api.get(endpoint: "get")
@@ -104,24 +104,24 @@ class IdentityAPIOperatorsTests: XCTestCase {
             .sink(receiveCompletion: { (completion) in
                 switch completion {
                 case .finished: finishCalled = true
-                case .failure(_):
+                case .failure:
                     XCTFail("Should not have finished with error")
                 }
             }) { _ in }
             .store(in: &subscribers)
-        
+
         waitUntil(finishCalled)
         XCTAssertEqual(called, 2)
         XCTAssert(finishCalled)
     }
-    
+
     func testRetryOnceOnUnauthorizedResponse_RetriesRequestWhenItGetsA401_AndSucceedsIfTheFirstCallCanBeCompletedSuccessfully() {
         let baseURL = "https://www.google.com"
         StubAPIResponse(request: .init(.get, urlString: baseURL + "/get"), statusCode: 401)
             .thenRespondWith(request: .init(.get, urlString: baseURL + "/get"), statusCode: 200, result: .success(Data("".utf8)))
-        
+
         let api = API.JSONPlaceHolder(baseURL: baseURL)
-        
+
         var called = 0
         var finishCalled = false
         api.get(endpoint: "get")
@@ -134,12 +134,12 @@ class IdentityAPIOperatorsTests: XCTestCase {
             .sink(receiveCompletion: { (completion) in
                 switch completion {
                 case .finished: finishCalled = true
-                case .failure(_):
+                case .failure:
                     XCTFail("Should not have finished with error")
                 }
             }) { _ in }
             .store(in: &subscribers)
-        
+
         waitUntil(finishCalled)
         XCTAssertEqual(called, 2)
         XCTAssert(finishCalled)

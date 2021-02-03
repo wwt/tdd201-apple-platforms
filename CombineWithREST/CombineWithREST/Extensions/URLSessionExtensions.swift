@@ -10,7 +10,7 @@ import Combine
 
 extension URLSession {
     typealias ErasedDataTaskPublisher = AnyPublisher<(data: Data, response: URLResponse), Error>
-    
+
     func erasedDataTaskPublisher(
         for request: URLRequest
     ) -> ErasedDataTaskPublisher {
