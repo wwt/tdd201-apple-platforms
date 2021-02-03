@@ -98,4 +98,17 @@ class WriteToFileTests: XCTestCase {
             XCTFail("Expecting failure with error")
         }
     }
+    
+    func testNotesServiceCanWriteAStringToAFile() throws {
+        let expectedPath = URL(string: "file://path.txt")!
+        let mock = MockFileWriteable()
+        stub(mock) { (stub) in
+            when(stub.write(to: anyURL(), atomically: any(), encoding: anyStringEncoding())).thenDoNothing()
+        }
+        
+        try service.writeNote(at: expectedPath, contents: mock)
+        
+        verify(mock, times(1)).write(to: expectedPath, atomically: true, encoding: String.Encoding.utf8)
+    }
+
 }

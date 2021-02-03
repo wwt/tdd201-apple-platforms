@@ -24,6 +24,10 @@ class NotesService {
             throw FileError.unableToWriteToFile
         }
     }
+    
+    func writeNote(at url:URL, contents: FileWriteable) throws {
+        try contents.write(to: url, atomically: true, encoding: .utf8)
+    }
 }
 
 extension NotesService {

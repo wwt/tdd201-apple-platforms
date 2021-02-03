@@ -13,6 +13,9 @@
 		00D1A6BC25C9DE340002728A /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A6BB25C9DE340002728A /* GeneratedMocks.swift */; };
 		7257249C6188E5A4381AF7BE /* Pods_WriteToFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BEFE94DEE2E3A4D127D8731 /* Pods_WriteToFile.framework */; };
 		87B7F55E475B579FBC38C1F7 /* Pods_WriteToFile_WriteToFileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1890E950DCF8EA746ABFA0 /* Pods_WriteToFile_WriteToFileTests.framework */; };
+		CA17826825CAF65C002A8EC9 /* FileWriteable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17826725CAF65C002A8EC9 /* FileWriteable.swift */; };
+		CA17826E25CAF90E002A8EC9 /* URLMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17826D25CAF90E002A8EC9 /* URLMatcher.swift */; };
+		CA17827225CAF91C002A8EC9 /* StringEncodingMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17827125CAF91C002A8EC9 /* StringEncodingMatcher.swift */; };
 		CA75BA4F25A3C0B500930AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75BA4E25A3C0B500930AB1 /* AppDelegate.swift */; };
 		CA75BA5125A3C0B500930AB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75BA5025A3C0B500930AB1 /* SceneDelegate.swift */; };
 		CA75BA5325A3C0B500930AB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75BA5225A3C0B500930AB1 /* ViewController.swift */; };
@@ -47,6 +50,9 @@
 		7BEFE94DEE2E3A4D127D8731 /* Pods_WriteToFile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WriteToFile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F9107EB6D1C7DEB20FF28D /* Pods-WriteToFile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WriteToFile.debug.xcconfig"; path = "Target Support Files/Pods-WriteToFile/Pods-WriteToFile.debug.xcconfig"; sourceTree = "<group>"; };
 		B3A01C5EC4465A04615F968F /* Pods-WriteToFile-WriteToFileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WriteToFile-WriteToFileTests.release.xcconfig"; path = "Target Support Files/Pods-WriteToFile-WriteToFileTests/Pods-WriteToFile-WriteToFileTests.release.xcconfig"; sourceTree = "<group>"; };
+		CA17826725CAF65C002A8EC9 /* FileWriteable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWriteable.swift; sourceTree = "<group>"; };
+		CA17826D25CAF90E002A8EC9 /* URLMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLMatcher.swift; sourceTree = "<group>"; };
+		CA17827125CAF91C002A8EC9 /* StringEncodingMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEncodingMatcher.swift; sourceTree = "<group>"; };
 		CA75BA4B25A3C0B500930AB1 /* WriteToFile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WriteToFile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA75BA4E25A3C0B500930AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA75BA5025A3C0B500930AB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +119,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CA17826625CAF64A002A8EC9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CA17826725CAF65C002A8EC9 /* FileWriteable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		CA75BA4225A3C0B500930AB1 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +150,7 @@
 		CA75BA4D25A3C0B500930AB1 /* WriteToFile */ = {
 			isa = PBXGroup;
 			children = (
+				CA17826625CAF64A002A8EC9 /* Protocols */,
 				CA9B145D25C9FB3000854956 /* DependencyInjection */,
 				00D1A68825C9C8020002728A /* Services */,
 				CA75BA4E25A3C0B500930AB1 /* AppDelegate.swift */,
@@ -167,6 +182,8 @@
 			children = (
 				CA9B144F25C9F61C00854956 /* DataMatcher.swift */,
 				CA9B145525C9F68D00854956 /* FileAttributeMatcher.swift */,
+				CA17826D25CAF90E002A8EC9 /* URLMatcher.swift */,
+				CA17827125CAF91C002A8EC9 /* StringEncodingMatcher.swift */,
 			);
 			path = CuckooHelpers;
 			sourceTree = "<group>";
@@ -298,7 +315,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}Tests/MockFileManager.swift\"\n";
+			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}Tests/MockFileManager.swift\" \\\n\"${INPUT_DIR}/Protocols/FileWriteable.swift\"\n";
 		};
 		3C6BD97596B148A586EA2AA7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -389,6 +406,7 @@
 				CA9B146025C9FB3000854956 /* ContainerExtensions.swift in Sources */,
 				CA75BA5325A3C0B500930AB1 /* ViewController.swift in Sources */,
 				CA75BA4F25A3C0B500930AB1 /* AppDelegate.swift in Sources */,
+				CA17826825CAF65C002A8EC9 /* FileWriteable.swift in Sources */,
 				00D1A68A25C9C80E0002728A /* NotesService.swift in Sources */,
 				CA75BA5125A3C0B500930AB1 /* SceneDelegate.swift in Sources */,
 			);
@@ -398,9 +416,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA17827225CAF91C002A8EC9 /* StringEncodingMatcher.swift in Sources */,
 				CA9B145025C9F61C00854956 /* DataMatcher.swift in Sources */,
 				00D1A6B525C9DD690002728A /* MockFileManager.swift in Sources */,
 				00D1A68325C9C5AB0002728A /* DependencyInjectionTests.swift in Sources */,
+				CA17826E25CAF90E002A8EC9 /* URLMatcher.swift in Sources */,
 				CA75BA6625A3C0B600930AB1 /* WriteToFileTests.swift in Sources */,
 				CA9B145625C9F68D00854956 /* FileAttributeMatcher.swift in Sources */,
 				00D1A6BC25C9DE340002728A /* GeneratedMocks.swift in Sources */,
