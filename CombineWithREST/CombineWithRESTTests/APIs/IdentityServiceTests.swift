@@ -33,20 +33,20 @@ class IdentityServiceTests: XCTestCase {
         var called = false
         api.fetchProfile.sink { (result) in
             switch result {
-            case .success(let profile):
-                XCTAssertEqual(profile.firstName, "Joe")
-                XCTAssertEqual(profile.lastName, "Blow")
-                XCTAssertEqual(profile.preferredName, "Zarathustra, Maestro of Madness")
-                XCTAssertEqual(profile.email, "Tyler.Keith.Thompson@gmail.com")
-                XCTAssertEqual(profile.dateOfBirth, DateFormatter("yyyy-MM-dd'T'HH:mm:ss").date(from: "1990-03-26T00:00:00"))
-                XCTAssertEqual(profile.createdDate, DateFormatter("yyyy-MM-dd'T'HH:mm:ss.SSS").date(from: "2018-07-26T19:33:46.6818918"))
-                XCTAssertEqual(profile.address?.line1, "111 Fake st")
-                XCTAssertEqual(profile.address?.line2, "")
-                XCTAssertEqual(profile.address?.city, "Denver")
-                XCTAssertEqual(profile.address?.state, "CA")
-                XCTAssertEqual(profile.address?.zip, "80202")
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
+                case .success(let profile):
+                    XCTAssertEqual(profile.firstName, "Joe")
+                    XCTAssertEqual(profile.lastName, "Blow")
+                    XCTAssertEqual(profile.preferredName, "Zarathustra, Maestro of Madness")
+                    XCTAssertEqual(profile.email, "Tyler.Keith.Thompson@gmail.com")
+                    XCTAssertEqual(profile.dateOfBirth, DateFormatter("yyyy-MM-dd'T'HH:mm:ss").date(from: "1990-03-26T00:00:00"))
+                    XCTAssertEqual(profile.createdDate, DateFormatter("yyyy-MM-dd'T'HH:mm:ss.SSS").date(from: "2018-07-26T19:33:46.6818918"))
+                    XCTAssertEqual(profile.address?.line1, "111 Fake st")
+                    XCTAssertEqual(profile.address?.line2, "")
+                    XCTAssertEqual(profile.address?.city, "Denver")
+                    XCTAssertEqual(profile.address?.state, "CA")
+                    XCTAssertEqual(profile.address?.zip, "80202")
+                case .failure(let error):
+                    XCTFail(error.localizedDescription)
             }
             called = true
         }.store(in: &ongoingCalls)
@@ -65,9 +65,9 @@ class IdentityServiceTests: XCTestCase {
         var called = false
         api.fetchProfile.sink { (result) in
             switch result {
-            case .success: XCTFail("Should not have a successful profile")
-            case .failure(let error):
-                XCTAssertEqual(API.IdentityService.FetchProfileError.apiBorked, error)
+                case .success: XCTFail("Should not have a successful profile")
+                case .failure(let error):
+                    XCTAssertEqual(API.IdentityService.FetchProfileError.apiBorked, error)
             }
             called = true
         }.store(in: &ongoingCalls)
@@ -102,9 +102,9 @@ class IdentityServiceTests: XCTestCase {
         var called = false
         api.fetchProfile.sink { (result) in
             switch result {
-            case .success(let profile): XCTAssertEqual(profile.firstName, "Joe")
-            case .failure:
-                XCTFail("Should not have an error")
+                case .success(let profile): XCTAssertEqual(profile.firstName, "Joe")
+                case .failure:
+                    XCTFail("Should not have an error")
             }
             called = true
         }.store(in: &ongoingCalls)
@@ -130,9 +130,9 @@ class IdentityServiceTests: XCTestCase {
         var called = false
         api.fetchProfile.sink { (result) in
             switch result {
-            case .success: XCTFail("Should not have successful response")
-            case .failure(let error):
-                XCTAssertEqual(API.IdentityService.FetchProfileError.apiBorked, error)
+                case .success: XCTFail("Should not have successful response")
+                case .failure(let error):
+                    XCTAssertEqual(API.IdentityService.FetchProfileError.apiBorked, error)
             }
             called = true
         }.store(in: &ongoingCalls)

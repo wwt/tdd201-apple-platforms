@@ -25,19 +25,23 @@ class IdentityAPIOperatorsTests: XCTestCase {
         ], options: [])
 
         var called = false
-        let send:(data: Data, response: URLResponse) = (data: data, response: HTTPURLResponse(url: URL(string: "https://www.google.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!)
+        let send:(data: Data, response: URLResponse) = (data: data,
+                                                        response: HTTPURLResponse(url: URL(string: "https://www.google.com")!,
+                                                                                  statusCode: 200,
+                                                                                  httpVersion: nil,
+                                                                                  headerFields: nil)!)
         Just(send)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
             .retryOnceOnUnauthorizedResponse()
-            .sink(receiveCompletion: { (completion) in
+            .sink { (completion) in
                 called = true
                 switch completion {
-                case .finished: XCTFail("Should not have finished successfully")
-                case .failure(let err):
-                    XCTAssert(err is API.AuthorizationError)
+                    case .finished: XCTFail("Should not have finished successfully")
+                    case .failure(let err):
+                        XCTAssert(err is API.AuthorizationError)
                 }
-            }) { _ in }
+            } receiveValue: { _ in }
             .store(in: &subscribers)
 
         waitUntil(called)
@@ -65,13 +69,13 @@ class IdentityAPIOperatorsTests: XCTestCase {
             }
             .eraseToAnyPublisher()
             .retryOnceOnUnauthorizedResponse()
-            .sink(receiveCompletion: { (completion) in
+            .sink { (completion) in
                 switch completion {
-                case .finished: XCTFail("Should not have finished successfully")
-                case .failure(let err):
-                    XCTAssert(err is API.AuthorizationError)
+                    case .finished: XCTFail("Should not have finished successfully")
+                    case .failure(let err):
+                        XCTAssert(err is API.AuthorizationError)
                 }
-            }) { _ in }
+            } receiveValue: { _ in }
             .store(in: &subscribers)
 
         waitUntil(called > 0)
@@ -101,13 +105,13 @@ class IdentityAPIOperatorsTests: XCTestCase {
             }
             .eraseToAnyPublisher()
             .retryOnceOnUnauthorizedResponse()
-            .sink(receiveCompletion: { (completion) in
+            .sink { (completion) in
                 switch completion {
-                case .finished: finishCalled = true
-                case .failure:
-                    XCTFail("Should not have finished with error")
+                    case .finished: finishCalled = true
+                    case .failure:
+                        XCTFail("Should not have finished with error")
                 }
-            }) { _ in }
+            } receiveValue: { _ in }
             .store(in: &subscribers)
 
         waitUntil(finishCalled)
@@ -131,13 +135,13 @@ class IdentityAPIOperatorsTests: XCTestCase {
             }
             .eraseToAnyPublisher()
             .retryOnceOnUnauthorizedResponse()
-            .sink(receiveCompletion: { (completion) in
+            .sink { (completion) in
                 switch completion {
-                case .finished: finishCalled = true
-                case .failure:
-                    XCTFail("Should not have finished with error")
+                    case .finished: finishCalled = true
+                    case .failure:
+                        XCTFail("Should not have finished with error")
                 }
-            }) { _ in }
+            } receiveValue: { _ in }
             .store(in: &subscribers)
 
         waitUntil(finishCalled)

@@ -4,6 +4,7 @@
 //
 //  Created by thompsty on 1/21/21.
 //
+// swiftlint:disable function_body_length
 
 import Foundation
 import XCTest
@@ -23,6 +24,7 @@ class ContractTests: XCTestCase {
     }
 
     func testIdentityServiceCanGetProfile() {
+        // swiftlint:disable:next line_length
         User.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         let service = API.IdentityService(baseURL: identityServiceProvider.baseUrl)
         let expectedEmail = Faker().internet.email()
@@ -56,7 +58,8 @@ class ContractTests: XCTestCase {
                                 ],
                                 "isVerified": Matcher.somethingLike(true),
                                 "username": Matcher.somethingLike(expectedEmail),
-                                "termsAcceptedDate": Matcher.term(matcher: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)", generate: "2018-07-26T19:33:46.8381401"),
+                                "termsAcceptedDate": Matcher.term(matcher: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)",
+                                                                  generate: "2018-07-26T19:33:46.8381401"),
                                 "isTermsAccepted": Matcher.somethingLike(true),
                                 "createdDate": Matcher.term(matcher: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)", generate: "2018-07-26T19:33:46.6818918")
                              ])
@@ -83,6 +86,7 @@ class ContractTests: XCTestCase {
     }
 
     func testIdentityServiceCanGetProfile_WithPreferredName() {
+        // swiftlint:disable:next line_length
         User.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         let service = API.IdentityService(baseURL: identityServiceProvider.baseUrl)
         let expectedEmail = Faker().internet.email()
@@ -117,7 +121,8 @@ class ContractTests: XCTestCase {
                                 ],
                                 "isVerified": Matcher.somethingLike(true),
                                 "username": Matcher.somethingLike(expectedEmail),
-                                "termsAcceptedDate": Matcher.term(matcher: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)", generate: "2018-07-26T19:33:46.8381401"),
+                                "termsAcceptedDate": Matcher.term(matcher: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)",
+                                                                  generate: "2018-07-26T19:33:46.8381401"),
                                 "isTermsAccepted": Matcher.somethingLike(true),
                                 "createdDate": Matcher.term(matcher: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)", generate: "2018-07-26T19:33:46.6818918")
 

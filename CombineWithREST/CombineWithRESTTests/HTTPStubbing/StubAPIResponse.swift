@@ -53,8 +53,8 @@ class StubAPIResponse {
             let response = responses[$0.id]!.popLastUnlessEmpty()!
             let result = results[$0.id]!.popLastUnlessEmpty()!
             switch result {
-            case .failure(let err): return HTTPStubsResponse(error: err)
-            case .success(let data): return HTTPStubsResponse(data: data, statusCode: Int32(response.statusCode), headers: response.allHeaderFields)
+                case .failure(let err): return HTTPStubsResponse(error: err)
+                case .success(let data): return HTTPStubsResponse(data: data, statusCode: Int32(response.statusCode), headers: response.allHeaderFields)
             }
         }
 

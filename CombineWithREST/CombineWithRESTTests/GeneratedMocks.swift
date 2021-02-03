@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: CombineWithREST/APIs/IdentityService.swift at 2021-02-03 17:32:33 +0000
+// MARK: - Mocks generated from file: CombineWithREST/APIs/IdentityService.swift at 2021-02-03 17:42:14 +0000
 
 //
 //  IdentityService.swift
