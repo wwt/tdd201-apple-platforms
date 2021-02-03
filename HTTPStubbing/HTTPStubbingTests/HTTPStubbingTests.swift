@@ -23,6 +23,7 @@ class HTTPStubbingTests: XCTestCase {
 
     func testMakingANetworkRequestDeserializesModels() {
         let expectedModel = SomeModel(name: "Joe", age: 35, email: "Joe.Blow@fake.com")
+        // swiftlint:disable:next force_try
         let json = try! JSONEncoder().encode(expectedModel)
         StubAPIResponse(request: .init(.get, urlString: "https://api.fake.com/users/me"),
                         statusCode: 200,
