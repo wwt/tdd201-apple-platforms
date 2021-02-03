@@ -162,6 +162,7 @@
 				CA75BA8725A3C0D800930AB1 /* Frameworks */,
 				CA75BA8825A3C0D800930AB1 /* Resources */,
 				5D484BFEA3155298BF693408 /* [CP] Embed Pods Frameworks */,
+				3EF6B43B4FDEE2CC18936782 /* Lint */,
 			);
 			buildRules = (
 			);
@@ -181,6 +182,7 @@
 				CA75BA9D25A3C0D900930AB1 /* Frameworks */,
 				CA75BA9E25A3C0D900930AB1 /* Resources */,
 				6EF71E24323363ABCDD25F61 /* [CP] Embed Pods Frameworks */,
+				EBC5839D52AA2098CCAB33A8 /* Lint */,
 			);
 			buildRules = (
 			);
@@ -272,6 +274,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3EF6B43B4FDEE2CC18936782 /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
+		};
 		554122B28A8A6CB84630E384 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -327,6 +347,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WriteToUserDefaults-WriteToUserDefaultsTests/Pods-WriteToUserDefaults-WriteToUserDefaultsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		EBC5839D52AA2098CCAB33A8 /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
 		};
 /* End PBXShellScriptBuildPhase section */
 

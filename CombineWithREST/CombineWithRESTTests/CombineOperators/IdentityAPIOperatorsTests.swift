@@ -15,6 +15,7 @@ class IdentityAPIOperatorsTests: XCTestCase {
     var subscribers = Set<AnyCancellable>()
     
     func testRetryOnceOnUnauthorizedResponseThrowsErrorWhenNotAuthorized() {
+        // swiftlint:disable:next force_try
         let data = try! JSONSerialization.data(withJSONObject: [
             "errors": [
                 ["extensions" : [

@@ -86,3 +86,21 @@ target 'HTTPStubbing' do
   end
   
 end
+
+target 'MutationTesting' do
+  project 'MutationTesting/MutationTesting.xcodeproj'
+  pod 'SwiftLint'
+end
+
+post_install do |installer|
+  installer.aggregate_targets.each do |target|
+    project = target.user_project
+    project.targets.each do |target|
+      next unless target.shell_script_build_phases.none? { |n| "Lint" == n.name  }
+      phase = target.new_shell_script_build_phase("Lint")
+      phase.shell_script = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml"
+    end
+
+    project.save
+  end
+end

@@ -114,6 +114,7 @@ class IdentityServiceTests: XCTestCase {
     }
     
     func testFetchProfileFailsOnUnauthorizedResponseIfRefreshFails() {
+        // swiftlint:disable force_try
         StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
                         statusCode: 401)
             .thenRespondWith(request: .init(.post, urlString: "\(API.IdentityService().baseURL)/auth/refresh"),
@@ -123,6 +124,7 @@ class IdentityServiceTests: XCTestCase {
                              statusCode: 200,
                              result: .success(validProfileJSON.data(using: .utf8)!))
         
+        // swiftlint:enable force_try
         let api = API.IdentityService()
         
         var called = false

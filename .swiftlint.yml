@@ -1,0 +1,33 @@
+# By default, SwiftLint uses a set of sensible default rules you can adjust:
+disabled_rules: # rule identifiers turned on by default to exclude from running
+    - identifier_name
+    - function_parameter_count
+    - type_name
+# opt_in_rules: # some rules are turned off by default, so you need to opt-in
+#   - empty_count # Find all the available rules by running: `swiftlint rules`
+
+# Alternatively, specify all rules explicitly by uncommenting this option:
+# only_rules: # delete `disabled_rules` & `opt_in_rules` if using this
+#   - empty_parameters
+#   - vertical_whitespace
+
+# included: # paths to include during linting. `--path` is ignored if present.
+    # - ../Workflow/Sources
+  # - Workflow/Tests
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+    - '**/*/GeneratedMocks.swift'
+
+line_length:
+    warning: 180
+    ignores_comments: true
+    
+nesting:
+    type_level: 2
+
+switch_case_alignment:
+    indented_cases: true
+
+cyclomatic_complexity:
+    ignores_case_statements: true
+
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, codeclimate, junit, html, emoji, sonarqube, markdown, github-actions-logging)

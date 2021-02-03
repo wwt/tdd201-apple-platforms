@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		473FB406F42A2A8D5573BED8 /* libPods-MutationTesting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9956DDA27698437041CC14D /* libPods-MutationTesting.a */; };
 		CAA1C44425A38A2500E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C44325A38A2500E3F686 /* AppDelegate.swift */; };
 		CAA1C44625A38A2500E3F686 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C44525A38A2500E3F686 /* SceneDelegate.swift */; };
 		CAA1C44825A38A2500E3F686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C44725A38A2500E3F686 /* ViewController.swift */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CD51F99924AD4FD1E88E1A2 /* Pods-MutationTesting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MutationTesting.release.xcconfig"; path = "Target Support Files/Pods-MutationTesting/Pods-MutationTesting.release.xcconfig"; sourceTree = "<group>"; };
+		943D578EDA5CDD0378AF5885 /* Pods-MutationTesting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MutationTesting.debug.xcconfig"; path = "Target Support Files/Pods-MutationTesting/Pods-MutationTesting.debug.xcconfig"; sourceTree = "<group>"; };
 		CAA1C44025A38A2500E3F686 /* MutationTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MutationTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C44325A38A2500E3F686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAA1C44525A38A2500E3F686 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +41,7 @@
 		CAA1C45625A38A2600E3F686 /* MutationTestingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MutationTestingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C45A25A38A2600E3F686 /* MutationTestingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutationTestingTests.swift; sourceTree = "<group>"; };
 		CAA1C45C25A38A2600E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9956DDA27698437041CC14D /* libPods-MutationTesting.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MutationTesting.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				473FB406F42A2A8D5573BED8 /* libPods-MutationTesting.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +63,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F936F13B4322E27399380CC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				943D578EDA5CDD0378AF5885 /* Pods-MutationTesting.debug.xcconfig */,
+				8CD51F99924AD4FD1E88E1A2 /* Pods-MutationTesting.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		34480A33E630F1CF9384BC44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9956DDA27698437041CC14D /* libPods-MutationTesting.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CAA1C43725A38A2500E3F686 = {
 			isa = PBXGroup;
 			children = (
 				CAA1C44225A38A2500E3F686 /* MutationTesting */,
 				CAA1C45925A38A2600E3F686 /* MutationTestingTests */,
 				CAA1C44125A38A2500E3F686 /* Products */,
+				0F936F13B4322E27399380CC /* Pods */,
+				34480A33E630F1CF9384BC44 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,9 +131,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAA1C46A25A38A2600E3F686 /* Build configuration list for PBXNativeTarget "MutationTesting" */;
 			buildPhases = (
+				6EAAC1D4F60E37716B5C5E61 /* [CP] Check Pods Manifest.lock */,
 				CAA1C43C25A38A2500E3F686 /* Sources */,
 				CAA1C43D25A38A2500E3F686 /* Frameworks */,
 				CAA1C43E25A38A2500E3F686 /* Resources */,
+				FB9F8864C34EE4806F37CF0B /* Lint */,
 			);
 			buildRules = (
 			);
@@ -126,6 +153,7 @@
 				CAA1C45225A38A2600E3F686 /* Sources */,
 				CAA1C45325A38A2600E3F686 /* Frameworks */,
 				CAA1C45425A38A2600E3F686 /* Resources */,
+				7C566517A0A869EEBAD8ECBA /* Lint */,
 			);
 			buildRules = (
 			);
@@ -193,6 +221,67 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6EAAC1D4F60E37716B5C5E61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MutationTesting-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C566517A0A869EEBAD8ECBA /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
+		};
+		FB9F8864C34EE4806F37CF0B /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CAA1C43C25A38A2500E3F686 /* Sources */ = {
@@ -361,6 +450,7 @@
 		};
 		CAA1C46B25A38A2600E3F686 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 943D578EDA5CDD0378AF5885 /* Pods-MutationTesting.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -381,6 +471,7 @@
 		};
 		CAA1C46C25A38A2600E3F686 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CD51F99924AD4FD1E88E1A2 /* Pods-MutationTesting.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

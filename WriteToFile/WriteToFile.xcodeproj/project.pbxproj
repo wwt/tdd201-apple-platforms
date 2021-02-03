@@ -210,6 +210,7 @@
 				CA75BA4825A3C0B500930AB1 /* Frameworks */,
 				CA75BA4925A3C0B500930AB1 /* Resources */,
 				72EBCD264D78C8E46EDF3D15 /* [CP] Embed Pods Frameworks */,
+				803F4168B0CCB1B873F355B6 /* Lint */,
 			);
 			buildRules = (
 			);
@@ -230,6 +231,7 @@
 				CA75BA5E25A3C0B600930AB1 /* Frameworks */,
 				CA75BA5F25A3C0B600930AB1 /* Resources */,
 				3C6BD97596B148A586EA2AA7 /* [CP] Embed Pods Frameworks */,
+				D01B6ACC00F064AA1E342B7E /* Lint */,
 			);
 			buildRules = (
 			);
@@ -372,6 +374,42 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WriteToFile/Pods-WriteToFile-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		803F4168B0CCB1B873F355B6 /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
+		};
+		D01B6ACC00F064AA1E342B7E /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
 		};
 		EA012B8DB9CE04F26E28FEB1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

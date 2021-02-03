@@ -184,6 +184,7 @@
 				CA91E7A325C61B0E0027C6CC /* Sources */,
 				CA91E7A425C61B0E0027C6CC /* Frameworks */,
 				CA91E7A525C61B0E0027C6CC /* Resources */,
+				01E5053E846CA35312AB5B13 /* Lint */,
 			);
 			buildRules = (
 			);
@@ -203,6 +204,7 @@
 				CA91E7AD25C61B0E0027C6CC /* Frameworks */,
 				CA91E7AE25C61B0E0027C6CC /* Resources */,
 				ACFF7B30C879843CDF8BCE8D /* [CP] Embed Pods Frameworks */,
+				84E1063D81A180DC52EABB20 /* Lint */,
 			);
 			buildRules = (
 			);
@@ -269,6 +271,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		01E5053E846CA35312AB5B13 /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
+		};
 		3E4A19484F99444EE86279E7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,6 +310,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		84E1063D81A180DC52EABB20 /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
 		};
 		ACFF7B30C879843CDF8BCE8D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

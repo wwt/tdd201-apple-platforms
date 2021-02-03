@@ -72,6 +72,7 @@ class RetryOnTests:XCTestCase {
         
         var called = 0
         
+        // swiftlint:disable force_cast
         let refresh = Just(1)
             .setFailureType(to: Err.self)
             .tryMap { i -> Int in
@@ -89,6 +90,8 @@ class RetryOnTests:XCTestCase {
             .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
             .store(in: &subscribers)
         
+        // swiftlint:enable force_cast
+        
         waitUntil(called > 0)
         XCTAssertEqual(called, 1)
     }
@@ -101,6 +104,7 @@ class RetryOnTests:XCTestCase {
         
         var called = 0
         
+        // swiftlint:disable force_cast
         Just(1)
             .setFailureType(to: Err.self)
             .tryMap { _ -> Int in
@@ -113,5 +117,7 @@ class RetryOnTests:XCTestCase {
         
         waitUntil(called > 0)
         XCTAssertEqual(called, 1)
+
+        // swiftlint:enable force_cast
     }
 }

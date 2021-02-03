@@ -31,6 +31,7 @@ class ContractTests: XCTestCase {
             .withRequest(method: .GET,
                          path: "/me",
                          headers: [
+                            // swiftlint:disable:next line_length
                             "Authorization" : Matcher.term(matcher: "Bearer (.*?)", generate: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"),
                             "Content-Type" : "application/json",
                             "Accept" : "application/json"
@@ -90,6 +91,7 @@ class ContractTests: XCTestCase {
             .withRequest(method: .GET,
                          path: "/me",
                          headers: [
+                            // swiftlint:disable:next line_length
                             "Authorization" : Matcher.term(matcher: "Bearer (.*?)", generate: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"),
                             "Content-Type" : "application/json",
                             "Accept" : "application/json"
