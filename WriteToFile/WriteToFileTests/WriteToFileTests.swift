@@ -110,5 +110,61 @@ class WriteToFileTests: XCTestCase {
         
         verify(mock, times(1)).write(to: expectedPath, atomically: true, encoding: String.Encoding.utf8)
     }
+    
+    func testNotesServiceRethrowsError_IfWritingToFileIsNotPossible() throws {
+        enum TestError: Error {
+            case borked
+        }
+        
+        let expectedPath = URL(string: "file://path.txt")!
+        let mock = MockFileWriteable()
+        stub(mock) { (stub) in
+            when(stub.write(to: anyURL(), atomically: any(), encoding: anyStringEncoding())).thenThrow(TestError.borked)
+        }
+        
+        XCTAssertThrowsError(try service.writeNote(at: expectedPath, contents: mock)) { err in
+            XCTAssertEqual(err as? TestError, .borked)
+        }
+        
+        verify(mock, times(1)).write(to: expectedPath, atomically: true, encoding: String.Encoding.utf8)
+    }
+
+    func testNotesServiceCanWriteDataToAFile() throws {
+        let path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString).appendingPathExtension("txt")
+        addTeardownBlock {
+            try! Foundation.FileManager.default.removeItem(at: path)
+        }
+        let expectedContents = "FINDME\(UUID().uuidString)"
+
+        try service.writeData(to: path, contents: expectedContents.data(using: .utf8)!)
+
+        let fileData = try Data(contentsOf: path)
+        XCTAssertEqual(String(data: fileData, encoding: .utf8), expectedContents)
+    }
+
+    func testNotesServiceRethrows_DataFileWritingErrors() throws {
+        let path = URL(string: NSTemporaryDirectory())!.appendingPathComponent(UUID().uuidString).appendingPathExtension("txt")
+        addTeardownBlock {
+            //keep this around...just in case
+            try? Foundation.FileManager.default.removeItem(at: path)
+        }
+        let expectedContents = "FINDME\(UUID().uuidString)"
+        var foundationError:Error?
+        do {
+            try expectedContents.data(using: .utf8)?.write(to: path)
+        } catch(let err) {
+            foundationError = err
+        }
+        XCTAssertNotNil(foundationError)
+        
+        XCTAssertThrowsError(try service.writeData(to: path, contents: expectedContents.data(using: .utf8)!)) { err in
+            XCTAssertEqual(err.localizedDescription, foundationError?.localizedDescription)
+        }
+
+        do {
+            _ = try Data(contentsOf: path)
+            fatalError("WARNING, file contents was readable, this test just persisted data that it should not have")
+        } catch { }
+    }
 
 }

@@ -28,6 +28,10 @@ class NotesService {
     func writeNote(at url:URL, contents: FileWriteable) throws {
         try contents.write(to: url, atomically: true, encoding: .utf8)
     }
+    
+    func writeData(to url:URL, contents: Data) throws {
+        try contents.write(to: url)
+    }
 }
 
 extension NotesService {
