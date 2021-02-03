@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: WriteToFile/Protocols/FileWriteable.swift at 2021-02-03 15:54:15 +0000
+// MARK: - Mocks generated from file: WriteToFile/Protocols/FileWriteable.swift at 2021-02-03 17:48:35 +0000
 
 //
 //  FileWriteable.swift
@@ -103,7 +103,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: WriteToFileTests/MockFileManager.swift at 2021-02-03 15:54:15 +0000
+// MARK: - Mocks generated from file: WriteToFileTests/MockFileManager.swift at 2021-02-03 17:48:35 +0000
 
 //
 //  MockFileManager.swift
@@ -158,9 +158,9 @@ import Foundation
     
     
     
-     override func createFile(atPath path: String, contents data: Data?, attributes attr: [FileAttributeKey : Any]?) -> Bool {
+     override func createFile(atPath path: String, contents data: Data?, attributes attr: [FileAttributeKey: Any]?) -> Bool {
         
-    return cuckoo_manager.call("createFile(atPath: String, contents: Data?, attributes: [FileAttributeKey : Any]?) -> Bool",
+    return cuckoo_manager.call("createFile(atPath: String, contents: Data?, attributes: [FileAttributeKey: Any]?) -> Bool",
             parameters: (path, data, attr),
             escapingParameters: (path, data, attr),
             superclassCall:
@@ -185,9 +185,9 @@ import Foundation
 	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "contents(atPath: String) -> Data?", parameterMatchers: matchers))
 	    }
 	    
-	    func createFile<M1: Cuckoo.Matchable, M2: Cuckoo.OptionalMatchable, M3: Cuckoo.OptionalMatchable>(atPath path: M1, contents data: M2, attributes attr: M3) -> Cuckoo.ClassStubFunction<(String, Data?, [FileAttributeKey : Any]?), Bool> where M1.MatchedType == String, M2.OptionalMatchedType == Data, M3.OptionalMatchedType == [FileAttributeKey : Any] {
-	        let matchers: [Cuckoo.ParameterMatcher<(String, Data?, [FileAttributeKey : Any]?)>] = [wrap(matchable: path) { $0.0 }, wrap(matchable: data) { $0.1 }, wrap(matchable: attr) { $0.2 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "createFile(atPath: String, contents: Data?, attributes: [FileAttributeKey : Any]?) -> Bool", parameterMatchers: matchers))
+	    func createFile<M1: Cuckoo.Matchable, M2: Cuckoo.OptionalMatchable, M3: Cuckoo.OptionalMatchable>(atPath path: M1, contents data: M2, attributes attr: M3) -> Cuckoo.ClassStubFunction<(String, Data?, [FileAttributeKey: Any]?), Bool> where M1.MatchedType == String, M2.OptionalMatchedType == Data, M3.OptionalMatchedType == [FileAttributeKey: Any] {
+	        let matchers: [Cuckoo.ParameterMatcher<(String, Data?, [FileAttributeKey: Any]?)>] = [wrap(matchable: path) { $0.0 }, wrap(matchable: data) { $0.1 }, wrap(matchable: attr) { $0.2 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "createFile(atPath: String, contents: Data?, attributes: [FileAttributeKey: Any]?) -> Bool", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -213,9 +213,9 @@ import Foundation
 	    }
 	    
 	    @discardableResult
-	    func createFile<M1: Cuckoo.Matchable, M2: Cuckoo.OptionalMatchable, M3: Cuckoo.OptionalMatchable>(atPath path: M1, contents data: M2, attributes attr: M3) -> Cuckoo.__DoNotUse<(String, Data?, [FileAttributeKey : Any]?), Bool> where M1.MatchedType == String, M2.OptionalMatchedType == Data, M3.OptionalMatchedType == [FileAttributeKey : Any] {
-	        let matchers: [Cuckoo.ParameterMatcher<(String, Data?, [FileAttributeKey : Any]?)>] = [wrap(matchable: path) { $0.0 }, wrap(matchable: data) { $0.1 }, wrap(matchable: attr) { $0.2 }]
-	        return cuckoo_manager.verify("createFile(atPath: String, contents: Data?, attributes: [FileAttributeKey : Any]?) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    func createFile<M1: Cuckoo.Matchable, M2: Cuckoo.OptionalMatchable, M3: Cuckoo.OptionalMatchable>(atPath path: M1, contents data: M2, attributes attr: M3) -> Cuckoo.__DoNotUse<(String, Data?, [FileAttributeKey: Any]?), Bool> where M1.MatchedType == String, M2.OptionalMatchedType == Data, M3.OptionalMatchedType == [FileAttributeKey: Any] {
+	        let matchers: [Cuckoo.ParameterMatcher<(String, Data?, [FileAttributeKey: Any]?)>] = [wrap(matchable: path) { $0.0 }, wrap(matchable: data) { $0.1 }, wrap(matchable: attr) { $0.2 }]
+	        return cuckoo_manager.verify("createFile(atPath: String, contents: Data?, attributes: [FileAttributeKey: Any]?) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
@@ -231,7 +231,7 @@ import Foundation
         return DefaultValueRegistry.defaultValue(for: (Data?).self)
     }
     
-     override func createFile(atPath path: String, contents data: Data?, attributes attr: [FileAttributeKey : Any]?) -> Bool  {
+     override func createFile(atPath path: String, contents data: Data?, attributes attr: [FileAttributeKey: Any]?) -> Bool  {
         return DefaultValueRegistry.defaultValue(for: (Bool).self)
     }
     

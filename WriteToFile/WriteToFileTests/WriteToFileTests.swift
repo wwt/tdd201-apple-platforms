@@ -58,9 +58,9 @@ class WriteToFileTests: XCTestCase {
 
     func testFileManagerDoesNotExist_ReadReturnsFailure() throws {
         switch service.readNote(at: "") {
-        case .failure(let err):
+            case .failure(let err):
             XCTAssertEqual(err, .unableToReadFromFile)
-        case .success:
+            case .success:
             XCTFail("This was not supposed to be successful, you have no FileManager")
         }
     }
@@ -75,9 +75,9 @@ class WriteToFileTests: XCTestCase {
         Container.default.register(Foundation.FileManager.self) { _ in mock }
 
         switch service.readNote(at: path) {
-        case .failure(let err):
+            case .failure(let err):
             XCTFail("readNote should have succeeded, unexpected error: \(err)")
-        case .success(let data):
+            case .success(let data):
             XCTAssertEqual(data, expectedNoteContent)
         }
 
@@ -92,9 +92,9 @@ class WriteToFileTests: XCTestCase {
         Container.default.register(Foundation.FileManager.self) { _ in mock }
 
         switch service.readNote(at: "pathy") {
-        case .failure(let err):
+            case .failure(let err):
             XCTAssertEqual(err, .unableToReadFromFile)
-        case .success:
+            case .success:
             XCTFail("Expecting failure with error")
         }
     }
@@ -132,6 +132,7 @@ class WriteToFileTests: XCTestCase {
     func testNotesServiceCanWriteDataToAFile() throws {
         let path = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString).appendingPathExtension("txt")
         addTeardownBlock {
+            // swiftlint:disable:next force_try
             try! Foundation.FileManager.default.removeItem(at: path)
         }
         let expectedContents = "FINDME\(UUID().uuidString)"

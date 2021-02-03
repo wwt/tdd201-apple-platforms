@@ -19,6 +19,7 @@ class UserServiceTests: XCTestCase {
 
     func testUserServiceCallsBackWithUser_OnSuccess() {
         let expectedModel = SomeModel(name: "Joe", age: 35, email: "Joe.Blow@fake.com")
+        // swiftlint:disable:next force_try
         let json = try! JSONEncoder().encode(expectedModel)
         StubAPIResponse(request: .init(.get, urlString: "https://api.fake.com/users/1"),
                         statusCode: 200,
@@ -33,6 +34,7 @@ class UserServiceTests: XCTestCase {
             expectation.fulfill()
             switch res {
                 case .success(let model):
+                    // swiftlint:disable:next force_try
                     XCTAssertEqual(try! JSONEncoder().encode(model), try! JSONEncoder().encode(expectedModel))
                 case .failure(let err): XCTFail(err.localizedDescription)
             }

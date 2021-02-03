@@ -20,11 +20,11 @@ extension URLRequest {
         self.init(url: url!)
         httpMethod = {
             switch method {
-            case .get: return "GET"
-            case .put: return "PUT"
-            case .post: return "POST"
-            case .patch: return "PATCH"
-            case .delete: return "DELETE"
+                case .get: return "GET"
+                case .put: return "PUT"
+                case .post: return "POST"
+                case .patch: return "PATCH"
+                case .delete: return "DELETE"
             }
         }()
     }

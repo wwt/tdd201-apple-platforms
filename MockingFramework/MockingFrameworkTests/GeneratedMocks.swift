@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: MockingFramework/SomeClass.swift at 2021-01-30 15:35:29 +0000
+// MARK: - Mocks generated from file: MockingFramework/SomeClass.swift at 2021-02-03 17:48:35 +0000
 
 //
 //  SomeClass.swift
