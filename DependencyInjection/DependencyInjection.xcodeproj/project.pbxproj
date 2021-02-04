@@ -134,7 +134,7 @@
 			children = (
 				00D1A5F525C8C6680002728A /* Services */,
 				00D1A5A425C8BD720002728A /* Models */,
-				CA91E7E325C61B290027C6CC /* DI */,
+				CA91E7E325C61B290027C6CC /* DependencyInjection */,
 				CA91E7AA25C61B0E0027C6CC /* DependencyInjection.h */,
 				CA91E7AB25C61B0E0027C6CC /* Info.plist */,
 			);
@@ -152,13 +152,13 @@
 			path = DependencyInjectionTests;
 			sourceTree = "<group>";
 		};
-		CA91E7E325C61B290027C6CC /* DI */ = {
+		CA91E7E325C61B290027C6CC /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
 				CA9B147A25C9FB7100854956 /* ContainerExtensions.swift */,
 				CA9B147B25C9FB7100854956 /* DependencyInjected.swift */,
 			);
-			path = DI;
+			path = DependencyInjection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
