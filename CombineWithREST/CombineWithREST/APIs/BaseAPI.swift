@@ -8,11 +8,11 @@
 import Foundation
 import Swinject
 
-struct API {
+enum API {
     enum URLError: Error {
         case unableToCreateURL
     }
-    enum AuthorizationError: Error {
-        case unauthorized
-    }
+//    enum AuthorizationError: Error {
+//        case unauthorized
+//    }
 }

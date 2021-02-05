@@ -18,15 +18,17 @@ extension API {
 }
 
 class APITests: XCTestCase {
+    
     var subscribers = Set<AnyCancellable>()
+    static var swizzled = [(session: URLSession, request: URLRequest)]()
 
     override func setUp() {
         subscribers.forEach { $0.cancel() }
         subscribers.removeAll()
+        Self.swizzled.removeAll()
     }
 
-    func testAPIMakesAGETRequest() {
-        // swiftlint:disable line_length
+    func testAPIMakesAGETRequest() throws {
         let json = """
         [
             {
@@ -37,230 +39,137 @@ class APITests: XCTestCase {
             },
         ]
         """.data(using: .utf8)!
-        // swiftlint:enable line_length
-        StubAPIResponse(request: .init(.get, urlString: "https://jsonplaceholder.typicode.com/posts"),
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        StubAPIResponse(request: .init(.get, urlString: urlString),
                         statusCode: 200,
                         result: .success(json))
-
-        let api = API.JSONPlaceHolder()
-
-        var GETFinished = false
-        api.get(endpoint: "posts")
-            .sink { (completion) in
-                switch completion {
-                    case .finished: GETFinished = true
-                    case .failure: XCTFail("Call should succeed")
-                }
-            } receiveValue: { (value) in
-                XCTAssertEqual((value.response as? HTTPURLResponse)?.statusCode, 200)
-                XCTAssertEqual(String(data: value.data, encoding: .utf8), String(data: json, encoding: .utf8))
-            }.store(in: &subscribers)
-        waitUntil(GETFinished)
-        XCTAssert(GETFinished)
-    }
-
-    func testAPIThrowsErrorWhenGETtingWithInvalidURL() {
-        var api = API.JSONPlaceHolder()
-        api.baseURL = "FA KE"
-
-        var GETFinished = false
-        api.get(endpoint: "notreal")
-            .sink(receiveCompletion: { (completion) in
-                GETFinished = true
-                switch completion {
-                    case .finished: XCTFail("Should have thrown error")
-                    case .failure(let error):
-                        XCTAssertEqual((error as? API.URLError), API.URLError.unableToCreateURL)
-                }
-            }, receiveValue: { _ in })
-            .store(in: &subscribers)
-        waitUntil(GETFinished)
-        XCTAssert(GETFinished)
-    }
-
-    func testAPIMakesAPOSTRequest() {
-        let json = UUID().uuidString.data(using: .utf8)!
-        let sentBody = try? JSONSerialization.data(withJSONObject: ["": ""], options: [])
-        StubAPIResponse(request: .init(.post,
-                                       urlString: "https://jsonplaceholder.typicode.com/posts"),
-                        statusCode: 201,
-                        result: .success(json))
-            .thenVerifyRequest { request in
-                XCTAssertEqual(request.httpMethod, "POST")
-                XCTAssertEqual(request.bodySteamAsData(), sentBody)
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "GET")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssert(request.allHTTPHeaderFields?.isEmpty == true, "Expected headers to be empty")
             }
 
-        let api = API.JSONPlaceHolder()
-
-        var POSTFinished = false
-        api.post(endpoint: "posts", body: sentBody)
-            .sink { (completion) in
-                switch completion {
-                    case .finished: POSTFinished = true
-                    case .failure: XCTFail("Call should succeed")
-                }
-            } receiveValue: { (value) in
-                XCTAssertEqual((value.response as? HTTPURLResponse)?.statusCode, 201)
-                XCTAssertEqual(String(data: value.data, encoding: .utf8), String(data: json, encoding: .utf8))
-            }.store(in: &subscribers)
-        waitUntil(POSTFinished)
-        XCTAssert(POSTFinished)
+        jsonPlaceHolder.get(endpoint: endpoint).sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+    
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
 
-    func testAPIThrowsErrorWhenPOSTtingWithInvalidURL() {
-        var api = API.JSONPlaceHolder()
-        api.baseURL = "FA KE"
-
-        var POSTFinished = false
-        api.post(endpoint: "notreal", body: nil)
-            .sink(receiveCompletion: { (completion) in
-                POSTFinished = true
-                switch completion {
-                    case .finished: XCTFail("Should have thrown error")
-                    case .failure(let error):
-                        XCTAssertEqual((error as? API.URLError), API.URLError.unableToCreateURL)
-                }
-            }, receiveValue: { _ in })
-            .store(in: &subscribers)
-        waitUntil(POSTFinished)
-        XCTAssert(POSTFinished)
+    
+    func testGETFailsWhenURLCannotBeConstructed() throws {
+        struct FakeAPI: RESTAPIProtocol {
+            var baseURL: String = ""
+        }
+        let responseExpectation = self.expectation(description: "Response recieved")
+        
+        FakeAPI().get(endpoint: "").sink { res in
+            responseExpectation.fulfill()
+            if case .failure(let err) = res {
+                XCTAssertEqual(err as? API.URLError, .unableToCreateURL)
+            }
+        } receiveValue: { _ in
+            XCTFail("Did not expect to get value")
+        }.store(in: &subscribers)
+        
+        wait(for: [responseExpectation], timeout: 3)
     }
 
-    func testAPIMakesAPUTRequest() {
-        let json = UUID().uuidString.data(using: .utf8)!
-        let sentBody = try? JSONSerialization.data(withJSONObject: ["": ""], options: [])
-        StubAPIResponse(request: .init(.put,
-                                       urlString: "https://jsonplaceholder.typicode.com/posts/1"),
+    func testAPIMakesAGETRequestWithRequestModifier() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        StubAPIResponse(request: .init(.get, urlString: urlString),
                         statusCode: 200,
                         result: .success(json))
-            .thenVerifyRequest { request in
-                XCTAssertEqual(request.httpMethod, "PUT")
-                XCTAssertEqual(request.bodySteamAsData(), sentBody)
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "GET")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssertEqual(request.allHTTPHeaderFields, request.sendingJSON().allHTTPHeaderFields)
             }
 
-        let api = API.JSONPlaceHolder()
-
-        var PUTFinished = false
-        api.put(endpoint: "posts/1", body: sentBody)
-            .sink { (completion) in
-                switch completion {
-                    case .finished: PUTFinished = true
-                    case .failure: XCTFail("Call should succeed")
-                }
-            } receiveValue: { (value) in
-                XCTAssertEqual((value.response as? HTTPURLResponse)?.statusCode, 200)
-                XCTAssertEqual(String(data: value.data, encoding: .utf8), String(data: json, encoding: .utf8))
-            }.store(in: &subscribers)
-        waitUntil(PUTFinished)
-        XCTAssert(PUTFinished)
-    }
-
-    func testAPIThrowsErrorWhenPUTtingWithInvalidURL() {
-        var api = API.JSONPlaceHolder()
-        api.baseURL = "FA KE"
-
-        var PUTFinished = false
-        api.put(endpoint: "notreal", body: nil)
-            .sink(receiveCompletion: { (completion) in
-                PUTFinished = true
-                switch completion {
-                    case .finished: XCTFail("Should have thrown error")
-                    case .failure(let error):
-                        XCTAssertEqual((error as? API.URLError), API.URLError.unableToCreateURL)
-                }
-            }, receiveValue: { _ in })
-            .store(in: &subscribers)
-        waitUntil(PUTFinished)
-        XCTAssert(PUTFinished)
-    }
-
-    func testAPIMakesAPATCHRequest() {
-        let json = UUID().uuidString.data(using: .utf8)!
-        let sentBody = try? JSONSerialization.data(withJSONObject: ["": ""], options: [])
-        StubAPIResponse(request: .init(.patch,
-                                       urlString: "https://jsonplaceholder.typicode.com/posts/1"),
-                        statusCode: 200,
-                        result: .success(json))
-            .thenVerifyRequest { request in
-                XCTAssertEqual(request.httpMethod, "PATCH")
-                XCTAssertEqual(request.bodySteamAsData(), sentBody)
+        jsonPlaceHolder.get(endpoint: endpoint) { request in
+            request.sendingJSON()
+        }.sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
             }
-
-        let api = API.JSONPlaceHolder()
-
-        var PATCHFinished = false
-        api.patch(endpoint: "posts/1", body: sentBody)
-            .sink { (completion) in
-                switch completion {
-                    case .finished: PATCHFinished = true
-                    case .failure: XCTFail("Call should succeed")
-                }
-            } receiveValue: { (value) in
-                XCTAssertEqual((value.response as? HTTPURLResponse)?.statusCode, 200)
-                XCTAssertEqual(String(data: value.data, encoding: .utf8), String(data: json, encoding: .utf8))
-            }.store(in: &subscribers)
-        waitUntil(PATCHFinished)
-        XCTAssert(PATCHFinished)
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+    
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-
-    func testAPIThrowsErrorWhenPATCHingWithInvalidURL() {
-        var api = API.JSONPlaceHolder()
-        api.baseURL = "FA KE"
-
-        var PATCHFinished = false
-        api.patch(endpoint: "notreal", body: nil)
-            .sink(receiveCompletion: { (completion) in
-                PATCHFinished = true
-                switch completion {
-                    case .finished: XCTFail("Should have thrown error")
-                    case .failure(let error):
-                        XCTAssertEqual((error as? API.URLError), API.URLError.unableToCreateURL)
-                }
-            }, receiveValue: { _ in })
-            .store(in: &subscribers)
-        waitUntil(PATCHFinished)
-        XCTAssert(PATCHFinished)
-    }
-
-    func testAPIMakesADELETERequest() {
-        let json = UUID().uuidString.data(using: .utf8)!
-        StubAPIResponse(request: .init(.delete, urlString: "https://jsonplaceholder.typicode.com/posts/1"),
+    
+    
+    func testAPIUsesCustomURLSession() throws {
+        struct FakeAPI: RESTAPIProtocol {
+            var baseURL: String = "http://www.google.com"
+            var urlSession: URLSession = URLSession(configuration: URLSessionConfiguration.default)
+        }
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let fakeAPI = FakeAPI()
+        
+        XCTAssertNotEqual(fakeAPI.urlSession, URLSession.shared)
+        
+        let endpoint = "me"
+        let urlString = "\(fakeAPI.baseURL)/\(endpoint)"
+        StubAPIResponse(request: .init(.get, urlString: urlString),
                         statusCode: 200,
                         result: .success(json))
-
-        let api = API.JSONPlaceHolder()
-
-        var DELETEFinished = false
-        api.delete(endpoint: "posts/1")
-            .sink { (completion) in
-                switch completion {
-                    case .finished: DELETEFinished = true
-                    case .failure: XCTFail("Call should succeed")
-                }
-            } receiveValue: { (value) in
-                XCTAssertEqual((value.response as? HTTPURLResponse)?.statusCode, 200)
-                XCTAssertEqual(String(data: value.data, encoding: .utf8), String(data: json, encoding: .utf8))
-            }.store(in: &subscribers)
-        waitUntil(DELETEFinished)
-        XCTAssert(DELETEFinished)
+            .thenVerifyRequest { (request) in
+                XCTAssertEqual(request.httpMethod, "GET")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssertEqual(request.allHTTPHeaderFields, request.sendingJSON().allHTTPHeaderFields)
+            }
+        
+        _ = fakeAPI.get(endpoint: endpoint) { request in
+            request.sendingJSON()
+        }
+        
+        XCTAssertEqual(Self.swizzled.count, 1)
+        XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
     }
+}
 
-    func testAPIThrowsErrorWhenDELETEingWithInvalidURL() {
-        var api = API.JSONPlaceHolder()
-        api.baseURL = "FA KE"
 
-        var DELETEFinished = false
-        api.delete(endpoint: "notreal")
-            .sink(receiveCompletion: { (completion) in
-                DELETEFinished = true
-                switch completion {
-                    case .finished: XCTFail("Should have thrown error")
-                    case .failure(let error):
-                        XCTAssertEqual((error as? API.URLError), API.URLError.unableToCreateURL)
-                }
-            }, receiveValue: { _ in })
-            .store(in: &subscribers)
-        waitUntil(DELETEFinished)
-        XCTAssert(DELETEFinished)
+extension URLSession {
+    @_dynamicReplacement(for: erasedDataTaskPublisher(for:))
+    func _erasedDataTaskPublisher(for request: URLRequest) -> ErasedDataTaskPublisher {
+        APITests.swizzled.append((self, request))
+        return erasedDataTaskPublisher(for: request)
     }
 }
