@@ -134,34 +134,38 @@ class IdentityServiceTests: XCTestCase {
         waitUntil(called)
         XCTAssert(called)
     }
-//
-//    func testFetchProfileFailsOnUnauthorizedResponseIfRefreshFails() {
-//        // swiftlint:disable force_try
-//        StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
-//                        statusCode: 401)
-//            .thenRespondWith(request: .init(.post, urlString: "\(API.IdentityService().baseURL)/auth/refresh"),
-//                             statusCode: 200,
-//                             result: .success(try! JSONSerialization.data(withJSONObject: ["result": [:]])))
-//            .thenRespondWith(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
-//                             statusCode: 200,
-//                             result: .success(validProfileJSON.data(using: .utf8)!))
-//
-//        // swiftlint:enable force_try
-//        let api = API.IdentityService()
-//
-//        var called = false
-//        api.fetchProfile.sink { (result) in
-//            switch result {
-//                case .success: XCTFail("Should not have successful response")
-//                case .failure(let error):
-//                    XCTAssertEqual(API.IdentityService.FetchProfileError.apiBorked, error)
-//            }
-//            called = true
-//        }.store(in: &ongoingCalls)
-//
-//        waitUntil(called)
-//        XCTAssert(called)
-//    }
+
+    func testFetchProfileFailsOnUnauthorizedResponseIfRefreshFails() {
+        // swiftlint:disable force_try
+        StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
+                        statusCode: 401)
+            .thenRespondWith(request: .init(.post, urlString: "\(API.IdentityService().baseURL)/auth/refresh"),
+                             statusCode: 200,
+                             result: .success(try! JSONSerialization.data(withJSONObject: ["result": [:]])))
+            .thenRespondWith(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
+                             statusCode: 200,
+                             result: .success(validProfileJSON.data(using: .utf8)!))
+
+        // swiftlint:enable force_try
+        let api = API.IdentityService()
+
+        var called = false
+        api.fetchProfile.sink { (result) in
+            switch result {
+                case .success: XCTFail("Should not have successful response")
+                case .failure(let error):
+                    if case .apiBorked(let err) = error {
+                        XCTAssertEqual(err as? API.AuthorizationError, .unauthorized)
+                    } else {
+                        XCTFail("Expected API Borked with Unauthorized error")
+                    }
+            }
+            called = true
+        }.store(in: &ongoingCalls)
+
+        waitUntil(called)
+        XCTAssert(called)
+    }
 }
 
 extension IdentityServiceTests {

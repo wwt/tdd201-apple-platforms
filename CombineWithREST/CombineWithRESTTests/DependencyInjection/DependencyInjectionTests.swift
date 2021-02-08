@@ -24,7 +24,7 @@ class DependencyInjectionTests: XCTestCase {
         _ = delegate?.application(UIApplication.shared, didFinishLaunchingWithOptions: [:])
 
         XCTAssertNotNil(delegate, "Test invalid, app delegate nil")
-//        XCTAssertNotNil(Container.default.resolve(IdentityServiceProtocol.self))
+        XCTAssertNotNil(Container.default.resolve(IdentityServiceProtocol.self))
     }
 
     func testDefaultContainerAlwaysReturnsTheSameContainer() {
