@@ -8,15 +8,12 @@
 import Foundation
 import Combine
 
-//protocol IdentityServiceProtocol: RESTAPIProtocol {
+//protocol IdentityServiceProtocol {
 //    var fetchProfile: AnyPublisher<Result<User.Profile, API.IdentityService.FetchProfileError>, Never> { get }
 //}
-
-//extension IdentityServiceProtocol {
-//    var baseURL: String {
-//        "https://some.identityservice.com/api"
-//    }
-
+//
+//extension IdentityServiceProtocol where Self: RESTAPIProtocol {
+//
 //    var fetchProfile: AnyPublisher<Result<User.Profile, API.IdentityService.FetchProfileError>, Never> {
 //        self.get(endpoint: "/me", requestModifier: {
 //            $0.addingBearerAuthorization(token: User.accessToken)
@@ -47,9 +44,9 @@ import Combine
 //        }.eraseToAnyPublisher()
 //    }
 //}
-
+//
 //extension API {
-//    struct IdentityService: IdentityServiceProtocol {
+//    struct IdentityService: IdentityServiceProtocol, RESTAPIProtocol {
 //        var baseURL = "https://some.identityservice.com/api"
 //
 //        enum FetchProfileError: Error {

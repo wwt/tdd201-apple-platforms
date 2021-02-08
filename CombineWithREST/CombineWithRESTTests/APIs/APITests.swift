@@ -125,6 +125,526 @@ class APITests: XCTestCase {
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
     
+    func testAPIMakesAPUTRequestWithNoBody() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        StubAPIResponse(request: .init(.put, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "PUT")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssert(request.allHTTPHeaderFields?.isEmpty == true, "Expected headers to be empty")
+                XCTAssertNil(request.bodySteamAsData())
+            }
+
+        jsonPlaceHolder.put(endpoint: endpoint).sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+    
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+    
+    func testAPIMakesAPUTRequestWithABody() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        let body = UUID().uuidString.data(using: .utf8)
+        StubAPIResponse(request: .init(.put, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "PUT")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                
+                XCTAssertEqual(request.allHTTPHeaderFields?["Content-Length"], "\(body!.count)")
+                XCTAssertEqual(request.bodySteamAsData(), body)
+            }
+
+        jsonPlaceHolder.put(endpoint: endpoint, body: body).sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+
+
+    func testPUTFailsWhenURLCannotBeConstructed() throws {
+        struct FakeAPI: RESTAPIProtocol {
+            var baseURL: String = ""
+        }
+        let responseExpectation = self.expectation(description: "Response recieved")
+
+        FakeAPI().put(endpoint: "").sink { res in
+            responseExpectation.fulfill()
+            if case .failure(let err) = res {
+                XCTAssertEqual(err as? API.URLError, .unableToCreateURL)
+            }
+        } receiveValue: { _ in
+            XCTFail("Did not expect to get value")
+        }.store(in: &subscribers)
+
+        wait(for: [responseExpectation], timeout: 3)
+    }
+
+    func testAPIMakesAPUTRequestWithRequestModifier() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        let body = UUID().uuidString.data(using: .utf8)
+        StubAPIResponse(request: .init(.put, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "PUT")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssertEqual(request.allHTTPHeaderFields, request.sendingJSON().allHTTPHeaderFields)
+                XCTAssertEqual(request.bodySteamAsData(), body)
+            }
+
+        jsonPlaceHolder.put(endpoint: endpoint, body: body) { request in
+            request.sendingJSON()
+        }.sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+    
+    func testAPIMakesAPOSTRequestWithNoBody() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        StubAPIResponse(request: .init(.post, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "POST")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssert(request.allHTTPHeaderFields?.isEmpty == true, "Expected headers to be empty")
+                XCTAssertNil(request.bodySteamAsData())
+            }
+
+        jsonPlaceHolder.post(endpoint: endpoint).sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+    
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+    
+    func testAPIMakesAPOSTRequestWithABody() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        let body = UUID().uuidString.data(using: .utf8)
+        StubAPIResponse(request: .init(.post, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "POST")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                
+                XCTAssertEqual(request.allHTTPHeaderFields?["Content-Length"], "\(body!.count)")
+                XCTAssertEqual(request.bodySteamAsData(), body)
+            }
+
+        jsonPlaceHolder.post(endpoint: endpoint, body: body).sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+
+
+    func testPOSTFailsWhenURLCannotBeConstructed() throws {
+        struct FakeAPI: RESTAPIProtocol {
+            var baseURL: String = ""
+        }
+        let responseExpectation = self.expectation(description: "Response recieved")
+
+        FakeAPI().post(endpoint: "").sink { res in
+            responseExpectation.fulfill()
+            if case .failure(let err) = res {
+                XCTAssertEqual(err as? API.URLError, .unableToCreateURL)
+            }
+        } receiveValue: { _ in
+            XCTFail("Did not expect to get value")
+        }.store(in: &subscribers)
+
+        wait(for: [responseExpectation], timeout: 3)
+    }
+
+    func testAPIMakesAPOSTRequestWithRequestModifier() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        let body = UUID().uuidString.data(using: .utf8)
+        StubAPIResponse(request: .init(.post, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "POST")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssertEqual(request.allHTTPHeaderFields, request.sendingJSON().allHTTPHeaderFields)
+                XCTAssertEqual(request.bodySteamAsData(), body)
+            }
+
+        jsonPlaceHolder.post(endpoint: endpoint, body: body) { request in
+            request.sendingJSON()
+        }.sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+    
+    func testAPIMakesAPATCHRequestWithNoBody() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        StubAPIResponse(request: .init(.patch, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "PATCH")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssert(request.allHTTPHeaderFields?.isEmpty == true, "Expected headers to be empty")
+                XCTAssertNil(request.bodySteamAsData())
+            }
+
+        jsonPlaceHolder.patch(endpoint: endpoint).sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+    
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+    
+    func testAPIMakesAPATCHRequestWithABody() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        let body = UUID().uuidString.data(using: .utf8)
+        StubAPIResponse(request: .init(.patch, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "PATCH")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                
+                XCTAssertEqual(request.allHTTPHeaderFields?["Content-Length"], "\(body!.count)")
+                XCTAssertEqual(request.bodySteamAsData(), body)
+            }
+
+        jsonPlaceHolder.patch(endpoint: endpoint, body: body).sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+
+
+    func testPATCHFailsWhenURLCannotBeConstructed() throws {
+        struct FakeAPI: RESTAPIProtocol {
+            var baseURL: String = ""
+        }
+        let responseExpectation = self.expectation(description: "Response recieved")
+
+        FakeAPI().patch(endpoint: "").sink { res in
+            responseExpectation.fulfill()
+            if case .failure(let err) = res {
+                XCTAssertEqual(err as? API.URLError, .unableToCreateURL)
+            }
+        } receiveValue: { _ in
+            XCTFail("Did not expect to get value")
+        }.store(in: &subscribers)
+
+        wait(for: [responseExpectation], timeout: 3)
+    }
+
+    func testAPIMakesAPATCHRequestWithRequestModifier() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        let body = UUID().uuidString.data(using: .utf8)
+        StubAPIResponse(request: .init(.patch, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "PATCH")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssertEqual(request.allHTTPHeaderFields, request.sendingJSON().allHTTPHeaderFields)
+                XCTAssertEqual(request.bodySteamAsData(), body)
+            }
+
+        jsonPlaceHolder.patch(endpoint: endpoint, body: body) { request in
+            request.sendingJSON()
+        }.sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+    
+    func testAPIMakesADELETERequest() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        StubAPIResponse(request: .init(.delete, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "DELETE")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssert(request.allHTTPHeaderFields?.isEmpty == true, "Expected headers to be empty")
+            }
+
+        jsonPlaceHolder.delete(endpoint: endpoint).sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+    
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+
+    
+    func testDELETEFailsWhenURLCannotBeConstructed() throws {
+        struct FakeAPI: RESTAPIProtocol {
+            var baseURL: String = ""
+        }
+        let responseExpectation = self.expectation(description: "Response recieved")
+        
+        FakeAPI().delete(endpoint: "").sink { res in
+            responseExpectation.fulfill()
+            if case .failure(let err) = res {
+                XCTAssertEqual(err as? API.URLError, .unableToCreateURL)
+            }
+        } receiveValue: { _ in
+            XCTFail("Did not expect to get value")
+        }.store(in: &subscribers)
+        
+        wait(for: [responseExpectation], timeout: 3)
+    }
+
+    func testAPIMakesADELETERequestWithRequestModifier() throws {
+        let json = """
+        [
+            {
+                userId: 1,
+                id: 1,
+                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            },
+        ]
+        """.data(using: .utf8)!
+        let jsonPlaceHolder = API.JSONPlaceHolder()
+        let requestExpectation = self.expectation(description: "Request made")
+        let responseExpectation = self.expectation(description: "Response recieved")
+        let endpoint = "me"
+        let urlString = "\(jsonPlaceHolder.baseURL)/\(endpoint)"
+        StubAPIResponse(request: .init(.delete, urlString: urlString),
+                        statusCode: 200,
+                        result: .success(json))
+            .thenVerifyRequest { (request) in
+                requestExpectation.fulfill()
+                XCTAssertEqual(request.httpMethod, "DELETE")
+                XCTAssertEqual(request.url?.absoluteString, urlString)
+                XCTAssertEqual(request.allHTTPHeaderFields, request.sendingJSON().allHTTPHeaderFields)
+            }
+
+        jsonPlaceHolder.delete(endpoint: endpoint) { request in
+            request.sendingJSON()
+        }.sink { res in
+            if case .failure(_) = res {
+                XCTFail("You done messed up")
+            }
+        } receiveValue: { (data, res) in
+            responseExpectation.fulfill()
+            XCTAssertEqual(data, json)
+        }.store(in: &subscribers)
+    
+        wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+
     
     func testAPIUsesCustomURLSession() throws {
         struct FakeAPI: RESTAPIProtocol {
@@ -157,6 +677,43 @@ class APITests: XCTestCase {
             }
         
         _ = fakeAPI.get(endpoint: endpoint) { request in
+            request.sendingJSON()
+        }
+        
+        XCTAssertEqual(Self.swizzled.count, 1)
+        XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
+        
+        
+        Self.swizzled.removeAll()
+        
+        _ = fakeAPI.put(endpoint: endpoint) { request in
+            request.sendingJSON()
+        }
+        
+        XCTAssertEqual(Self.swizzled.count, 1)
+        XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
+        
+        Self.swizzled.removeAll()
+        
+        _ = fakeAPI.post(endpoint: endpoint) { request in
+            request.sendingJSON()
+        }
+        
+        XCTAssertEqual(Self.swizzled.count, 1)
+        XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
+        
+        Self.swizzled.removeAll()
+        
+        _ = fakeAPI.patch(endpoint: endpoint) { request in
+            request.sendingJSON()
+        }
+        
+        XCTAssertEqual(Self.swizzled.count, 1)
+        XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
+        
+        Self.swizzled.removeAll()
+        
+        _ = fakeAPI.delete(endpoint: endpoint) { request in
             request.sendingJSON()
         }
         

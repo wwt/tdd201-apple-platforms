@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		002C1F8825D1C51D000018D8 /* DateFormatterExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */; };
 		2E30E671B4AE5C5C684A255B /* Pods_CombineWithREST.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24088C7D63D164FBE167A839 /* Pods_CombineWithREST.framework */; };
 		4B4D30352F3855E83B9614FB /* Pods_CombineWithREST_CombineWithRESTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFFD79E45284CC76EA1F016 /* Pods_CombineWithREST_CombineWithRESTTests.framework */; };
 		CA45040B25B79A0F00153FC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45040A25B79A0F00153FC4 /* AppDelegate.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensionsTests.swift; sourceTree = "<group>"; };
 		096C5D9757A186DDDA29D410 /* Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig"; path = "Target Support Files/Pods-CombineWithREST-CombineWithRESTTests/Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig"; sourceTree = "<group>"; };
 		22886F30A917329AE0DA3CEF /* Pods-CombineWithREST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineWithREST.release.xcconfig"; path = "Target Support Files/Pods-CombineWithREST/Pods-CombineWithREST.release.xcconfig"; sourceTree = "<group>"; };
 		24088C7D63D164FBE167A839 /* Pods_CombineWithREST.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CombineWithREST.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,6 +284,7 @@
 				CA4505D625B8D1D400153FC4 /* MockExtensions.swift */,
 				CA45055125B8C54800153FC4 /* URLRequestExtensions.swift */,
 				CA4505E225B8D26300153FC4 /* URLRequestExtensionsTests.swift */,
+				002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				CA45042225B79A1000153FC4 /* CombineWithRESTTests.swift in Sources */,
 				CA4505E325B8D26300153FC4 /* URLRequestExtensionsTests.swift in Sources */,
 				CAF26DC825B9F57A009025A6 /* ContractTests.swift in Sources */,
+				002C1F8825D1C51D000018D8 /* DateFormatterExtensionsTests.swift in Sources */,
 				CA45055225B8C54800153FC4 /* URLRequestExtensions.swift in Sources */,
 				CA4505D725B8D1D400153FC4 /* MockExtensions.swift in Sources */,
 				CA45054A25B8C52500153FC4 /* StubAPIResponse.swift in Sources */,

@@ -69,29 +69,28 @@ class RetryOnTests: XCTestCase {
         }
 
         var called = 0
+        var refreshCalled = 0
 
         // swiftlint:disable force_cast
-        let refresh = Just(1)
-            .setFailureType(to: Err.self)
-            .tryMap { i -> Int in
-                called += 1
-                return i
-            }.mapError { $0 as! Err }
-            .eraseToAnyPublisher()
-
-        Just(1)
-            .setFailureType(to: Err.self)
-            .tryMap { _ -> Int in
-                throw Err.e1
-            }.mapError { $0 as! Err}
-            .retryOn(Err.e1, retries: 1, chainedPublisher: refresh)
-            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
-            .store(in: &subscribers)
+        let refresh = TestPublisher<Int, Err> { s in
+            s.receive(subscription: Subscriptions.empty)
+            refreshCalled += 1
+            _ = s.receive(1)
+        }.eraseToAnyPublisher()
+        
+        TestPublisher<Int, Err> { s in
+            s.receive(subscription: Subscriptions.empty)
+            called += 1
+            s.receive(completion: .failure(.e1))
+        }.retryOn(Err.e1, retries: 1, chainedPublisher: refresh)
+        .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+        .store(in: &subscribers)
 
         // swiftlint:enable force_cast
 
-        waitUntil(called > 0)
-        XCTAssertEqual(called, 1)
+        waitUntil(refreshCalled > 0)
+        XCTAssertEqual(called, 2)
+        XCTAssertEqual(refreshCalled, 1)
     }
 
     func testRetryOnDoesNotRetryIfErrorDoesNotMatch() {
@@ -102,20 +101,16 @@ class RetryOnTests: XCTestCase {
 
         var called = 0
 
-        // swiftlint:disable force_cast
-        Just(1)
-            .setFailureType(to: Err.self)
-            .tryMap { _ -> Int in
-                called += 1
-                throw Err.e1
-            }.mapError { $0 as! Err}
-            .retryOn(Err.e2, retries: 1)
+        let pub = TestPublisher<Int, Err> { s in
+            s.receive(subscription: Subscriptions.empty)
+            called += 1
+            s.receive(completion: .failure(Err.e1))
+        }
+        pub.retryOn(Err.e2, retries: 1)
             .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
             .store(in: &subscribers)
 
         waitUntil(called > 0)
         XCTAssertEqual(called, 1)
-
-        // swiftlint:enable force_cast
     }
 }
