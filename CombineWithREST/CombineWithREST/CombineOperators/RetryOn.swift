@@ -17,27 +17,40 @@ extension Publisher {
     /// - Parameter retries: The number of times to attempt to recreate the subscription.
     /// - Parameter chainedRequest: An optional publisher of the same type, to chain before the retry
     /// - Returns: A publisher that attempts to recreate its subscription to a failed upstream publisher.
-    func retryOn<E: Error & Equatable>(_ error: E, retries: UInt, chainedPublisher: AnyPublisher<Output, Failure>? = nil) -> Publishers.RetryOn<Self, E> {
+    func retryOn<E: Error & Equatable, C: Publisher>(_ error: E, retries: UInt, chainedPublisher: C) -> Publishers.RetryOn<Self, E, C> where C.Output == Output, C.Failure == Failure {
         return .init(upstream: self,
                      retries: retries,
                      error: error,
                      chainedPublisher: chainedPublisher)
+    }
+    
+    /// Attempts to recreate a failed subscription with the upstream publisher using a specified number of attempts to establish the connection.
+    ///
+    /// After exceeding the specified number of retries, the publisher passes the failure to the downstream receiver.
+    /// - Parameter error: An equatable error that should trigger the retry
+    /// - Parameter retries: The number of times to attempt to recreate the subscription.
+    /// - Returns: A publisher that attempts to recreate its subscription to a failed upstream publisher.
+    func retryOn<E: Error & Equatable>(_ error: E, retries: UInt) -> Publishers.RetryOn<Self, E, AnyPublisher<Output, Failure>> {
+        return .init(upstream: self,
+                     retries: retries,
+                     error: error,
+                     chainedPublisher: nil)
     }
 }
 
 extension Publishers {
 
     /// A publisher that attempts to recreate its subscription to a failed upstream publisher.
-    struct RetryOn<Upstream: Publisher, ErrorType: Error & Equatable>: Publisher {
+    struct RetryOn<Upstream: Publisher, ErrorType: Error & Equatable, Chained: Publisher>: Publisher where Chained.Output == Upstream.Output, Chained.Failure == Upstream.Failure {
 
         typealias Output = Upstream.Output
 
         typealias Failure = Upstream.Failure
-//
+
         let upstream: Upstream
         let retries: UInt
         let error: ErrorType
-        let chainedPublisher: AnyPublisher<Output, Failure>?
+        let chainedPublisher: Chained?
 
         /// Creates a publisher that attempts to recreate its subscription to a failed upstream publisher.
         ///
@@ -46,7 +59,7 @@ extension Publishers {
         ///   - error: An equatable error that should trigger the retry
         ///   - retries: The number of times to attempt to recreate the subscription.
         ///   - chainedPublisher: An optional publisher of the same type, to chain before the retry
-        init(upstream: Upstream, retries: UInt, error: ErrorType, chainedPublisher: AnyPublisher<Output, Failure>?) {
+        init(upstream: Upstream, retries: UInt, error: ErrorType, chainedPublisher: Chained?) {
             self.upstream = upstream
             self.retries = retries
             self.error = error
