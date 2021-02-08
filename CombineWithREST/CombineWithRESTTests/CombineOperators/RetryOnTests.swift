@@ -14,7 +14,7 @@ import Combine
 class RetryOnTests: XCTestCase {
     var subscribers = Set<AnyCancellable>()
 
-    func testRetryOnStartsTheChainOverIfTheErrorMatches() {
+    func testRetryOnStartsTheChainOverIfTheErrorMatches() throws {
         enum Err: Error {
             case e1
             case e2
@@ -37,7 +37,7 @@ class RetryOnTests: XCTestCase {
         XCTAssertEqual(called, 2)
     }
 
-    func testRetryOnStartsTheChainOverTheSpecifiedNumberOfTimesIfTheErrorMatches() {
+    func testRetryOnStartsTheChainOverTheSpecifiedNumberOfTimesIfTheErrorMatches() throws {
         enum Err: Error {
             case e1
             case e2
@@ -62,7 +62,7 @@ class RetryOnTests: XCTestCase {
         XCTAssertEqual(called, Int(attempts)+1)
     }
 
-    func testRetryOnChainsPublishersBeforeRetrying() {
+    func testRetryOnChainsPublishersBeforeRetrying() throws {
         enum Err: Error {
             case e1
             case e2
@@ -91,7 +91,7 @@ class RetryOnTests: XCTestCase {
         XCTAssertEqual(refreshCalled, 1)
     }
 
-    func testRetryOnDoesNotRetryIfErrorDoesNotMatch() {
+    func testRetryOnDoesNotRetryIfErrorDoesNotMatch() throws {
         enum Err: Error {
             case e1
             case e2

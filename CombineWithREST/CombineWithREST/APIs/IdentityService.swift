@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+
+
 //protocol IdentityServiceProtocol {
 //    var fetchProfile: AnyPublisher<Result<User.Profile, API.IdentityService.FetchProfileError>, Never> { get }
 //}
@@ -45,12 +47,41 @@ import Combine
 //    }
 //}
 //
-//extension API {
-//    struct IdentityService: IdentityServiceProtocol, RESTAPIProtocol {
-//        var baseURL = "https://some.identityservice.com/api"
-//
-//        enum FetchProfileError: Error {
-//            case apiBorked
-//        }
-//    }
-//}
+extension API {
+    struct IdentityService: RESTAPIProtocol {
+//    : IdentityServiceProtocol, RESTAPIProtocol {
+        var baseURL = "https://some.identityservice.com/api"
+
+        enum FetchProfileError: Error {
+            case apiBorked(Error)
+        }
+
+        
+        var fetchProfile: AnyPublisher<Result<User.Profile, FetchProfileError>, Never> {
+            self.get(endpoint: "me") {
+                $0.acceptingJSON()
+                    .sendingJSON()
+                    .addingBearerAuthorization(token: User.accessToken)
+            }.retryOnceOnUnauthorizedResponse(chainedRequest: refresh)
+            .map(\.data)
+            .decode(type: User.Profile.self, decoder: JSONDecoder())
+            .map(Result.success)
+            .catch { error in Just(.failure(.apiBorked(error))) }
+            .eraseToAnyPublisher()
+        }
+        
+        private var refresh: URLSession.ErasedDataTaskPublisher {
+            self.post(endpoint: "auth/refresh",
+                      body: try? JSONSerialization.data(withJSONObject: ["refreshToken": User.refreshToken]))
+                .unwrapResultJSONFromAPI()
+                .tryMap { args -> URLSession.ErasedDataTaskPublisher.Output in
+                    let json = try JSONSerialization.jsonObject(with: args.data) as? [String: Any]
+                    guard let accessToken = json?["accessToken"] as? String else {
+                        throw API.AuthorizationError.unauthorized
+                    }
+                    User.accessToken = accessToken
+                    return args
+                }.eraseToAnyPublisher()
+        }
+    }
+}

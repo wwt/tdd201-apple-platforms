@@ -12,7 +12,7 @@ enum API {
     enum URLError: Error {
         case unableToCreateURL
     }
-//    enum AuthorizationError: Error {
-//        case unauthorized
-//    }
+    enum AuthorizationError: Error {
+        case unauthorized
+    }
 }
