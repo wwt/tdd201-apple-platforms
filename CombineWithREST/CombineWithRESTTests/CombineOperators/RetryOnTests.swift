@@ -71,12 +71,12 @@ class RetryOnTests: XCTestCase {
         var called = 0
         var refreshCalled = 0
 
-        // swiftlint:disable force_cast
         let refresh = TestPublisher<Int, Err> { s in
             s.receive(subscription: Subscriptions.empty)
             refreshCalled += 1
+            XCTAssertEqual(called, 1)
             _ = s.receive(1)
-        }.eraseToAnyPublisher()
+        }
         
         TestPublisher<Int, Err> { s in
             s.receive(subscription: Subscriptions.empty)
@@ -85,8 +85,6 @@ class RetryOnTests: XCTestCase {
         }.retryOn(Err.e1, retries: 1, chainedPublisher: refresh)
         .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
         .store(in: &subscribers)
-
-        // swiftlint:enable force_cast
 
         waitUntil(refreshCalled > 0)
         XCTAssertEqual(called, 2)
