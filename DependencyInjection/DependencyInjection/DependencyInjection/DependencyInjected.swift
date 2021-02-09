@@ -13,16 +13,7 @@ struct DependencyInjected<Value> {
     let name: String?
     let container: Container
 
-    public init(wrappedValue value: Value?) {
-        name = nil
-        container = Container.default
-    }
-    public init(name: String) {
-        self.name = name
-        container = Container.default
-    }
-
-    public init(container: Container, name: String? = nil) {
+    public init(container: Container = Container.default, name: String? = nil) {
         self.name = name
         self.container = container
     }
