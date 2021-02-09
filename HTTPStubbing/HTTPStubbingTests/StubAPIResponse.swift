@@ -50,10 +50,9 @@ class StubAPIResponse {
                                                                httpVersion: "2.0",
                                                                headerFields: headers)!, at: 0)
         verifiers[request, default: []].insert({ _ in }, at: 0)
-        
-        
+
         guard !requests.contains(where: matchesRequest(request)) else { return self }
-        
+
         stub(condition: matchesRequest(request)) { [self] in
             verifiers[request]?.popLastUnlessEmpty()?($0)
             let response = responses[request]!.popLastUnlessEmpty()!
@@ -65,7 +64,7 @@ class StubAPIResponse {
                                                                   headers: response.allHeaderFields)
             }
         }
-        
+
         return self
     }
 

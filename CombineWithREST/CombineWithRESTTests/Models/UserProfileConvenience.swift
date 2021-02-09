@@ -15,9 +15,8 @@ extension User.Profile {
                                createdDate: Date = Date(),
                                termsAccepted: Bool = true,
                                isVerified: Bool = true,
-                               email: String = Faker().internet.email()) -> User.Profile {
-        // swiftlint:disable:next force_try
-        return try! JSONDecoder().decode(User.Profile.self, from: Data("""
+                               email: String = Faker().internet.email()) throws -> User.Profile {
+        return try JSONDecoder().decode(User.Profile.self, from: Data("""
         {
             "self": {
                 "firstName": "\(firstName)",

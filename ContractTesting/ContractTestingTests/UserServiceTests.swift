@@ -17,10 +17,9 @@ class UserServiceTests: XCTestCase {
         HTTPStubs.removeAllStubs()
     }
 
-    func testUserServiceCallsBackWithUser_OnSuccess() {
+    func testUserServiceCallsBackWithUser_OnSuccess() throws {
         let expectedModel = SomeModel(name: "Joe", age: 35, email: "Joe.Blow@fake.com")
-        // swiftlint:disable:next force_try
-        let json = try! JSONEncoder().encode(expectedModel)
+        let json = try JSONEncoder().encode(expectedModel)
         StubAPIResponse(request: .init(.get, urlString: "https://api.fake.com/users/1"),
                         statusCode: 200,
                         result: .success(json))
@@ -43,7 +42,7 @@ class UserServiceTests: XCTestCase {
         wait(for: [expectation], timeout: 0.3)
     }
 
-    func testUserServiceCallsBackWithError_OnFailure() {
+    func testUserServiceCallsBackWithError_OnFailure() throws {
         StubAPIResponse(request: .init(.get, urlString: "https://api.fake.com/users/1"),
                         statusCode: 403,
                         result: .failure(URLError(.badServerResponse)))

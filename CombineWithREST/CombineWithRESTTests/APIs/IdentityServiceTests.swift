@@ -65,7 +65,7 @@ class IdentityServiceTests: XCTestCase {
         XCTAssert(called)
     }
 
-    func testFetchProfileThrowsAPIBorkedError() {
+    func testFetchProfileThrowsAPIBorkedError() throws {
         let data = Data("Invalid".utf8)
         StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
                         statusCode: 200,
@@ -97,7 +97,7 @@ class IdentityServiceTests: XCTestCase {
         XCTAssert(called)
     }
 
-    func testFetchProfileRetriesOnUnauthorizedResponse() {
+    func testFetchProfileRetriesOnUnauthorizedResponse() throws {
         User.accessToken = ""
         StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
                         statusCode: 401)
@@ -136,18 +136,16 @@ class IdentityServiceTests: XCTestCase {
         XCTAssert(called)
     }
 
-    func testFetchProfileFailsOnUnauthorizedResponseIfRefreshFails() {
-        // swiftlint:disable force_try
+    func testFetchProfileFailsOnUnauthorizedResponseIfRefreshFails() throws {
         StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
                         statusCode: 401)
             .thenRespondWith(request: .init(.post, urlString: "\(API.IdentityService().baseURL)/auth/refresh"),
                              statusCode: 200,
-                             result: .success(try! JSONSerialization.data(withJSONObject: ["result": [:]])))
+                             result: .success(try JSONSerialization.data(withJSONObject: ["result": [:]])))
             .thenRespondWith(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
                              statusCode: 200,
                              result: .success(validProfileJSON.data(using: .utf8)!))
 
-        // swiftlint:enable force_try
         let api = API.IdentityService()
 
         var called = false

@@ -22,7 +22,7 @@ class ViewControllerTests: XCTestCase {
     func testFetchingProfileFromAPI() throws {
         let mock = MockIdentityServiceProtocol()
             .registerIn(container: Container.default)
-        let expectedProfile = User.Profile.createForTests()
+        let expectedProfile = try User.Profile.createForTests()
         stub(mock) { stub in
             _ = when(stub.fetchProfile.get
                         .thenReturn(Result.Publisher(.success(expectedProfile)).eraseToAnyPublisher()))
@@ -38,9 +38,10 @@ class ViewControllerTests: XCTestCase {
     func testFetchingProfileDoesNotRetainAStrongReference() throws {
         let mock = MockIdentityServiceProtocol()
             .registerIn(container: Container.default)
+        let profile = try User.Profile.createForTests()
         stub(mock) { stub in
             _ = when(stub.fetchProfile.get
-                        .thenReturn(Result.Publisher(.success(User.Profile.createForTests()))
+                        .thenReturn(Result.Publisher(.success(profile))
                                         .delay(for: .seconds(10), scheduler: RunLoop.main)
                                         .eraseToAnyPublisher()))
         }
