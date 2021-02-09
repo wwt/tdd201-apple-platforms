@@ -10,12 +10,6 @@ import OHHTTPStubs
 
 @testable import CombineWithREST
 
-extension URLRequest: Identifiable {
-    public var id: String {
-        [httpMethod, url?.absoluteString].compactMap { $0 }.joined(separator: "_")
-    }
-}
-
 fileprivate extension Array {
     mutating func popLastUnlessEmpty() -> Element? {
         if count > 1 {
@@ -24,13 +18,24 @@ fileprivate extension Array {
             return last
         }
     }
+    mutating func popFirstUnlessEmpty() -> Element? {
+        if count > 1 {
+            defer {
+                removeFirst()
+            }
+            return first
+        } else {
+            return first
+        }
+    }
 }
 
 class StubAPIResponse {
     var results = [String: [Result<Data, Error>]]()
     var responses = [String: [HTTPURLResponse]]()
+    var verifiers = [String: [((URLRequest) -> Void)]]()
     var requests = [URLRequest]()
-    var verifiers = [String: ((URLRequest) -> Void)]()
+    var stubs = [String: [HTTPStubsResponseBlock]]()
 
     @discardableResult init(request: URLRequest, statusCode: Int, result: Result<Data, Error>? = nil, headers: [String: String]? = nil) {
         thenRespondWith(request: request,
@@ -41,29 +46,39 @@ class StubAPIResponse {
     @discardableResult func thenRespondWith(request: URLRequest, statusCode: Int, result: Result<Data, Error>? = nil, headers: [String: String]? = nil) -> Self {
         guard let url = request.url else { return self }
         if let res = result {
-            results[request.id, default: []].insert(res, at: 0)
+            results[url.absoluteString, default: []].insert(res, at: 0)
         }
-        responses[request.id, default: []].insert(HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "2.0", headerFields: headers)!, at: 0)
-        requests.insert(request, at: 0)
+        responses[url.absoluteString, default: []].insert(HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "2.0", headerFields: headers)!, at: 0)
+        verifiers[url.absoluteString, default: []].insert({ _ in
+            print("Hello there")
+        }, at: 0)
+        requests.append(request)
+        
+        stubs[url.absoluteString, default: []].append { [self] in
+            verifiers[url.absoluteString]?.popLastUnlessEmpty()?($0)
+            let response = responses[url.absoluteString]!.popLastUnlessEmpty()!
+            if let result = results[url.absoluteString]?.popLastUnlessEmpty() {
+                switch result {
+                    case .failure(let err): return HTTPStubsResponse(error: err)
+                    case .success(let data): return HTTPStubsResponse(data: data, statusCode: Int32(response.statusCode), headers: response.allHeaderFields)
+                }
+            }
+            return HTTPStubsResponse(data: Data(), statusCode: Int32(response.statusCode), headers: response.allHeaderFields)
+        }
+        
+        guard var allStubForURL = stubs[url.absoluteString],
+              allStubForURL.count == 1 else { return self }
 
-        stub(condition: isAbsoluteURLString(url.absoluteString)) { [self] in
-            if let verifier = verifiers[$0.id] {
-                verifier($0)
-            }
-            let response = responses[$0.id]!.popLastUnlessEmpty()!
-            let result = results[$0.id]!.popLastUnlessEmpty()!
-            switch result {
-                case .failure(let err): return HTTPStubsResponse(error: err)
-                case .success(let data): return HTTPStubsResponse(data: data, statusCode: Int32(response.statusCode), headers: response.allHeaderFields)
-            }
+        stub(condition: isAbsoluteURLString(url.absoluteString)) {
+            return allStubForURL.popFirstUnlessEmpty()!($0)
         }
 
         return self
     }
 
     @discardableResult func thenVerifyRequest(_ requestVerifier:@escaping ((URLRequest) -> Void)) -> Self {
-        guard let req = requests.first else { return self }
-        verifiers[req.id] = requestVerifier
+        guard let url = requests.last?.url else { return self }
+        verifiers[url.absoluteString]?[0] = requestVerifier
         return self
     }
 }

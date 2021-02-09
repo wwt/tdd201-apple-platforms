@@ -651,16 +651,6 @@ class APITests: XCTestCase {
             var baseURL: String = "http://www.google.com"
             var urlSession: URLSession = URLSession(configuration: URLSessionConfiguration.default)
         }
-        let json = """
-        [
-            {
-                userId: 1,
-                id: 1,
-                title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
-            },
-        ]
-        """.data(using: .utf8)!
         let fakeAPI = FakeAPI()
         
         XCTAssertNotEqual(fakeAPI.urlSession, URLSession.shared)
@@ -668,17 +658,21 @@ class APITests: XCTestCase {
         let endpoint = "me"
         let urlString = "\(fakeAPI.baseURL)/\(endpoint)"
         StubAPIResponse(request: .init(.get, urlString: urlString),
-                        statusCode: 200,
-                        result: .success(json))
-            .thenVerifyRequest { (request) in
-                XCTAssertEqual(request.httpMethod, "GET")
-                XCTAssertEqual(request.url?.absoluteString, urlString)
-                XCTAssertEqual(request.allHTTPHeaderFields, request.sendingJSON().allHTTPHeaderFields)
-            }
-        
-        _ = fakeAPI.get(endpoint: endpoint) { request in
+                        statusCode: 200)
+            .thenRespondWith(request: .init(.put, urlString: urlString),
+                             statusCode: 200)
+            .thenRespondWith(request: .init(.post, urlString: urlString),
+                             statusCode: 200)
+            .thenRespondWith(request: .init(.patch, urlString: urlString),
+                             statusCode: 200)
+            .thenRespondWith(request: .init(.delete, urlString: urlString),
+                             statusCode: 200)
+
+        fakeAPI.get(endpoint: endpoint) { request in
             request.sendingJSON()
         }
+        .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+        .store(in: &subscribers)
         
         XCTAssertEqual(Self.swizzled.count, 1)
         XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
@@ -686,37 +680,45 @@ class APITests: XCTestCase {
         
         Self.swizzled.removeAll()
         
-        _ = fakeAPI.put(endpoint: endpoint) { request in
+        fakeAPI.put(endpoint: endpoint) { request in
             request.sendingJSON()
         }
-        
+        .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+        .store(in: &subscribers)
+
         XCTAssertEqual(Self.swizzled.count, 1)
         XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
         
         Self.swizzled.removeAll()
         
-        _ = fakeAPI.post(endpoint: endpoint) { request in
+        fakeAPI.post(endpoint: endpoint) { request in
             request.sendingJSON()
         }
-        
+        .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+        .store(in: &subscribers)
+
         XCTAssertEqual(Self.swizzled.count, 1)
         XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
         
         Self.swizzled.removeAll()
         
-        _ = fakeAPI.patch(endpoint: endpoint) { request in
+        fakeAPI.patch(endpoint: endpoint) { request in
             request.sendingJSON()
         }
-        
+        .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+        .store(in: &subscribers)
+
         XCTAssertEqual(Self.swizzled.count, 1)
         XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
         
         Self.swizzled.removeAll()
         
-        _ = fakeAPI.delete(endpoint: endpoint) { request in
+        fakeAPI.delete(endpoint: endpoint) { request in
             request.sendingJSON()
         }
-        
+        .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+        .store(in: &subscribers)
+
         XCTAssertEqual(Self.swizzled.count, 1)
         XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
     }

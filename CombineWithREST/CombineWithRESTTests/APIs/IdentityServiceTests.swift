@@ -12,6 +12,8 @@ import Combine
 @testable import CombineWithREST
 
 class IdentityServiceTests: XCTestCase {
+    lazy var accessToken: String = { UUID().uuidString }()
+    
     var ongoingCalls = Set<AnyCancellable>()
 
     override func setUpWithError() throws {
@@ -95,7 +97,6 @@ class IdentityServiceTests: XCTestCase {
         XCTAssert(called)
     }
 
-    #warning("Need to verify access token. thenVerify is broke")
     func testFetchProfileRetriesOnUnauthorizedResponse() {
         User.accessToken = ""
         StubAPIResponse(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
@@ -115,8 +116,8 @@ class IdentityServiceTests: XCTestCase {
                 XCTAssertEqual(request.httpMethod, "GET")
                 XCTAssertEqual(request.value(forHTTPHeaderField: "Accept"), "application/json")
                 XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/json")
-//                XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer \(accessToken)")
-//                XCTAssertEqual(User.accessToken, accessToken)
+                XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer \(accessToken)")
+                XCTAssertEqual(User.accessToken, accessToken)
             }
 
         let api = API.IdentityService()
@@ -169,7 +170,6 @@ class IdentityServiceTests: XCTestCase {
 }
 
 extension IdentityServiceTests {
-    var accessToken: String { UUID().uuidString }
     
     var validRefreshResponse: Data {
         Data("""
