@@ -17,6 +17,7 @@ extension Publisher {
     /// - Parameter retries: The number of times to attempt to recreate the subscription.
     /// - Parameter chainedRequest: An optional publisher of the same type, to chain before the retry
     /// - Returns: A publisher that attempts to recreate its subscription to a failed upstream publisher.
+    // swiftlint:disable:next line_length
     func retryOn<E: Error & Equatable, C: Publisher>(_ error: E, retries: UInt, chainedPublisher: C) -> Publishers.RetryOn<Self, E, C> where C.Output == Output, C.Failure == Failure {
         return .init(upstream: self,
                      retries: retries,

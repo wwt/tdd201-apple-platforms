@@ -18,64 +18,53 @@ fileprivate extension Array {
     }
 
     mutating func popFirstUnlessEmpty() -> Element? {
-        if count > 1 {
-            defer {
-                removeFirst()
-            }
-            return first
-        } else {
-            return first
+        defer {
+            if count > 1 { removeFirst() }
         }
+        return first
     }
 }
 
 class StubAPIResponse {
-    var results = [String: [Result<Data, Error>]]()
-    var responses = [String: [HTTPURLResponse]]()
-    var verifiers = [String: [((URLRequest) -> Void)]]()
+    var results = [URLRequest: [Result<Data, Error>]]()
+    var responses = [URLRequest: [HTTPURLResponse]]()
+    var verifiers = [URLRequest: [((URLRequest) -> Void)]]()
     var requests = [URLRequest]()
-    var stubs = [String: [HTTPStubsResponseBlock]]()
+    var stubbedAbsoluteURLStrings = [String]()
 
-    @discardableResult init(request: URLRequest, statusCode: Int, result: Result<Data, Error>? = nil, headers: [String: String]? = nil) {
+    @discardableResult init(request: URLRequest, statusCode: Int, result: Result<Data, Error> = .success(Data()), headers: [String: String]? = nil) {
         thenRespondWith(request: request,
                         statusCode: statusCode, result: result,
                         headers: headers)
     }
 
-    @discardableResult func thenRespondWith(request: URLRequest, statusCode: Int, result: Result<Data, Error>? = nil, headers: [String: String]? = nil) -> Self {
+    @discardableResult func thenRespondWith(request: URLRequest, statusCode: Int, result: Result<Data, Error> = .success(Data()), headers: [String: String]? = nil) -> Self {
         guard let url = request.url else { return self }
-        if let res = result {
-            results[url.absoluteString, default: []].insert(res, at: 0)
-        }
-        responses[url.absoluteString, default: []].insert(HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "2.0", headerFields: headers)!, at: 0)
-        verifiers[url.absoluteString, default: []].insert({ _ in }, at: 0)
+        
+        results[request, default: []].insert(result, at: 0)
+        responses[request, default: []].insert(HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "2.0", headerFields: headers)!, at: 0)
+        verifiers[request, default: []].insert({ _ in }, at: 0)
         requests.append(request)
 
-        stubs[url.absoluteString, default: []].append { [self] in
-            verifiers[url.absoluteString]?.popLastUnlessEmpty()?($0)
-            let response = responses[url.absoluteString]!.popLastUnlessEmpty()!
-            if let result = results[url.absoluteString]?.popLastUnlessEmpty() {
-                switch result {
-                    case .failure(let err): return HTTPStubsResponse(error: err)
-                    case .success(let data): return HTTPStubsResponse(data: data, statusCode: Int32(response.statusCode), headers: response.allHeaderFields)
-                }
+        guard !stubbedAbsoluteURLStrings.contains(url.absoluteString) else { return self }
+        stubbedAbsoluteURLStrings.append(url.absoluteString)
+        
+        stub(condition: isAbsoluteURLString(url.absoluteString)) { [self] in
+            verifiers[request]?.popLastUnlessEmpty()?($0)
+            let response = responses[request]!.popLastUnlessEmpty()!
+            let result = results[request]!.popLastUnlessEmpty()!
+            switch result {
+                case .failure(let err): return HTTPStubsResponse(error: err)
+                case .success(let data): return HTTPStubsResponse(data: data, statusCode: Int32(response.statusCode), headers: response.allHeaderFields)
             }
-            return HTTPStubsResponse(data: Data(), statusCode: Int32(response.statusCode), headers: response.allHeaderFields)
-        }
-
-        guard var allStubForURL = stubs[url.absoluteString],
-              allStubForURL.count == 1 else { return self }
-
-        stub(condition: isAbsoluteURLString(url.absoluteString)) {
-            return allStubForURL.popFirstUnlessEmpty()!($0)
         }
 
         return self
     }
 
     @discardableResult func thenVerifyRequest(_ requestVerifier:@escaping ((URLRequest) -> Void)) -> Self {
-        guard let url = requests.last?.url else { return self }
-        verifiers[url.absoluteString]?[0] = requestVerifier
+        guard let request = requests.last else { return self }
+        verifiers[request]?[0] = requestVerifier
         return self
     }
 }

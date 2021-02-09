@@ -6,6 +6,7 @@
 //
 
 // swiftlint:disable type_body_length
+// swiftlint:disable file_length
 
 import Foundation
 import XCTest
@@ -36,7 +37,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -92,7 +93,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -156,7 +157,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -195,7 +196,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -254,7 +255,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -320,7 +321,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -359,7 +360,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -418,7 +419,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -484,7 +485,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -523,7 +524,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -582,7 +583,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -648,7 +649,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -704,7 +705,7 @@ class APITests: XCTestCase {
                 userId: 1,
                 id: 1,
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+                body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam"
             },
         ]
         """.data(using: .utf8)!
@@ -761,6 +762,7 @@ class APITests: XCTestCase {
         XCTAssertEqual(requestModifierCalled, 2)
     }
 
+    // swiftlint:disable:next function_body_length
     func testAPIUsesCustomURLSession() throws {
         struct FakeAPI: RESTAPIProtocol {
             var baseURL: String = "http://www.google.com"
