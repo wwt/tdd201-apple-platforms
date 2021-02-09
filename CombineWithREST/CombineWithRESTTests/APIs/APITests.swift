@@ -125,6 +125,30 @@ class APITests: XCTestCase {
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
     
+    func testGETRecalculatesRequestModifierWhenChainIsRestarted() throws {
+        let responseExpectation = self.expectation(description: "Response recieved")
+        var requestModifierCalled = 0
+        
+        API.JSONPlaceHolder()
+            .get(endpoint: "") {
+                requestModifierCalled += 1
+                return $0
+            }
+            .tryMap { _ in throw API.URLError.unableToCreateURL }
+            .retry(1)
+            .sink { res in
+                responseExpectation.fulfill()
+                if case .failure(let err) = res {
+                    XCTAssertEqual(err as? API.URLError, .unableToCreateURL)
+                }
+            } receiveValue: { _ in
+                XCTFail("Did not expect to get value")
+            }.store(in: &subscribers)
+        
+        wait(for: [responseExpectation], timeout: 3)
+        XCTAssertEqual(requestModifierCalled, 2)
+    }
+    
     func testAPIMakesAPUTRequestWithNoBody() throws {
         let json = """
         [
@@ -264,6 +288,30 @@ class APITests: XCTestCase {
         }.store(in: &subscribers)
 
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
+    }
+    
+    func testPUTRecalculatesRequestModifierWhenChainIsRestarted() throws {
+        let responseExpectation = self.expectation(description: "Response recieved")
+        var requestModifierCalled = 0
+        
+        API.JSONPlaceHolder()
+            .put(endpoint: "") {
+                requestModifierCalled += 1
+                return $0
+            }
+            .tryMap { _ in throw API.URLError.unableToCreateURL }
+            .retry(1)
+            .sink { res in
+                responseExpectation.fulfill()
+                if case .failure(let err) = res {
+                    XCTAssertEqual(err as? API.URLError, .unableToCreateURL)
+                }
+            } receiveValue: { _ in
+                XCTFail("Did not expect to get value")
+            }.store(in: &subscribers)
+        
+        wait(for: [responseExpectation], timeout: 3)
+        XCTAssertEqual(requestModifierCalled, 2)
     }
     
     func testAPIMakesAPOSTRequestWithNoBody() throws {
@@ -407,6 +455,30 @@ class APITests: XCTestCase {
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
     
+    func testPOSTRecalculatesRequestModifierWhenChainIsRestarted() throws {
+        let responseExpectation = self.expectation(description: "Response recieved")
+        var requestModifierCalled = 0
+        
+        API.JSONPlaceHolder()
+            .post(endpoint: "") {
+                requestModifierCalled += 1
+                return $0
+            }
+            .tryMap { _ in throw API.URLError.unableToCreateURL }
+            .retry(1)
+            .sink { res in
+                responseExpectation.fulfill()
+                if case .failure(let err) = res {
+                    XCTAssertEqual(err as? API.URLError, .unableToCreateURL)
+                }
+            } receiveValue: { _ in
+                XCTFail("Did not expect to get value")
+            }.store(in: &subscribers)
+        
+        wait(for: [responseExpectation], timeout: 3)
+        XCTAssertEqual(requestModifierCalled, 2)
+    }
+    
     func testAPIMakesAPATCHRequestWithNoBody() throws {
         let json = """
         [
@@ -548,6 +620,30 @@ class APITests: XCTestCase {
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
     
+    func testPATCHRecalculatesRequestModifierWhenChainIsRestarted() throws {
+        let responseExpectation = self.expectation(description: "Response recieved")
+        var requestModifierCalled = 0
+        
+        API.JSONPlaceHolder()
+            .patch(endpoint: "") {
+                requestModifierCalled += 1
+                return $0
+            }
+            .tryMap { _ in throw API.URLError.unableToCreateURL }
+            .retry(1)
+            .sink { res in
+                responseExpectation.fulfill()
+                if case .failure(let err) = res {
+                    XCTAssertEqual(err as? API.URLError, .unableToCreateURL)
+                }
+            } receiveValue: { _ in
+                XCTFail("Did not expect to get value")
+            }.store(in: &subscribers)
+        
+        wait(for: [responseExpectation], timeout: 3)
+        XCTAssertEqual(requestModifierCalled, 2)
+    }
+    
     func testAPIMakesADELETERequest() throws {
         let json = """
         [
@@ -645,6 +741,29 @@ class APITests: XCTestCase {
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
 
+    func testDELETERecalculatesRequestModifierWhenChainIsRestarted() throws {
+        let responseExpectation = self.expectation(description: "Response recieved")
+        var requestModifierCalled = 0
+        
+        API.JSONPlaceHolder()
+            .delete(endpoint: "") {
+                requestModifierCalled += 1
+                return $0
+            }
+            .tryMap { _ in throw API.URLError.unableToCreateURL }
+            .retry(1)
+            .sink { res in
+                responseExpectation.fulfill()
+                if case .failure(let err) = res {
+                    XCTAssertEqual(err as? API.URLError, .unableToCreateURL)
+                }
+            } receiveValue: { _ in
+                XCTFail("Did not expect to get value")
+            }.store(in: &subscribers)
+        
+        wait(for: [responseExpectation], timeout: 3)
+        XCTAssertEqual(requestModifierCalled, 2)
+    }
     
     func testAPIUsesCustomURLSession() throws {
         struct FakeAPI: RESTAPIProtocol {

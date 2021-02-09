@@ -49,9 +49,7 @@ class StubAPIResponse {
             results[url.absoluteString, default: []].insert(res, at: 0)
         }
         responses[url.absoluteString, default: []].insert(HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "2.0", headerFields: headers)!, at: 0)
-        verifiers[url.absoluteString, default: []].insert({ _ in
-            print("Hello there")
-        }, at: 0)
+        verifiers[url.absoluteString, default: []].insert({ _ in }, at: 0)
         requests.append(request)
         
         stubs[url.absoluteString, default: []].append { [self] in

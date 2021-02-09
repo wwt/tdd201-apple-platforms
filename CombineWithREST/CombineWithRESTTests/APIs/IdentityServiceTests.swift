@@ -170,7 +170,6 @@ class IdentityServiceTests: XCTestCase {
 }
 
 extension IdentityServiceTests {
-    
     var validRefreshResponse: Data {
         Data("""
             {
