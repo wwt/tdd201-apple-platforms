@@ -25,12 +25,16 @@ fileprivate extension Array {
     }
 }
 
+public func matchesRequest(_ request: URLRequest) -> HTTPStubsTestBlock {
+    return { req in req.url?.absoluteString == request.url?.absoluteString
+        && req.httpMethod == request.httpMethod }
+}
+
 class StubAPIResponse {
     var results = [URLRequest: [Result<Data, Error>]]()
     var responses = [URLRequest: [HTTPURLResponse]]()
     var verifiers = [URLRequest: [((URLRequest) -> Void)]]()
     var requests = [URLRequest]()
-    var stubbedAbsoluteURLStrings = [String]()
 
     @discardableResult init(request: URLRequest, statusCode: Int, result: Result<Data, Error> = .success(Data()), headers: [String: String]? = nil) {
         thenRespondWith(request: request,
@@ -44,12 +48,12 @@ class StubAPIResponse {
         results[request, default: []].insert(result, at: 0)
         responses[request, default: []].insert(HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "2.0", headerFields: headers)!, at: 0)
         verifiers[request, default: []].insert({ _ in }, at: 0)
-        requests.append(request)
 
-        guard !stubbedAbsoluteURLStrings.contains(url.absoluteString) else { return self }
-        stubbedAbsoluteURLStrings.append(url.absoluteString)
+        defer { requests.append(request) }
         
-        stub(condition: isAbsoluteURLString(url.absoluteString)) { [self] in
+        guard !requests.contains(where: matchesRequest(request)) else { return self }
+
+        stub(condition: matchesRequest(request)) { [self] in
             verifiers[request]?.popLastUnlessEmpty()?($0)
             let response = responses[request]!.popLastUnlessEmpty()!
             let result = results[request]!.popLastUnlessEmpty()!
