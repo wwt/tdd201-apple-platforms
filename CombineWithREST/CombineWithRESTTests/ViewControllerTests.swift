@@ -14,7 +14,12 @@ import Combine
 @testable import CombineWithREST
 
 class ViewControllerTests: XCTestCase {
-    func testFetchingProfileFromAPI() {
+    
+    override func setUpWithError() throws {
+        Container.default.removeAll()
+    }
+    
+    func testFetchingProfileFromAPI() throws {
         let mock = MockIdentityServiceProtocol()
             .registerIn(container: Container.default)
         let expectedProfile = User.Profile.createForTests()
@@ -30,7 +35,7 @@ class ViewControllerTests: XCTestCase {
         XCTAssertEqual(testViewController.fakeNameLabel, [expectedProfile.firstName, expectedProfile.lastName].compactMap { $0 }.joined(separator: " "))
     }
 
-    func testFetchingProfileDoesNotRetainAStrongReference() {
+    func testFetchingProfileDoesNotRetainAStrongReference() throws {
         let mock = MockIdentityServiceProtocol()
             .registerIn(container: Container.default)
         stub(mock) { stub in
@@ -51,7 +56,7 @@ class ViewControllerTests: XCTestCase {
         XCTAssertNil(ref)
     }
 
-    func testFetchingProfileWhenThereIsAnError() {
+    func testFetchingProfileWhenThereIsAnError() throws {
         let err = API.IdentityService.FetchProfileError.apiBorked(API.AuthorizationError.unauthorized)
         let mock = MockIdentityServiceProtocol()
             .registerIn(container: Container.default)

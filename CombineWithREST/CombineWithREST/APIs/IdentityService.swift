@@ -21,7 +21,7 @@ extension IdentityServiceProtocol where Self: RESTAPIProtocol {
                 .addingBearerAuthorization(token: User.accessToken)
         }.retryOnceOnUnauthorizedResponse(chainedRequest: refresh)
         .map(\.data)
-        .decode(type: User.Profile.self, decoder: JSONDecoder())
+        .decodeFromJson(User.Profile.self)
         .map(Result.success)
         .catch { error in Just(.failure(.apiBorked(error))) }
         .eraseToAnyPublisher()
