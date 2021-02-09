@@ -22,7 +22,7 @@ class URLExtensionsTests: XCTestCase {
         XCTAssertEqual(request.sendingJSON().value(forHTTPHeaderField: "Content-Type"), "application/json")
         XCTAssertNil(request.value(forHTTPHeaderField: "Content-Type"))
     }
-    
+
     func testAddingBearerAuthorizationJSONToURLRequest() throws {
         let request = URLRequest(.get, urlString: "https://www.google.com")
         let token = UUID().uuidString

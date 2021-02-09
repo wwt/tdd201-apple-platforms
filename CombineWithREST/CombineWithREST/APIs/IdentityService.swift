@@ -25,7 +25,7 @@ extension IdentityServiceProtocol where Self: RESTAPIProtocol {
         .catch { error in Just(.failure(.apiBorked(error))) }
         .eraseToAnyPublisher()
     }
-    
+
     private var refresh: URLSession.ErasedDataTaskPublisher {
         self.post(endpoint: "auth/refresh",
                   body: try? JSONSerialization.data(withJSONObject: ["refreshToken": User.refreshToken]))

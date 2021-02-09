@@ -13,7 +13,7 @@ import Combine
 
 class IdentityServiceTests: XCTestCase {
     lazy var accessToken: String = { UUID().uuidString }()
-    
+
     var ongoingCalls = Set<AnyCancellable>()
 
     override func setUpWithError() throws {
@@ -78,7 +78,7 @@ class IdentityServiceTests: XCTestCase {
         } catch let err {
             expectedError = err
         }
-        
+
         var called = false
         api.fetchProfile.sink { (result) in
             switch result {

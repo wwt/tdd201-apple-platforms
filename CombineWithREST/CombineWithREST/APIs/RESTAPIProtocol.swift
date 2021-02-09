@@ -17,15 +17,15 @@ protocol RESTAPIProtocol {
 
 extension RESTAPIProtocol {
     var urlSession: URLSession { URLSession.shared }
-    
+
     func get(endpoint: String, requestModifier: @escaping RequestModifier = { $0 }) -> URLSession.ErasedDataTaskPublisher {
         guard let url = URL(string: baseURL)?.appendingPathComponent(endpoint) else {
             return Fail<URLSession.DataTaskPublisher.Output, Error>(error: API.URLError.unableToCreateURL).eraseToAnyPublisher()
         }
         return createPublisher(for: URLRequest(url: url), requestModifier: requestModifier)
     }
-    
-    func put(endpoint:String, body:Data? = nil, requestModifier: @escaping RequestModifier = { $0 }) -> URLSession.ErasedDataTaskPublisher {
+
+    func put(endpoint: String, body: Data? = nil, requestModifier: @escaping RequestModifier = { $0 }) -> URLSession.ErasedDataTaskPublisher {
         guard let url = URL(string: baseURL)?.appendingPathComponent(endpoint) else {
             return Fail<URLSession.DataTaskPublisher.Output, Error>(error: API.URLError.unableToCreateURL).eraseToAnyPublisher()
         }
@@ -34,8 +34,8 @@ extension RESTAPIProtocol {
         request.httpBody = body
         return createPublisher(for: request, requestModifier: requestModifier)
     }
-    
-    func post(endpoint:String, body:Data? = nil, requestModifier: @escaping RequestModifier = { $0 }) -> URLSession.ErasedDataTaskPublisher {
+
+    func post(endpoint: String, body: Data? = nil, requestModifier: @escaping RequestModifier = { $0 }) -> URLSession.ErasedDataTaskPublisher {
         guard let url = URL(string: baseURL)?.appendingPathComponent(endpoint) else {
             return Fail<URLSession.DataTaskPublisher.Output, Error>(error: API.URLError.unableToCreateURL).eraseToAnyPublisher()
         }
@@ -44,8 +44,8 @@ extension RESTAPIProtocol {
         request.httpBody = body
         return createPublisher(for: request, requestModifier: requestModifier)
     }
-    
-    func patch(endpoint:String, body:Data? = nil, requestModifier: @escaping RequestModifier = { $0 }) -> URLSession.ErasedDataTaskPublisher {
+
+    func patch(endpoint: String, body: Data? = nil, requestModifier: @escaping RequestModifier = { $0 }) -> URLSession.ErasedDataTaskPublisher {
         guard let url = URL(string: baseURL)?.appendingPathComponent(endpoint) else {
             return Fail<URLSession.DataTaskPublisher.Output, Error>(error: API.URLError.unableToCreateURL).eraseToAnyPublisher()
         }
@@ -54,8 +54,8 @@ extension RESTAPIProtocol {
         request.httpBody = body
         return createPublisher(for: request, requestModifier: requestModifier)
     }
-    
-    func delete(endpoint:String, requestModifier: @escaping RequestModifier = { $0 }) -> URLSession.ErasedDataTaskPublisher {
+
+    func delete(endpoint: String, requestModifier: @escaping RequestModifier = { $0 }) -> URLSession.ErasedDataTaskPublisher {
         guard let url = URL(string: baseURL)?.appendingPathComponent(endpoint) else {
             return Fail<URLSession.DataTaskPublisher.Output, Error>(error: API.URLError.unableToCreateURL).eraseToAnyPublisher()
         }
@@ -63,7 +63,7 @@ extension RESTAPIProtocol {
         request.httpMethod = "DELETE"
         return createPublisher(for: request, requestModifier: requestModifier)
     }
-    
+
     func createPublisher(for request: URLRequest, requestModifier:@escaping RequestModifier) -> URLSession.ErasedDataTaskPublisher {
         Just(request)
             .setFailureType(to: Error.self)
@@ -71,5 +71,5 @@ extension RESTAPIProtocol {
                 urlSession.erasedDataTaskPublisher(for: requestModifier($0))
             }.eraseToAnyPublisher()
     }
-    
+
 }

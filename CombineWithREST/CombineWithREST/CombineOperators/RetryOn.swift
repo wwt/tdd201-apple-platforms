@@ -23,7 +23,7 @@ extension Publisher {
                      error: error,
                      chainedPublisher: chainedPublisher)
     }
-    
+
     /// Attempts to recreate a failed subscription with the upstream publisher using a specified number of attempts to establish the connection.
     ///
     /// After exceeding the specified number of retries, the publisher passes the failure to the downstream receiver.

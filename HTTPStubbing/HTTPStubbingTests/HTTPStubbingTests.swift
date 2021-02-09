@@ -26,11 +26,11 @@ class HTTPStubbingTests: XCTestCase {
         let expectedModel = SomeModel(name: "Joe", age: 35, email: "Joe.Blow@fake.com")
         // swiftlint:disable:next force_try
         let json = try! JSONEncoder().encode(expectedModel)
-        
+
         stub(condition: isAbsoluteURLString("https://api.fake.com/users/me")) { (_) -> HTTPStubsResponse in
             HTTPStubsResponse(data: json, statusCode: 200, headers: nil)
         }
-        
+
         stub(condition: isAbsoluteURLString("https://api.fake.com/users/me")) { (_) -> HTTPStubsResponse in
             HTTPStubsResponse(data: json, statusCode: 401, headers: nil)
         }

@@ -18,7 +18,7 @@ extension API {
 }
 
 class APITests: XCTestCase {
-    
+
     var subscribers = Set<AnyCancellable>()
     static var swizzled = [(session: URLSession, request: URLRequest)]()
 
@@ -55,24 +55,23 @@ class APITests: XCTestCase {
             }
 
         jsonPlaceHolder.get(endpoint: endpoint).sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
-    
+
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
 
-    
     func testGETFailsWhenURLCannotBeConstructed() throws {
         struct FakeAPI: RESTAPIProtocol {
             var baseURL: String = ""
         }
         let responseExpectation = self.expectation(description: "Response recieved")
-        
+
         FakeAPI().get(endpoint: "").sink { res in
             responseExpectation.fulfill()
             if case .failure(let err) = res {
@@ -81,7 +80,7 @@ class APITests: XCTestCase {
         } receiveValue: { _ in
             XCTFail("Did not expect to get value")
         }.store(in: &subscribers)
-        
+
         wait(for: [responseExpectation], timeout: 3)
     }
 
@@ -114,21 +113,21 @@ class APITests: XCTestCase {
         jsonPlaceHolder.get(endpoint: endpoint) { request in
             request.sendingJSON()
         }.sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
-    
+
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-    
+
     func testGETRecalculatesRequestModifierWhenChainIsRestarted() throws {
         let responseExpectation = self.expectation(description: "Response recieved")
         var requestModifierCalled = 0
-        
+
         API.JSONPlaceHolder()
             .get(endpoint: "") {
                 requestModifierCalled += 1
@@ -144,11 +143,11 @@ class APITests: XCTestCase {
             } receiveValue: { _ in
                 XCTFail("Did not expect to get value")
             }.store(in: &subscribers)
-        
+
         wait(for: [responseExpectation], timeout: 3)
         XCTAssertEqual(requestModifierCalled, 2)
     }
-    
+
     func testAPIMakesAPUTRequestWithNoBody() throws {
         let json = """
         [
@@ -177,17 +176,17 @@ class APITests: XCTestCase {
             }
 
         jsonPlaceHolder.put(endpoint: endpoint).sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
-    
+
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-    
+
     func testAPIMakesAPUTRequestWithABody() throws {
         let json = """
         [
@@ -212,23 +211,22 @@ class APITests: XCTestCase {
                 requestExpectation.fulfill()
                 XCTAssertEqual(request.httpMethod, "PUT")
                 XCTAssertEqual(request.url?.absoluteString, urlString)
-                
+
                 XCTAssertEqual(request.allHTTPHeaderFields?["Content-Length"], "\(body!.count)")
                 XCTAssertEqual(request.bodySteamAsData(), body)
             }
 
         jsonPlaceHolder.put(endpoint: endpoint, body: body).sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
 
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-
 
     func testPUTFailsWhenURLCannotBeConstructed() throws {
         struct FakeAPI: RESTAPIProtocol {
@@ -279,21 +277,21 @@ class APITests: XCTestCase {
         jsonPlaceHolder.put(endpoint: endpoint, body: body) { request in
             request.sendingJSON()
         }.sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
 
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-    
+
     func testPUTRecalculatesRequestModifierWhenChainIsRestarted() throws {
         let responseExpectation = self.expectation(description: "Response recieved")
         var requestModifierCalled = 0
-        
+
         API.JSONPlaceHolder()
             .put(endpoint: "") {
                 requestModifierCalled += 1
@@ -309,11 +307,11 @@ class APITests: XCTestCase {
             } receiveValue: { _ in
                 XCTFail("Did not expect to get value")
             }.store(in: &subscribers)
-        
+
         wait(for: [responseExpectation], timeout: 3)
         XCTAssertEqual(requestModifierCalled, 2)
     }
-    
+
     func testAPIMakesAPOSTRequestWithNoBody() throws {
         let json = """
         [
@@ -342,17 +340,17 @@ class APITests: XCTestCase {
             }
 
         jsonPlaceHolder.post(endpoint: endpoint).sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
-    
+
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-    
+
     func testAPIMakesAPOSTRequestWithABody() throws {
         let json = """
         [
@@ -377,23 +375,22 @@ class APITests: XCTestCase {
                 requestExpectation.fulfill()
                 XCTAssertEqual(request.httpMethod, "POST")
                 XCTAssertEqual(request.url?.absoluteString, urlString)
-                
+
                 XCTAssertEqual(request.allHTTPHeaderFields?["Content-Length"], "\(body!.count)")
                 XCTAssertEqual(request.bodySteamAsData(), body)
             }
 
         jsonPlaceHolder.post(endpoint: endpoint, body: body).sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
 
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-
 
     func testPOSTFailsWhenURLCannotBeConstructed() throws {
         struct FakeAPI: RESTAPIProtocol {
@@ -444,21 +441,21 @@ class APITests: XCTestCase {
         jsonPlaceHolder.post(endpoint: endpoint, body: body) { request in
             request.sendingJSON()
         }.sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
 
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-    
+
     func testPOSTRecalculatesRequestModifierWhenChainIsRestarted() throws {
         let responseExpectation = self.expectation(description: "Response recieved")
         var requestModifierCalled = 0
-        
+
         API.JSONPlaceHolder()
             .post(endpoint: "") {
                 requestModifierCalled += 1
@@ -474,11 +471,11 @@ class APITests: XCTestCase {
             } receiveValue: { _ in
                 XCTFail("Did not expect to get value")
             }.store(in: &subscribers)
-        
+
         wait(for: [responseExpectation], timeout: 3)
         XCTAssertEqual(requestModifierCalled, 2)
     }
-    
+
     func testAPIMakesAPATCHRequestWithNoBody() throws {
         let json = """
         [
@@ -507,17 +504,17 @@ class APITests: XCTestCase {
             }
 
         jsonPlaceHolder.patch(endpoint: endpoint).sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
-    
+
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-    
+
     func testAPIMakesAPATCHRequestWithABody() throws {
         let json = """
         [
@@ -542,23 +539,22 @@ class APITests: XCTestCase {
                 requestExpectation.fulfill()
                 XCTAssertEqual(request.httpMethod, "PATCH")
                 XCTAssertEqual(request.url?.absoluteString, urlString)
-                
+
                 XCTAssertEqual(request.allHTTPHeaderFields?["Content-Length"], "\(body!.count)")
                 XCTAssertEqual(request.bodySteamAsData(), body)
             }
 
         jsonPlaceHolder.patch(endpoint: endpoint, body: body).sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
 
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-
 
     func testPATCHFailsWhenURLCannotBeConstructed() throws {
         struct FakeAPI: RESTAPIProtocol {
@@ -609,21 +605,21 @@ class APITests: XCTestCase {
         jsonPlaceHolder.patch(endpoint: endpoint, body: body) { request in
             request.sendingJSON()
         }.sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
 
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
-    
+
     func testPATCHRecalculatesRequestModifierWhenChainIsRestarted() throws {
         let responseExpectation = self.expectation(description: "Response recieved")
         var requestModifierCalled = 0
-        
+
         API.JSONPlaceHolder()
             .patch(endpoint: "") {
                 requestModifierCalled += 1
@@ -639,11 +635,11 @@ class APITests: XCTestCase {
             } receiveValue: { _ in
                 XCTFail("Did not expect to get value")
             }.store(in: &subscribers)
-        
+
         wait(for: [responseExpectation], timeout: 3)
         XCTAssertEqual(requestModifierCalled, 2)
     }
-    
+
     func testAPIMakesADELETERequest() throws {
         let json = """
         [
@@ -671,24 +667,23 @@ class APITests: XCTestCase {
             }
 
         jsonPlaceHolder.delete(endpoint: endpoint).sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
-    
+
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
 
-    
     func testDELETEFailsWhenURLCannotBeConstructed() throws {
         struct FakeAPI: RESTAPIProtocol {
             var baseURL: String = ""
         }
         let responseExpectation = self.expectation(description: "Response recieved")
-        
+
         FakeAPI().delete(endpoint: "").sink { res in
             responseExpectation.fulfill()
             if case .failure(let err) = res {
@@ -697,7 +692,7 @@ class APITests: XCTestCase {
         } receiveValue: { _ in
             XCTFail("Did not expect to get value")
         }.store(in: &subscribers)
-        
+
         wait(for: [responseExpectation], timeout: 3)
     }
 
@@ -730,21 +725,21 @@ class APITests: XCTestCase {
         jsonPlaceHolder.delete(endpoint: endpoint) { request in
             request.sendingJSON()
         }.sink { res in
-            if case .failure(_) = res {
+            if case .failure = res {
                 XCTFail("You done messed up")
             }
-        } receiveValue: { (data, res) in
+        } receiveValue: { (data, _) in
             responseExpectation.fulfill()
             XCTAssertEqual(data, json)
         }.store(in: &subscribers)
-    
+
         wait(for: [requestExpectation, responseExpectation], timeout: 3)
     }
 
     func testDELETERecalculatesRequestModifierWhenChainIsRestarted() throws {
         let responseExpectation = self.expectation(description: "Response recieved")
         var requestModifierCalled = 0
-        
+
         API.JSONPlaceHolder()
             .delete(endpoint: "") {
                 requestModifierCalled += 1
@@ -760,20 +755,20 @@ class APITests: XCTestCase {
             } receiveValue: { _ in
                 XCTFail("Did not expect to get value")
             }.store(in: &subscribers)
-        
+
         wait(for: [responseExpectation], timeout: 3)
         XCTAssertEqual(requestModifierCalled, 2)
     }
-    
+
     func testAPIUsesCustomURLSession() throws {
         struct FakeAPI: RESTAPIProtocol {
             var baseURL: String = "http://www.google.com"
             var urlSession: URLSession = URLSession(configuration: URLSessionConfiguration.default)
         }
         let fakeAPI = FakeAPI()
-        
+
         XCTAssertNotEqual(fakeAPI.urlSession, URLSession.shared)
-        
+
         let endpoint = "me"
         let urlString = "\(fakeAPI.baseURL)/\(endpoint)"
         StubAPIResponse(request: .init(.get, urlString: urlString),
@@ -792,13 +787,12 @@ class APITests: XCTestCase {
         }
         .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
         .store(in: &subscribers)
-        
+
         XCTAssertEqual(Self.swizzled.count, 1)
         XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
-        
-        
+
         Self.swizzled.removeAll()
-        
+
         fakeAPI.put(endpoint: endpoint) { request in
             request.sendingJSON()
         }
@@ -807,9 +801,9 @@ class APITests: XCTestCase {
 
         XCTAssertEqual(Self.swizzled.count, 1)
         XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
-        
+
         Self.swizzled.removeAll()
-        
+
         fakeAPI.post(endpoint: endpoint) { request in
             request.sendingJSON()
         }
@@ -818,9 +812,9 @@ class APITests: XCTestCase {
 
         XCTAssertEqual(Self.swizzled.count, 1)
         XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
-        
+
         Self.swizzled.removeAll()
-        
+
         fakeAPI.patch(endpoint: endpoint) { request in
             request.sendingJSON()
         }
@@ -829,9 +823,9 @@ class APITests: XCTestCase {
 
         XCTAssertEqual(Self.swizzled.count, 1)
         XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
-        
+
         Self.swizzled.removeAll()
-        
+
         fakeAPI.delete(endpoint: endpoint) { request in
             request.sendingJSON()
         }
@@ -842,7 +836,6 @@ class APITests: XCTestCase {
         XCTAssertEqual(Self.swizzled.first?.session, fakeAPI.urlSession)
     }
 }
-
 
 extension URLSession {
     @_dynamicReplacement(for: erasedDataTaskPublisher(for:))

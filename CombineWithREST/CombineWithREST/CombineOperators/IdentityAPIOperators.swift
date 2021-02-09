@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 extension URLSession.ErasedDataTaskPublisher {
-    func retryOnceOnUnauthorizedResponse<P:Publisher>(chainedRequest: P) -> Self where P.Output == Output, P.Failure == Failure {
+    func retryOnceOnUnauthorizedResponse<P: Publisher>(chainedRequest: P) -> Self where P.Output == Output, P.Failure == Failure {
         tryMap { args -> URLSession.ErasedDataTaskPublisher.Output in
             if let res = args.response as? HTTPURLResponse, res.statusCode == 401 {
                 throw API.AuthorizationError.unauthorized

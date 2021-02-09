@@ -14,11 +14,11 @@ import Combine
 @testable import CombineWithREST
 
 class ViewControllerTests: XCTestCase {
-    
+
     override func setUpWithError() throws {
         Container.default.removeAll()
     }
-    
+
     func testFetchingProfileFromAPI() throws {
         let mock = MockIdentityServiceProtocol()
             .registerIn(container: Container.default)

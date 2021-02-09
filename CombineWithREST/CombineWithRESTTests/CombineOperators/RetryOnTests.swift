@@ -77,7 +77,7 @@ class RetryOnTests: XCTestCase {
             XCTAssertEqual(called, 1)
             _ = s.receive(1)
         }
-        
+
         TestPublisher<Int, Err> { s in
             s.receive(subscription: Subscriptions.empty)
             called += 1
