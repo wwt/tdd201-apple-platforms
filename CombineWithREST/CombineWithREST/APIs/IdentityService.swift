@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-
 protocol IdentityServiceProtocol {
     var fetchProfile: AnyPublisher<Result<User.Profile, API.IdentityService.FetchProfileError>, Never> { get }
 }

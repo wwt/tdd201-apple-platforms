@@ -8,8 +8,6 @@
 import Foundation
 import OHHTTPStubs
 
-@testable import CombineWithREST
-
 fileprivate extension Array {
     mutating func popLastUnlessEmpty() -> Element? {
         if count > 1 {

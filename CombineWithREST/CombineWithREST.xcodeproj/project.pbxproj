@@ -34,7 +34,6 @@
 		CA4505A325B8CBE700153FC4 /* JSONDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505A225B8CBE700153FC4 /* JSONDecode.swift */; };
 		CA4505A725B8CBFE00153FC4 /* RetryOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505A625B8CBFE00153FC4 /* RetryOn.swift */; };
 		CA4505AB25B8CC2900153FC4 /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505AA25B8CC2900153FC4 /* URLRequestExtensions.swift */; };
-		CA4505C125B8CE2A00153FC4 /* IdentityAPIOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505C025B8CE2A00153FC4 /* IdentityAPIOperatorsTests.swift */; };
 		CA4505C725B8CE4300153FC4 /* RetryOnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505C625B8CE4300153FC4 /* RetryOnTests.swift */; };
 		CA4505CB25B8CE7800153FC4 /* TestPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505CA25B8CE7800153FC4 /* TestPublisher.swift */; };
 		CA4505D025B8CEAA00153FC4 /* DependencyInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4505CF25B8CEAA00153FC4 /* DependencyInjectionTests.swift */; };
@@ -96,7 +95,6 @@
 		CA4505A225B8CBE700153FC4 /* JSONDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecode.swift; sourceTree = "<group>"; };
 		CA4505A625B8CBFE00153FC4 /* RetryOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryOn.swift; sourceTree = "<group>"; };
 		CA4505AA25B8CC2900153FC4 /* URLRequestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtensions.swift; sourceTree = "<group>"; };
-		CA4505C025B8CE2A00153FC4 /* IdentityAPIOperatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityAPIOperatorsTests.swift; sourceTree = "<group>"; };
 		CA4505C625B8CE4300153FC4 /* RetryOnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryOnTests.swift; sourceTree = "<group>"; };
 		CA4505CA25B8CE7800153FC4 /* TestPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPublisher.swift; sourceTree = "<group>"; };
 		CA4505CF25B8CEAA00153FC4 /* DependencyInjectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionTests.swift; sourceTree = "<group>"; };
@@ -199,6 +197,7 @@
 				CA45060E25B8D3A900153FC4 /* APIs */,
 				CA4505E825B8D34000153FC4 /* Models */,
 				CA4505D525B8D1C100153FC4 /* Extensions */,
+				CAA7522425D2F4EA00248229 /* ExtensionsTests */,
 				CA4505CE25B8CE9400153FC4 /* DependencyInjection */,
 				CA4505BF25B8CE0000153FC4 /* CombineOperators */,
 				CA45051425B8C3B800153FC4 /* HTTPStubbing */,
@@ -264,7 +263,6 @@
 		CA4505BF25B8CE0000153FC4 /* CombineOperators */ = {
 			isa = PBXGroup;
 			children = (
-				CA4505C025B8CE2A00153FC4 /* IdentityAPIOperatorsTests.swift */,
 				CA4505C625B8CE4300153FC4 /* RetryOnTests.swift */,
 			);
 			path = CombineOperators;
@@ -283,8 +281,6 @@
 			children = (
 				CA4505D625B8D1D400153FC4 /* MockExtensions.swift */,
 				CA45055125B8C54800153FC4 /* URLRequestExtensions.swift */,
-				CA4505E225B8D26300153FC4 /* URLRequestExtensionsTests.swift */,
-				002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,6 +311,15 @@
 			);
 			name = DependencyInjection;
 			path = ../../DependencyInjection/DependencyInjection/DependencyInjection;
+			sourceTree = "<group>";
+		};
+		CAA7522425D2F4EA00248229 /* ExtensionsTests */ = {
+			isa = PBXGroup;
+			children = (
+				CA4505E225B8D26300153FC4 /* URLRequestExtensionsTests.swift */,
+				002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */,
+			);
+			path = ExtensionsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -599,7 +604,6 @@
 				CAF26DD925BA2CFF009025A6 /* ViewControllerTests.swift in Sources */,
 				CAF26DD325BA2C55009025A6 /* GeneratedMocks.swift in Sources */,
 				CA45054E25B8C53700153FC4 /* WaitUntil.swift in Sources */,
-				CA4505C125B8CE2A00153FC4 /* IdentityAPIOperatorsTests.swift in Sources */,
 				CA45057625B8C90D00153FC4 /* APITests.swift in Sources */,
 				CA4505D025B8CEAA00153FC4 /* DependencyInjectionTests.swift in Sources */,
 			);
