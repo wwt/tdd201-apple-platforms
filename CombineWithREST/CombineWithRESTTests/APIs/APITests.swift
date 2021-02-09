@@ -5,6 +5,8 @@
 //  Created by thompsty on 1/20/21.
 //
 
+// swiftlint:disable type_body_length
+
 import Foundation
 import XCTest
 import Combine
@@ -18,7 +20,6 @@ extension API {
 }
 
 class APITests: XCTestCase {
-
     var subscribers = Set<AnyCancellable>()
     static var swizzled = [(session: URLSession, request: URLRequest)]()
 
