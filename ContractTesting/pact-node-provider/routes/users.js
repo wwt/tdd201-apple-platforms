@@ -1,9 +1,15 @@
 var express = require('express');
 var router = express.Router();
+const { userRepository } = require('../Repository/user-repository.js')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/:id', function(req, res, next) {
+    const response = userRepository.fetchAll() //userRepository.getById(req.params.id)
+    if (response) {
+        res.end(JSON.stringify(response))
+    } else {
+        res.writeHead(404)
+        res.end()
+    }
 });
 
 module.exports = router;

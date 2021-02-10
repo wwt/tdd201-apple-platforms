@@ -18,20 +18,20 @@
         "headers": {
         },
         "body": {
-          "email": "jeremiechristiansen@vonrueden.org",
-          "age": 69,
-          "name": "Jordane"
+          "name": "Zella",
+          "age": 46,
+          "email": "rollinhessel6802@mosciski.info"
         },
         "matchingRules": {
-          "$.body.email": {
-            "match": "regex",
-            "regex": "(.*)@(.*)"
+          "$.body.name": {
+            "match": "type"
           },
           "$.body.age": {
             "match": "type"
           },
-          "$.body.name": {
-            "match": "type"
+          "$.body.email": {
+            "match": "regex",
+            "regex": "(.*)@(.*)"
           }
         }
       }

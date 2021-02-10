@@ -1,6 +1,6 @@
-I, [2021-02-10T13:09:58.583553 #57943]  INFO -- : Cleared interactions
-I, [2021-02-10T13:09:58.595272 #57943]  INFO -- : Registered expected interaction GET /users/1
-D, [2021-02-10T13:09:58.596741 #57943] DEBUG -- : {
+I, [2021-02-10T14:00:37.163568 #11454]  INFO -- : Cleared interactions
+I, [2021-02-10T14:00:37.170279 #11454]  INFO -- : Registered expected interaction GET /users/1
+D, [2021-02-10T14:00:37.170888 #11454] DEBUG -- : {
   "description": "A request for that user",
   "providerState": "A user with id 1 exists",
   "request": {
@@ -12,31 +12,31 @@ D, [2021-02-10T13:09:58.596741 #57943] DEBUG -- : {
     "headers": {
     },
     "body": {
+      "name": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Zella"
+      },
+      "age": {
+        "json_class": "Pact::SomethingLike",
+        "contents": 46
+      },
       "email": {
         "json_class": "Pact::Term",
         "data": {
-          "generate": "jeremiechristiansen@vonrueden.org",
+          "generate": "rollinhessel6802@mosciski.info",
           "matcher": {
             "json_class": "Regexp",
             "o": 0,
             "s": "(.*)@(.*)"
           }
         }
-      },
-      "age": {
-        "json_class": "Pact::SomethingLike",
-        "contents": 69
-      },
-      "name": {
-        "json_class": "Pact::SomethingLike",
-        "contents": "Jordane"
       }
     }
   },
   "metadata": null
 }
-I, [2021-02-10T13:09:58.616297 #57943]  INFO -- : Received request GET /users/1
-D, [2021-02-10T13:09:58.616931 #57943] DEBUG -- : {
+I, [2021-02-10T14:00:37.182276 #11454]  INFO -- : Received request GET /users/1
+D, [2021-02-10T14:00:37.182746 #11454] DEBUG -- : {
   "path": "/users/1",
   "query": "",
   "method": "get",
@@ -50,32 +50,32 @@ D, [2021-02-10T13:09:58.616931 #57943] DEBUG -- : {
     "Version": "HTTP/1.1"
   }
 }
-I, [2021-02-10T13:09:58.617618 #57943]  INFO -- : Found matching response for GET /users/1
-D, [2021-02-10T13:09:58.618110 #57943] DEBUG -- : {
+I, [2021-02-10T14:00:37.183203 #11454]  INFO -- : Found matching response for GET /users/1
+D, [2021-02-10T14:00:37.183545 #11454] DEBUG -- : {
   "status": 200,
   "headers": {
   },
   "body": {
+    "name": {
+      "json_class": "Pact::SomethingLike",
+      "contents": "Zella"
+    },
+    "age": {
+      "json_class": "Pact::SomethingLike",
+      "contents": 46
+    },
     "email": {
       "json_class": "Pact::Term",
       "data": {
-        "generate": "jeremiechristiansen@vonrueden.org",
+        "generate": "rollinhessel6802@mosciski.info",
         "matcher": {
           "json_class": "Regexp",
           "o": 0,
           "s": "(.*)@(.*)"
         }
       }
-    },
-    "age": {
-      "json_class": "Pact::SomethingLike",
-      "contents": 69
-    },
-    "name": {
-      "json_class": "Pact::SomethingLike",
-      "contents": "Jordane"
     }
   }
 }
-I, [2021-02-10T13:09:58.627479 #57943]  INFO -- : Verifying - interactions matched
-I, [2021-02-10T13:09:58.633087 #57943]  INFO -- : Writing pact for UserService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/ContractTesting/tmp/pacts/contracttesting-iosapp-userservice.json
+I, [2021-02-10T14:00:37.187796 #11454]  INFO -- : Verifying - interactions matched
+I, [2021-02-10T14:00:37.191999 #11454]  INFO -- : Writing pact for UserService to /Users/tylerthompson/workspace/tdd-201-apple-platforms/ContractTesting/tmp/pacts/contracttesting-iosapp-userservice.json

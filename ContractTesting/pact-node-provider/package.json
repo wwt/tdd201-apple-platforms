@@ -2,11 +2,11 @@
     "name": "pact-node-provider",
     "version": "0.0.0",
     "private": true,
-    "main": "app.js",
+    "main": "server.js",
     "scripts": {
         "start": "node ./bin/www",
         "pact:provider-tests": "node pact/provider_tests.js",
-        "test:pact": "start-server-and-test start http://localhost:3000 pact:provider-tests"
+        "test:pact": "node pact/provider_tests.js"
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",
