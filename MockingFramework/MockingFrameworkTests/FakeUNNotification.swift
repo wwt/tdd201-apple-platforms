@@ -18,6 +18,7 @@ import UserNotifications
             .takeRetainedValue() as! FakeUNNotification
     }
     // swiftlint:enable force_cast
+
     private var _date: Date!
     override var date: Date {
         get { _date }
