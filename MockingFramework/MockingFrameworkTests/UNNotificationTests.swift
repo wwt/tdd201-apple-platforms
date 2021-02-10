@@ -10,8 +10,8 @@ import XCTest
 
 class UNNotificaitonTests: XCTestCase {
 
-    func testMockUNNotification() throws {
-        let notification = MockUNNotification.new
+    func testFakeUNNotification() throws {
+        let notification = FakeUNNotification.new
         let now = Date()
 
         notification.date = now

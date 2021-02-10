@@ -1,5 +1,5 @@
 //
-//  MockUNNotification.swift
+//  FakeUNNotification.swift
 //  MockingFrameworkTests
 //
 //  Created by Heather Meadow on 2/10/21.
@@ -8,14 +8,14 @@
 import Foundation
 import UserNotifications
 
-@objc(MockUNNotification) class MockUNNotification: UNNotification {
+@objc(FakeUNNotification) class FakeUNNotification: UNNotification {
 
     // swiftlint:disable force_cast
-    static var new: MockUNNotification {
+    static var new: FakeUNNotification {
         // dark arts way to call a private initializer
-        return (objc_getClass("MockUNNotification") as! NSObject)
+        return (objc_getClass("FakeUNNotification") as! NSObject)
             .perform(NSSelectorFromString("new"))
-            .takeRetainedValue() as! MockUNNotification
+            .takeRetainedValue() as! FakeUNNotification
     }
     // swiftlint:enable force_cast
     private var _date: Date!
