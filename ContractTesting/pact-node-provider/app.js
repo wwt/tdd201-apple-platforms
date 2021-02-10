@@ -1,6 +1,4 @@
 const express = require('express');
-const Repository = require("./Repository/repository.js")
-
 const usersRouter = require('./routes/users');
 
 var app = express();
