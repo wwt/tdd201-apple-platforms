@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: MockingFramework/SomeClass.swift at 2021-02-10 18:02:35 +0000
+// MARK: - Mocks generated from file: MockingFramework/SomeClass.swift at 2021-02-10 18:05:52 +0000
 
 //
 //  SomeClass.swift
@@ -584,7 +584,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: MockingFramework/SomeStruct.swift at 2021-02-10 18:02:35 +0000
+// MARK: - Mocks generated from file: MockingFramework/SomeStruct.swift at 2021-02-10 18:05:52 +0000
 
 //
 //  SomeStruct.swift

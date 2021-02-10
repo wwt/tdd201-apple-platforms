@@ -16,7 +16,6 @@
 		23D7EB8893B827F50B7825E0 /* Pods_MockingFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6615F19D4C3E2283EBDA7984 /* Pods_MockingFramework.framework */; };
 		CAA1C4C225A38A6800E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C4C125A38A6800E3F686 /* AppDelegate.swift */; };
 		CAA1C4C425A38A6800E3F686 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C4C325A38A6800E3F686 /* SceneDelegate.swift */; };
-		CAA1C4C625A38A6800E3F686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C4C525A38A6800E3F686 /* ViewController.swift */; };
 		CAA1C4C925A38A6800E3F686 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C4C725A38A6800E3F686 /* Main.storyboard */; };
 		CAA1C4CB25A38A6800E3F686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C4CA25A38A6800E3F686 /* Assets.xcassets */; };
 		CAA1C4CE25A38A6800E3F686 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C4CC25A38A6800E3F686 /* LaunchScreen.storyboard */; };
@@ -51,7 +50,6 @@
 		CAA1C4BE25A38A6800E3F686 /* MockingFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockingFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C4C125A38A6800E3F686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAA1C4C325A38A6800E3F686 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CAA1C4C525A38A6800E3F686 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CAA1C4C825A38A6800E3F686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CAA1C4CA25A38A6800E3F686 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAA1C4CD25A38A6800E3F686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 			children = (
 				CAA1C4C125A38A6800E3F686 /* AppDelegate.swift */,
 				CAA1C4C325A38A6800E3F686 /* SceneDelegate.swift */,
-				CAA1C4C525A38A6800E3F686 /* ViewController.swift */,
 				CAA1C4C725A38A6800E3F686 /* Main.storyboard */,
 				CAA1C4CA25A38A6800E3F686 /* Assets.xcassets */,
 				CAA1C4CC25A38A6800E3F686 /* LaunchScreen.storyboard */,
@@ -381,7 +378,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAB7538925A4D4AF00EF25C0 /* SomeClass.swift in Sources */,
-				CAA1C4C625A38A6800E3F686 /* ViewController.swift in Sources */,
 				00032AEF25D43859008747D4 /* SomeStruct.swift in Sources */,
 				CAA1C4C225A38A6800E3F686 /* AppDelegate.swift in Sources */,
 				CAA1C4C425A38A6800E3F686 /* SceneDelegate.swift in Sources */,
