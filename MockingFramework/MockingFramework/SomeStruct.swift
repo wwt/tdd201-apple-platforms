@@ -41,22 +41,10 @@ struct SomeStructWithProtocol: SomeProtocol {
 }
 
 struct SomeStruct {
-    let readOnlyProperty: String
-    var readWriteProperty: String
-    var orCanYou: String
-    var getOnlyProperty: String { "get me" }
-    lazy var lazy: String = { "I am so lazy" }()
-
-    func voidMethod() {
-
-    }
+    private var orCanYou: String = "touched"
 
     func returnsBoolean() -> Bool {
         return true
-    }
-
-    func genericVoid<T>(param: T) {
-
     }
 
     func genericReturn<T>(param: T) -> T {
