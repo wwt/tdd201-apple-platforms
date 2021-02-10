@@ -5,7 +5,8 @@
     "main": "app.js",
     "scripts": {
         "start": "node ./bin/www",
-        "test:pact": "node pact/provider_tests.js"
+        "pact:provider-tests": "node pact/provider_tests.js",
+        "test:pact": "start-server-and-test start http://localhost:3000 pact:provider-tests"
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",
@@ -14,6 +15,7 @@
         "morgan": "~1.9.1"
     },
     "devDependencies": {
-        "@pact-foundation/pact": "^9.15.0"
+        "@pact-foundation/pact": "^9.15.0",
+        "start-server-and-test": "^1.12.0"
     }
 }
