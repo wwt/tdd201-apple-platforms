@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00BB4D3425D463C700905C5E /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D3325D463C700905C5E /* StubAPIResponse.swift */; };
+		00BB4D3C25D463E200905C5E /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D3B25D463E200905C5E /* URLRequestExtensions.swift */; };
 		15AFD2B400902D1073A5726B /* Pods_ContractTesting_ContractTestingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB64F5A686319439676B02A /* Pods_ContractTesting_ContractTestingTests.framework */; };
-		CA54DDB225D4625100A59B53 /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA54DDB125D4625100A59B53 /* StubAPIResponse.swift */; };
-		CA54DDBA25D4626C00A59B53 /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA54DDB925D4626C00A59B53 /* URLRequestExtensions.swift */; };
 		CAA1C3C025A3897800E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C3BF25A3897800E3F686 /* AppDelegate.swift */; };
 		CAA1C3C225A3897800E3F686 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C3C125A3897800E3F686 /* SceneDelegate.swift */; };
 		CAA1C3C425A3897800E3F686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C3C325A3897800E3F686 /* ViewController.swift */; };
@@ -34,13 +34,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00BB4D3325D463C700905C5E /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
+		00BB4D3B25D463E200905C5E /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = "<group>"; };
 		2EDC4FD0D2F38B1F2369DD58 /* Pods_ContractTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContractTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61C4D0BC12E07D858203768D /* Pods-ContractTesting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContractTesting.debug.xcconfig"; path = "Target Support Files/Pods-ContractTesting/Pods-ContractTesting.debug.xcconfig"; sourceTree = "<group>"; };
 		6F1B3914139EE61DB973D169 /* Pods-ContractTesting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContractTesting.release.xcconfig"; path = "Target Support Files/Pods-ContractTesting/Pods-ContractTesting.release.xcconfig"; sourceTree = "<group>"; };
 		89F9192BA3EC7F91003D55E6 /* Pods-ContractTesting-ContractTestingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContractTesting-ContractTestingTests.release.xcconfig"; path = "Target Support Files/Pods-ContractTesting-ContractTestingTests/Pods-ContractTesting-ContractTestingTests.release.xcconfig"; sourceTree = "<group>"; };
 		ACF4FBB12AE34C41F8EBAADD /* Pods-ContractTesting-ContractTestingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContractTesting-ContractTestingTests.debug.xcconfig"; path = "Target Support Files/Pods-ContractTesting-ContractTestingTests/Pods-ContractTesting-ContractTestingTests.debug.xcconfig"; sourceTree = "<group>"; };
-		CA54DDB125D4625100A59B53 /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
-		CA54DDB925D4626C00A59B53 /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = "<group>"; };
 		CAA1C3BC25A3897800E3F686 /* ContractTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContractTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C3BF25A3897800E3F686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAA1C3C125A3897800E3F686 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +78,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00BB4D3125D463AA00905C5E /* HTTPStubbing */ = {
+			isa = PBXGroup;
+			children = (
+				00BB4D3325D463C700905C5E /* StubAPIResponse.swift */,
+			);
+			path = HTTPStubbing;
+			sourceTree = "<group>";
+		};
+		00BB4D3225D463B400905C5E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				00BB4D3B25D463E200905C5E /* URLRequestExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3D17E7EA2CA715CC3D7461F7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,29 +154,13 @@
 		CAA1C3D525A3897800E3F686 /* ContractTestingTests */ = {
 			isa = PBXGroup;
 			children = (
-				CAF26D5A25B9CFA8009025A6 /* Extensions */,
-				CAF26D3325B9CF73009025A6 /* HTTPStubbing */,
+				00BB4D3225D463B400905C5E /* Extensions */,
+				00BB4D3125D463AA00905C5E /* HTTPStubbing */,
 				CAA1C3D625A3897800E3F686 /* ContractTests.swift */,
 				CAA1C3D825A3897800E3F686 /* Info.plist */,
 				CAF26D9B25B9E840009025A6 /* UserServiceTests.swift */,
 			);
 			path = ContractTestingTests;
-			sourceTree = "<group>";
-		};
-		CAF26D3325B9CF73009025A6 /* HTTPStubbing */ = {
-			isa = PBXGroup;
-			children = (
-				CA54DDB125D4625100A59B53 /* StubAPIResponse.swift */,
-			);
-			path = HTTPStubbing;
-			sourceTree = "<group>";
-		};
-		CAF26D5A25B9CFA8009025A6 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				CA54DDB925D4626C00A59B53 /* URLRequestExtensions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,9 +381,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF26D9C25B9E840009025A6 /* UserServiceTests.swift in Sources */,
-				CA54DDBA25D4626C00A59B53 /* URLRequestExtensions.swift in Sources */,
+				00BB4D3C25D463E200905C5E /* URLRequestExtensions.swift in Sources */,
 				CAA1C3D725A3897800E3F686 /* ContractTests.swift in Sources */,
-				CA54DDB225D4625100A59B53 /* StubAPIResponse.swift in Sources */,
+				00BB4D3425D463C700905C5E /* StubAPIResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

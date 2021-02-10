@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		002C1F8825D1C51D000018D8 /* DateFormatterExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */; };
+		00BB4D2E25D4636A00905C5E /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D2D25D4636A00905C5E /* StubAPIResponse.swift */; };
 		2E30E671B4AE5C5C684A255B /* Pods_CombineWithREST.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24088C7D63D164FBE167A839 /* Pods_CombineWithREST.framework */; };
 		4B4D30352F3855E83B9614FB /* Pods_CombineWithREST_CombineWithRESTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFFD79E45284CC76EA1F016 /* Pods_CombineWithREST_CombineWithRESTTests.framework */; };
 		CA45040B25B79A0F00153FC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45040A25B79A0F00153FC4 /* AppDelegate.swift */; };
@@ -42,7 +43,6 @@
 		CA54DD1825D3142900A59B53 /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA54DD1725D3142900A59B53 /* URLRequestExtensions.swift */; };
 		CA9B147625C9FB5B00854956 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B147425C9FB5B00854956 /* ContainerExtensions.swift */; };
 		CA9B147725C9FB5B00854956 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B147525C9FB5B00854956 /* DependencyInjected.swift */; };
-		CAA7523225D2F6FD00248229 /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7523125D2F6FD00248229 /* StubAPIResponse.swift */; };
 		CAF26DC825B9F57A009025A6 /* ContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF26DC725B9F57A009025A6 /* ContractTests.swift */; };
 		CAF26DD325BA2C55009025A6 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF26DD225BA2C55009025A6 /* GeneratedMocks.swift */; };
 		CAF26DD925BA2CFF009025A6 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF26DD825BA2CFF009025A6 /* ViewControllerTests.swift */; };
@@ -60,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensionsTests.swift; sourceTree = "<group>"; };
+		00BB4D2D25D4636A00905C5E /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
 		096C5D9757A186DDDA29D410 /* Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig"; path = "Target Support Files/Pods-CombineWithREST-CombineWithRESTTests/Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig"; sourceTree = "<group>"; };
 		22886F30A917329AE0DA3CEF /* Pods-CombineWithREST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineWithREST.release.xcconfig"; path = "Target Support Files/Pods-CombineWithREST/Pods-CombineWithREST.release.xcconfig"; sourceTree = "<group>"; };
 		24088C7D63D164FBE167A839 /* Pods_CombineWithREST.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CombineWithREST.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,7 +103,6 @@
 		CA54DD1725D3142900A59B53 /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = "<group>"; };
 		CA9B147425C9FB5B00854956 /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerExtensions.swift; sourceTree = "<group>"; };
 		CA9B147525C9FB5B00854956 /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjected.swift; sourceTree = "<group>"; };
-		CAA7523125D2F6FD00248229 /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
 		CAF26DC725B9F57A009025A6 /* ContractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTests.swift; sourceTree = "<group>"; };
 		CAF26DD225BA2C55009025A6 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		CAF26DD825BA2CFF009025A6 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
@@ -128,6 +128,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00BB4D2C25D4635400905C5E /* HTTPStubbing */ = {
+			isa = PBXGroup;
+			children = (
+				00BB4D2D25D4636A00905C5E /* StubAPIResponse.swift */,
+			);
+			path = HTTPStubbing;
+			sourceTree = "<group>";
+		};
 		0F6B2208CBBA3BE490937532 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,12 +201,12 @@
 			children = (
 				CAF26DD225BA2C55009025A6 /* GeneratedMocks.swift */,
 				CA45060E25B8D3A900153FC4 /* APIs */,
-				CA4505E825B8D34000153FC4 /* Models */,
+				CA4505BF25B8CE0000153FC4 /* CombineOperators */,
+				CA4505CE25B8CE9400153FC4 /* DependencyInjection */,
 				CA4505D525B8D1C100153FC4 /* Extensions */,
 				CAA7522425D2F4EA00248229 /* ExtensionsTests */,
-				CA4505CE25B8CE9400153FC4 /* DependencyInjection */,
-				CA4505BF25B8CE0000153FC4 /* CombineOperators */,
-				CA45051425B8C3B800153FC4 /* HTTPStubbing */,
+				CA4505E825B8D34000153FC4 /* Models */,
+				00BB4D2C25D4635400905C5E /* HTTPStubbing */,
 				CA45042325B79A1000153FC4 /* Info.plist */,
 				CA45054D25B8C53700153FC4 /* WaitUntil.swift */,
 				CA4505CA25B8CE7800153FC4 /* TestPublisher.swift */,
@@ -206,14 +214,6 @@
 				CAF26DD825BA2CFF009025A6 /* ViewControllerTests.swift */,
 			);
 			path = CombineWithRESTTests;
-			sourceTree = "<group>";
-		};
-		CA45051425B8C3B800153FC4 /* HTTPStubbing */ = {
-			isa = PBXGroup;
-			children = (
-				CAA7523125D2F6FD00248229 /* StubAPIResponse.swift */,
-			);
-			path = HTTPStubbing;
 			sourceTree = "<group>";
 		};
 		CA45056E25B8C7F700153FC4 /* APIs */ = {
@@ -593,7 +593,7 @@
 				CA4505E325B8D26300153FC4 /* URLRequestExtensionsTests.swift in Sources */,
 				CAF26DC825B9F57A009025A6 /* ContractTests.swift in Sources */,
 				002C1F8825D1C51D000018D8 /* DateFormatterExtensionsTests.swift in Sources */,
-				CAA7523225D2F6FD00248229 /* StubAPIResponse.swift in Sources */,
+				00BB4D2E25D4636A00905C5E /* StubAPIResponse.swift in Sources */,
 				CA4505D725B8D1D400153FC4 /* MockExtensions.swift in Sources */,
 				CA4505CB25B8CE7800153FC4 /* TestPublisher.swift in Sources */,
 				CA45061025B8D3B300153FC4 /* IdentityServiceTests.swift in Sources */,
