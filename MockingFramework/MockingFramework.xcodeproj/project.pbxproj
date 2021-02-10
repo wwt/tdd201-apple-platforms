@@ -19,7 +19,6 @@
 		CAA1C4C925A38A6800E3F686 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C4C725A38A6800E3F686 /* Main.storyboard */; };
 		CAA1C4CB25A38A6800E3F686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C4CA25A38A6800E3F686 /* Assets.xcassets */; };
 		CAA1C4CE25A38A6800E3F686 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C4CC25A38A6800E3F686 /* LaunchScreen.storyboard */; };
-		CAA1C4D925A38A6800E3F686 /* MockingFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C4D825A38A6800E3F686 /* MockingFrameworkTests.swift */; };
 		CAB7538925A4D4AF00EF25C0 /* SomeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7538825A4D4AF00EF25C0 /* SomeClass.swift */; };
 		CAB7539925A4D58000EF25C0 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7539825A4D58000EF25C0 /* GeneratedMocks.swift */; };
 		E075C2EFE006DBBB908E0DA1 /* Pods_MockingFramework_MockingFrameworkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37DCDDEFE569388CBA0297CA /* Pods_MockingFramework_MockingFrameworkTests.framework */; };
@@ -55,7 +54,6 @@
 		CAA1C4CD25A38A6800E3F686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAA1C4CF25A38A6800E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAA1C4D425A38A6800E3F686 /* MockingFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockingFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAA1C4D825A38A6800E3F686 /* MockingFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockingFrameworkTests.swift; sourceTree = "<group>"; };
 		CAA1C4DA25A38A6800E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAB7538825A4D4AF00EF25C0 /* SomeClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeClass.swift; sourceTree = "<group>"; };
 		CAB7539825A4D58000EF25C0 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				CAB7539825A4D58000EF25C0 /* GeneratedMocks.swift */,
-				CAA1C4D825A38A6800E3F686 /* MockingFrameworkTests.swift */,
 				CAA1C4DA25A38A6800E3F686 /* Info.plist */,
 				00032B0025D43DE9008747D4 /* SomeClassTests.swift */,
 				00032B0425D43DF6008747D4 /* SomeStructTests.swift */,
@@ -389,7 +386,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00032B0525D43DF6008747D4 /* SomeStructTests.swift in Sources */,
-				CAA1C4D925A38A6800E3F686 /* MockingFrameworkTests.swift in Sources */,
 				00032B0925D43E05008747D4 /* SomeProtocolTests.swift in Sources */,
 				002D702B25D453EB00ECD81C /* UNNotificationTests.swift in Sources */,
 				002D702725D453B800ECD81C /* FakeUNNotification.swift in Sources */,
