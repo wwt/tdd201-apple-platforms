@@ -3,7 +3,9 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "start": "node ./bin/www"
+        "start": "node ./bin/www",
+        "pact:providerTests": "node ./pact/provider_tests.js",
+        "test:pact": "start-server-and-test start http://localhost:3000 pact:providerTests"
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",
@@ -12,7 +14,7 @@
         "morgan": "~1.9.1"
     },
     "devDependencies": {
-        "@pact-foundation/pact": "7.0.3",
+        "@pact-foundation/pact": "^9.15.0",
         "start-server-and-test": "^1.7.5"
     }
 }

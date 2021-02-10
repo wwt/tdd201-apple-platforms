@@ -3,9 +3,9 @@ const packageJson = require('../package.json');
 
 let opts = {
     providerBaseUrl: 'http://localhost:3000',
-    pactBrokerUrl: 'https://adesso.pact.dius.com.au',
-    pactBrokerUsername: process.env.PACT_USERNAME,
-    pactBrokerPassword: process.env.PACT_PASSWORD,
+    pactBrokerUrl: 'http://localhost:9080',
+//    pactBrokerUsername: process.env.PACT_USERNAME,
+//    pactBrokerPassword: process.env.PACT_PASSWORD,
     provider: 'UserService',
     publishVerificationResult: true,
     providerVersion: packageJson.version,

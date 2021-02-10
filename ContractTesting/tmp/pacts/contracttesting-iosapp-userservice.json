@@ -1,0 +1,45 @@
+{
+  "consumer": {
+    "name": "ContractTesting-iOSApp"
+  },
+  "provider": {
+    "name": "UserService"
+  },
+  "interactions": [
+    {
+      "description": "A request for that user",
+      "providerState": "A user with id 1 exists",
+      "request": {
+        "method": "get",
+        "path": "/users/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "email": "jeremiechristiansen@vonrueden.org",
+          "age": 69,
+          "name": "Jordane"
+        },
+        "matchingRules": {
+          "$.body.email": {
+            "match": "regex",
+            "regex": "(.*)@(.*)"
+          },
+          "$.body.age": {
+            "match": "type"
+          },
+          "$.body.name": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

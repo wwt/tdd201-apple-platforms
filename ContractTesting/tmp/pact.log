@@ -1,0 +1,81 @@
+I, [2021-02-10T13:09:58.583553 #57943]  INFO -- : Cleared interactions
+I, [2021-02-10T13:09:58.595272 #57943]  INFO -- : Registered expected interaction GET /users/1
+D, [2021-02-10T13:09:58.596741 #57943] DEBUG -- : {
+  "description": "A request for that user",
+  "providerState": "A user with id 1 exists",
+  "request": {
+    "method": "get",
+    "path": "/users/1"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+    },
+    "body": {
+      "email": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "jeremiechristiansen@vonrueden.org",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(.*)@(.*)"
+          }
+        }
+      },
+      "age": {
+        "json_class": "Pact::SomethingLike",
+        "contents": 69
+      },
+      "name": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Jordane"
+      }
+    }
+  },
+  "metadata": null
+}
+I, [2021-02-10T13:09:58.616297 #57943]  INFO -- : Received request GET /users/1
+D, [2021-02-10T13:09:58.616931 #57943] DEBUG -- : {
+  "path": "/users/1",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Host": "localhost:1234",
+    "Accept": "*/*",
+    "Accept-Language": "en-us",
+    "Connection": "keep-alive",
+    "Accept-Encoding": "gzip, deflate",
+    "User-Agent": "ContractTesting/1 CFNetwork/1220.1 Darwin/19.6.0",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-02-10T13:09:58.617618 #57943]  INFO -- : Found matching response for GET /users/1
+D, [2021-02-10T13:09:58.618110 #57943] DEBUG -- : {
+  "status": 200,
+  "headers": {
+  },
+  "body": {
+    "email": {
+      "json_class": "Pact::Term",
+      "data": {
+        "generate": "jeremiechristiansen@vonrueden.org",
+        "matcher": {
+          "json_class": "Regexp",
+          "o": 0,
+          "s": "(.*)@(.*)"
+        }
+      }
+    },
+    "age": {
+      "json_class": "Pact::SomethingLike",
+      "contents": 69
+    },
+    "name": {
+      "json_class": "Pact::SomethingLike",
+      "contents": "Jordane"
+    }
+  }
+}
+I, [2021-02-10T13:09:58.627479 #57943]  INFO -- : Verifying - interactions matched
+I, [2021-02-10T13:09:58.633087 #57943]  INFO -- : Writing pact for UserService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/ContractTesting/tmp/pacts/contracttesting-iosapp-userservice.json
