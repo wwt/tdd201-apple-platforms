@@ -5,7 +5,6 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var providerStateRouter = require('./routes/provider_state');
 
 var app = express();
 
@@ -17,9 +16,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-if (process.env.PACT_MODE === 'true') {
-    app.use('/provider-state', providerStateRouter);
-}
 
 module.exports = app;
