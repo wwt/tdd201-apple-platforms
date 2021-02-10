@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00032AEF25D43859008747D4 /* SomeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00032AEE25D43859008747D4 /* SomeStruct.swift */; };
+		00032B0125D43DE9008747D4 /* SomeClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00032B0025D43DE9008747D4 /* SomeClassTests.swift */; };
+		00032B0525D43DF6008747D4 /* SomeStructTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00032B0425D43DF6008747D4 /* SomeStructTests.swift */; };
+		00032B0925D43E05008747D4 /* SomeProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00032B0825D43E05008747D4 /* SomeProtocolTests.swift */; };
 		23D7EB8893B827F50B7825E0 /* Pods_MockingFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6615F19D4C3E2283EBDA7984 /* Pods_MockingFramework.framework */; };
 		CAA1C4C225A38A6800E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C4C125A38A6800E3F686 /* AppDelegate.swift */; };
 		CAA1C4C425A38A6800E3F686 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C4C325A38A6800E3F686 /* SceneDelegate.swift */; };
@@ -31,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00032AEE25D43859008747D4 /* SomeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeStruct.swift; sourceTree = "<group>"; };
+		00032B0025D43DE9008747D4 /* SomeClassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeClassTests.swift; sourceTree = "<group>"; };
+		00032B0425D43DF6008747D4 /* SomeStructTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeStructTests.swift; sourceTree = "<group>"; };
+		00032B0825D43E05008747D4 /* SomeProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeProtocolTests.swift; sourceTree = "<group>"; };
 		37DCDDEFE569388CBA0297CA /* Pods_MockingFramework_MockingFrameworkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockingFramework_MockingFrameworkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52376FA4813B5C20EA21C408 /* Pods-MockingFramework-MockingFrameworkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockingFramework-MockingFrameworkTests.debug.xcconfig"; path = "Target Support Files/Pods-MockingFramework-MockingFrameworkTests/Pods-MockingFramework-MockingFrameworkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6615F19D4C3E2283EBDA7984 /* Pods_MockingFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockingFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +132,7 @@
 				CAA1C4CC25A38A6800E3F686 /* LaunchScreen.storyboard */,
 				CAA1C4CF25A38A6800E3F686 /* Info.plist */,
 				CAB7538825A4D4AF00EF25C0 /* SomeClass.swift */,
+				00032AEE25D43859008747D4 /* SomeStruct.swift */,
 			);
 			path = MockingFramework;
 			sourceTree = "<group>";
@@ -134,6 +143,9 @@
 				CAB7539825A4D58000EF25C0 /* GeneratedMocks.swift */,
 				CAA1C4D825A38A6800E3F686 /* MockingFrameworkTests.swift */,
 				CAA1C4DA25A38A6800E3F686 /* Info.plist */,
+				00032B0025D43DE9008747D4 /* SomeClassTests.swift */,
+				00032B0425D43DF6008747D4 /* SomeStructTests.swift */,
+				00032B0825D43E05008747D4 /* SomeProtocolTests.swift */,
 			);
 			path = MockingFrameworkTests;
 			sourceTree = "<group>";
@@ -256,7 +268,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml\n";
 		};
 		513E50CCF1127FEDAEC07800 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -318,7 +330,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml\n";
 		};
 		CAB7539E25A4D5D000EF25C0 /* Generate Mocks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -336,7 +348,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/SomeClass.swift\"\n";
+			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/SomeClass.swift\" \\\n\"${INPUT_DIR}/SomeStruct.swift\"\n";
 		};
 		F50B0252A59507A7374D4687 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -364,6 +376,7 @@
 			files = (
 				CAB7538925A4D4AF00EF25C0 /* SomeClass.swift in Sources */,
 				CAA1C4C625A38A6800E3F686 /* ViewController.swift in Sources */,
+				00032AEF25D43859008747D4 /* SomeStruct.swift in Sources */,
 				CAA1C4C225A38A6800E3F686 /* AppDelegate.swift in Sources */,
 				CAA1C4C425A38A6800E3F686 /* SceneDelegate.swift in Sources */,
 			);
@@ -373,7 +386,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00032B0525D43DF6008747D4 /* SomeStructTests.swift in Sources */,
 				CAA1C4D925A38A6800E3F686 /* MockingFrameworkTests.swift in Sources */,
+				00032B0925D43E05008747D4 /* SomeProtocolTests.swift in Sources */,
+				00032B0125D43DE9008747D4 /* SomeClassTests.swift in Sources */,
 				CAB7539925A4D58000EF25C0 /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
