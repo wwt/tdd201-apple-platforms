@@ -1,7 +1,9 @@
 const { Verifier } = require('@pact-foundation/pact');
 const packageJson = require('../package.json');
-const { server, userRepository } = require('../server.js')
+const { app } = require('../app.js')
+const { userRepository } = require('../Repository/user-repository.js')
 
+var server = require('http').createServer(app);
 server.listen(3000, () => {
   console.log("User Service listening on http://localhost:3000")
 })
@@ -31,4 +33,5 @@ let opts = {
 
 new Verifier().verifyProvider(opts).then(function () {
     console.log("Pacts successfully verified!");
+    server.close()
 });
