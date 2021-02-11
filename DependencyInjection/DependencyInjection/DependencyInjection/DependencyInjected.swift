@@ -10,20 +10,16 @@ import Swinject
 
 @propertyWrapper
 struct DependencyInjected<Value> {
-    let name: (() -> String?)
-    let container: Container
+    let nameGetter: (() -> String?)
+    let containerGetter: () -> Container
 
-    public init(container: Container = Container.default) {
-        self.name = { nil }
-        self.container = container
-    }
-
-    public init(container: Container = Container.default, name: @escaping @autoclosure (() -> String?)) {
-        self.name = name
-        self.container = container
+    public init(container: @escaping @autoclosure () -> Container = { Container.default }(),
+                name: @escaping @autoclosure (() -> String?) = { nil }()) {
+        self.nameGetter = name
+        self.containerGetter = container
     }
 
     public lazy var wrappedValue: Value? = {
-        container.resolve(Value.self, name: name())
+        containerGetter().resolve(Value.self, name: nameGetter())
     }()
 }

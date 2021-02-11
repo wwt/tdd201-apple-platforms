@@ -38,7 +38,6 @@ class NotesServiceTests: XCTestCase {
         Container.default.register(Foundation.FileManager.self) { _ in Foundation.FileManager.default }
         Container.default.register(FileManager.DirectoryEnumerator.self,
                                    name: notesURL.absoluteString) { _ in mockEnumerator }
-
         Container.default.register(Result<String, Error>.self, name: "ReadFromFile") {(_:Resolver, url: URL, encoding: String.Encoding) in
             XCTAssertEqual(encoding, .utf8)
             switch url {
@@ -108,7 +107,6 @@ class NotesServiceTests: XCTestCase {
 
     func testServiceCanSaveANote() throws {
         Container.default.register(Foundation.FileManager.self) { _ in FileManager.default }
-
         struct FakeNote: NoteWriteable {
             let name: String
             let contents: MockFileWriteable
