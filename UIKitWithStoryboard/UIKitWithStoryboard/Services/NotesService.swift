@@ -9,10 +9,11 @@ import Foundation
 import Swinject
 
 class NotesService {
-    @DependencyInjected static var fileManager: FileManager?
-    private static let notesURL: URL? = fileManager?
+    private static var notesURL: URL? {
+        Container.default.resolve(FileManager.self)?
         .urls(for: .documentDirectory, in: .userDomainMask).first?
         .appendingPathComponent("notes")
+    }
 
     @DependencyInjected(name: notesURL?.absoluteString) var directoryEnumerator: FileManager.DirectoryEnumerator?
 
@@ -32,6 +33,7 @@ class NotesService {
             return .failure(FileError.unableToReadFromFile)
         }
         var notes = [Note]()
+
         while let url = directoryEnumerator.nextObject() as? URL,
               let result = Container.default.resolve(Result<String, Error>.self, name: "ReadFromFile", arguments: url, String.Encoding.utf8) {
             switch result {

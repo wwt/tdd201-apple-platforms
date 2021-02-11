@@ -22,7 +22,7 @@ class DependencyInjectionTests: XCTestCase {
     func testAppSetsUpCorrectDependenciesAtLaunch() {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         let didFinishLaunching = delegate?.application(UIApplication.shared, didFinishLaunchingWithOptions: [:])
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let paths = Foundation.FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let notesURL = paths.first!.appendingPathComponent("notes")
 
         XCTAssertNotNil(delegate, "Test invalid, app delegate nil")
