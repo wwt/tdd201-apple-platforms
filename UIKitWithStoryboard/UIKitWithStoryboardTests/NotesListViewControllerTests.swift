@@ -14,12 +14,22 @@ import Cuckoo
 
 class NotesListViewControllerTests: XCTestCase {
     var viewController: NotesListViewController!
-    var setupDependencies = { }
 
     override func setUpWithError() throws {
         Container.default.removeAll()
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController")
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true)
         XCTAssertNotNil(viewController, "Expected to load NotesListViewController from storyboard")
+    }
+
+    func testViewControllerHasCorrectTitle() throws {
+        XCTAssertEqual(viewController.title, "Notes")
+    }
+
+    func testViewControllerHasATitleLabel() throws {
+        let titleLabel = viewController.view?.viewWithAccessibilityIdentifier("TitleLabel") as? UILabel
+
+        XCTAssertNotNil(titleLabel, "Title Label should exist on view")
+        XCTAssertEqual(titleLabel?.text, "Notes")
     }
 
     func testTableViewContainsNotes() throws {
