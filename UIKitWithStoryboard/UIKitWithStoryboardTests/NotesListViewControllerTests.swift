@@ -14,9 +14,11 @@ import Cuckoo
 
 class NotesListViewControllerTests: XCTestCase {
     var viewController: NotesListViewController!
+    var setupDependencies = { }
 
     override func setUpWithError() throws {
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") as? NotesListViewController
+        Container.default.removeAll()
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController")
         XCTAssertNotNil(viewController, "Expected to load NotesListViewController from storyboard")
     }
 
@@ -27,8 +29,10 @@ class NotesListViewControllerTests: XCTestCase {
         stub(mockNotesService) { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
         }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
-        let tableView:UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
+        let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
         XCTAssertNotNil(tableView, "Expected to get a tableview from the view controller")
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), expectedNotes.count)
