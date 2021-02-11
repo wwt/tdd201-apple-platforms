@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-11 00:21:37 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-11 00:40:20 +0000
 
 //
 //  FileWriteable.swift
@@ -103,10 +103,80 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockFileManager.swift at 2021-02-11 00:21:37 +0000
+
+ class MockFileReadable: FileReadable, Cuckoo.ProtocolMock {
+    
+     typealias MocksType = FileReadable
+    
+     typealias Stubbing = __StubbingProxy_FileReadable
+     typealias Verification = __VerificationProxy_FileReadable
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: false)
+
+    
+    private var __defaultImplStub: FileReadable?
+
+     func enableDefaultImplementation(_ stub: FileReadable) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+
+    
+    
+     required init(contentsOf: URL, encoding: String.Encoding) {
+        
+    }
+    
+
+    
+
+	 struct __StubbingProxy_FileReadable: Cuckoo.StubbingProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	
+	     init(manager: Cuckoo.MockManager) {
+	        self.cuckoo_manager = manager
+	    }
+	    
+	    
+	}
+
+	 struct __VerificationProxy_FileReadable: Cuckoo.VerificationProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	    private let callMatcher: Cuckoo.CallMatcher
+	    private let sourceLocation: Cuckoo.SourceLocation
+	
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	        self.cuckoo_manager = manager
+	        self.callMatcher = callMatcher
+	        self.sourceLocation = sourceLocation
+	    }
+	
+	    
+	
+	    
+	}
+}
+
+ class FileReadableStub: FileReadable {
+    
+
+    
+     required init(contentsOf: URL, encoding: String.Encoding) {
+        
+    }
+    
+
+    
+}
+
+
+// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-02-11 00:40:20 +0000
 
 //
-//  MockFileManager.swift
+//  MockDirectoryEnumerator.swift
 //  UIKitWithStoryboardTests
 //
 //  Created by Heather Meadow on 2/10/21.

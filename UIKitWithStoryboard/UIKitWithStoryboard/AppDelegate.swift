@@ -17,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setupDependencies() {
+        Container.default.register(Result<FileReadable, Error>.self) { (_, url, encoding) in
+            Result {
+                try String(contentsOf: url, encoding: encoding)
+            }
+        }
+
         guard let notesURL = FileManager.default
                 .urls(for: .documentDirectory, in: .userDomainMask).first?
                 .appendingPathComponent("notes"),

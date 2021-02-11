@@ -7,7 +7,6 @@
 
 import Foundation
 import XCTest
-import Foundation
 import Swinject
 
 @testable import UIKitWithStoryboard
@@ -29,6 +28,7 @@ class DependencyInjectionTests: XCTestCase {
         XCTAssertNotNil(delegate, "Test invalid, app delegate nil")
         XCTAssertEqual(didFinishLaunching, true, "Expected didFinishLaunching to be true")
         XCTAssertNotNil(Container.default.resolve(FileManager.DirectoryEnumerator.self, name: notesURL.absoluteString))
+        XCTAssertNotNil(Container.default.resolve(Result<FileReadable, Error>.self, arguments: notesURL, String.Encoding.utf8))
     }
 
     func testDefaultContainerAlwaysReturnsTheSameContainer() {

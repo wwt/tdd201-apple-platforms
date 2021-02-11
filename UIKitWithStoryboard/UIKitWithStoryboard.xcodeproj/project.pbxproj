@@ -17,7 +17,7 @@
 		00BB4DCD25D4A76E00905C5E /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DCC25D4A76E00905C5E /* GeneratedMocks.swift */; };
 		00BB4DD425D4A7B800905C5E /* URLMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DD325D4A7B800905C5E /* URLMatcher.swift */; };
 		00BB4DDA25D4A7F200905C5E /* StringEncodingMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DD925D4A7F200905C5E /* StringEncodingMatcher.swift */; };
-		00BB4DDE25D4A86E00905C5E /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DDD25D4A86E00905C5E /* MockFileManager.swift */; };
+		00BB4DDE25D4A86E00905C5E /* MockDirectoryEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DDD25D4A86E00905C5E /* MockDirectoryEnumerator.swift */; };
 		00BB4E3425D4ABFE00905C5E /* DependencyInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4E3325D4ABFE00905C5E /* DependencyInjectionTests.swift */; };
 		2FAB0D6660869FC65B03579D /* Pods_UIKitWithStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6491AB4815DD817F310D8D9 /* Pods_UIKitWithStoryboard.framework */; };
 		A7B2842940CA94CECF540115 /* Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACA2B83D190863F6EF7CF91 /* Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework */; };
@@ -51,7 +51,7 @@
 		00BB4DCC25D4A76E00905C5E /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		00BB4DD325D4A7B800905C5E /* URLMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLMatcher.swift; sourceTree = "<group>"; };
 		00BB4DD925D4A7F200905C5E /* StringEncodingMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEncodingMatcher.swift; sourceTree = "<group>"; };
-		00BB4DDD25D4A86E00905C5E /* MockFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
+		00BB4DDD25D4A86E00905C5E /* MockDirectoryEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDirectoryEnumerator.swift; sourceTree = "<group>"; };
 		00BB4E3325D4ABFE00905C5E /* DependencyInjectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionTests.swift; sourceTree = "<group>"; };
 		14C67BE079C56B1865B93DBD /* Pods-UIKitWithStoryboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitWithStoryboard.debug.xcconfig"; path = "Target Support Files/Pods-UIKitWithStoryboard/Pods-UIKitWithStoryboard.debug.xcconfig"; sourceTree = "<group>"; };
 		2762AE8826FBF7EC19BE9096 /* Pods-UIKitWithStoryboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitWithStoryboard.release.xcconfig"; path = "Target Support Files/Pods-UIKitWithStoryboard/Pods-UIKitWithStoryboard.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		00BB4E3025D4AAB900905C5E /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				00BB4DDD25D4A86E00905C5E /* MockFileManager.swift */,
+				00BB4DDD25D4A86E00905C5E /* MockDirectoryEnumerator.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -335,7 +335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Protocols/FileWriteable.swift\" \\\n\"${INPUT_DIR}Tests/Mocks/MockFileManager.swift\"\n";
+			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Protocols/FileWriteable.swift\" \\\n\"${INPUT_DIR}Tests/Mocks/MockDirectoryEnumerator.swift\"\n";
 		};
 		18EB546CA3EA814368ECFDAC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -477,7 +477,7 @@
 				CAA1C35E25A388F400E3F686 /* NotesListViewControllerTests.swift in Sources */,
 				00BB4DC425D4A64A00905C5E /* NotesServiceTests.swift in Sources */,
 				00BB4DD425D4A7B800905C5E /* URLMatcher.swift in Sources */,
-				00BB4DDE25D4A86E00905C5E /* MockFileManager.swift in Sources */,
+				00BB4DDE25D4A86E00905C5E /* MockDirectoryEnumerator.swift in Sources */,
 				00BB4D7D25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift in Sources */,
 				00BB4E3425D4ABFE00905C5E /* DependencyInjectionTests.swift in Sources */,
 				00BB4DCD25D4A76E00905C5E /* GeneratedMocks.swift in Sources */,

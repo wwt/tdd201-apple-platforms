@@ -1,5 +1,5 @@
 //
-//  MockFileManager.swift
+//  MockDirectoryEnumerator.swift
 //  UIKitWithStoryboardTests
 //
 //  Created by Heather Meadow on 2/10/21.
