@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0082F89425D5E09800540724 /* WaitUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082F89325D5E09800540724 /* WaitUntil.swift */; };
 		00BB4D7525D4A25400905C5E /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D7425D4A25400905C5E /* NotesListViewController.swift */; };
 		00BB4D7D25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D7C25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift */; };
 		00BB4DB425D4A59400905C5E /* NotesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DB325D4A59400905C5E /* NotesService.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0082F89325D5E09800540724 /* WaitUntil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitUntil.swift; sourceTree = "<group>"; };
 		00BB4D7425D4A25400905C5E /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
 		00BB4D7C25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewControllerTests.swift; sourceTree = "<group>"; };
 		00BB4DB325D4A59400905C5E /* NotesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesService.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				CAA1C35F25A388F400E3F686 /* Info.plist */,
 				00BB4D7C25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift */,
 				00BB4E3325D4ABFE00905C5E /* DependencyInjectionTests.swift */,
+				0082F89325D5E09800540724 /* WaitUntil.swift */,
 			);
 			path = UIKitWithStoryboardTests;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				00BB4DC425D4A64A00905C5E /* NotesServiceTests.swift in Sources */,
 				00BB4DD425D4A7B800905C5E /* URLMatcher.swift in Sources */,
 				00BB4DDE25D4A86E00905C5E /* MockDirectoryEnumerator.swift in Sources */,
+				0082F89425D5E09800540724 /* WaitUntil.swift in Sources */,
 				00BB4D7D25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift in Sources */,
 				00BB4E3425D4ABFE00905C5E /* DependencyInjectionTests.swift in Sources */,
 				00BB4DCD25D4A76E00905C5E /* GeneratedMocks.swift in Sources */,

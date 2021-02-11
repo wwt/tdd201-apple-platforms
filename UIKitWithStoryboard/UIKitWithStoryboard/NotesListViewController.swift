@@ -18,13 +18,21 @@ class NotesListViewController: UIViewController {
             case .failure, .none: notes = []
         }
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let dst = segue.destination as? NoteDetailViewController,
+              let note = sender as? Note else {
+            return
+        }
+        dst.note = note
+    }
 }
 
 extension NotesListViewController: UITableViewDataSource {
     enum Identifiers {
         static let noteCell = "NotesTableViewReuseIdentifier"
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         notes.count
     }
@@ -35,5 +43,12 @@ extension NotesListViewController: UITableViewDataSource {
         cell.textLabel?.text = note.name
         return cell
     }
+}
 
+extension NotesListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let note = notes[indexPath.row]
+        performSegue(withIdentifier: "SegueToNoteDetailsViewController", sender: note)
+    }
 }

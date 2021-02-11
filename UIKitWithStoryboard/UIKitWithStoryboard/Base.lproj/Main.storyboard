@@ -50,6 +50,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="MMa-Mc-Rrn"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rpm-pE-6kt"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyN-xA-19Z">
@@ -73,6 +74,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CU8-5Z-UJJ"/>
+                    <connections>
+                        <segue destination="HuO-NA-obm" kind="show" identifier="SegueToNoteDetailsViewController" id="ara-UM-kLC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -85,9 +89,40 @@
                     <view key="view" contentMode="scaleToFill" id="7oe-bg-tXc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvt-jW-rfX">
+                                <rect key="frame" x="20" y="108" width="374" height="31.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="NameLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JLE-BB-ixj">
+                                <rect key="frame" x="20" y="159.5" width="374" height="682.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <accessibility key="accessibilityConfiguration" identifier="ContentsTextView"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="iV2-Ua-6AL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iV2-Ua-6AL" firstAttribute="trailing" secondItem="dvt-jW-rfX" secondAttribute="trailing" constant="20" id="Hav-S2-UCm"/>
+                            <constraint firstItem="iV2-Ua-6AL" firstAttribute="trailing" secondItem="JLE-BB-ixj" secondAttribute="trailing" constant="20" id="QmI-no-1a5"/>
+                            <constraint firstItem="dvt-jW-rfX" firstAttribute="leading" secondItem="iV2-Ua-6AL" secondAttribute="leading" constant="20" id="Zg6-B5-poc"/>
+                            <constraint firstItem="iV2-Ua-6AL" firstAttribute="bottom" secondItem="JLE-BB-ixj" secondAttribute="bottom" constant="20" id="fC0-eL-0aN"/>
+                            <constraint firstItem="JLE-BB-ixj" firstAttribute="leading" secondItem="iV2-Ua-6AL" secondAttribute="leading" constant="20" id="gfm-QE-9R1"/>
+                            <constraint firstItem="JLE-BB-ixj" firstAttribute="top" secondItem="dvt-jW-rfX" secondAttribute="bottom" constant="20" id="h4X-ez-VJD"/>
+                            <constraint firstItem="dvt-jW-rfX" firstAttribute="top" secondItem="iV2-Ua-6AL" secondAttribute="top" constant="20" id="nTv-iK-Mto"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ubI-nM-Pmc"/>
+                    <connections>
+                        <outlet property="contentsTextView" destination="JLE-BB-ixj" id="Pz1-HM-MaC"/>
+                        <outlet property="nameLabel" destination="dvt-jW-rfX" id="dGv-VP-Ftt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xLG-uJ-QWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,6 +130,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

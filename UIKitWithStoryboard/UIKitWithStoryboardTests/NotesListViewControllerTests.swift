@@ -50,4 +50,31 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(tableView?.cellForRow(at: IndexPath(row: 1, section: 0))?.textLabel?.text, expectedNotes.last?.name)
     }
 
+    func testSelectNoteGoesToDetails() throws {
+        let mockNotesService = MockNotesService()
+        let expectedNote = Note(name: "note1", contents: UUID().uuidString)
+        let expectedNotes = [expectedNote,
+                             Note(name: "note2", contents: UUID().uuidString)]
+        stub(mockNotesService) { (stub) in
+            when(stub.getNotes()).thenReturn(.success(expectedNotes))
+        }
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
+        let index = IndexPath(row: 0, section: 0)
+        let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
+            stubber.when(mock.deselectRow(at: index, animated: true)).thenDoNothing()
+        }
+        let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
+
+        tableView?.delegate?.tableView?(mockTableView, didSelectRowAt: index)
+
+        waitUntil(viewController.navigationController?.topViewController is NoteDetailViewController)
+        let topVC: NoteDetailViewController? = viewController.navigationController?.topViewController as? NoteDetailViewController
+        XCTAssertNotNil(topVC, "Expected top view controller to be NoteDetailViewController")
+        XCTAssertEqual(topVC?.note?.name, expectedNote.name)
+        XCTAssertEqual(topVC?.note?.contents, expectedNote.contents)
+
+        objcVerify(mockTableView.deselectRow(at: index, animated: true))
+    }
 }

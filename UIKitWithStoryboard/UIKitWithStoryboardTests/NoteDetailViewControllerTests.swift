@@ -21,8 +21,28 @@ class NoteDetailViewControllerTests: XCTestCase {
         XCTAssertNotNil(viewController, "Expected to load NoteDetailViewController from storyboard")
     }
 
-    func testNoteDetailsAreDisplayed() throws {
+    func testNoteNameIsDisplayed() throws {
+        let note = Note(name: "Note 1", contents: UUID().uuidString)
+        viewController = UIViewController.loadFromStoryboard(identifier: "NoteDetailViewController") { initialViewController in
+            initialViewController.note = note
+        }
 
+        let noteNameLabel: UILabel? = viewController.view?.viewWithAccessibilityIdentifier("NameLabel") as? UILabel
+
+        XCTAssertNotNil(viewController.note)
+        XCTAssertEqual(noteNameLabel?.text, note.name)
+    }
+
+    func testNoteContentsAreDisplayed() throws {
+        let note = Note(name: "Note 1", contents: UUID().uuidString)
+        viewController = UIViewController.loadFromStoryboard(identifier: "NoteDetailViewController") { initialViewController in
+            initialViewController.note = note
+        }
+
+        let textView: UITextView? = viewController.view?.viewWithAccessibilityIdentifier("ContentsTextView") as? UITextView
+
+        XCTAssertNotNil(viewController.note)
+        XCTAssertEqual(textView?.text, note.contents)
     }
 
 }
