@@ -14,7 +14,7 @@ import Cuckoo
 
 class NotesServiceTests: XCTestCase {
     var service: NotesService!
-    let notesURL = FileManager.default
+    let notesURL = Foundation.FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask).first!
             .appendingPathComponent("notes")
 
@@ -24,6 +24,7 @@ class NotesServiceTests: XCTestCase {
     }
 
     func testNotesServiceCanReadAllTheNotesFromDirectory() throws {
+        Container.default.register(Foundation.FileManager.self) { _ in Foundation.FileManager.default }
         let mockEnumerator = MockDirectoryEnumerator()
         let expectedUrl1 = URL(fileURLWithPath: "User/user1/test1.txt")
         let expectedUrl2 = URL(fileURLWithPath: "User/user1/test2.txt")
@@ -64,6 +65,8 @@ class NotesServiceTests: XCTestCase {
     }
 
     func testNotesServiceReturnsError_WhenItCannotGetDirectoryEnumerator() throws {
+        Container.default.register(Foundation.FileManager.self) { _ in FileManager.default }
+
         let result = service.getNotes()
 
         switch result {
@@ -74,6 +77,7 @@ class NotesServiceTests: XCTestCase {
     }
 
     func testNotesServiceReturnsError_WhenGettingContentsOfFileThrowsError() throws {
+        Container.default.register(Foundation.FileManager.self) { _ in FileManager.default }
         enum Err: Error {
             case e1
         }
@@ -102,6 +106,8 @@ class NotesServiceTests: XCTestCase {
     }
 
     func testServiceCanSaveANote() throws {
+        Container.default.register(Foundation.FileManager.self) { _ in FileManager.default }
+
         struct FakeNote: NoteWriteable {
             let name: String
             let contents: MockFileWriteable
@@ -133,6 +139,24 @@ class NotesServiceTests: XCTestCase {
         }
 
         verify(mock, times(1)).write(to: notesURL.appendingPathComponent(fakeNote.name).appendingPathExtension("txt"), atomically: true, encoding: String.Encoding.utf8)
+    }
+
+    func testServiceThrowsAnErrorWhileSavingANote_WhenItCannotFindTheFileURL() throws {
+        let mock = MockFileManager()
+        let url = URL(fileURLWithPath: "SOMETHING")
+        stub(mock) { stub in
+            when(stub.urls(for: any(), in: any())).thenReturn([url])
+        }
+        Container.default.register(Foundation.FileManager.self) { _ in mock }
+
+        let note = Note(name: "", contents: "")
+
+        XCTAssertThrowsError(try service.save(note: note)) { err in
+            XCTAssertEqual(err as? NotesService.FileError, .unableToReadFromFile)
+        }
+
+        verify(mock, times(1)).urls(for: any(), in: any())
+//        verify(mock, times(1)).write(to: notesURL.appendingPathComponent(fakeNote.name).appendingPathExtension("txt"), atomically: true, encoding: String.Encoding.utf8)
     }
 
     func testNotesServiceCanWriteAStringToAFile() throws {

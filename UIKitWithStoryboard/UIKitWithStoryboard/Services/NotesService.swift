@@ -9,7 +9,8 @@ import Foundation
 import Swinject
 
 class NotesService {
-    private static let notesURL: URL? = FileManager.default
+    @DependencyInjected static var fileManager: FileManager?
+    private static let notesURL: URL? = fileManager?
         .urls(for: .documentDirectory, in: .userDomainMask).first?
         .appendingPathComponent("notes")
 
