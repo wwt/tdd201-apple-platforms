@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: WriteToFile/Protocols/FileWriteable.swift at 2021-02-03 17:48:35 +0000
+// MARK: - Mocks generated from file: WriteToFile/Protocols/FileWriteable.swift at 2021-02-11 18:32:25 +0000
 
 //
 //  FileWriteable.swift
@@ -103,7 +103,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: WriteToFileTests/MockFileManager.swift at 2021-02-03 17:48:35 +0000
+// MARK: - Mocks generated from file: WriteToFileTests/MockFileManager.swift at 2021-02-11 18:32:25 +0000
 
 //
 //  MockFileManager.swift

@@ -1,0 +1,247 @@
+{
+  "consumer": {
+    "name": "Combine-iOSAPP"
+  },
+  "provider": {
+    "name": "IdentityService"
+  },
+  "interactions": [
+    {
+      "description": "A request for that user",
+      "providerState": "A user with id 1 exists",
+      "request": {
+        "method": "get",
+        "path": "/users/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "age": 48,
+          "name": "Otto",
+          "email": "jordonupton3422@littel.com"
+        },
+        "matchingRules": {
+          "$.body.age": {
+            "match": "type"
+          },
+          "$.body.name": {
+            "match": "type"
+          },
+          "$.body.email": {
+            "match": "regex",
+            "regex": "(.*)@(.*)"
+          }
+        }
+      }
+    },
+    {
+      "description": "A request for the profile information",
+      "providerState": "A user with the correct ID exists",
+      "request": {
+        "method": "get",
+        "path": "/me",
+        "headers": {
+          "Accept": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.headers.Authorization": {
+            "match": "regex",
+            "regex": "Bearer (.*?)"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "createdDate": "2018-07-26T19:33:46.6818918",
+          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
+          "isTermsAccepted": true,
+          "username": "viviennemuller@bechtelarroob.com",
+          "self": {
+            "address": {
+              "stateOrProvince": "CA",
+              "zipCode": "80202",
+              "countryCode": "US",
+              "line1": "111 Fake st",
+              "city": "Denver",
+              "line2": ""
+            },
+            "phoneNumber": "3033033333",
+            "lastName": "Blow",
+            "firstName": "Joe",
+            "email": "viviennemuller@bechtelarroob.com",
+            "dateOfBirth": "1990-03-26T00:00:00"
+          },
+          "isVerified": true
+        },
+        "matchingRules": {
+          "$.body.createdDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          },
+          "$.body.termsAcceptedDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          },
+          "$.body.isTermsAccepted": {
+            "match": "type"
+          },
+          "$.body.username": {
+            "match": "type"
+          },
+          "$.body.self.address.stateOrProvince": {
+            "match": "type"
+          },
+          "$.body.self.address.zipCode": {
+            "match": "type"
+          },
+          "$.body.self.address.line1": {
+            "match": "type"
+          },
+          "$.body.self.address.city": {
+            "match": "type"
+          },
+          "$.body.self.address.line2": {
+            "match": "type"
+          },
+          "$.body.self.phoneNumber": {
+            "match": "regex",
+            "regex": "\\d{10}"
+          },
+          "$.body.self.lastName": {
+            "match": "type"
+          },
+          "$.body.self.firstName": {
+            "match": "type"
+          },
+          "$.body.self.email": {
+            "match": "regex",
+            "regex": "(.*)@(.*)"
+          },
+          "$.body.self.dateOfBirth": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+          },
+          "$.body.isVerified": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "A request for the profile information",
+      "providerState": "A user with a prefferred name and the correct ID exists",
+      "request": {
+        "method": "get",
+        "path": "/me",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+          "Accept": "application/json"
+        },
+        "matchingRules": {
+          "$.headers.Authorization": {
+            "match": "regex",
+            "regex": "Bearer (.*?)"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
+          "self": {
+            "dateOfBirth": "1990-03-26T00:00:00",
+            "preferredName": "Joey",
+            "lastName": "Blow",
+            "address": {
+              "stateOrProvince": "CA",
+              "line2": "",
+              "zipCode": "80202",
+              "line1": "111 Fake st",
+              "countryCode": "US",
+              "city": "Denver"
+            },
+            "email": "jaunitasenger2891@fay.com",
+            "phoneNumber": "3033033333",
+            "firstName": "Joe"
+          },
+          "isTermsAccepted": true,
+          "createdDate": "2018-07-26T19:33:46.6818918",
+          "isVerified": true,
+          "username": "jaunitasenger2891@fay.com"
+        },
+        "matchingRules": {
+          "$.body.termsAcceptedDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          },
+          "$.body.self.dateOfBirth": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+          },
+          "$.body.self.preferredName": {
+            "match": "type"
+          },
+          "$.body.self.lastName": {
+            "match": "type"
+          },
+          "$.body.self.address.stateOrProvince": {
+            "match": "type"
+          },
+          "$.body.self.address.line2": {
+            "match": "type"
+          },
+          "$.body.self.address.zipCode": {
+            "match": "type"
+          },
+          "$.body.self.address.line1": {
+            "match": "type"
+          },
+          "$.body.self.address.city": {
+            "match": "type"
+          },
+          "$.body.self.email": {
+            "match": "regex",
+            "regex": "(.*)@(.*)"
+          },
+          "$.body.self.phoneNumber": {
+            "match": "regex",
+            "regex": "\\d{10}"
+          },
+          "$.body.self.firstName": {
+            "match": "type"
+          },
+          "$.body.isTermsAccepted": {
+            "match": "type"
+          },
+          "$.body.createdDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          },
+          "$.body.isVerified": {
+            "match": "type"
+          },
+          "$.body.username": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

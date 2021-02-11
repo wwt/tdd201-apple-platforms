@@ -13,8 +13,8 @@ struct DependencyInjected<Value> {
     let nameGetter: (() -> String?)
     let containerGetter: () -> Container
 
-    public init(container: @escaping @autoclosure () -> Container = { Container.default }(),
-                name: @escaping @autoclosure (() -> String?) = { nil }()) {
+    public init(container: @escaping @autoclosure () -> Container = Container.default,
+                name: @escaping @autoclosure (() -> String?) = nil) {
         self.nameGetter = name
         self.containerGetter = container
     }
