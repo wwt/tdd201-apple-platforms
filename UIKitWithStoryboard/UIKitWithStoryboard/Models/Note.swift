@@ -11,3 +11,9 @@ struct Note {
     let name: String
     let contents: String
 }
+
+extension Note {
+    func writer() -> FileWriteable {
+        contents
+    }
+}

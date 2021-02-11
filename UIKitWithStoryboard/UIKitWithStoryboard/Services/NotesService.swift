@@ -12,11 +12,18 @@ class NotesService {
     private static let notesURL: URL? = FileManager.default
         .urls(for: .documentDirectory, in: .userDomainMask).first?
         .appendingPathComponent("notes")
-    private static var notesURLString: String { notesURL?.absoluteString ?? "" }
-    @DependencyInjected(name: NotesService.notesURLString) var directoryEnumerator: FileManager.DirectoryEnumerator?
+
+    @DependencyInjected(name: notesURL?.absoluteString) var directoryEnumerator: FileManager.DirectoryEnumerator?
 
     func writeNote(at url: URL, contents: FileWriteable) throws {
         try contents.write(to: url, atomically: true, encoding: .utf8)
+    }
+
+    func save(note: Note) throws {
+        guard let notesURL = Self.notesURL else {
+            throw FileError.unableToReadFromFile
+        }
+        try note.writer().write(to: notesURL.appendingPathComponent(note.name).appendingPathExtension("txt"), atomically: true, encoding: .utf8)
     }
 
     func getNotes() -> Result<[Note], Error> {

@@ -10,8 +10,6 @@
 		00BB4D7525D4A25400905C5E /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D7425D4A25400905C5E /* NotesListViewController.swift */; };
 		00BB4D7D25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D7C25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift */; };
 		00BB4DB425D4A59400905C5E /* NotesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DB325D4A59400905C5E /* NotesService.swift */; };
-		00BB4DBA25D4A5CB00905C5E /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DB825D4A5CB00905C5E /* DependencyInjected.swift */; };
-		00BB4DBB25D4A5CB00905C5E /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DB925D4A5CB00905C5E /* ContainerExtensions.swift */; };
 		00BB4DC025D4A5F400905C5E /* FileWriteable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DBF25D4A5F400905C5E /* FileWriteable.swift */; };
 		00BB4DC425D4A64A00905C5E /* NotesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DC325D4A64A00905C5E /* NotesServiceTests.swift */; };
 		00BB4DCD25D4A76E00905C5E /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DCC25D4A76E00905C5E /* GeneratedMocks.swift */; };
@@ -29,6 +27,8 @@
 		CAA1C35025A388F400E3F686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C34F25A388F400E3F686 /* Assets.xcassets */; };
 		CAA1C35325A388F400E3F686 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C35125A388F400E3F686 /* LaunchScreen.storyboard */; };
 		CAA1C35E25A388F400E3F686 /* NotesListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C35D25A388F400E3F686 /* NotesListViewControllerTests.swift */; };
+		CAB58C2D25D4C200001F635C /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB58C2B25D4C1FF001F635C /* DependencyInjected.swift */; };
+		CAB58C2E25D4C200001F635C /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB58C2C25D4C1FF001F635C /* ContainerExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +45,6 @@
 		00BB4D7425D4A25400905C5E /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
 		00BB4D7C25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewControllerTests.swift; sourceTree = "<group>"; };
 		00BB4DB325D4A59400905C5E /* NotesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesService.swift; sourceTree = "<group>"; };
-		00BB4DB825D4A5CB00905C5E /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = ../../../DependencyInjection/DependencyInjection/DependencyInjection/DependencyInjected.swift; sourceTree = "<group>"; };
-		00BB4DB925D4A5CB00905C5E /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = ../../../DependencyInjection/DependencyInjection/DependencyInjection/ContainerExtensions.swift; sourceTree = "<group>"; };
 		00BB4DBF25D4A5F400905C5E /* FileWriteable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWriteable.swift; sourceTree = "<group>"; };
 		00BB4DC325D4A64A00905C5E /* NotesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesServiceTests.swift; sourceTree = "<group>"; };
 		00BB4DCC25D4A76E00905C5E /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
@@ -70,6 +68,8 @@
 		CAA1C35925A388F400E3F686 /* UIKitWithStoryboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIKitWithStoryboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C35D25A388F400E3F686 /* NotesListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewControllerTests.swift; sourceTree = "<group>"; };
 		CAA1C35F25A388F400E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAB58C2B25D4C1FF001F635C /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = ../../../DependencyInjection/DependencyInjection/DependencyInjection/DependencyInjected.swift; sourceTree = "<group>"; };
+		CAB58C2C25D4C1FF001F635C /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = ../../../DependencyInjection/DependencyInjection/DependencyInjection/ContainerExtensions.swift; sourceTree = "<group>"; };
 		D7F3D34A40A1951D574B26D0 /* Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig"; path = "Target Support Files/Pods-UIKitWithStoryboard-UIKitWithStoryboardTests/Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DACA2B83D190863F6EF7CF91 /* Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,15 +100,6 @@
 				00BB4DB325D4A59400905C5E /* NotesService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		00BB4DB725D4A5B000905C5E /* DependencyInjection */ = {
-			isa = PBXGroup;
-			children = (
-				00BB4DB925D4A5CB00905C5E /* ContainerExtensions.swift */,
-				00BB4DB825D4A5CB00905C5E /* DependencyInjected.swift */,
-			);
-			path = DependencyInjection;
 			sourceTree = "<group>";
 		};
 		00BB4DBE25D4A5DB00905C5E /* Protocols */ = {
@@ -196,9 +187,9 @@
 		CAA1C34525A388F300E3F686 /* UIKitWithStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				CAB58C2A25D4C1E6001F635C /* DependencyInjection */,
 				00BB4E3B25D4B4F700905C5E /* Models */,
 				00BB4DBE25D4A5DB00905C5E /* Protocols */,
-				00BB4DB725D4A5B000905C5E /* DependencyInjection */,
 				00BB4DB225D4A57100905C5E /* Services */,
 				CAA1C34625A388F300E3F686 /* AppDelegate.swift */,
 				CAA1C34825A388F300E3F686 /* SceneDelegate.swift */,
@@ -225,6 +216,15 @@
 				00BB4E3325D4ABFE00905C5E /* DependencyInjectionTests.swift */,
 			);
 			path = UIKitWithStoryboardTests;
+			sourceTree = "<group>";
+		};
+		CAB58C2A25D4C1E6001F635C /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				CAB58C2C25D4C1FF001F635C /* ContainerExtensions.swift */,
+				CAB58C2B25D4C1FF001F635C /* DependencyInjected.swift */,
+			);
+			path = DependencyInjection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,8 +469,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00BB4DBB25D4A5CB00905C5E /* ContainerExtensions.swift in Sources */,
-				00BB4DBA25D4A5CB00905C5E /* DependencyInjected.swift in Sources */,
+				CAB58C2E25D4C200001F635C /* ContainerExtensions.swift in Sources */,
+				CAB58C2D25D4C200001F635C /* DependencyInjected.swift in Sources */,
 				00BB4D7525D4A25400905C5E /* NotesListViewController.swift in Sources */,
 				CAA1C34B25A388F300E3F686 /* NoteDetailViewController.swift in Sources */,
 				CAA1C34725A388F300E3F686 /* AppDelegate.swift in Sources */,
@@ -656,6 +656,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -enable-implicit-dynamic";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wwtas.tdd201.UIKitWithStoryboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "TDD 201 iOS Development";

@@ -12,6 +12,10 @@ import Cuckoo
 
 @testable import UIKitWithStoryboard
 
+fileprivate extension Note {
+    static var writer: FileWriteable = ""
+}
+
 class NotesServiceTests: XCTestCase {
     var service: NotesService!
     let notesURL = FileManager.default
@@ -62,6 +66,19 @@ class NotesServiceTests: XCTestCase {
         }
     }
 
+    func testServiceCanSaveANote() throws {
+        let mock = MockFileWriteable()
+        stub(mock) { stub in
+            when(stub.write(to: anyURL(), atomically: true, encoding: anyStringEncoding())).thenDoNothing()
+        }
+        Note.writer = mock
+        let note = Note(name: UUID().uuidString, contents: UUID().uuidString)
+
+        try service.save(note: note)
+
+        verify(mock, times(1)).write(to: notesURL.appendingPathComponent(note.name).appendingPathExtension("txt"), atomically: true, encoding: String.Encoding.utf8)
+    }
+
     func testNotesServiceCanWriteAStringToAFile() throws {
         let expectedPath = URL(string: "file://path.txt")!
         let mock = MockFileWriteable()
@@ -90,5 +107,12 @@ class NotesServiceTests: XCTestCase {
         }
 
         verify(mock, times(1)).write(to: expectedPath, atomically: true, encoding: String.Encoding.utf8)
+    }
+}
+
+extension Note {
+    @_dynamicReplacement(for: writer)
+    func _writer() -> FileWriteable {
+        Note.writer
     }
 }
