@@ -87,6 +87,19 @@ target 'HTTPStubbing' do
   
 end
 
+target 'UIKitWithStoryboard' do
+  platform :ios, '11.0'
+  project 'UIKitWithStoryboard/UIKitWithStoryboard.xcodeproj'
+  use_frameworks!
+  pod 'Swinject'
+
+  target 'UIKitWithStoryboardTests' do
+    pod 'UIUTest'
+    pod 'Cuckoo'
+  end
+
+end
+
 target 'MutationTesting' do
   project 'MutationTesting/MutationTesting.xcodeproj'
   pod 'SwiftLint'

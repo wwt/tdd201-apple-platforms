@@ -28,6 +28,7 @@ PODS:
     - Realm (= 10.5.1)
   - SwiftLint (0.42.0)
   - Swinject (2.7.1)
+  - UIUTest (1.7.0)
 
 DEPENDENCIES:
   - Cuckoo
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - RealmSwift
   - SwiftLint
   - Swinject
+  - UIUTest
 
 SPEC REPOS:
   trunk:
@@ -50,6 +52,7 @@ SPEC REPOS:
     - RealmSwift
     - SwiftLint
     - Swinject
+    - UIUTest
 
 SPEC CHECKSUMS:
   Cuckoo: 4625f7f54d9bb880123270e8969898d6c1d036b5
@@ -61,7 +64,8 @@ SPEC CHECKSUMS:
   RealmSwift: 6abe6aa6cd8b70cc1a87afcb9232cabea74ff1ac
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
+  UIUTest: 260d9054e9a882389d9a28d0fe9987feb82a7e9b
 
-PODFILE CHECKSUM: 270029a515662dc916212845a10efbb3ff4594be
+PODFILE CHECKSUM: 6242fcc070fd51a9ff37d96899eb44592d4f9d9d
 
 COCOAPODS: 1.10.0

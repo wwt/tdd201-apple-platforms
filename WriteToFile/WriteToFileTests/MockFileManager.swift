@@ -11,10 +11,10 @@ import Foundation
 // If you need to add methods to your mock, add them here first
 class FileManager: Foundation.FileManager {
     override func contents(atPath path: String) -> Data? {
-        return super.contents(atPath: path)
+        super.contents(atPath: path)
     }
 
     override func createFile(atPath path: String, contents data: Data?, attributes attr: [FileAttributeKey: Any]? = nil) -> Bool {
-        return super.createFile(atPath: path, contents: data, attributes: attr)
+        super.createFile(atPath: path, contents: data, attributes: attr)
     }
 }

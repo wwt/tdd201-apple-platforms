@@ -1,6 +1,6 @@
-I, [2021-02-10T14:00:37.163568 #11454]  INFO -- : Cleared interactions
-I, [2021-02-10T14:00:37.170279 #11454]  INFO -- : Registered expected interaction GET /users/1
-D, [2021-02-10T14:00:37.170888 #11454] DEBUG -- : {
+I, [2021-02-10T16:28:55.867539 #31009]  INFO -- : Cleared interactions
+I, [2021-02-10T16:28:55.877119 #31009]  INFO -- : Registered expected interaction GET /users/1
+D, [2021-02-10T16:28:55.878164 #31009] DEBUG -- : {
   "description": "A request for that user",
   "providerState": "A user with id 1 exists",
   "request": {
@@ -12,18 +12,18 @@ D, [2021-02-10T14:00:37.170888 #11454] DEBUG -- : {
     "headers": {
     },
     "body": {
-      "name": {
-        "json_class": "Pact::SomethingLike",
-        "contents": "Zella"
-      },
       "age": {
         "json_class": "Pact::SomethingLike",
-        "contents": 46
+        "contents": 48
+      },
+      "name": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Otto"
       },
       "email": {
         "json_class": "Pact::Term",
         "data": {
-          "generate": "rollinhessel6802@mosciski.info",
+          "generate": "jordonupton3422@littel.com",
           "matcher": {
             "json_class": "Regexp",
             "o": 0,
@@ -35,8 +35,8 @@ D, [2021-02-10T14:00:37.170888 #11454] DEBUG -- : {
   },
   "metadata": null
 }
-I, [2021-02-10T14:00:37.182276 #11454]  INFO -- : Received request GET /users/1
-D, [2021-02-10T14:00:37.182746 #11454] DEBUG -- : {
+I, [2021-02-10T16:28:55.901000 #31009]  INFO -- : Received request GET /users/1
+D, [2021-02-10T16:28:55.901577 #31009] DEBUG -- : {
   "path": "/users/1",
   "query": "",
   "method": "get",
@@ -50,24 +50,24 @@ D, [2021-02-10T14:00:37.182746 #11454] DEBUG -- : {
     "Version": "HTTP/1.1"
   }
 }
-I, [2021-02-10T14:00:37.183203 #11454]  INFO -- : Found matching response for GET /users/1
-D, [2021-02-10T14:00:37.183545 #11454] DEBUG -- : {
+I, [2021-02-10T16:28:55.902648 #31009]  INFO -- : Found matching response for GET /users/1
+D, [2021-02-10T16:28:55.903138 #31009] DEBUG -- : {
   "status": 200,
   "headers": {
   },
   "body": {
-    "name": {
-      "json_class": "Pact::SomethingLike",
-      "contents": "Zella"
-    },
     "age": {
       "json_class": "Pact::SomethingLike",
-      "contents": 46
+      "contents": 48
+    },
+    "name": {
+      "json_class": "Pact::SomethingLike",
+      "contents": "Otto"
     },
     "email": {
       "json_class": "Pact::Term",
       "data": {
-        "generate": "rollinhessel6802@mosciski.info",
+        "generate": "jordonupton3422@littel.com",
         "matcher": {
           "json_class": "Regexp",
           "o": 0,
@@ -77,5 +77,5 @@ D, [2021-02-10T14:00:37.183545 #11454] DEBUG -- : {
     }
   }
 }
-I, [2021-02-10T14:00:37.187796 #11454]  INFO -- : Verifying - interactions matched
-I, [2021-02-10T14:00:37.191999 #11454]  INFO -- : Writing pact for UserService to /Users/tylerthompson/workspace/tdd-201-apple-platforms/ContractTesting/tmp/pacts/contracttesting-iosapp-userservice.json
+I, [2021-02-10T16:28:55.910091 #31009]  INFO -- : Verifying - interactions matched
+I, [2021-02-10T16:28:55.915645 #31009]  INFO -- : Writing pact for UserService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/ContractTesting/tmp/pacts/contracttesting-iosapp-userservice.json

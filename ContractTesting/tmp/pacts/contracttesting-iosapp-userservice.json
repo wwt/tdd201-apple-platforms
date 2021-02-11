@@ -18,15 +18,15 @@
         "headers": {
         },
         "body": {
-          "name": "Zella",
-          "age": 46,
-          "email": "rollinhessel6802@mosciski.info"
+          "age": 48,
+          "name": "Otto",
+          "email": "jordonupton3422@littel.com"
         },
         "matchingRules": {
-          "$.body.name": {
+          "$.body.age": {
             "match": "type"
           },
-          "$.body.age": {
+          "$.body.name": {
             "match": "type"
           },
           "$.body.email": {
