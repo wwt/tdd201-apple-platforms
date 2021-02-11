@@ -14,10 +14,52 @@ import Cuckoo
 
 class NotesServiceTests: XCTestCase {
     var service: NotesService!
+    let notesURL = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask).first!
+            .appendingPathComponent("notes")
 
     override func setUpWithError() throws {
         service = NotesService()
         Container.default.removeAll()
+    }
+
+    func testNotesServiceCanReadAllTheNotesFromDirectory() throws {
+        let mockEnumerator = MockDirectoryEnumerator()
+        let expectedUrl1 = URL(fileURLWithPath: "User/user1/test1.txt")
+        let expectedUrl2 = URL(fileURLWithPath: "User/user1/test2.txt")
+        let expectedContents1 = UUID().uuidString
+        let expectedContents2 = UUID().uuidString
+        stub(mockEnumerator) { (stub) in
+            when(stub.nextObject())
+                .thenReturn(expectedUrl1)
+                .thenReturn(expectedUrl2)
+                .thenReturn(nil)
+        }
+        Container.default.register(FileManager.DirectoryEnumerator.self,
+                                   name: notesURL.absoluteString) { _ in mockEnumerator }
+        Container.default.register(Result<String, Error>.self, name: "ReadFromFile") {(_:Resolver, url: URL, _: String.Encoding) in
+            switch url {
+                case expectedUrl1:
+                    return .success(expectedContents1)
+                case expectedUrl2:
+                    return .success(expectedContents2)
+                default:
+                    return .failure(NotesService.FileError.unableToReadFromFile)
+            }
+        }
+
+        let result = service.getNotes()
+
+        switch result {
+            case .success(let notes):
+                XCTAssertEqual(notes.count, 2)
+                XCTAssertEqual(notes.first?.name, "test1")
+                XCTAssertEqual(notes.first?.contents, expectedContents1)
+                XCTAssertEqual(notes.last?.name, "test2")
+                XCTAssertEqual(notes.last?.contents, expectedContents2)
+            case .failure(let err):
+                XCTFail("I expected notes. Give me notes. Instead got \(err.localizedDescription)")
+        }
     }
 
     func testNotesServiceCanWriteAStringToAFile() throws {

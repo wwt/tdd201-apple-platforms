@@ -19,6 +19,7 @@
 		00BB4DDA25D4A7F200905C5E /* StringEncodingMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DD925D4A7F200905C5E /* StringEncodingMatcher.swift */; };
 		00BB4DDE25D4A86E00905C5E /* MockDirectoryEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DDD25D4A86E00905C5E /* MockDirectoryEnumerator.swift */; };
 		00BB4E3425D4ABFE00905C5E /* DependencyInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4E3325D4ABFE00905C5E /* DependencyInjectionTests.swift */; };
+		00BB4E3D25D4B50200905C5E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4E3C25D4B50200905C5E /* Note.swift */; };
 		2FAB0D6660869FC65B03579D /* Pods_UIKitWithStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6491AB4815DD817F310D8D9 /* Pods_UIKitWithStoryboard.framework */; };
 		A7B2842940CA94CECF540115 /* Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACA2B83D190863F6EF7CF91 /* Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework */; };
 		CAA1C34725A388F300E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C34625A388F300E3F686 /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 		00BB4DD925D4A7F200905C5E /* StringEncodingMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEncodingMatcher.swift; sourceTree = "<group>"; };
 		00BB4DDD25D4A86E00905C5E /* MockDirectoryEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDirectoryEnumerator.swift; sourceTree = "<group>"; };
 		00BB4E3325D4ABFE00905C5E /* DependencyInjectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionTests.swift; sourceTree = "<group>"; };
+		00BB4E3C25D4B50200905C5E /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		14C67BE079C56B1865B93DBD /* Pods-UIKitWithStoryboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitWithStoryboard.debug.xcconfig"; path = "Target Support Files/Pods-UIKitWithStoryboard/Pods-UIKitWithStoryboard.debug.xcconfig"; sourceTree = "<group>"; };
 		2762AE8826FBF7EC19BE9096 /* Pods-UIKitWithStoryboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitWithStoryboard.release.xcconfig"; path = "Target Support Files/Pods-UIKitWithStoryboard/Pods-UIKitWithStoryboard.release.xcconfig"; sourceTree = "<group>"; };
 		45AF985E795B345851658849 /* Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.release.xcconfig"; path = "Target Support Files/Pods-UIKitWithStoryboard-UIKitWithStoryboardTests/Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		00BB4E3B25D4B4F700905C5E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				00BB4E3C25D4B50200905C5E /* Note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3DA161AAFB138CE838EB4DFB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +196,7 @@
 		CAA1C34525A388F300E3F686 /* UIKitWithStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				00BB4E3B25D4B4F700905C5E /* Models */,
 				00BB4DBE25D4A5DB00905C5E /* Protocols */,
 				00BB4DB725D4A5B000905C5E /* DependencyInjection */,
 				00BB4DB225D4A57100905C5E /* Services */,
@@ -463,6 +474,7 @@
 				00BB4D7525D4A25400905C5E /* NotesListViewController.swift in Sources */,
 				CAA1C34B25A388F300E3F686 /* NoteDetailViewController.swift in Sources */,
 				CAA1C34725A388F300E3F686 /* AppDelegate.swift in Sources */,
+				00BB4E3D25D4B50200905C5E /* Note.swift in Sources */,
 				00BB4DC025D4A5F400905C5E /* FileWriteable.swift in Sources */,
 				00BB4DB425D4A59400905C5E /* NotesService.swift in Sources */,
 				CAA1C34925A388F300E3F686 /* SceneDelegate.swift in Sources */,

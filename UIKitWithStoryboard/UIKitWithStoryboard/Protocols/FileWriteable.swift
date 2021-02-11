@@ -11,8 +11,4 @@ protocol FileWriteable {
     func write(to: URL, atomically: Bool, encoding: String.Encoding) throws
 }
 
-protocol FileReadable {
-    init(contentsOf: URL, encoding: String.Encoding) throws
-}
-
-extension String: FileWriteable, FileReadable { }
+extension String: FileWriteable { }

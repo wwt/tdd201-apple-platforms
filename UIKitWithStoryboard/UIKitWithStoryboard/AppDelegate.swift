@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setupDependencies() {
-        Container.default.register(Result<FileReadable, Error>.self) { (_, url, encoding) in
+        Container.default.register(Result<String, Error>.self, name: "ReadFromFile") { (_, url, encoding) in
             Result {
                 try String(contentsOf: url, encoding: encoding)
             }
