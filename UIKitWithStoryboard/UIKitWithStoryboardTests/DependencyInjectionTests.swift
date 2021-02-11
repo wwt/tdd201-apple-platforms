@@ -30,7 +30,9 @@ class DependencyInjectionTests: XCTestCase {
         XCTAssertEqual(didFinishLaunching, true, "Expected didFinishLaunching to be true")
         XCTAssertNotNil(Container.default.resolve(FileManager.DirectoryEnumerator.self, name: notesURL.absoluteString))
         XCTAssertNotNil(Container.default.resolve(Result<String, Error>.self, name: "ReadFromFile", arguments: notesURL, String.Encoding.utf8))
-        XCTAssert(Container.default.resolve(Foundation.FileManager.self) === Foundation.FileManager.default, "Expected to be able to resolve FileManager.default from default container")
+        XCTAssert(Container.default.resolve(Foundation.FileManager.self) === Foundation.FileManager.default,
+                  "Expected to be able to resolve FileManager.default from default container")
+        XCTAssertNotNil(Container.default.resolve(NotesService.self), "Expected to have a NotesService registered")
     }
 
     func testDefaultContainerAlwaysReturnsTheSameContainer() {

@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setupDependencies() {
+        Container.default.register(NotesService.self) { _ in NotesService() }
         Container.default.register(FileManager.self) { _ in FileManager.default }
         Container.default.register(Result<String, Error>.self, name: "ReadFromFile") { (_, url, encoding) in
             Result {

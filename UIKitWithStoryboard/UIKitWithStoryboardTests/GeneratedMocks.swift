@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-11 18:29:17 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-11 18:50:58 +0000
 
 //
 //  FileWriteable.swift
@@ -103,7 +103,217 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-02-11 18:29:17 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboard/Services/NotesService.swift at 2021-02-11 18:50:58 +0000
+
+//
+//  NotesService.swift
+//  UIKitWithStoryboard
+//
+//  Created by Heather Meadow on 2/10/21.
+//
+
+import Cuckoo
+@testable import UIKitWithStoryboard
+
+import Foundation
+import Swinject
+
+
+ class MockNotesService: NotesService, Cuckoo.ClassMock {
+    
+     typealias MocksType = NotesService
+    
+     typealias Stubbing = __StubbingProxy_NotesService
+     typealias Verification = __VerificationProxy_NotesService
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: NotesService?
+
+     func enableDefaultImplementation(_ stub: NotesService) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
+     override var directoryEnumerator: FileManager.DirectoryEnumerator? {
+        get {
+            return cuckoo_manager.getter("directoryEnumerator",
+                superclassCall:
+                    
+                    super.directoryEnumerator
+                    ,
+                defaultCall: __defaultImplStub!.directoryEnumerator)
+        }
+        
+        set {
+            cuckoo_manager.setter("directoryEnumerator",
+                value: newValue,
+                superclassCall:
+                    
+                    super.directoryEnumerator = newValue
+                    ,
+                defaultCall: __defaultImplStub!.directoryEnumerator = newValue)
+        }
+        
+    }
+    
+
+    
+
+    
+    
+    
+     override func writeNote(at url: URL, contents: FileWriteable) throws {
+        
+    return try cuckoo_manager.callThrows("writeNote(at: URL, contents: FileWriteable) throws",
+            parameters: (url, contents),
+            escapingParameters: (url, contents),
+            superclassCall:
+                
+                super.writeNote(at: url, contents: contents)
+                ,
+            defaultCall: __defaultImplStub!.writeNote(at: url, contents: contents))
+        
+    }
+    
+    
+    
+     override func save<N: NoteWriteable>(note: N) throws {
+        
+    return try cuckoo_manager.callThrows("save(note: N) throws",
+            parameters: (note),
+            escapingParameters: (note),
+            superclassCall:
+                
+                super.save(note: note)
+                ,
+            defaultCall: __defaultImplStub!.save(note: note))
+        
+    }
+    
+    
+    
+     override func getNotes() -> Result<[Note], Error> {
+        
+    return cuckoo_manager.call("getNotes() -> Result<[Note], Error>",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.getNotes()
+                ,
+            defaultCall: __defaultImplStub!.getNotes())
+        
+    }
+    
+
+	 struct __StubbingProxy_NotesService: Cuckoo.StubbingProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	
+	     init(manager: Cuckoo.MockManager) {
+	        self.cuckoo_manager = manager
+	    }
+	    
+	    
+	    var directoryEnumerator: Cuckoo.ClassToBeStubbedOptionalProperty<MockNotesService, FileManager.DirectoryEnumerator> {
+	        return .init(manager: cuckoo_manager, name: "directoryEnumerator")
+	    }
+	    
+	    
+	    func writeNote<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(at url: M1, contents: M2) -> Cuckoo.ClassStubNoReturnThrowingFunction<(URL, FileWriteable)> where M1.MatchedType == URL, M2.MatchedType == FileWriteable {
+	        let matchers: [Cuckoo.ParameterMatcher<(URL, FileWriteable)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: contents) { $0.1 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockNotesService.self, method: "writeNote(at: URL, contents: FileWriteable) throws", parameterMatchers: matchers))
+	    }
+	    
+	    func save<M1: Cuckoo.Matchable, N: NoteWriteable>(note: M1) -> Cuckoo.ClassStubNoReturnThrowingFunction<(N)> where M1.MatchedType == N {
+	        let matchers: [Cuckoo.ParameterMatcher<(N)>] = [wrap(matchable: note) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockNotesService.self, method: "save(note: N) throws", parameterMatchers: matchers))
+	    }
+	    
+	    func getNotes() -> Cuckoo.ClassStubFunction<(), Result<[Note], Error>> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockNotesService.self, method: "getNotes() -> Result<[Note], Error>", parameterMatchers: matchers))
+	    }
+	    
+	}
+
+	 struct __VerificationProxy_NotesService: Cuckoo.VerificationProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	    private let callMatcher: Cuckoo.CallMatcher
+	    private let sourceLocation: Cuckoo.SourceLocation
+	
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	        self.cuckoo_manager = manager
+	        self.callMatcher = callMatcher
+	        self.sourceLocation = sourceLocation
+	    }
+	
+	    
+	    
+	    var directoryEnumerator: Cuckoo.VerifyOptionalProperty<FileManager.DirectoryEnumerator> {
+	        return .init(manager: cuckoo_manager, name: "directoryEnumerator", callMatcher: callMatcher, sourceLocation: sourceLocation)
+	    }
+	    
+	
+	    
+	    @discardableResult
+	    func writeNote<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(at url: M1, contents: M2) -> Cuckoo.__DoNotUse<(URL, FileWriteable), Void> where M1.MatchedType == URL, M2.MatchedType == FileWriteable {
+	        let matchers: [Cuckoo.ParameterMatcher<(URL, FileWriteable)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: contents) { $0.1 }]
+	        return cuckoo_manager.verify("writeNote(at: URL, contents: FileWriteable) throws", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func save<M1: Cuckoo.Matchable, N: NoteWriteable>(note: M1) -> Cuckoo.__DoNotUse<(N), Void> where M1.MatchedType == N {
+	        let matchers: [Cuckoo.ParameterMatcher<(N)>] = [wrap(matchable: note) { $0 }]
+	        return cuckoo_manager.verify("save(note: N) throws", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func getNotes() -> Cuckoo.__DoNotUse<(), Result<[Note], Error>> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("getNotes() -> Result<[Note], Error>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	}
+}
+
+ class NotesServiceStub: NotesService {
+    
+    
+     override var directoryEnumerator: FileManager.DirectoryEnumerator? {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (FileManager.DirectoryEnumerator?).self)
+        }
+        
+        set { }
+        
+    }
+    
+
+    
+
+    
+     override func writeNote(at url: URL, contents: FileWriteable) throws  {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+     override func save<N: NoteWriteable>(note: N) throws  {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+     override func getNotes() -> Result<[Note], Error>  {
+        return DefaultValueRegistry.defaultValue(for: (Result<[Note], Error>).self)
+    }
+    
+}
+
+
+// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-02-11 18:50:58 +0000
 
 //
 //  MockDirectoryEnumerator.swift
