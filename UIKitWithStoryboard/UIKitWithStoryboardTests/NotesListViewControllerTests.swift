@@ -58,7 +58,7 @@ class NotesListViewControllerTests: XCTestCase {
         stub(mockNotesService) { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
         }
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
             Container.default.register(NotesService.self) { _ in mockNotesService }
         }
         let index = IndexPath(row: 0, section: 0)
@@ -69,7 +69,8 @@ class NotesListViewControllerTests: XCTestCase {
 
         tableView?.delegate?.tableView?(mockTableView, didSelectRowAt: index)
 
-        waitUntil(viewController.navigationController?.topViewController is NoteDetailViewController)
+        RunLoop.current.singlePass()
+
         let topVC: NoteDetailViewController? = viewController.navigationController?.topViewController as? NoteDetailViewController
         XCTAssertNotNil(topVC, "Expected top view controller to be NoteDetailViewController")
         XCTAssertEqual(topVC?.note?.name, expectedNote.name)
