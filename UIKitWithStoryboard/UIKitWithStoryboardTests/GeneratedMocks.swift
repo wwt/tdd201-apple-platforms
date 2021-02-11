@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-11 02:45:08 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-11 15:44:24 +0000
 
 //
 //  FileWriteable.swift
@@ -103,7 +103,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-02-11 02:45:08 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-02-11 15:44:24 +0000
 
 //
 //  MockDirectoryEnumerator.swift

@@ -19,11 +19,11 @@ class NotesService {
         try contents.write(to: url, atomically: true, encoding: .utf8)
     }
 
-    func save(note: Note) throws {
+    func save<N: NoteWriteable>(note: N) throws {
         guard let notesURL = Self.notesURL else {
             throw FileError.unableToReadFromFile
         }
-        try note.writer().write(to: notesURL.appendingPathComponent(note.name).appendingPathExtension("txt"), atomically: true, encoding: .utf8)
+        try note.contents.write(to: notesURL.appendingPathComponent(note.name).appendingPathExtension("txt"), atomically: true, encoding: .utf8)
     }
 
     func getNotes() -> Result<[Note], Error> {

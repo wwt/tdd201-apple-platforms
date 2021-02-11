@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Note {
-    let name: String
-    let contents: String
+protocol NoteWriteable where Contents: FileWriteable {
+    associatedtype Contents
+    var name: String { get }
+    var contents: Contents { get }
 }
 
-extension Note {
-    func writer() -> FileWriteable {
-        contents
-    }
+struct Note: NoteWriteable {
+    let name: String
+    let contents: String
 }
