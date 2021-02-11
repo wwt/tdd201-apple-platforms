@@ -37,7 +37,8 @@ class NotesServiceTests: XCTestCase {
         }
         Container.default.register(FileManager.DirectoryEnumerator.self,
                                    name: notesURL.absoluteString) { _ in mockEnumerator }
-        Container.default.register(Result<String, Error>.self, name: "ReadFromFile") {(_:Resolver, url: URL, _: String.Encoding) in
+        Container.default.register(Result<String, Error>.self, name: "ReadFromFile") {(_:Resolver, url: URL, encoding: String.Encoding) in
+            XCTAssertEqual(encoding, .utf8)
             switch url {
                 case expectedUrl1:
                     return .success(expectedContents1)
@@ -62,6 +63,44 @@ class NotesServiceTests: XCTestCase {
         }
     }
 
+    func testNotesServiceReturnsError_WhenItCannotGetDirectoryEnumerator() throws {
+        let result = service.getNotes()
+
+        switch result {
+            case .success: XCTFail("Got unexpected notes, scary")
+            case .failure(let err):
+                XCTAssertEqual(err as? NotesService.FileError, .unableToReadFromFile)
+        }
+    }
+
+    func testNotesServiceReturnsError_WhenGettingContentsOfFileThrowsError() throws {
+        enum Err: Error {
+            case e1
+        }
+        let mockEnumerator = MockDirectoryEnumerator()
+        let expectedUrl1 = URL(fileURLWithPath: "User/user1/test1.txt")
+        let expectedUrl2 = URL(fileURLWithPath: "User/user1/test2.txt")
+        stub(mockEnumerator) { (stub) in
+            when(stub.nextObject())
+                .thenReturn(expectedUrl1)
+                .thenReturn(expectedUrl2)
+                .thenReturn(nil)
+        }
+        Container.default.register(FileManager.DirectoryEnumerator.self,
+                                   name: notesURL.absoluteString) { _ in mockEnumerator }
+        Container.default.register(Result<String, Error>.self, name: "ReadFromFile") {(_:Resolver, _: URL, _: String.Encoding) in
+            .failure(Err.e1)
+        }
+
+        let result = service.getNotes()
+
+        switch result {
+            case .success: XCTFail("Got unexpected notes")
+            case .failure(let err):
+                XCTAssertEqual(err as? Err, .e1)
+        }
+    }
+
     func testServiceCanSaveANote() throws {
         struct FakeNote: NoteWriteable {
             let name: String
@@ -74,6 +113,24 @@ class NotesServiceTests: XCTestCase {
         let fakeNote = FakeNote(name: UUID().uuidString, contents: mock)
 
         try service.save(note: fakeNote)
+
+        verify(mock, times(1)).write(to: notesURL.appendingPathComponent(fakeNote.name).appendingPathExtension("txt"), atomically: true, encoding: String.Encoding.utf8)
+    }
+
+    func testServiceThrowsAnError_WhenItCannotSaveANote() throws {
+        struct FakeNote: NoteWriteable {
+            let name: String
+            let contents: MockFileWriteable
+        }
+        let mock = MockFileWriteable()
+        stub(mock) { stub in
+            when(stub.write(to: anyURL(), atomically: true, encoding: anyStringEncoding())).thenThrow(NotesService.FileError.unableToReadFromFile)
+        }
+        let fakeNote = FakeNote(name: UUID().uuidString, contents: mock)
+
+        XCTAssertThrowsError(try service.save(note: fakeNote)) { err in
+            XCTAssertEqual(err as? NotesService.FileError, .unableToReadFromFile)
+        }
 
         verify(mock, times(1)).write(to: notesURL.appendingPathComponent(fakeNote.name).appendingPathExtension("txt"), atomically: true, encoding: String.Encoding.utf8)
     }
