@@ -32,6 +32,11 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(titleLabel?.text, "Notes")
     }
 
+    func testViewControllerHasAnAddNoteButton() throws {
+        let addButton = viewController.view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton
+        XCTAssertNotNil(addButton)
+    }
+
     func testTableViewContainsNotes() throws {
         let mockNotesService = MockNotesService()
         let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
@@ -77,5 +82,56 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(topVC?.note?.contents, expectedNote.contents)
 
         objcVerify(mockTableView.deselectRow(at: index, animated: true))
+    }
+
+    func testUserCanAddANote() throws {
+        let mockNotesService = MockNotesService()
+        let expectedNote = Note(name: "note1", contents: UUID().uuidString)
+        let expectedNotes = [expectedNote,
+                             Note(name: "note2", contents: UUID().uuidString)]
+        stub(mockNotesService) { (stub) in
+            when(stub.getNotes()).thenReturn(.success(expectedNotes))
+            when(stub.save(note: any(Note.self))).thenDoNothing()
+        }
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
+
+        let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
+        let addButton = viewController.view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton
+
+        addButton?.simulateTouch()
+
+        XCTAssertNotNil(addButton)
+        let argumentCaptor = ArgumentCaptor<Note>()
+        verify(mockNotesService, times(1)).save(note: argumentCaptor.capture())
+        XCTAssertEqual(argumentCaptor.value?.name, "note3")
+        XCTAssertEqual(argumentCaptor.value?.contents, "")
+
+        XCTAssertNotNil(tableView, "Expected to get a tableview from the view controller")
+        XCTAssertEqual(tableView?.numberOfRows(inSection: 0), expectedNotes.count+1)
+        XCTAssertEqual(tableView?.cellForRow(at: IndexPath(row: expectedNotes.count, section: 0))?.textLabel?.text, argumentCaptor.value?.name)
+    }
+
+    func testWhenUserAddsNote_TheNameIsUnique() throws {
+        let mockNotesService = MockNotesService()
+        let expectedNotes = [Note(name: "note2", contents: UUID().uuidString)]
+        stub(mockNotesService) { (stub) in
+            when(stub.getNotes()).thenReturn(.success(expectedNotes))
+            when(stub.save(note: any(Note.self))).thenDoNothing()
+        }
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
+
+        let addButton = viewController.view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton
+
+        addButton?.simulateTouch()
+
+        XCTAssertNotNil(addButton)
+        let argumentCaptor = ArgumentCaptor<Note>()
+        verify(mockNotesService, times(1)).save(note: argumentCaptor.capture())
+        XCTAssertEqual(argumentCaptor.value?.name, "note2 (1)")
+        XCTAssertEqual(argumentCaptor.value?.contents, "")
     }
 }

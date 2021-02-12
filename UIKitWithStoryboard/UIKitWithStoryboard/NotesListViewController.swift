@@ -12,6 +12,8 @@ class NotesListViewController: UIViewController {
     @DependencyInjected var notesService: NotesService?
     var notes: [Note] = []
 
+    @IBOutlet weak var notesTableView:UITableView!
+
     override func viewDidLoad() {
         switch notesService?.getNotes() {
             case .success(let notes): self.notes = notes
@@ -26,6 +28,18 @@ class NotesListViewController: UIViewController {
         }
         dst.note = note
     }
+
+    @IBAction func addNote() {
+        var note = Note(name: "note\(notes.count+1)", contents: "")
+        let notesWithSameName = notes.filter { $0.name == note.name }
+        if notesWithSameName.count > 0 {
+            note = Note(name: "note\(notes.count+1) (\(notesWithSameName.count))", contents: "")
+        }
+        notes.append(note)
+        try? notesService?.save(note: note)
+        notesTableView.reloadData()
+    }
+
 }
 
 extension NotesListViewController: UITableViewDataSource {

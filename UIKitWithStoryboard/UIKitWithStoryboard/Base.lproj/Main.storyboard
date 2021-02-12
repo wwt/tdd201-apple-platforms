@@ -53,28 +53,41 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="rpm-pE-6kt"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyN-xA-19Z">
-                                <rect key="frame" x="20" y="108" width="374" height="31.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyN-xA-19Z">
+                                <rect key="frame" x="20" y="108" width="329" height="31.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="TitleLabel"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBp-AS-Fnf">
+                                <rect key="frame" x="369" y="112" width="25" height="24"/>
+                                <accessibility key="accessibilityConfiguration" identifier="AddNoteButton"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="VTi-T4-xOL"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="addNote" destination="BYZ-38-t0r" eventType="touchUpInside" id="skg-QD-mOj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kyN-xA-19Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="0or-0W-55h"/>
                             <constraint firstItem="N9j-eg-Avl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="4IQ-Qr-1N3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kyN-xA-19Z" secondAttribute="trailing" constant="20" id="K0o-EP-gD2"/>
                             <constraint firstItem="kyN-xA-19Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="KUi-on-Ial"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N9j-eg-Avl" secondAttribute="bottom" constant="10" id="O7z-6m-IgP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N9j-eg-Avl" secondAttribute="trailing" constant="10" id="Opt-Wo-Xs3"/>
                             <constraint firstItem="N9j-eg-Avl" firstAttribute="top" secondItem="kyN-xA-19Z" secondAttribute="bottom" constant="20" id="r5w-G7-UHL"/>
+                            <constraint firstItem="ZBp-AS-Fnf" firstAttribute="leading" secondItem="kyN-xA-19Z" secondAttribute="trailing" constant="20" id="r8h-YR-0F2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZBp-AS-Fnf" secondAttribute="trailing" constant="20" id="rg1-ry-D4a"/>
+                            <constraint firstItem="ZBp-AS-Fnf" firstAttribute="centerY" secondItem="kyN-xA-19Z" secondAttribute="centerY" id="vas-xE-ZqI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CU8-5Z-UJJ"/>
                     <connections>
+                        <outlet property="notesTableView" destination="N9j-eg-Avl" id="nFh-Xa-zTK"/>
                         <segue destination="HuO-NA-obm" kind="show" identifier="SegueToNoteDetailsViewController" id="ara-UM-kLC"/>
                     </connections>
                 </viewController>
