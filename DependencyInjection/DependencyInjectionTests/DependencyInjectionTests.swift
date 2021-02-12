@@ -12,9 +12,11 @@ import Swinject
 
 class DependencyInjectionTests: XCTestCase {
     static var customContainer: Container!
+    static var customName: String!
 
     override func setUpWithError() throws {
         Self.customContainer = Container()
+        Self.customName = "Name1"
     }
 
 //    func testAppSetsUpCorrectDependenciesAtLaunch() {
@@ -111,6 +113,26 @@ class DependencyInjectionTests: XCTestCase {
         XCTAssert(someClass.name === someClass.name, "Expected name to be the same instance each time accessed")
         var s = SomeStruct() // NOTE: Need a mutable reference since a DependencyInjected var is lazy
         XCTAssert(s.name === s.name, "Expected name to be the same instance each time accessed")
+    }
+
+    func testPropertyWrapperInitsWithAutoClosures() {
+        let expectedName = UUID().uuidString
+        Self.customContainer.register(String.self, name: DependencyInjectionTests.customName) { _ in expectedName }
+        class SomeClass {
+            @DependencyInjected(container: DependencyInjectionTests.customContainer, name: DependencyInjectionTests.customName) var name: String?
+        }
+        struct SomeStruct {
+            @DependencyInjected(container: DependencyInjectionTests.customContainer, name: DependencyInjectionTests.customName) var name: String?
+        }
+        let someClass = SomeClass()
+        var s = SomeStruct()
+        Self.customName = "name2"
+        Self.customContainer = Container()
+        let anotherExpectedName = UUID().uuidString
+        Self.customContainer.register(String.self, name: DependencyInjectionTests.customName) { _ in anotherExpectedName }
+
+        XCTAssertEqual(someClass.name, anotherExpectedName)
+        XCTAssertEqual(s.name, anotherExpectedName)
     }
 
 }
