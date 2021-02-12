@@ -38,9 +38,15 @@ class NotesListViewController: UIViewController {
         if notesWithSameName.count > 0 {
             note = Note(name: "note\(notes.count+1) (\(notesWithSameName.count))", contents: "")
         }
-        notes.append(note)
-        try? notesService?.save(note: note)
-        notesTableView.reloadData()
+        do {
+            try notesService?.save(note: note)
+            notes.append(note)
+            notesTableView.reloadData()
+        } catch {
+            let alert = UIAlertController(title: "Unable to add note", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true)
+        }
     }
 
 }
@@ -64,9 +70,15 @@ extension NotesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let note = notes[indexPath.row]
-            try? notesService?.delete(note: note)
-            notes.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            do {
+                try notesService?.delete(note: note)
+                notes.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                let alert = UIAlertController(title: "Unable to delete note", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                present(alert, animated: true)
+            }
         }
     }
 }

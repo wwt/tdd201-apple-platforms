@@ -135,6 +135,42 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(argumentCaptor.value?.contents, "")
     }
 
+    func testWhenUserAddsNote_SaveFailsShowsAlert() throws {
+        enum Err: Error {
+            case e1
+        }
+        let mockNotesService = MockNotesService()
+        let expectedNotes = [Note(name: "note2", contents: UUID().uuidString)]
+        stub(mockNotesService) { (stub) in
+            when(stub.getNotes()).thenReturn(.success(expectedNotes))
+            when(stub.save(note: any(Note.self))).thenThrow(Err.e1)
+        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "NotesListViewController") as NotesListViewController
+        let navController = UINavigationController(rootViewController: UIViewController())
+        navController.loadForTesting()
+        navController.pushViewController(viewController, animated: false)
+        RunLoop.current.singlePass()
+        let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
+        let addButton = viewController.view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton
+
+        addButton?.simulateTouch()
+
+        XCTAssertNotNil(addButton)
+        XCTAssertNotNil(tableView)
+        XCTAssertEqual(viewController.notes.count, 1)
+        XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 1)
+        verify(mockNotesService, times(1)).save(note: any(Note.self))
+
+        waitUntil(viewController.navigationController?.visibleViewController is UIAlertController)
+        let alertVC = viewController.navigationController?.visibleViewController as? UIAlertController
+        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.navigationController?.visibleViewController)) to be UIAlertController")
+        XCTAssertEqual(alertVC?.preferredStyle, .alert)
+        XCTAssertEqual(alertVC?.message, Err.e1.localizedDescription)
+        XCTAssertEqual(alertVC?.actions.count, 1)
+        XCTAssertEqual(alertVC?.actions.first?.style, .default)
+    }
+
     func testUserCanDeleteNote() throws {
         let mockNotesService = MockNotesService()
         let note2 = Note(name: "note2", contents: UUID().uuidString)
@@ -179,14 +215,50 @@ class NotesListViewControllerTests: XCTestCase {
         viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
             Container.default.register(NotesService.self) { _ in mockNotesService }
         }
-
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
         tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
 
         RunLoop.current.singlePass()
-
         XCTAssertEqual(viewController.tableView(tableView!, numberOfRowsInSection: 0), 2)
+    }
+
+    func testWhenUserDeletesNote_DeleteFailsShowsAlert() throws {
+        enum Err: Error {
+            case e1
+        }
+        let mockNotesService = MockNotesService()
+        let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
+                             Note(name: "note2", contents: UUID().uuidString),
+                             Note(name: "note3", contents: UUID().uuidString)]
+        let expectedIndexPath = IndexPath(row: 1, section: 0)
+        stub(mockNotesService) { (stub) in
+            when(stub.getNotes()).thenReturn(.success(expectedNotes))
+            when(stub.delete(note: any(Note.self))).thenThrow(Err.e1)
+        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "NotesListViewController") as NotesListViewController
+        let navController = UINavigationController(rootViewController: UIViewController())
+        navController.loadForTesting()
+        navController.pushViewController(viewController, animated: false)
+        RunLoop.current.singlePass()
+        let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
+
+        tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
+
+        RunLoop.current.singlePass()
+        XCTAssertNotNil(tableView)
+        XCTAssertEqual(viewController.notes.count, 3)
+        XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 3)
+        verify(mockNotesService, times(1)).delete(note: any(Note.self))
+
+        waitUntil(viewController.navigationController?.visibleViewController is UIAlertController)
+        let alertVC = viewController.navigationController?.visibleViewController as? UIAlertController
+        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.navigationController?.visibleViewController)) to be UIAlertController")
+        XCTAssertEqual(alertVC?.preferredStyle, .alert)
+        XCTAssertEqual(alertVC?.message, Err.e1.localizedDescription)
+        XCTAssertEqual(alertVC?.actions.count, 1)
+        XCTAssertEqual(alertVC?.actions.first?.style, .default)
     }
 
 }
