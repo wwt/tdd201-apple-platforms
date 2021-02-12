@@ -137,9 +137,17 @@ class NotesListViewControllerTests: XCTestCase {
 
     func testUserCanDeleteNote() throws {
         let mockNotesService = MockNotesService()
-        let expectedNotes = [Note(name: "note1", contents: UUID().uuidString), Note(name: "note2", contents: UUID().uuidString)]
+        let note2 = Note(name: "note2", contents: UUID().uuidString)
+        let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
+                             note2,
+                             Note(name: "note3", contents: UUID().uuidString)]
+        let expectedIndexPath = IndexPath(row: 1, section: 0)
         stub(mockNotesService) { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
+            when(stub.delete(note: any(Note.self))).thenDoNothing()
+        }
+        let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
+            stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
         }
         viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
             Container.default.register(NotesService.self) { _ in mockNotesService }
@@ -147,7 +155,38 @@ class NotesListViewControllerTests: XCTestCase {
 
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
-        tableView?.simulateEdit(.delete, rowAt: IndexPath(row: 1, section: 0))
+        tableView?.dataSource?.tableView?(mockTableView, commit: .delete, forRowAt: expectedIndexPath)
+
+        RunLoop.current.singlePass()
+        let argumentCaptor = ArgumentCaptor<Note>()
+        verify(mockNotesService, times(1)).delete(note: argumentCaptor.capture())
+        XCTAssertEqual(argumentCaptor.value?.name, note2.name)
+        XCTAssertEqual(argumentCaptor.value?.contents, note2.contents)
+        objcVerify(mockTableView.deleteRows(at: [expectedIndexPath], with: .fade))
+    }
+
+    func testWhenUserDeletesNote_TableViewRespondsCorrectly() throws {
+        let mockNotesService = MockNotesService()
+        let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
+                             Note(name: "note2", contents: UUID().uuidString),
+                             Note(name: "note3", contents: UUID().uuidString)]
+        let expectedIndexPath = IndexPath(row: 1, section: 0)
+        stub(mockNotesService) { (stub) in
+            when(stub.getNotes()).thenReturn(.success(expectedNotes))
+            when(stub.delete(note: any(Note.self))).thenDoNothing()
+        }
+
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
+
+        let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
+
+        tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
+
+        RunLoop.current.singlePass()
+
+        XCTAssertEqual(viewController.tableView(tableView!, numberOfRowsInSection: 0), 2)
     }
 
 }
