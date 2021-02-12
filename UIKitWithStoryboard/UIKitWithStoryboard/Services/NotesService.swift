@@ -51,7 +51,7 @@ class NotesService {
 
     func delete(note: Note) throws {
         guard let url = Self.notesURL?.appendingPathComponent(note.name).appendingPathExtension("txt"),
-           fileManager?.fileExists(atPath: url.absoluteString) == true else {
+           fileManager?.fileExists(atPath: url.path) == true else {
             throw FileError.unableToDeleteFile
         }
         try fileManager?.removeItem(at: url)

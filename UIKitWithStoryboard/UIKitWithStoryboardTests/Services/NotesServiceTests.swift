@@ -64,10 +64,19 @@ class NotesServiceTests: XCTestCase {
             case .failure(let err):
                 XCTFail("I expected notes. Give me notes. Instead got \(err.localizedDescription)")
         }
+
+        verify(mockFileManager, times(1)).enumerator(atPath: notesURL.path)
+        verify(mockEnumerator, atLeastOnce()).nextObject()
+
     }
 
     func testNotesServiceReturnsError_WhenItCannotGetDirectoryEnumerator() throws {
-        Container.default.register(Foundation.FileManager.self) { _ in FileManager.default }
+        let mockFileManager = MockFileManager()
+        stub(mockFileManager) { (stub) in
+            when(stub.urls(for: any(), in: any())).thenReturn([notesURL])
+            when(stub.enumerator(atPath: anyString())).thenReturn(nil)
+        }
+        Container.default.register(Foundation.FileManager.self) { _ in mockFileManager }
 
         let result = service.getNotes()
 
@@ -172,7 +181,7 @@ class NotesServiceTests: XCTestCase {
         try service.delete(note: note)
 
         let expectedURL = notesURL.appendingPathComponent(note.name).appendingPathExtension("txt")
-        verify(mock, times(1)).fileExists(atPath: "\(expectedURL.absoluteString)")
+        verify(mock, times(1)).fileExists(atPath: "\(expectedURL.path)")
         verify(mock, times(1)).removeItem(at: expectedURL)
     }
 
@@ -191,7 +200,7 @@ class NotesServiceTests: XCTestCase {
         }
 
         let expectedURL = notesURL.appendingPathComponent(note.name).appendingPathExtension("txt")
-        verify(mock, times(1)).fileExists(atPath: "\(expectedURL.absoluteString)")
+        verify(mock, times(1)).fileExists(atPath: "\(expectedURL.path)")
         verify(mock, times(0)).removeItem(at: anyURL())
     }
 
@@ -213,7 +222,7 @@ class NotesServiceTests: XCTestCase {
         }
 
         let expectedURL = notesURL.appendingPathComponent(note.name).appendingPathExtension("txt")
-        verify(mock, times(1)).fileExists(atPath: "\(expectedURL.absoluteString)")
+        verify(mock, times(1)).fileExists(atPath: "\(expectedURL.path)")
         verify(mock, times(1)).removeItem(at: anyURL())
     }
 
