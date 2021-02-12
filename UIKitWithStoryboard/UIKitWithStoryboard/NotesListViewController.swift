@@ -12,13 +12,16 @@ class NotesListViewController: UIViewController {
     @DependencyInjected var notesService: NotesService?
     var notes: [Note] = []
 
-    @IBOutlet weak var notesTableView:UITableView!
+    @IBOutlet weak var notesTableView: UITableView!
 
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
         switch notesService?.getNotes() {
-            case .success(let notes): self.notes = notes
-            case .failure, .none: notes = []
+            case .success(let notes):
+                self.notes = notes
+            case .failure, .none:
+                notes = []
         }
+        notesTableView.reloadData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

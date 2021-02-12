@@ -97,6 +97,7 @@ target 'UIKitWithStoryboard' do
     pod 'UIUTest'
     pod 'Cuckoo'
     pod 'Cuckoo/OCMock'
+    pod 'Fakery'
   end
 
 end

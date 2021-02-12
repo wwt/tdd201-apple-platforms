@@ -24,14 +24,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try String(contentsOf: url, encoding: encoding)
             }
         }
-        guard let notesURL = FileManager.default
-                .urls(for: .documentDirectory, in: .userDomainMask).first?
-                .appendingPathComponent("notes"),
-              let enumerator = FileManager.default
-                .enumerator(at: notesURL, includingPropertiesForKeys: nil) else {
-            return
-        }
-        Container.default.register(FileManager.DirectoryEnumerator.self,
-                                   name: notesURL.absoluteString) { _ in enumerator }
     }
 }

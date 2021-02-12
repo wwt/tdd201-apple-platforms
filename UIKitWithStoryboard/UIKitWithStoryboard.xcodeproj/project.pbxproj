@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0082F89425D5E09800540724 /* WaitUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082F89325D5E09800540724 /* WaitUntil.swift */; };
 		0082F8C925D6DD7200540724 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082F8C825D6DD7200540724 /* MockFileManager.swift */; };
+		0082F90025D702DA00540724 /* NoteWriteable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082F8FF25D702DA00540724 /* NoteWriteable.swift */; };
 		00BB4D7525D4A25400905C5E /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D7425D4A25400905C5E /* NotesListViewController.swift */; };
 		00BB4D7D25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D7C25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift */; };
 		00BB4DB425D4A59400905C5E /* NotesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DB325D4A59400905C5E /* NotesService.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		0082F89325D5E09800540724 /* WaitUntil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitUntil.swift; sourceTree = "<group>"; };
 		0082F8C825D6DD7200540724 /* MockFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
+		0082F8FF25D702DA00540724 /* NoteWriteable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWriteable.swift; sourceTree = "<group>"; };
 		00BB4D7425D4A25400905C5E /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
 		00BB4D7C25D4A2CA00905C5E /* NoteDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewControllerTests.swift; sourceTree = "<group>"; };
 		00BB4DB325D4A59400905C5E /* NotesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesService.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				00BB4DBF25D4A5F400905C5E /* FileWriteable.swift */,
+				0082F8FF25D702DA00540724 /* NoteWriteable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				CAB58C2E25D4C200001F635C /* ContainerExtensions.swift in Sources */,
 				CAB58C2D25D4C200001F635C /* DependencyInjected.swift in Sources */,
 				00BB4D7525D4A25400905C5E /* NotesListViewController.swift in Sources */,
+				0082F90025D702DA00540724 /* NoteWriteable.swift in Sources */,
 				CAA1C34B25A388F300E3F686 /* NoteDetailViewController.swift in Sources */,
 				CAA1C34725A388F300E3F686 /* AppDelegate.swift in Sources */,
 				00BB4E3D25D4B50200905C5E /* Note.swift in Sources */,

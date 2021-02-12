@@ -24,7 +24,7 @@ class DependencyInjectionTests: XCTestCase {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         let didFinishLaunching = delegate?.application(UIApplication.shared, didFinishLaunchingWithOptions: [:])
         let paths = Foundation.FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let notesURL = paths.first!.appendingPathComponent("notes")
+        let notesURL = paths.first!
 
         XCTAssertNotNil(delegate, "Test invalid, app delegate nil")
         XCTAssertEqual(didFinishLaunching, true, "Expected didFinishLaunching to be true")

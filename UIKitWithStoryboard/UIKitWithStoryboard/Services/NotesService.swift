@@ -11,16 +11,12 @@ import Swinject
 class NotesService {
     private static var notesURL: URL? {
         Container.default.resolve(FileManager.self)?
-        .urls(for: .documentDirectory, in: .userDomainMask).first?
-        .appendingPathComponent("notes")
+            .urls(for: .documentDirectory, in: .userDomainMask).first
     }
 
-    @DependencyInjected(name: notesURL?.absoluteString) var directoryEnumerator: FileManager.DirectoryEnumerator?
+//    @DependencyInjected(name: notesURL?.absoluteString) var directoryEnumerator: FileManager.DirectoryEnumerator?
+
     @DependencyInjected var fileManager: Foundation.FileManager?
-
-    func writeNote(at url: URL, contents: FileWriteable) throws {
-        try contents.write(to: url, atomically: true, encoding: .utf8)
-    }
 
     func save<N: NoteWriteable>(note: N) throws {
         guard let notesURL = Self.notesURL else {
@@ -30,19 +26,25 @@ class NotesService {
     }
 
     func getNotes() -> Result<[Note], Error> {
-        guard let directoryEnumerator = directoryEnumerator else {
+        guard let notesURL = Self.notesURL,
+              let directoryEnumerator = fileManager?.enumerator(atPath: notesURL.path) else {
             return .failure(FileError.unableToReadFromFile)
         }
         var notes = [Note]()
 
-        while let url = directoryEnumerator.nextObject() as? URL,
-              let result = Container.default.resolve(Result<String, Error>.self, name: "ReadFromFile", arguments: url, String.Encoding.utf8) {
+        while let file = directoryEnumerator.nextObject() as? String,
+              let result = Container.default.resolve(Result<String, Error>.self, name: "ReadFromFile",
+                                                     arguments: notesURL.appendingPathComponent(file),
+                                                     String.Encoding.utf8) {
+
             switch result {
                 case .success(let contents):
-                    notes.append(Note(name: url.deletingPathExtension().lastPathComponent, contents: contents))
+                    notes.append(Note(name: URL(fileURLWithPath: file).deletingPathExtension().lastPathComponent,
+                                      contents: contents))
                 case .failure(let err):
                     return .failure(err)
             }
+
         }
         return .success(notes)
     }

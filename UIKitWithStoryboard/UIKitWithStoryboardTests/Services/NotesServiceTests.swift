@@ -16,7 +16,6 @@ class NotesServiceTests: XCTestCase {
     var service: NotesService!
     let notesURL: URL = Foundation.FileManager.default
         .urls(for: .documentDirectory, in: .userDomainMask).first!
-        .appendingPathComponent("notes")
 
     override func setUpWithError() throws {
         service = NotesService()
@@ -24,20 +23,23 @@ class NotesServiceTests: XCTestCase {
     }
 
     func testNotesServiceCanReadAllTheNotesFromDirectory() throws {
+        let mockFileManager = MockFileManager()
         let mockEnumerator = MockDirectoryEnumerator()
-        let expectedUrl1 = URL(fileURLWithPath: "User/user1/test1.txt")
-        let expectedUrl2 = URL(fileURLWithPath: "User/user1/test2.txt")
+        let expectedUrl1 = notesURL.appendingPathComponent("test1.txt")
+        let expectedUrl2 = notesURL.appendingPathComponent("test2.txt")
         let expectedContents1 = UUID().uuidString
         let expectedContents2 = UUID().uuidString
         stub(mockEnumerator) { (stub) in
             when(stub.nextObject())
-                .thenReturn(expectedUrl1)
-                .thenReturn(expectedUrl2)
+                .thenReturn(expectedUrl1.lastPathComponent)
+                .thenReturn(expectedUrl2.lastPathComponent)
                 .thenReturn(nil)
         }
-        Container.default.register(Foundation.FileManager.self) { _ in Foundation.FileManager.default }
-        Container.default.register(FileManager.DirectoryEnumerator.self,
-                                   name: notesURL.absoluteString) { _ in mockEnumerator }
+        stub(mockFileManager) { (stub) in
+            when(stub.urls(for: any(), in: any())).thenReturn([notesURL])
+            when(stub.enumerator(atPath: anyString())).thenReturn(mockEnumerator)
+        }
+        Container.default.register(Foundation.FileManager.self) { _ in mockFileManager }
         Container.default.register(Result<String, Error>.self, name: "ReadFromFile") {(_:Resolver, url: URL, encoding: String.Encoding) in
             XCTAssertEqual(encoding, .utf8)
             switch url {
@@ -157,42 +159,12 @@ class NotesServiceTests: XCTestCase {
         verify(mock, times(1)).urls(for: any(), in: any())
     }
 
-    func testNotesServiceCanWriteAStringToAFile() throws {
-        let expectedPath = URL(string: "file://path.txt")!
-        let mock = MockFileWriteable()
-        stub(mock) { (stub) in
-            when(stub.write(to: anyURL(), atomically: any(), encoding: anyStringEncoding())).thenDoNothing()
-        }
-
-        try service.writeNote(at: expectedPath, contents: mock)
-
-        verify(mock, times(1)).write(to: expectedPath, atomically: true, encoding: String.Encoding.utf8)
-    }
-
-    func testNotesServiceRethrowsError_IfWritingToFileIsNotPossible() throws {
-        enum TestError: Error {
-            case borked
-        }
-
-        let expectedPath = URL(string: "file://path.txt")!
-        let mock = MockFileWriteable()
-        stub(mock) { (stub) in
-            when(stub.write(to: anyURL(), atomically: any(), encoding: anyStringEncoding())).thenThrow(TestError.borked)
-        }
-
-        XCTAssertThrowsError(try service.writeNote(at: expectedPath, contents: mock)) { err in
-            XCTAssertEqual(err as? TestError, .borked)
-        }
-
-        verify(mock, times(1)).write(to: expectedPath, atomically: true, encoding: String.Encoding.utf8)
-    }
-
     func testNotesServiceCanDeleteNote() throws {
         let note = Note(name: "note1", contents: UUID().uuidString)
         let mock = MockFileManager()
         Container.default.register(Foundation.FileManager.self) { _ in mock }
         stub(mock) { stub in
-            when(stub.urls(for: any(), in: any())).thenReturn([notesURL.deletingLastPathComponent()])
+            when(stub.urls(for: any(), in: any())).thenReturn([notesURL])
             when(stub.fileExists(atPath: anyString())).thenReturn(true)
             when(stub.removeItem(at: anyURL())).thenDoNothing()
         }
@@ -209,7 +181,7 @@ class NotesServiceTests: XCTestCase {
         let mock = MockFileManager()
         Container.default.register(Foundation.FileManager.self) { _ in mock }
         stub(mock) { stub in
-            when(stub.urls(for: any(), in: any())).thenReturn([notesURL.deletingLastPathComponent()])
+            when(stub.urls(for: any(), in: any())).thenReturn([notesURL])
             when(stub.fileExists(atPath: anyString())).thenReturn(false)
             when(stub.removeItem(at: anyURL())).thenDoNothing()
         }
@@ -231,7 +203,7 @@ class NotesServiceTests: XCTestCase {
         let mock = MockFileManager()
         Container.default.register(Foundation.FileManager.self) { _ in mock }
         stub(mock) { stub in
-            when(stub.urls(for: any(), in: any())).thenReturn([notesURL.deletingLastPathComponent()])
+            when(stub.urls(for: any(), in: any())).thenReturn([notesURL])
             when(stub.fileExists(atPath: anyString())).thenReturn(true)
             when(stub.removeItem(at: anyURL())).thenThrow(Err.e1)
         }

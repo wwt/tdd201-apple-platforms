@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-12 17:09:50 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-12 20:35:33 +0000
 
 //
 //  FileWriteable.swift
@@ -103,7 +103,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboard/Services/NotesService.swift at 2021-02-12 17:09:50 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboard/Services/NotesService.swift at 2021-02-12 20:35:33 +0000
 
 //
 //  NotesService.swift
@@ -140,30 +140,6 @@ import Swinject
     
     
     
-     override var directoryEnumerator: FileManager.DirectoryEnumerator? {
-        get {
-            return cuckoo_manager.getter("directoryEnumerator",
-                superclassCall:
-                    
-                    super.directoryEnumerator
-                    ,
-                defaultCall: __defaultImplStub!.directoryEnumerator)
-        }
-        
-        set {
-            cuckoo_manager.setter("directoryEnumerator",
-                value: newValue,
-                superclassCall:
-                    
-                    super.directoryEnumerator = newValue
-                    ,
-                defaultCall: __defaultImplStub!.directoryEnumerator = newValue)
-        }
-        
-    }
-    
-    
-    
      override var fileManager: Foundation.FileManager? {
         get {
             return cuckoo_manager.getter("fileManager",
@@ -189,21 +165,6 @@ import Swinject
 
     
 
-    
-    
-    
-     override func writeNote(at url: URL, contents: FileWriteable) throws {
-        
-    return try cuckoo_manager.callThrows("writeNote(at: URL, contents: FileWriteable) throws",
-            parameters: (url, contents),
-            escapingParameters: (url, contents),
-            superclassCall:
-                
-                super.writeNote(at: url, contents: contents)
-                ,
-            defaultCall: __defaultImplStub!.writeNote(at: url, contents: contents))
-        
-    }
     
     
     
@@ -259,20 +220,10 @@ import Swinject
 	    }
 	    
 	    
-	    var directoryEnumerator: Cuckoo.ClassToBeStubbedOptionalProperty<MockNotesService, FileManager.DirectoryEnumerator> {
-	        return .init(manager: cuckoo_manager, name: "directoryEnumerator")
-	    }
-	    
-	    
 	    var fileManager: Cuckoo.ClassToBeStubbedOptionalProperty<MockNotesService, Foundation.FileManager> {
 	        return .init(manager: cuckoo_manager, name: "fileManager")
 	    }
 	    
-	    
-	    func writeNote<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(at url: M1, contents: M2) -> Cuckoo.ClassStubNoReturnThrowingFunction<(URL, FileWriteable)> where M1.MatchedType == URL, M2.MatchedType == FileWriteable {
-	        let matchers: [Cuckoo.ParameterMatcher<(URL, FileWriteable)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: contents) { $0.1 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockNotesService.self, method: "writeNote(at: URL, contents: FileWriteable) throws", parameterMatchers: matchers))
-	    }
 	    
 	    func save<M1: Cuckoo.Matchable, N: NoteWriteable>(note: M1) -> Cuckoo.ClassStubNoReturnThrowingFunction<(N)> where M1.MatchedType == N {
 	        let matchers: [Cuckoo.ParameterMatcher<(N)>] = [wrap(matchable: note) { $0 }]
@@ -304,22 +255,11 @@ import Swinject
 	
 	    
 	    
-	    var directoryEnumerator: Cuckoo.VerifyOptionalProperty<FileManager.DirectoryEnumerator> {
-	        return .init(manager: cuckoo_manager, name: "directoryEnumerator", callMatcher: callMatcher, sourceLocation: sourceLocation)
-	    }
-	    
-	    
 	    var fileManager: Cuckoo.VerifyOptionalProperty<Foundation.FileManager> {
 	        return .init(manager: cuckoo_manager, name: "fileManager", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
 	
-	    
-	    @discardableResult
-	    func writeNote<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(at url: M1, contents: M2) -> Cuckoo.__DoNotUse<(URL, FileWriteable), Void> where M1.MatchedType == URL, M2.MatchedType == FileWriteable {
-	        let matchers: [Cuckoo.ParameterMatcher<(URL, FileWriteable)>] = [wrap(matchable: url) { $0.0 }, wrap(matchable: contents) { $0.1 }]
-	        return cuckoo_manager.verify("writeNote(at: URL, contents: FileWriteable) throws", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
 	    
 	    @discardableResult
 	    func save<M1: Cuckoo.Matchable, N: NoteWriteable>(note: M1) -> Cuckoo.__DoNotUse<(N), Void> where M1.MatchedType == N {
@@ -345,16 +285,6 @@ import Swinject
  class NotesServiceStub: NotesService {
     
     
-     override var directoryEnumerator: FileManager.DirectoryEnumerator? {
-        get {
-            return DefaultValueRegistry.defaultValue(for: (FileManager.DirectoryEnumerator?).self)
-        }
-        
-        set { }
-        
-    }
-    
-    
      override var fileManager: Foundation.FileManager? {
         get {
             return DefaultValueRegistry.defaultValue(for: (Foundation.FileManager?).self)
@@ -367,10 +297,6 @@ import Swinject
 
     
 
-    
-     override func writeNote(at url: URL, contents: FileWriteable) throws  {
-        return DefaultValueRegistry.defaultValue(for: (Void).self)
-    }
     
      override func save<N: NoteWriteable>(note: N) throws  {
         return DefaultValueRegistry.defaultValue(for: (Void).self)
@@ -387,7 +313,7 @@ import Swinject
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-02-12 17:09:50 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-02-12 20:35:33 +0000
 
 //
 //  MockDirectoryEnumerator.swift
@@ -492,7 +418,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockFileManager.swift at 2021-02-12 17:09:50 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockFileManager.swift at 2021-02-12 20:35:33 +0000
 
 //
 //  MockFileManager.swift
@@ -590,6 +516,21 @@ import Foundation
         
     }
     
+    
+    
+     override func enumerator(atPath path: String) -> FileManager.DirectoryEnumerator? {
+        
+    return cuckoo_manager.call("enumerator(atPath: String) -> FileManager.DirectoryEnumerator?",
+            parameters: (path),
+            escapingParameters: (path),
+            superclassCall:
+                
+                super.enumerator(atPath: path)
+                ,
+            defaultCall: __defaultImplStub!.enumerator(atPath: path))
+        
+    }
+    
 
 	 struct __StubbingProxy_FileManager: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
@@ -617,6 +558,11 @@ import Foundation
 	    func removeItem<M1: Cuckoo.Matchable>(at URL: M1) -> Cuckoo.ClassStubNoReturnThrowingFunction<(URL)> where M1.MatchedType == URL {
 	        let matchers: [Cuckoo.ParameterMatcher<(URL)>] = [wrap(matchable: URL) { $0 }]
 	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "removeItem(at: URL) throws", parameterMatchers: matchers))
+	    }
+	    
+	    func enumerator<M1: Cuckoo.Matchable>(atPath path: M1) -> Cuckoo.ClassStubFunction<(String), FileManager.DirectoryEnumerator?> where M1.MatchedType == String {
+	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: path) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "enumerator(atPath: String) -> FileManager.DirectoryEnumerator?", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -659,6 +605,12 @@ import Foundation
 	        return cuckoo_manager.verify("removeItem(at: URL) throws", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
+	    @discardableResult
+	    func enumerator<M1: Cuckoo.Matchable>(atPath path: M1) -> Cuckoo.__DoNotUse<(String), FileManager.DirectoryEnumerator?> where M1.MatchedType == String {
+	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: path) { $0 }]
+	        return cuckoo_manager.verify("enumerator(atPath: String) -> FileManager.DirectoryEnumerator?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
 	}
 }
 
@@ -682,6 +634,10 @@ import Foundation
     
      override func removeItem(at URL: URL) throws  {
         return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+     override func enumerator(atPath path: String) -> FileManager.DirectoryEnumerator?  {
+        return DefaultValueRegistry.defaultValue(for: (FileManager.DirectoryEnumerator?).self)
     }
     
 }

@@ -31,4 +31,8 @@ class FileManager: Foundation.FileManager {
     override func removeItem(at URL: URL) throws {
         try super.removeItem(at: URL)
     }
+
+    override func enumerator(atPath path: String) -> FileManager.DirectoryEnumerator? {
+        super.enumerator(atPath: path)
+    }
 }
