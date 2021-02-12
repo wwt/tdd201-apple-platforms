@@ -186,4 +186,71 @@ class NotesServiceTests: XCTestCase {
 
         verify(mock, times(1)).write(to: expectedPath, atomically: true, encoding: String.Encoding.utf8)
     }
+
+    func testNotesServiceCanDeleteNote() throws {
+        let note = Note(name: "note1", contents: UUID().uuidString)
+        let mock = MockFileManager()
+        Container.default.register(Foundation.FileManager.self) { _ in mock }
+        stub(mock) { stub in
+            when(stub.urls(for: any(), in: any())).thenReturn([notesURL.deletingLastPathComponent()])
+            when(stub.fileExists(atPath: anyString())).thenReturn(true)
+            when(stub.removeItem(at: anyURL())).thenDoNothing()
+        }
+
+        try service.delete(note: note)
+
+        let expectedURL = notesURL.appendingPathComponent(note.name).appendingPathExtension("txt")
+        verify(mock, times(1)).fileExists(atPath: "\(expectedURL.absoluteString)")
+        verify(mock, times(1)).removeItem(at: expectedURL)
+    }
+
+    func testNoteServiceReThrowsError_IfFileCannotBeFound() throws {
+        let note = Note(name: "note1", contents: UUID().uuidString)
+        let mock = MockFileManager()
+        Container.default.register(Foundation.FileManager.self) { _ in mock }
+        stub(mock) { stub in
+            when(stub.urls(for: any(), in: any())).thenReturn([notesURL.deletingLastPathComponent()])
+            when(stub.fileExists(atPath: anyString())).thenReturn(false)
+            when(stub.removeItem(at: anyURL())).thenDoNothing()
+        }
+
+        XCTAssertThrowsError(try service.delete(note: note)) { err in
+            XCTAssertEqual(err as? NotesService.FileError, .unableToDeleteFile)
+        }
+
+        let expectedURL = notesURL.appendingPathComponent(note.name).appendingPathExtension("txt")
+        verify(mock, times(1)).fileExists(atPath: "\(expectedURL.absoluteString)")
+        verify(mock, times(0)).removeItem(at: anyURL())
+    }
+
+    func testNoteServiceReThrowsError_IfFileCannotBeDeleted() throws {
+        enum Err: Error {
+            case e1
+        }
+        let note = Note(name: "note1", contents: UUID().uuidString)
+        let mock = MockFileManager()
+        Container.default.register(Foundation.FileManager.self) { _ in mock }
+        stub(mock) { stub in
+            when(stub.urls(for: any(), in: any())).thenReturn([notesURL.deletingLastPathComponent()])
+            when(stub.fileExists(atPath: anyString())).thenReturn(true)
+            when(stub.removeItem(at: anyURL())).thenThrow(Err.e1)
+        }
+
+        XCTAssertThrowsError(try service.delete(note: note)) { err in
+            XCTAssertEqual(err as? Err, .e1)
+        }
+
+        let expectedURL = notesURL.appendingPathComponent(note.name).appendingPathExtension("txt")
+        verify(mock, times(1)).fileExists(atPath: "\(expectedURL.absoluteString)")
+        verify(mock, times(1)).removeItem(at: anyURL())
+    }
+
+    func testNoteServiceReThrowsError_IfNoFileManagerInjected() throws {
+        let note = Note(name: "note1", contents: UUID().uuidString)
+
+        XCTAssertThrowsError(try service.delete(note: note)) { err in
+            XCTAssertEqual(err as? NotesService.FileError, .unableToDeleteFile)
+        }
+    }
+
 }

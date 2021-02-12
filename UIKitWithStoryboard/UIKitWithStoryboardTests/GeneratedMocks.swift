@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-12 01:05:13 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-12 16:28:59 +0000
 
 //
 //  FileWriteable.swift
@@ -103,7 +103,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboard/Services/NotesService.swift at 2021-02-12 01:05:13 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboard/Services/NotesService.swift at 2021-02-12 16:28:59 +0000
 
 //
 //  NotesService.swift
@@ -162,6 +162,30 @@ import Swinject
         
     }
     
+    
+    
+     override var fileManager: Foundation.FileManager? {
+        get {
+            return cuckoo_manager.getter("fileManager",
+                superclassCall:
+                    
+                    super.fileManager
+                    ,
+                defaultCall: __defaultImplStub!.fileManager)
+        }
+        
+        set {
+            cuckoo_manager.setter("fileManager",
+                value: newValue,
+                superclassCall:
+                    
+                    super.fileManager = newValue
+                    ,
+                defaultCall: __defaultImplStub!.fileManager = newValue)
+        }
+        
+    }
+    
 
     
 
@@ -211,6 +235,21 @@ import Swinject
         
     }
     
+    
+    
+     override func delete(note: Note) throws {
+        
+    return try cuckoo_manager.callThrows("delete(note: Note) throws",
+            parameters: (note),
+            escapingParameters: (note),
+            superclassCall:
+                
+                super.delete(note: note)
+                ,
+            defaultCall: __defaultImplStub!.delete(note: note))
+        
+    }
+    
 
 	 struct __StubbingProxy_NotesService: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
@@ -222,6 +261,11 @@ import Swinject
 	    
 	    var directoryEnumerator: Cuckoo.ClassToBeStubbedOptionalProperty<MockNotesService, FileManager.DirectoryEnumerator> {
 	        return .init(manager: cuckoo_manager, name: "directoryEnumerator")
+	    }
+	    
+	    
+	    var fileManager: Cuckoo.ClassToBeStubbedOptionalProperty<MockNotesService, Foundation.FileManager> {
+	        return .init(manager: cuckoo_manager, name: "fileManager")
 	    }
 	    
 	    
@@ -238,6 +282,11 @@ import Swinject
 	    func getNotes() -> Cuckoo.ClassStubFunction<(), Result<[Note], Error>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockNotesService.self, method: "getNotes() -> Result<[Note], Error>", parameterMatchers: matchers))
+	    }
+	    
+	    func delete<M1: Cuckoo.Matchable>(note: M1) -> Cuckoo.ClassStubNoReturnThrowingFunction<(Note)> where M1.MatchedType == Note {
+	        let matchers: [Cuckoo.ParameterMatcher<(Note)>] = [wrap(matchable: note) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockNotesService.self, method: "delete(note: Note) throws", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -257,6 +306,11 @@ import Swinject
 	    
 	    var directoryEnumerator: Cuckoo.VerifyOptionalProperty<FileManager.DirectoryEnumerator> {
 	        return .init(manager: cuckoo_manager, name: "directoryEnumerator", callMatcher: callMatcher, sourceLocation: sourceLocation)
+	    }
+	    
+	    
+	    var fileManager: Cuckoo.VerifyOptionalProperty<Foundation.FileManager> {
+	        return .init(manager: cuckoo_manager, name: "fileManager", callMatcher: callMatcher, sourceLocation: sourceLocation)
 	    }
 	    
 	
@@ -279,6 +333,12 @@ import Swinject
 	        return cuckoo_manager.verify("getNotes() -> Result<[Note], Error>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
+	    @discardableResult
+	    func delete<M1: Cuckoo.Matchable>(note: M1) -> Cuckoo.__DoNotUse<(Note), Void> where M1.MatchedType == Note {
+	        let matchers: [Cuckoo.ParameterMatcher<(Note)>] = [wrap(matchable: note) { $0 }]
+	        return cuckoo_manager.verify("delete(note: Note) throws", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
 	}
 }
 
@@ -288,6 +348,16 @@ import Swinject
      override var directoryEnumerator: FileManager.DirectoryEnumerator? {
         get {
             return DefaultValueRegistry.defaultValue(for: (FileManager.DirectoryEnumerator?).self)
+        }
+        
+        set { }
+        
+    }
+    
+    
+     override var fileManager: Foundation.FileManager? {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (Foundation.FileManager?).self)
         }
         
         set { }
@@ -310,10 +380,14 @@ import Swinject
         return DefaultValueRegistry.defaultValue(for: (Result<[Note], Error>).self)
     }
     
+     override func delete(note: Note) throws  {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-02-12 01:05:13 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-02-12 16:28:59 +0000
 
 //
 //  MockDirectoryEnumerator.swift
@@ -326,127 +400,6 @@ import Cuckoo
 @testable import UIKitWithStoryboard
 
 import Foundation
-
-
- class MockFileManager: FileManager, Cuckoo.ClassMock {
-    
-     typealias MocksType = FileManager
-    
-     typealias Stubbing = __StubbingProxy_FileManager
-     typealias Verification = __VerificationProxy_FileManager
-
-     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
-
-    
-    private var __defaultImplStub: FileManager?
-
-     func enableDefaultImplementation(_ stub: FileManager) {
-        __defaultImplStub = stub
-        cuckoo_manager.enableDefaultStubImplementation()
-    }
-    
-
-    
-
-    
-
-    
-    
-    
-     override func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL] {
-        
-    return cuckoo_manager.call("urls(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask) -> [URL]",
-            parameters: (directory, domainMask),
-            escapingParameters: (directory, domainMask),
-            superclassCall:
-                
-                super.urls(for: directory, in: domainMask)
-                ,
-            defaultCall: __defaultImplStub!.urls(for: directory, in: domainMask))
-        
-    }
-    
-    
-    
-     override func url(for directory: FileManager.SearchPathDirectory, in domain: FileManager.SearchPathDomainMask, appropriateFor url: URL?, create shouldCreate: Bool) throws -> URL {
-        
-    return try cuckoo_manager.callThrows("url(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask, appropriateFor: URL?, create: Bool) throws -> URL",
-            parameters: (directory, domain, url, shouldCreate),
-            escapingParameters: (directory, domain, url, shouldCreate),
-            superclassCall:
-                
-                super.url(for: directory, in: domain, appropriateFor: url, create: shouldCreate)
-                ,
-            defaultCall: __defaultImplStub!.url(for: directory, in: domain, appropriateFor: url, create: shouldCreate))
-        
-    }
-    
-
-	 struct __StubbingProxy_FileManager: Cuckoo.StubbingProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	
-	     init(manager: Cuckoo.MockManager) {
-	        self.cuckoo_manager = manager
-	    }
-	    
-	    
-	    func urls<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(for directory: M1, in domainMask: M2) -> Cuckoo.ClassStubFunction<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask), [URL]> where M1.MatchedType == FileManager.SearchPathDirectory, M2.MatchedType == FileManager.SearchPathDomainMask {
-	        let matchers: [Cuckoo.ParameterMatcher<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask)>] = [wrap(matchable: directory) { $0.0 }, wrap(matchable: domainMask) { $0.1 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "urls(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask) -> [URL]", parameterMatchers: matchers))
-	    }
-	    
-	    func url<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.OptionalMatchable, M4: Cuckoo.Matchable>(for directory: M1, in domain: M2, appropriateFor url: M3, create shouldCreate: M4) -> Cuckoo.ClassStubThrowingFunction<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask, URL?, Bool), URL> where M1.MatchedType == FileManager.SearchPathDirectory, M2.MatchedType == FileManager.SearchPathDomainMask, M3.OptionalMatchedType == URL, M4.MatchedType == Bool {
-	        let matchers: [Cuckoo.ParameterMatcher<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask, URL?, Bool)>] = [wrap(matchable: directory) { $0.0 }, wrap(matchable: domain) { $0.1 }, wrap(matchable: url) { $0.2 }, wrap(matchable: shouldCreate) { $0.3 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "url(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask, appropriateFor: URL?, create: Bool) throws -> URL", parameterMatchers: matchers))
-	    }
-	    
-	}
-
-	 struct __VerificationProxy_FileManager: Cuckoo.VerificationProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	    private let callMatcher: Cuckoo.CallMatcher
-	    private let sourceLocation: Cuckoo.SourceLocation
-	
-	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
-	        self.cuckoo_manager = manager
-	        self.callMatcher = callMatcher
-	        self.sourceLocation = sourceLocation
-	    }
-	
-	    
-	
-	    
-	    @discardableResult
-	    func urls<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(for directory: M1, in domainMask: M2) -> Cuckoo.__DoNotUse<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask), [URL]> where M1.MatchedType == FileManager.SearchPathDirectory, M2.MatchedType == FileManager.SearchPathDomainMask {
-	        let matchers: [Cuckoo.ParameterMatcher<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask)>] = [wrap(matchable: directory) { $0.0 }, wrap(matchable: domainMask) { $0.1 }]
-	        return cuckoo_manager.verify("urls(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask) -> [URL]", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func url<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.OptionalMatchable, M4: Cuckoo.Matchable>(for directory: M1, in domain: M2, appropriateFor url: M3, create shouldCreate: M4) -> Cuckoo.__DoNotUse<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask, URL?, Bool), URL> where M1.MatchedType == FileManager.SearchPathDirectory, M2.MatchedType == FileManager.SearchPathDomainMask, M3.OptionalMatchedType == URL, M4.MatchedType == Bool {
-	        let matchers: [Cuckoo.ParameterMatcher<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask, URL?, Bool)>] = [wrap(matchable: directory) { $0.0 }, wrap(matchable: domain) { $0.1 }, wrap(matchable: url) { $0.2 }, wrap(matchable: shouldCreate) { $0.3 }]
-	        return cuckoo_manager.verify("url(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask, appropriateFor: URL?, create: Bool) throws -> URL", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	}
-}
-
- class FileManagerStub: FileManager {
-    
-
-    
-
-    
-     override func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL]  {
-        return DefaultValueRegistry.defaultValue(for: ([URL]).self)
-    }
-    
-     override func url(for directory: FileManager.SearchPathDirectory, in domain: FileManager.SearchPathDomainMask, appropriateFor url: URL?, create shouldCreate: Bool) throws -> URL  {
-        return DefaultValueRegistry.defaultValue(for: (URL).self)
-    }
-    
-}
-
 
 
  class MockDirectoryEnumerator: DirectoryEnumerator, Cuckoo.ClassMock {
@@ -534,6 +487,201 @@ import Foundation
     
      override func nextObject() -> Any?  {
         return DefaultValueRegistry.defaultValue(for: (Any?).self)
+    }
+    
+}
+
+
+// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockFileManager.swift at 2021-02-12 16:28:59 +0000
+
+//
+//  MockFileManager.swift
+//  UIKitWithStoryboardTests
+//
+//  Created by Heather Meadow on 2/12/21.
+//
+
+import Cuckoo
+@testable import UIKitWithStoryboard
+
+import Foundation
+
+
+ class MockFileManager: FileManager, Cuckoo.ClassMock {
+    
+     typealias MocksType = FileManager
+    
+     typealias Stubbing = __StubbingProxy_FileManager
+     typealias Verification = __VerificationProxy_FileManager
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: FileManager?
+
+     func enableDefaultImplementation(_ stub: FileManager) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+
+    
+
+    
+    
+    
+     override func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL] {
+        
+    return cuckoo_manager.call("urls(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask) -> [URL]",
+            parameters: (directory, domainMask),
+            escapingParameters: (directory, domainMask),
+            superclassCall:
+                
+                super.urls(for: directory, in: domainMask)
+                ,
+            defaultCall: __defaultImplStub!.urls(for: directory, in: domainMask))
+        
+    }
+    
+    
+    
+     override func url(for directory: FileManager.SearchPathDirectory, in domain: FileManager.SearchPathDomainMask, appropriateFor url: URL?, create shouldCreate: Bool) throws -> URL {
+        
+    return try cuckoo_manager.callThrows("url(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask, appropriateFor: URL?, create: Bool) throws -> URL",
+            parameters: (directory, domain, url, shouldCreate),
+            escapingParameters: (directory, domain, url, shouldCreate),
+            superclassCall:
+                
+                super.url(for: directory, in: domain, appropriateFor: url, create: shouldCreate)
+                ,
+            defaultCall: __defaultImplStub!.url(for: directory, in: domain, appropriateFor: url, create: shouldCreate))
+        
+    }
+    
+    
+    
+     override func fileExists(atPath path: String) -> Bool {
+        
+    return cuckoo_manager.call("fileExists(atPath: String) -> Bool",
+            parameters: (path),
+            escapingParameters: (path),
+            superclassCall:
+                
+                super.fileExists(atPath: path)
+                ,
+            defaultCall: __defaultImplStub!.fileExists(atPath: path))
+        
+    }
+    
+    
+    
+     override func removeItem(at URL: URL) throws {
+        
+    return try cuckoo_manager.callThrows("removeItem(at: URL) throws",
+            parameters: (URL),
+            escapingParameters: (URL),
+            superclassCall:
+                
+                super.removeItem(at: URL)
+                ,
+            defaultCall: __defaultImplStub!.removeItem(at: URL))
+        
+    }
+    
+
+	 struct __StubbingProxy_FileManager: Cuckoo.StubbingProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	
+	     init(manager: Cuckoo.MockManager) {
+	        self.cuckoo_manager = manager
+	    }
+	    
+	    
+	    func urls<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(for directory: M1, in domainMask: M2) -> Cuckoo.ClassStubFunction<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask), [URL]> where M1.MatchedType == FileManager.SearchPathDirectory, M2.MatchedType == FileManager.SearchPathDomainMask {
+	        let matchers: [Cuckoo.ParameterMatcher<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask)>] = [wrap(matchable: directory) { $0.0 }, wrap(matchable: domainMask) { $0.1 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "urls(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask) -> [URL]", parameterMatchers: matchers))
+	    }
+	    
+	    func url<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.OptionalMatchable, M4: Cuckoo.Matchable>(for directory: M1, in domain: M2, appropriateFor url: M3, create shouldCreate: M4) -> Cuckoo.ClassStubThrowingFunction<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask, URL?, Bool), URL> where M1.MatchedType == FileManager.SearchPathDirectory, M2.MatchedType == FileManager.SearchPathDomainMask, M3.OptionalMatchedType == URL, M4.MatchedType == Bool {
+	        let matchers: [Cuckoo.ParameterMatcher<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask, URL?, Bool)>] = [wrap(matchable: directory) { $0.0 }, wrap(matchable: domain) { $0.1 }, wrap(matchable: url) { $0.2 }, wrap(matchable: shouldCreate) { $0.3 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "url(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask, appropriateFor: URL?, create: Bool) throws -> URL", parameterMatchers: matchers))
+	    }
+	    
+	    func fileExists<M1: Cuckoo.Matchable>(atPath path: M1) -> Cuckoo.ClassStubFunction<(String), Bool> where M1.MatchedType == String {
+	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: path) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "fileExists(atPath: String) -> Bool", parameterMatchers: matchers))
+	    }
+	    
+	    func removeItem<M1: Cuckoo.Matchable>(at URL: M1) -> Cuckoo.ClassStubNoReturnThrowingFunction<(URL)> where M1.MatchedType == URL {
+	        let matchers: [Cuckoo.ParameterMatcher<(URL)>] = [wrap(matchable: URL) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockFileManager.self, method: "removeItem(at: URL) throws", parameterMatchers: matchers))
+	    }
+	    
+	}
+
+	 struct __VerificationProxy_FileManager: Cuckoo.VerificationProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	    private let callMatcher: Cuckoo.CallMatcher
+	    private let sourceLocation: Cuckoo.SourceLocation
+	
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	        self.cuckoo_manager = manager
+	        self.callMatcher = callMatcher
+	        self.sourceLocation = sourceLocation
+	    }
+	
+	    
+	
+	    
+	    @discardableResult
+	    func urls<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(for directory: M1, in domainMask: M2) -> Cuckoo.__DoNotUse<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask), [URL]> where M1.MatchedType == FileManager.SearchPathDirectory, M2.MatchedType == FileManager.SearchPathDomainMask {
+	        let matchers: [Cuckoo.ParameterMatcher<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask)>] = [wrap(matchable: directory) { $0.0 }, wrap(matchable: domainMask) { $0.1 }]
+	        return cuckoo_manager.verify("urls(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask) -> [URL]", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func url<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.OptionalMatchable, M4: Cuckoo.Matchable>(for directory: M1, in domain: M2, appropriateFor url: M3, create shouldCreate: M4) -> Cuckoo.__DoNotUse<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask, URL?, Bool), URL> where M1.MatchedType == FileManager.SearchPathDirectory, M2.MatchedType == FileManager.SearchPathDomainMask, M3.OptionalMatchedType == URL, M4.MatchedType == Bool {
+	        let matchers: [Cuckoo.ParameterMatcher<(FileManager.SearchPathDirectory, FileManager.SearchPathDomainMask, URL?, Bool)>] = [wrap(matchable: directory) { $0.0 }, wrap(matchable: domain) { $0.1 }, wrap(matchable: url) { $0.2 }, wrap(matchable: shouldCreate) { $0.3 }]
+	        return cuckoo_manager.verify("url(for: FileManager.SearchPathDirectory, in: FileManager.SearchPathDomainMask, appropriateFor: URL?, create: Bool) throws -> URL", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func fileExists<M1: Cuckoo.Matchable>(atPath path: M1) -> Cuckoo.__DoNotUse<(String), Bool> where M1.MatchedType == String {
+	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: path) { $0 }]
+	        return cuckoo_manager.verify("fileExists(atPath: String) -> Bool", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func removeItem<M1: Cuckoo.Matchable>(at URL: M1) -> Cuckoo.__DoNotUse<(URL), Void> where M1.MatchedType == URL {
+	        let matchers: [Cuckoo.ParameterMatcher<(URL)>] = [wrap(matchable: URL) { $0 }]
+	        return cuckoo_manager.verify("removeItem(at: URL) throws", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	}
+}
+
+ class FileManagerStub: FileManager {
+    
+
+    
+
+    
+     override func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL]  {
+        return DefaultValueRegistry.defaultValue(for: ([URL]).self)
+    }
+    
+     override func url(for directory: FileManager.SearchPathDirectory, in domain: FileManager.SearchPathDomainMask, appropriateFor url: URL?, create shouldCreate: Bool) throws -> URL  {
+        return DefaultValueRegistry.defaultValue(for: (URL).self)
+    }
+    
+     override func fileExists(atPath path: String) -> Bool  {
+        return DefaultValueRegistry.defaultValue(for: (Bool).self)
+    }
+    
+     override func removeItem(at URL: URL) throws  {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     
 }

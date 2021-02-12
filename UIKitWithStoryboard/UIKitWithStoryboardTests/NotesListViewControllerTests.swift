@@ -134,4 +134,20 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(argumentCaptor.value?.name, "note2 (1)")
         XCTAssertEqual(argumentCaptor.value?.contents, "")
     }
+
+    func testUserCanDeleteNote() throws {
+        let mockNotesService = MockNotesService()
+        let expectedNotes = [Note(name: "note1", contents: UUID().uuidString), Note(name: "note2", contents: UUID().uuidString)]
+        stub(mockNotesService) { (stub) in
+            when(stub.getNotes()).thenReturn(.success(expectedNotes))
+        }
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
+
+        let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
+
+        tableView?.simulateEdit(.delete, rowAt: IndexPath(row: 1, section: 0))
+    }
+
 }

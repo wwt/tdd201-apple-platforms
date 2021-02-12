@@ -16,6 +16,7 @@ class NotesService {
     }
 
     @DependencyInjected(name: notesURL?.absoluteString) var directoryEnumerator: FileManager.DirectoryEnumerator?
+    @DependencyInjected var fileManager: Foundation.FileManager?
 
     func writeNote(at url: URL, contents: FileWriteable) throws {
         try contents.write(to: url, atomically: true, encoding: .utf8)
@@ -46,11 +47,20 @@ class NotesService {
         return .success(notes)
     }
 
+    func delete(note: Note) throws {
+        guard let url = Self.notesURL?.appendingPathComponent(note.name).appendingPathExtension("txt"),
+           fileManager?.fileExists(atPath: url.absoluteString) == true else {
+            throw FileError.unableToDeleteFile
+        }
+        try fileManager?.removeItem(at: url)
+    }
+
 }
 
 extension NotesService {
     enum FileError: Error {
         case unableToReadFromFile
         case unableToWriteToFile
+        case unableToDeleteFile
     }
 }
