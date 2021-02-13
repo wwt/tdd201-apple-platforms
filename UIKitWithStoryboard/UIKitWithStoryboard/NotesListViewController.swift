@@ -70,17 +70,25 @@ extension NotesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let note = notes[indexPath.row]
-            do {
-                try notesService?.delete(note: note)
-                notes.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            } catch {
-                let alert = UIAlertController(title: "Unable to delete note", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                present(alert, animated: true)
-            }
+
+            let alert = UIAlertController(title: "Confirm delete", message: "Are you sure you want to delete?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Confirm", style: .default) { _ in
+                do {
+                    try self.notesService?.delete(note: note)
+                    self.notes.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                } catch {
+                    let alert = UIAlertController(title: "Unable to delete note", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            })
+
+            present(alert, animated: true)
         }
     }
+
 }
 
 extension NotesListViewController: UITableViewDelegate {
