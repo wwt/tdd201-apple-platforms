@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		002C1F8825D1C51D000018D8 /* DateFormatterExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */; };
 		00BB4D2E25D4636A00905C5E /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D2D25D4636A00905C5E /* StubAPIResponse.swift */; };
+		00EC4D8F25DAF6CD002CFFF9 /* repository.js in Resources */ = {isa = PBXBuildFile; fileRef = 00EC265E25DAF6A6002CFFF9 /* repository.js */; };
+		00EC4D9025DAF6CD002CFFF9 /* user-repository.js in Resources */ = {isa = PBXBuildFile; fileRef = 00EC265F25DAF6A6002CFFF9 /* user-repository.js */; };
+		00EC6E6F25DAF6E1002CFFF9 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 00EC4D8425DAF6CB002CFFF9 /* index.html */; };
+		00EC6E7025DAF6E1002CFFF9 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 00EC4D8625DAF6CB002CFFF9 /* style.css */; };
+		00EC6E7125DAF6E1002CFFF9 /* package-lock.json in Resources */ = {isa = PBXBuildFile; fileRef = 00EC4D8725DAF6CB002CFFF9 /* package-lock.json */; };
+		00EC6E7225DAF6E1002CFFF9 /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 00EC4D8825DAF6CC002CFFF9 /* package.json */; };
+		00EC6E7325DAF6E1002CFFF9 /* docker-compose.yml in Resources */ = {isa = PBXBuildFile; fileRef = 00EC4D8925DAF6CC002CFFF9 /* docker-compose.yml */; };
+		00EC6E7425DAF6E1002CFFF9 /* provider_tests.js in Resources */ = {isa = PBXBuildFile; fileRef = 00EC4D8B25DAF6CC002CFFF9 /* provider_tests.js */; };
+		00EC6E7525DAF6E1002CFFF9 /* users.js in Resources */ = {isa = PBXBuildFile; fileRef = 00EC4D8D25DAF6CC002CFFF9 /* users.js */; };
+		00EC6E7625DAF6E1002CFFF9 /* app.js in Resources */ = {isa = PBXBuildFile; fileRef = 00EC4D8E25DAF6CC002CFFF9 /* app.js */; };
+		00EC6E7A25DAF98B002CFFF9 /* server.js in Resources */ = {isa = PBXBuildFile; fileRef = 00EC6E7925DAF98B002CFFF9 /* server.js */; };
 		2E30E671B4AE5C5C684A255B /* Pods_CombineWithREST.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24088C7D63D164FBE167A839 /* Pods_CombineWithREST.framework */; };
 		4B4D30352F3855E83B9614FB /* Pods_CombineWithREST_CombineWithRESTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFFD79E45284CC76EA1F016 /* Pods_CombineWithREST_CombineWithRESTTests.framework */; };
 		CA45040B25B79A0F00153FC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45040A25B79A0F00153FC4 /* AppDelegate.swift */; };
@@ -61,6 +72,17 @@
 /* Begin PBXFileReference section */
 		002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensionsTests.swift; sourceTree = "<group>"; };
 		00BB4D2D25D4636A00905C5E /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
+		00EC265E25DAF6A6002CFFF9 /* repository.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = repository.js; sourceTree = "<group>"; };
+		00EC265F25DAF6A6002CFFF9 /* user-repository.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "user-repository.js"; sourceTree = "<group>"; };
+		00EC4D8425DAF6CB002CFFF9 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		00EC4D8625DAF6CB002CFFF9 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		00EC4D8725DAF6CB002CFFF9 /* package-lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "package-lock.json"; sourceTree = "<group>"; };
+		00EC4D8825DAF6CC002CFFF9 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		00EC4D8925DAF6CC002CFFF9 /* docker-compose.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "docker-compose.yml"; sourceTree = "<group>"; };
+		00EC4D8B25DAF6CC002CFFF9 /* provider_tests.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = provider_tests.js; sourceTree = "<group>"; };
+		00EC4D8D25DAF6CC002CFFF9 /* users.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = users.js; sourceTree = "<group>"; };
+		00EC4D8E25DAF6CC002CFFF9 /* app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = app.js; sourceTree = "<group>"; };
+		00EC6E7925DAF98B002CFFF9 /* server.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = server.js; sourceTree = "<group>"; };
 		096C5D9757A186DDDA29D410 /* Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig"; path = "Target Support Files/Pods-CombineWithREST-CombineWithRESTTests/Pods-CombineWithREST-CombineWithRESTTests.release.xcconfig"; sourceTree = "<group>"; };
 		22886F30A917329AE0DA3CEF /* Pods-CombineWithREST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineWithREST.release.xcconfig"; path = "Target Support Files/Pods-CombineWithREST/Pods-CombineWithREST.release.xcconfig"; sourceTree = "<group>"; };
 		24088C7D63D164FBE167A839 /* Pods_CombineWithREST.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CombineWithREST.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +158,64 @@
 			path = HTTPStubbing;
 			sourceTree = "<group>";
 		};
+		00EC265C25DAF6A6002CFFF9 /* auth-server */ = {
+			isa = PBXGroup;
+			children = (
+				00EC265D25DAF6A6002CFFF9 /* Repository */,
+				00EC4D8325DAF6CB002CFFF9 /* public */,
+				00EC4D8725DAF6CB002CFFF9 /* package-lock.json */,
+				00EC4D8825DAF6CC002CFFF9 /* package.json */,
+				00EC4D8925DAF6CC002CFFF9 /* docker-compose.yml */,
+				00EC4D8A25DAF6CC002CFFF9 /* pact */,
+				00EC4D8C25DAF6CC002CFFF9 /* routes */,
+				00EC4D8E25DAF6CC002CFFF9 /* app.js */,
+				00EC6E7925DAF98B002CFFF9 /* server.js */,
+			);
+			path = "auth-server";
+			sourceTree = "<group>";
+		};
+		00EC265D25DAF6A6002CFFF9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				00EC265E25DAF6A6002CFFF9 /* repository.js */,
+				00EC265F25DAF6A6002CFFF9 /* user-repository.js */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		00EC4D8325DAF6CB002CFFF9 /* public */ = {
+			isa = PBXGroup;
+			children = (
+				00EC4D8425DAF6CB002CFFF9 /* index.html */,
+				00EC4D8525DAF6CB002CFFF9 /* stylesheets */,
+			);
+			path = public;
+			sourceTree = "<group>";
+		};
+		00EC4D8525DAF6CB002CFFF9 /* stylesheets */ = {
+			isa = PBXGroup;
+			children = (
+				00EC4D8625DAF6CB002CFFF9 /* style.css */,
+			);
+			path = stylesheets;
+			sourceTree = "<group>";
+		};
+		00EC4D8A25DAF6CC002CFFF9 /* pact */ = {
+			isa = PBXGroup;
+			children = (
+				00EC4D8B25DAF6CC002CFFF9 /* provider_tests.js */,
+			);
+			path = pact;
+			sourceTree = "<group>";
+		};
+		00EC4D8C25DAF6CC002CFFF9 /* routes */ = {
+			isa = PBXGroup;
+			children = (
+				00EC4D8D25DAF6CC002CFFF9 /* users.js */,
+			);
+			path = routes;
+			sourceTree = "<group>";
+		};
 		0F6B2208CBBA3BE490937532 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +240,7 @@
 		CA4503FE25B79A0F00153FC4 = {
 			isa = PBXGroup;
 			children = (
+				00EC265C25DAF6A6002CFFF9 /* auth-server */,
 				CA45040925B79A0F00153FC4 /* CombineWithREST */,
 				CA45042025B79A1000153FC4 /* CombineWithRESTTests */,
 				CA45040825B79A0F00153FC4 /* Products */,
@@ -406,9 +487,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EC4D8F25DAF6CD002CFFF9 /* repository.js in Resources */,
+				00EC6E6F25DAF6E1002CFFF9 /* index.html in Resources */,
+				00EC4D9025DAF6CD002CFFF9 /* user-repository.js in Resources */,
+				00EC6E7125DAF6E1002CFFF9 /* package-lock.json in Resources */,
+				00EC6E7425DAF6E1002CFFF9 /* provider_tests.js in Resources */,
+				00EC6E7025DAF6E1002CFFF9 /* style.css in Resources */,
+				00EC6E7225DAF6E1002CFFF9 /* package.json in Resources */,
+				00EC6E7625DAF6E1002CFFF9 /* app.js in Resources */,
+				00EC6E7525DAF6E1002CFFF9 /* users.js in Resources */,
+				00EC6E7A25DAF98B002CFFF9 /* server.js in Resources */,
 				CA45041725B79A0F00153FC4 /* LaunchScreen.storyboard in Resources */,
 				CA45041425B79A0F00153FC4 /* Assets.xcassets in Resources */,
 				CA45041225B79A0F00153FC4 /* Main.storyboard in Resources */,
+				00EC6E7325DAF6E1002CFFF9 /* docker-compose.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +857,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/auth-server/node_modules/@pact-foundation/pact-node/standalone/darwin-1.88.37/pact/lib/ruby/lib",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -enable-implicit-dynamic";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wwtas.tdd201.CombineWithREST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -787,6 +883,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/auth-server/node_modules/@pact-foundation/pact-node/standalone/darwin-1.88.37/pact/lib/ruby/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wwtas.tdd201.CombineWithREST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
