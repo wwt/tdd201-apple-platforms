@@ -18,6 +18,7 @@ class NotesListViewControllerTests: XCTestCase {
 
     override func setUpWithError() throws {
         Container.default.removeAll()
+        UIView.setAnimationsEnabled(false)
         UIViewController.initializeTestable()
         viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true)
         XCTAssertNotNil(viewController, "Expected to load NotesListViewController from storyboard")
@@ -147,12 +148,9 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.save(note: any(Note.self))).thenThrow(Err.e1)
         }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
-        viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "NotesListViewController") as NotesListViewController
-        let navController = UINavigationController(rootViewController: UIViewController())
-        navController.loadForTesting()
-        navController.pushViewController(viewController, animated: false)
-        RunLoop.current.singlePass()
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
         let addButton = viewController.view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton
 
@@ -185,13 +183,9 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
         }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
-        // Set up viewController with Navigation stack
-        viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "NotesListViewController") as NotesListViewController
-        let navController = UINavigationController(rootViewController: UIViewController())
-        navController.loadForTesting()
-        navController.pushViewController(viewController, animated: false)
-        RunLoop.current.singlePass()
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
         tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
@@ -223,16 +217,13 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
         }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
         let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
             stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
         }
         // Set up viewController with Navigation stack
-        viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "NotesListViewController") as NotesListViewController
-        let navController = UINavigationController(rootViewController: UIViewController())
-        navController.loadForTesting()
-        navController.pushViewController(viewController, animated: false)
-        RunLoop.current.singlePass()
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
         // Act
@@ -271,16 +262,14 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
         }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
         let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
             stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
         }
         // Set up viewController with Navigation stack
-        viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "NotesListViewController") as NotesListViewController
-        let navController = UINavigationController(rootViewController: UIViewController())
-        navController.loadForTesting()
-        navController.pushViewController(viewController, animated: false)
-        RunLoop.current.singlePass()
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
+
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
         // Act
@@ -314,12 +303,10 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenThrow(Err.e1)
         }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
-        viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "NotesListViewController") as NotesListViewController
-        let navController = UINavigationController(rootViewController: UIViewController())
-        navController.loadForTesting()
-        navController.pushViewController(viewController, animated: false)
-        RunLoop.current.singlePass()
+        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
+            Container.default.register(NotesService.self) { _ in mockNotesService }
+        }
+
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
         tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
