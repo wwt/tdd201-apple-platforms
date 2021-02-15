@@ -4,6 +4,7 @@
 //
 //  Created by thompsty on 1/4/21.
 //
+// swiftlint:disable type_body_length
 
 import XCTest
 import UIUTest
@@ -17,6 +18,7 @@ class NotesListViewControllerTests: XCTestCase {
 
     override func setUpWithError() throws {
         Container.default.removeAll()
+        UIViewController.initializeTestable()
         viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true)
         XCTAssertNotNil(viewController, "Expected to load NotesListViewController from storyboard")
     }
@@ -162,8 +164,8 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 1)
         verify(mockNotesService, times(1)).save(note: any(Note.self))
 
-        waitUntil(viewController.navigationController?.visibleViewController is UIAlertController)
-        let alertVC = viewController.navigationController?.visibleViewController as? UIAlertController
+        RunLoop.current.singlePass()
+        let alertVC = viewController.presentedViewController as? UIAlertController
         XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.navigationController?.visibleViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.preferredStyle, .alert)
         XCTAssertEqual(alertVC?.title, "Unable to add note")
@@ -195,10 +197,8 @@ class NotesListViewControllerTests: XCTestCase {
         tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
 
         RunLoop.current.singlePass()
-
-        waitUntil(viewController.navigationController?.visibleViewController is UIAlertController)
-        let alertVC = viewController.navigationController?.visibleViewController as? UIAlertController
-        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.navigationController?.visibleViewController)) to be UIAlertController")
+        let alertVC = viewController.presentedViewController as? UIAlertController
+        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.presentedViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.preferredStyle, .alert)
         XCTAssertEqual(alertVC?.title, "Confirm delete")
         XCTAssertEqual(alertVC?.message, "Are you sure you want to delete?")
@@ -234,13 +234,14 @@ class NotesListViewControllerTests: XCTestCase {
         navController.pushViewController(viewController, animated: false)
         RunLoop.current.singlePass()
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
+
         // Act
         tableView?.dataSource?.tableView?(mockTableView, commit: .delete, forRowAt: expectedIndexPath)
-        // Assert
-        waitUntil(viewController.navigationController?.visibleViewController is UIAlertController)
 
-        let alertVC = viewController.navigationController?.visibleViewController as? UIAlertController
-        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.navigationController?.visibleViewController)) to be UIAlertController")
+        // Assert
+        RunLoop.current.singlePass()
+        let alertVC = viewController.presentedViewController as? UIAlertController
+        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.presentedViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.actions.count, 2)
         XCTAssertEqual(viewController.notes.count, 3)
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 3)
@@ -281,16 +282,19 @@ class NotesListViewControllerTests: XCTestCase {
         navController.pushViewController(viewController, animated: false)
         RunLoop.current.singlePass()
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
+
         // Act
         tableView?.dataSource?.tableView?(mockTableView, commit: .delete, forRowAt: expectedIndexPath)
+
         // Assert
-        waitUntil(viewController.navigationController?.visibleViewController is UIAlertController)
-        let alertVC = viewController.navigationController?.visibleViewController as? UIAlertController
-        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.navigationController?.visibleViewController)) to be UIAlertController")
+        RunLoop.current.singlePass()
+        let alertVC = viewController.presentedViewController as? UIAlertController
+        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.presentedViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.actions.count, 2)
 
         // Act
         alertVC?.action(withStyle: .cancel)?.simulateTouch()
+
         // Assert
         XCTAssertEqual(viewController.notes.count, 3)
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 3)
@@ -319,8 +323,9 @@ class NotesListViewControllerTests: XCTestCase {
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
         tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
-        waitUntil(viewController.navigationController?.visibleViewController is UIAlertController)
-        var alertVC = viewController.navigationController?.visibleViewController as? UIAlertController
+
+        RunLoop.current.singlePass()
+        var alertVC = viewController.presentedViewController as? UIAlertController
         alertVC?.action(withStyle: .destructive)?.simulateTouch()
 
         RunLoop.current.singlePass()
@@ -329,9 +334,9 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 3)
         verify(mockNotesService, times(1)).delete(note: any(Note.self))
 
-        waitUntil(viewController.navigationController?.visibleViewController is UIAlertController)
-        alertVC = viewController.navigationController?.visibleViewController as? UIAlertController
-        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.navigationController?.visibleViewController)) to be UIAlertController")
+        waitUntil(viewController.presentedViewController == nil)
+        alertVC = viewController.presentedViewController as? UIAlertController
+        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.presentedViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.preferredStyle, .alert)
         XCTAssertEqual(alertVC?.title, "Unable to delete note")
         XCTAssertEqual(alertVC?.message, Err.e1.localizedDescription)
