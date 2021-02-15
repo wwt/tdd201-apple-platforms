@@ -149,6 +149,22 @@ class SomeClassTests: XCTestCase {
         verify(mock, times(1)).genericVoid(param: "string")
     }
 
+    func testMockingGenericVoic_WithNonEquatableParameter() throws {
+        struct FakeStruct {
+            let name: String
+        }
+        let mock = MockSomeClass()
+        stub(mock) { (stub) in
+            when(stub.genericVoid(param: any(FakeStruct.self))).thenDoNothing()
+        }
+        let expectedStruct = FakeStruct(name: UUID().uuidString)
+        mock.genericVoid(param: expectedStruct)
+
+        let argumentCaptor = ArgumentCaptor<FakeStruct>()
+        verify(mock, times(1)).genericVoid(param: argumentCaptor.capture())
+        XCTAssertEqual(argumentCaptor.value?.name, expectedStruct.name)
+    }
+
     func testMockingGenericReturn() throws {
         let mock = MockSomeClass()
         stub(mock) { (stub) in

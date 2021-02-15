@@ -220,7 +220,6 @@ class NotesListViewControllerTests: XCTestCase {
         let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
             stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
         }
-        // Set up viewController with Navigation stack
         viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
             Container.default.register(NotesService.self) { _ in mockNotesService }
         }
@@ -265,7 +264,6 @@ class NotesListViewControllerTests: XCTestCase {
         let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
             stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
         }
-        // Set up viewController with Navigation stack
         viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
             Container.default.register(NotesService.self) { _ in mockNotesService }
         }
@@ -330,6 +328,5 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(alertVC?.actions.count, 1)
         XCTAssertEqual(alertVC?.actions.first?.style, .default)
         XCTAssertEqual(alertVC?.actions.first?.title, "Ok")
-
     }
 }
