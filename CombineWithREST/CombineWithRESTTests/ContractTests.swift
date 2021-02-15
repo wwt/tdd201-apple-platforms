@@ -90,7 +90,7 @@ class ContractTests: XCTestCase {
         User.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         let service = API.IdentityService(baseURL: identityServiceProvider.baseUrl)
         let expectedEmail = Faker().internet.email()
-        identityServiceProvider.given("A user with a prefferred name and the correct ID exists")
+        identityServiceProvider.given("A user with a preferred name and the correct ID exists")
             .uponReceiving("A request for the profile information")
             .withRequest(method: .GET,
                          path: "/me",
@@ -148,5 +148,49 @@ class ContractTests: XCTestCase {
                 testComplete()
             }.store(in: &ongoingCalls)
         }
+    }
+
+    func testIdentityServiceReturns401_WhenInvalidAccessTokenIsSupplied() throws {
+        // swiftlint:disable:next line_length
+        User.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+        User.refreshToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+        let service = API.IdentityService(baseURL: identityServiceProvider.baseUrl)
+        identityServiceProvider.given("A user is not logged in")
+            .uponReceiving("A request with an invalid access token")
+            .withRequest(method: .GET,
+                         path: "/me",
+                         headers: [
+                            "Authorization": Matcher.term(matcher: "Bearer (.*?)", generate: "Bearer \(User.accessToken)"),
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                         ])
+            .willRespondWith(status: 401)
+
+        identityServiceProvider.given("A user is not logged in")
+            .uponReceiving("A request with an invalid access token")
+            .withRequest(method: .POST,
+                         path: "/auth/refresh",
+                         body: ["refreshToken": Matcher.somethingLike(User.refreshToken)])
+            .willRespondWith(status: 401)
+
+        identityServiceProvider.run { [self] testComplete in
+            service.fetchProfile.sink { (result) in
+                switch result {
+                    case .success:
+                        XCTFail("Expected to get unauthorized error")
+                    case.failure(let err):
+                        if case .apiBorked(let error) = err {
+                        XCTAssertEqual(error as? API.AuthorizationError, .unauthorized)
+                        } else {
+                            XCTFail("Expected to get unauthorized error")
+                        }
+                }
+                testComplete()
+            }.store(in: &ongoingCalls)
+        }
+    }
+
+    func testIdentityServiceReturns401_WhenNoAccessTokenIsSupplied() throws {
+        let service = API.IdentityService(baseURL: identityServiceProvider.baseUrl)
     }
 }

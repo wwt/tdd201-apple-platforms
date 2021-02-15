@@ -1,0 +1,533 @@
+I, [2021-02-15T12:52:26.501923 #63478]  INFO -- : Cleared interactions
+I, [2021-02-15T12:52:26.508164 #63478]  INFO -- : Registered expected interaction GET /me
+D, [2021-02-15T12:52:26.508753 #63478] DEBUG -- : {
+  "description": "A request for the profile information",
+  "providerState": "A user with the correct ID exists",
+  "request": {
+    "method": "get",
+    "path": "/me",
+    "headers": {
+      "Accept": "application/json",
+      "Authorization": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "Bearer (.*?)"
+          }
+        }
+      },
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "termsAcceptedDate": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "2018-07-26T19:33:46.8381401",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          }
+        }
+      },
+      "username": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "garrisonjenkins@koelpin.name"
+      },
+      "createdDate": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "2018-07-26T19:33:46.6818918",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          }
+        }
+      },
+      "self": {
+        "phoneNumber": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "3033033333",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "\\d{10}"
+            }
+          }
+        },
+        "dateOfBirth": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "1990-03-26T00:00:00",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+            }
+          }
+        },
+        "address": {
+          "countryCode": "US",
+          "line2": {
+            "json_class": "Pact::SomethingLike",
+            "contents": ""
+          },
+          "city": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "Denver"
+          },
+          "line1": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "111 Fake st"
+          },
+          "stateOrProvince": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "CA"
+          },
+          "zipCode": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "80202"
+          }
+        },
+        "firstName": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Joe"
+        },
+        "lastName": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Blow"
+        },
+        "email": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "garrisonjenkins@koelpin.name",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "(.*)@(.*)"
+            }
+          }
+        }
+      },
+      "isTermsAccepted": {
+        "json_class": "Pact::SomethingLike",
+        "contents": true
+      },
+      "isVerified": {
+        "json_class": "Pact::SomethingLike",
+        "contents": true
+      }
+    }
+  },
+  "metadata": null
+}
+I, [2021-02-15T12:52:26.518869 #63478]  INFO -- : Received request GET /me
+D, [2021-02-15T12:52:26.519336 #63478] DEBUG -- : {
+  "path": "/me",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Content-Type": "application/json",
+    "Host": "localhost:1234",
+    "Connection": "keep-alive",
+    "Accept": "application/json",
+    "User-Agent": "CombineWithREST/1 CFNetwork/1220.1 Darwin/19.6.0",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+    "Accept-Language": "en-us",
+    "Accept-Encoding": "gzip, deflate",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-02-15T12:52:26.519900 #63478]  INFO -- : Found matching response for GET /me
+D, [2021-02-15T12:52:26.520406 #63478] DEBUG -- : {
+  "status": 200,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "termsAcceptedDate": {
+      "json_class": "Pact::Term",
+      "data": {
+        "generate": "2018-07-26T19:33:46.8381401",
+        "matcher": {
+          "json_class": "Regexp",
+          "o": 0,
+          "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+        }
+      }
+    },
+    "username": {
+      "json_class": "Pact::SomethingLike",
+      "contents": "garrisonjenkins@koelpin.name"
+    },
+    "createdDate": {
+      "json_class": "Pact::Term",
+      "data": {
+        "generate": "2018-07-26T19:33:46.6818918",
+        "matcher": {
+          "json_class": "Regexp",
+          "o": 0,
+          "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+        }
+      }
+    },
+    "self": {
+      "phoneNumber": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "3033033333",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "\\d{10}"
+          }
+        }
+      },
+      "dateOfBirth": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "1990-03-26T00:00:00",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+          }
+        }
+      },
+      "address": {
+        "countryCode": "US",
+        "line2": {
+          "json_class": "Pact::SomethingLike",
+          "contents": ""
+        },
+        "city": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Denver"
+        },
+        "line1": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "111 Fake st"
+        },
+        "stateOrProvince": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "CA"
+        },
+        "zipCode": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "80202"
+        }
+      },
+      "firstName": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Joe"
+      },
+      "lastName": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Blow"
+      },
+      "email": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "garrisonjenkins@koelpin.name",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(.*)@(.*)"
+          }
+        }
+      }
+    },
+    "isTermsAccepted": {
+      "json_class": "Pact::SomethingLike",
+      "contents": true
+    },
+    "isVerified": {
+      "json_class": "Pact::SomethingLike",
+      "contents": true
+    }
+  }
+}
+I, [2021-02-15T12:52:26.526248 #63478]  INFO -- : Verifying - interactions matched
+I, [2021-02-15T12:52:26.530724 #63478]  INFO -- : Writing pact for IdentityService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/CombineWithREST/tmp/pacts/combine-iosapp-identityservice.json
+I, [2021-02-15T12:52:26.551523 #63478]  INFO -- : Cleared interactions
+I, [2021-02-15T12:52:26.557766 #63478]  INFO -- : Registered expected interaction GET /me
+D, [2021-02-15T12:52:26.558317 #63478] DEBUG -- : {
+  "description": "A request for the profile information",
+  "providerState": "A user with a preferred name and the correct ID exists",
+  "request": {
+    "method": "get",
+    "path": "/me",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "Bearer (.*?)"
+          }
+        }
+      },
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "termsAcceptedDate": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "2018-07-26T19:33:46.8381401",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          }
+        }
+      },
+      "username": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "trudieschumm@metz.info"
+      },
+      "isVerified": {
+        "json_class": "Pact::SomethingLike",
+        "contents": true
+      },
+      "isTermsAccepted": {
+        "json_class": "Pact::SomethingLike",
+        "contents": true
+      },
+      "createdDate": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "2018-07-26T19:33:46.6818918",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          }
+        }
+      },
+      "self": {
+        "firstName": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Joe"
+        },
+        "address": {
+          "stateOrProvince": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "CA"
+          },
+          "line2": {
+            "json_class": "Pact::SomethingLike",
+            "contents": ""
+          },
+          "zipCode": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "80202"
+          },
+          "line1": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "111 Fake st"
+          },
+          "countryCode": "US",
+          "city": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "Denver"
+          }
+        },
+        "email": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "trudieschumm@metz.info",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "(.*)@(.*)"
+            }
+          }
+        },
+        "phoneNumber": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "3033033333",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "\\d{10}"
+            }
+          }
+        },
+        "preferredName": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Joey"
+        },
+        "dateOfBirth": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "1990-03-26T00:00:00",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+            }
+          }
+        },
+        "lastName": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Blow"
+        }
+      }
+    }
+  },
+  "metadata": null
+}
+I, [2021-02-15T12:52:26.563722 #63478]  INFO -- : Received request GET /me
+D, [2021-02-15T12:52:26.564204 #63478] DEBUG -- : {
+  "path": "/me",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Content-Type": "application/json",
+    "Host": "localhost:1234",
+    "Connection": "keep-alive",
+    "Accept": "application/json",
+    "User-Agent": "CombineWithREST/1 CFNetwork/1220.1 Darwin/19.6.0",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+    "Accept-Language": "en-us",
+    "Accept-Encoding": "gzip, deflate",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-02-15T12:52:26.564775 #63478]  INFO -- : Found matching response for GET /me
+D, [2021-02-15T12:52:26.565346 #63478] DEBUG -- : {
+  "status": 200,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "termsAcceptedDate": {
+      "json_class": "Pact::Term",
+      "data": {
+        "generate": "2018-07-26T19:33:46.8381401",
+        "matcher": {
+          "json_class": "Regexp",
+          "o": 0,
+          "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+        }
+      }
+    },
+    "username": {
+      "json_class": "Pact::SomethingLike",
+      "contents": "trudieschumm@metz.info"
+    },
+    "isVerified": {
+      "json_class": "Pact::SomethingLike",
+      "contents": true
+    },
+    "isTermsAccepted": {
+      "json_class": "Pact::SomethingLike",
+      "contents": true
+    },
+    "createdDate": {
+      "json_class": "Pact::Term",
+      "data": {
+        "generate": "2018-07-26T19:33:46.6818918",
+        "matcher": {
+          "json_class": "Regexp",
+          "o": 0,
+          "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+        }
+      }
+    },
+    "self": {
+      "firstName": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Joe"
+      },
+      "address": {
+        "stateOrProvince": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "CA"
+        },
+        "line2": {
+          "json_class": "Pact::SomethingLike",
+          "contents": ""
+        },
+        "zipCode": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "80202"
+        },
+        "line1": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "111 Fake st"
+        },
+        "countryCode": "US",
+        "city": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Denver"
+        }
+      },
+      "email": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "trudieschumm@metz.info",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(.*)@(.*)"
+          }
+        }
+      },
+      "phoneNumber": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "3033033333",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "\\d{10}"
+          }
+        }
+      },
+      "preferredName": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Joey"
+      },
+      "dateOfBirth": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "1990-03-26T00:00:00",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+          }
+        }
+      },
+      "lastName": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Blow"
+      }
+    }
+  }
+}
+I, [2021-02-15T12:52:26.570769 #63478]  INFO -- : Verifying - interactions matched
+I, [2021-02-15T12:52:26.575010 #63478]  INFO -- : Writing pact for IdentityService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/CombineWithREST/tmp/pacts/combine-iosapp-identityservice.json
+I, [2021-02-15T12:52:26.587823 #63478]  INFO -- : Cleared interactions
