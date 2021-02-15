@@ -72,8 +72,8 @@ extension NotesListViewController: UITableViewDataSource {
             let note = notes[indexPath.row]
 
             let alert = UIAlertController(title: "Confirm delete", message: "Are you sure you want to delete?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Confirm", style: .default) { _ in
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Yes", style: .destructive) { _ in
                 do {
                     try self.notesService?.delete(note: note)
                     self.notes.remove(at: indexPath.row)

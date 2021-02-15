@@ -166,42 +166,12 @@ class NotesListViewControllerTests: XCTestCase {
         let alertVC = viewController.navigationController?.visibleViewController as? UIAlertController
         XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.navigationController?.visibleViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.preferredStyle, .alert)
-        XCTAssertEqual(alertVC?.title, "Unable to delete note")
+        XCTAssertEqual(alertVC?.title, "Unable to add note")
         XCTAssertEqual(alertVC?.message, Err.e1.localizedDescription)
         XCTAssertEqual(alertVC?.actions.count, 1)
         XCTAssertEqual(alertVC?.actions.first?.style, .default)
         XCTAssertEqual(alertVC?.actions.first?.title, "Ok")
     }
-//
-//    func testUserCanDeleteNote() throws {
-//        let mockNotesService = MockNotesService()
-//        let note2 = Note(name: "note2", contents: UUID().uuidString)
-//        let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
-//                             note2,
-//                             Note(name: "note3", contents: UUID().uuidString)]
-//        let expectedIndexPath = IndexPath(row: 1, section: 0)
-//        stub(mockNotesService) { (stub) in
-//            when(stub.getNotes()).thenReturn(.success(expectedNotes))
-//            when(stub.delete(note: any(Note.self))).thenDoNothing()
-//        }
-//        let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
-//            stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
-//        }
-//        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
-//            Container.default.register(NotesService.self) { _ in mockNotesService }
-//        }
-//
-//        let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
-//
-//        tableView?.dataSource?.tableView?(mockTableView, commit: .delete, forRowAt: expectedIndexPath)
-//
-//        RunLoop.current.singlePass()
-//        let argumentCaptor = ArgumentCaptor<Note>()
-//        verify(mockNotesService, times(1)).delete(note: argumentCaptor.capture())
-//        XCTAssertEqual(argumentCaptor.value?.name, note2.name)
-//        XCTAssertEqual(argumentCaptor.value?.contents, note2.contents)
-//        objcVerify(mockTableView.deleteRows(at: [expectedIndexPath], with: .fade))
-//    }
 
     func testWhenUserDeletesNote_UserIsPresentedConfirmModal() throws {
         let mockNotesService = MockNotesService()
@@ -233,10 +203,10 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(alertVC?.title, "Confirm delete")
         XCTAssertEqual(alertVC?.message, "Are you sure you want to delete?")
         XCTAssertEqual(alertVC?.actions.count, 2)
-        XCTAssertEqual(alertVC?.actions.first?.style, .destructive)
-        XCTAssertEqual(alertVC?.actions.first?.title, "Confirm")
-        XCTAssertEqual(alertVC?.actions.last?.style, .cancel)
-        XCTAssertEqual(alertVC?.actions.first?.title, "Cancel")
+        XCTAssertEqual(alertVC?.actions.first?.style, .cancel)
+        XCTAssertEqual(alertVC?.actions.first?.title, "No")
+        XCTAssertEqual(alertVC?.actions.last?.style, .destructive)
+        XCTAssertEqual(alertVC?.actions.last?.title, "Yes")
         XCTAssertEqual(viewController.notes.count, 3)
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 3)
         verify(mockNotesService, times(0)).delete(note: any(Note.self))
@@ -268,6 +238,7 @@ class NotesListViewControllerTests: XCTestCase {
         tableView?.dataSource?.tableView?(mockTableView, commit: .delete, forRowAt: expectedIndexPath)
         // Assert
         waitUntil(viewController.navigationController?.visibleViewController is UIAlertController)
+
         let alertVC = viewController.navigationController?.visibleViewController as? UIAlertController
         XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.navigationController?.visibleViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.actions.count, 2)
@@ -277,13 +248,15 @@ class NotesListViewControllerTests: XCTestCase {
 
         // Act
         alertVC?.action(withStyle: .destructive)?.simulateTouch()
+        RunLoop.current.singlePass()
+
         // Assert
         let argumentCaptor = ArgumentCaptor<Note>()
         verify(mockNotesService, times(1)).delete(note: argumentCaptor.capture())
         XCTAssertEqual(argumentCaptor.value?.name, note2.name)
         XCTAssertEqual(argumentCaptor.value?.contents, note2.contents)
         objcVerify(mockTableView.deleteRows(at: [expectedIndexPath], with: .fade))
-        XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 2)
+        XCTAssertEqual(viewController.tableView(tableView!, numberOfRowsInSection: 0), 2)
     }
 
     func testWhenUserDeletesNote_UserCancelsDelete() throws {
@@ -323,28 +296,6 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 3)
         verify(mockNotesService, times(0)).delete(note: any(Note.self))
     }
-
-//    func testWhenUserDeletesNote_TableViewRespondsCorrectly() throws {
-//        let mockNotesService = MockNotesService()
-//        let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
-//                             Note(name: "note2", contents: UUID().uuidString),
-//                             Note(name: "note3", contents: UUID().uuidString)]
-//        let expectedIndexPath = IndexPath(row: 1, section: 0)
-//        stub(mockNotesService) { (stub) in
-//            when(stub.getNotes()).thenReturn(.success(expectedNotes))
-//            when(stub.delete(note: any(Note.self))).thenDoNothing()
-//        }
-//
-//        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
-//            Container.default.register(NotesService.self) { _ in mockNotesService }
-//        }
-//        let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
-//
-//        tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
-//
-//        RunLoop.current.singlePass()
-//        XCTAssertEqual(viewController.tableView(tableView!, numberOfRowsInSection: 0), 2)
-//    }
 
     func testWhenUserDeletesNote_DeleteFailsShowsAlert() throws {
         enum Err: Error {
