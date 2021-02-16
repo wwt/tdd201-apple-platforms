@@ -13,9 +13,9 @@
         "method": "get",
         "path": "/me",
         "headers": {
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
           "Content-Type": "application/json",
-          "Accept": "application/json",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          "Accept": "application/json"
         },
         "matchingRules": {
           "$.headers.Authorization": {
@@ -30,40 +30,44 @@
           "Content-Type": "application/json"
         },
         "body": {
+          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
+          "createdDate": "2018-07-26T19:33:46.6818918",
           "self": {
+            "firstName": "Joe",
             "dateOfBirth": "1990-03-26T00:00:00",
-            "email": "gunnerzulauf@schneider.org",
+            "lastName": "Blow",
             "address": {
-              "line2": "",
-              "zipCode": "80202",
-              "countryCode": "US",
               "line1": "111 Fake st",
               "city": "Denver",
-              "stateOrProvince": "CA"
+              "stateOrProvince": "CA",
+              "countryCode": "US",
+              "line2": "",
+              "zipCode": "80202"
             },
-            "firstName": "Joe",
-            "phoneNumber": "3033033333",
-            "lastName": "Blow"
+            "email": "leifnikolaus6056@raynor.name",
+            "phoneNumber": "3033033333"
           },
-          "isVerified": true,
-          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
-          "username": "gunnerzulauf@schneider.org",
           "isTermsAccepted": true,
-          "createdDate": "2018-07-26T19:33:46.6818918"
+          "isVerified": true,
+          "username": "leifnikolaus6056@raynor.name"
         },
         "matchingRules": {
+          "$.body.termsAcceptedDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          },
+          "$.body.createdDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          },
+          "$.body.self.firstName": {
+            "match": "type"
+          },
           "$.body.self.dateOfBirth": {
             "match": "regex",
             "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
           },
-          "$.body.self.email": {
-            "match": "regex",
-            "regex": "(.*)@(.*)"
-          },
-          "$.body.self.address.line2": {
-            "match": "type"
-          },
-          "$.body.self.address.zipCode": {
+          "$.body.self.lastName": {
             "match": "type"
           },
           "$.body.self.address.line1": {
@@ -75,32 +79,28 @@
           "$.body.self.address.stateOrProvince": {
             "match": "type"
           },
-          "$.body.self.firstName": {
+          "$.body.self.address.line2": {
             "match": "type"
+          },
+          "$.body.self.address.zipCode": {
+            "match": "type"
+          },
+          "$.body.self.email": {
+            "match": "regex",
+            "regex": "(.*)@(.*)"
           },
           "$.body.self.phoneNumber": {
             "match": "regex",
             "regex": "\\d{10}"
           },
-          "$.body.self.lastName": {
+          "$.body.isTermsAccepted": {
             "match": "type"
           },
           "$.body.isVerified": {
             "match": "type"
           },
-          "$.body.termsAcceptedDate": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
-          },
           "$.body.username": {
             "match": "type"
-          },
-          "$.body.isTermsAccepted": {
-            "match": "type"
-          },
-          "$.body.createdDate": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
           }
         }
       }
@@ -112,9 +112,9 @@
         "method": "get",
         "path": "/me",
         "headers": {
-          "Accept": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
           "Content-Type": "application/json",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          "Accept": "application/json"
         },
         "matchingRules": {
           "$.headers.Authorization": {
@@ -129,80 +129,80 @@
           "Content-Type": "application/json"
         },
         "body": {
-          "isTermsAccepted": true,
-          "createdDate": "2018-07-26T19:33:46.6818918",
           "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
+          "createdDate": "2018-07-26T19:33:46.6818918",
+          "username": "renestark@wilderman.info",
+          "isVerified": true,
           "self": {
+            "preferredName": "Joey",
+            "email": "renestark@wilderman.info",
             "phoneNumber": "3033033333",
-            "dateOfBirth": "1990-03-26T00:00:00",
+            "firstName": "Joe",
             "lastName": "Blow",
-            "email": "archibaldshields3889@dach.org",
+            "dateOfBirth": "1990-03-26T00:00:00",
             "address": {
               "city": "Denver",
+              "stateOrProvince": "CA",
+              "line1": "111 Fake st",
               "zipCode": "80202",
               "countryCode": "US",
-              "line1": "111 Fake st",
-              "line2": "",
-              "stateOrProvince": "CA"
-            },
-            "preferredName": "Joey",
-            "firstName": "Joe"
+              "line2": ""
+            }
           },
-          "isVerified": true,
-          "username": "archibaldshields3889@dach.org"
+          "isTermsAccepted": true
         },
         "matchingRules": {
-          "$.body.isTermsAccepted": {
-            "match": "type"
+          "$.body.termsAcceptedDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
           },
           "$.body.createdDate": {
             "match": "regex",
             "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
           },
-          "$.body.termsAcceptedDate": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          "$.body.username": {
+            "match": "type"
           },
-          "$.body.self.phoneNumber": {
-            "match": "regex",
-            "regex": "\\d{10}"
+          "$.body.isVerified": {
+            "match": "type"
           },
-          "$.body.self.dateOfBirth": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
-          },
-          "$.body.self.lastName": {
+          "$.body.self.preferredName": {
             "match": "type"
           },
           "$.body.self.email": {
             "match": "regex",
             "regex": "(.*)@(.*)"
           },
+          "$.body.self.phoneNumber": {
+            "match": "regex",
+            "regex": "\\d{10}"
+          },
+          "$.body.self.firstName": {
+            "match": "type"
+          },
+          "$.body.self.lastName": {
+            "match": "type"
+          },
+          "$.body.self.dateOfBirth": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+          },
           "$.body.self.address.city": {
-            "match": "type"
-          },
-          "$.body.self.address.zipCode": {
-            "match": "type"
-          },
-          "$.body.self.address.line1": {
-            "match": "type"
-          },
-          "$.body.self.address.line2": {
             "match": "type"
           },
           "$.body.self.address.stateOrProvince": {
             "match": "type"
           },
-          "$.body.self.preferredName": {
+          "$.body.self.address.line1": {
             "match": "type"
           },
-          "$.body.self.firstName": {
+          "$.body.self.address.zipCode": {
             "match": "type"
           },
-          "$.body.isVerified": {
+          "$.body.self.address.line2": {
             "match": "type"
           },
-          "$.body.username": {
+          "$.body.isTermsAccepted": {
             "match": "type"
           }
         }
@@ -215,8 +215,8 @@
         "method": "get",
         "path": "/me",
         "headers": {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
           "Content-Type": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
           "Accept": "application/json"
         },
         "matchingRules": {
@@ -239,9 +239,9 @@
         "method": "get",
         "path": "/me",
         "headers": {
-          "Authorization": "Bearer ",
+          "Accept": "application/json",
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          "Authorization": "Bearer "
         },
         "matchingRules": {
           "$.headers.Authorization": {
