@@ -191,6 +191,41 @@ class ContractTests: XCTestCase {
     }
 
     func testIdentityServiceReturns401_WhenNoAccessTokenIsSupplied() throws {
+        User.accessToken = ""
+        User.refreshToken = ""
         let service = API.IdentityService(baseURL: identityServiceProvider.baseUrl)
+        identityServiceProvider.given("A user is not logged in")
+            .uponReceiving("A request with no access token")
+            .withRequest(method: .GET,
+                         path: "/me",
+                         headers: [
+                            "Authorization": Matcher.somethingLike("Bearer "), // Matcher.term(matcher: "Bearer (.*?)", generate: "Bearer "),
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                         ])
+            .willRespondWith(status: 401)
+
+        identityServiceProvider.given("A user is not logged in")
+            .uponReceiving("A request with no access token")
+            .withRequest(method: .POST,
+                         path: "/auth/refresh",
+                         body: ["refreshToken": Matcher.somethingLike(User.refreshToken)])
+            .willRespondWith(status: 401)
+
+        identityServiceProvider.run { [self] testComplete in
+            service.fetchProfile.sink { (result) in
+                switch result {
+                    case .success:
+                        XCTFail("Expected to get unauthorized error")
+                    case.failure(let err):
+                        if case .apiBorked(let error) = err {
+                        XCTAssertEqual(error as? API.AuthorizationError, .unauthorized)
+                        } else {
+                            XCTFail("Expected to get unauthorized error")
+                        }
+                }
+                testComplete()
+            }.store(in: &ongoingCalls)
+        }
     }
 }

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00BB4D3425D463C700905C5E /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D3325D463C700905C5E /* StubAPIResponse.swift */; };
-		00BB4D3C25D463E200905C5E /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D3B25D463E200905C5E /* URLRequestExtensions.swift */; };
+		0052533425DC494C000E8F27 /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052533325DC494C000E8F27 /* StubAPIResponse.swift */; };
+		0052533F25DC4967000E8F27 /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052533E25DC4967000E8F27 /* URLRequestExtensions.swift */; };
 		00BB4D5925D469DF00905C5E /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 00BB4D5125D469DF00905C5E /* package.json */; };
 		00BB4D5A25D469DF00905C5E /* users.js in Resources */ = {isa = PBXBuildFile; fileRef = 00BB4D5325D469DF00905C5E /* users.js */; };
 		00BB4D5C25D469DF00905C5E /* app.js in Resources */ = {isa = PBXBuildFile; fileRef = 00BB4D5525D469DF00905C5E /* app.js */; };
@@ -40,8 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00BB4D3325D463C700905C5E /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
-		00BB4D3B25D463E200905C5E /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = "<group>"; };
+		0052533325DC494C000E8F27 /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
+		0052533E25DC4967000E8F27 /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = "<group>"; };
 		00BB4D5125D469DF00905C5E /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 		00BB4D5325D469DF00905C5E /* users.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = users.js; sourceTree = "<group>"; };
 		00BB4D5525D469DF00905C5E /* app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = app.js; sourceTree = "<group>"; };
@@ -90,18 +90,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00BB4D3125D463AA00905C5E /* HTTPStubbing */ = {
+		0052533025DC4937000E8F27 /* HTTPStubbing */ = {
 			isa = PBXGroup;
 			children = (
-				00BB4D3325D463C700905C5E /* StubAPIResponse.swift */,
+				0052533325DC494C000E8F27 /* StubAPIResponse.swift */,
 			);
 			path = HTTPStubbing;
 			sourceTree = "<group>";
 		};
-		00BB4D3225D463B400905C5E /* Extensions */ = {
+		0052533925DC494F000E8F27 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				00BB4D3B25D463E200905C5E /* URLRequestExtensions.swift */,
+				0052533E25DC4967000E8F27 /* URLRequestExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -205,8 +205,8 @@
 		CAA1C3D525A3897800E3F686 /* ContractTestingTests */ = {
 			isa = PBXGroup;
 			children = (
-				00BB4D3225D463B400905C5E /* Extensions */,
-				00BB4D3125D463AA00905C5E /* HTTPStubbing */,
+				0052533925DC494F000E8F27 /* Extensions */,
+				0052533025DC4937000E8F27 /* HTTPStubbing */,
 				CAA1C3D625A3897800E3F686 /* ContractTests.swift */,
 				CAA1C3D825A3897800E3F686 /* Info.plist */,
 				CAF26D9B25B9E840009025A6 /* UserServiceTests.swift */,
@@ -438,9 +438,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF26D9C25B9E840009025A6 /* UserServiceTests.swift in Sources */,
-				00BB4D3C25D463E200905C5E /* URLRequestExtensions.swift in Sources */,
+				0052533F25DC4967000E8F27 /* URLRequestExtensions.swift in Sources */,
 				CAA1C3D725A3897800E3F686 /* ContractTests.swift in Sources */,
-				00BB4D3425D463C700905C5E /* StubAPIResponse.swift in Sources */,
+				0052533425DC494C000E8F27 /* StubAPIResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
