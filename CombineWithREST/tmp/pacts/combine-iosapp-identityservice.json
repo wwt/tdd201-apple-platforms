@@ -31,32 +31,42 @@
         },
         "body": {
           "self": {
-            "phoneNumber": "3033033333",
+            "dateOfBirth": "1990-03-26T00:00:00",
+            "email": "gunnerzulauf@schneider.org",
             "address": {
               "line2": "",
-              "city": "Denver",
-              "stateOrProvince": "CA",
-              "line1": "111 Fake st",
               "zipCode": "80202",
-              "countryCode": "US"
+              "countryCode": "US",
+              "line1": "111 Fake st",
+              "city": "Denver",
+              "stateOrProvince": "CA"
             },
-            "email": "arielleankunding3352@kohler.org",
             "firstName": "Joe",
-            "lastName": "Blow",
-            "dateOfBirth": "1990-03-26T00:00:00"
+            "phoneNumber": "3033033333",
+            "lastName": "Blow"
           },
-          "username": "arielleankunding3352@kohler.org",
-          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
           "isVerified": true,
+          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
+          "username": "gunnerzulauf@schneider.org",
           "isTermsAccepted": true,
           "createdDate": "2018-07-26T19:33:46.6818918"
         },
         "matchingRules": {
-          "$.body.self.phoneNumber": {
+          "$.body.self.dateOfBirth": {
             "match": "regex",
-            "regex": "\\d{10}"
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+          },
+          "$.body.self.email": {
+            "match": "regex",
+            "regex": "(.*)@(.*)"
           },
           "$.body.self.address.line2": {
+            "match": "type"
+          },
+          "$.body.self.address.zipCode": {
+            "match": "type"
+          },
+          "$.body.self.address.line1": {
             "match": "type"
           },
           "$.body.self.address.city": {
@@ -65,34 +75,24 @@
           "$.body.self.address.stateOrProvince": {
             "match": "type"
           },
-          "$.body.self.address.line1": {
-            "match": "type"
-          },
-          "$.body.self.address.zipCode": {
-            "match": "type"
-          },
-          "$.body.self.email": {
-            "match": "regex",
-            "regex": "(.*)@(.*)"
-          },
           "$.body.self.firstName": {
             "match": "type"
+          },
+          "$.body.self.phoneNumber": {
+            "match": "regex",
+            "regex": "\\d{10}"
           },
           "$.body.self.lastName": {
             "match": "type"
           },
-          "$.body.self.dateOfBirth": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
-          },
-          "$.body.username": {
+          "$.body.isVerified": {
             "match": "type"
           },
           "$.body.termsAcceptedDate": {
             "match": "regex",
             "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
           },
-          "$.body.isVerified": {
+          "$.body.username": {
             "match": "type"
           },
           "$.body.isTermsAccepted": {
@@ -112,9 +112,9 @@
         "method": "get",
         "path": "/me",
         "headers": {
+          "Accept": "application/json",
           "Content-Type": "application/json",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-          "Accept": "application/json"
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         },
         "matchingRules": {
           "$.headers.Authorization": {
@@ -129,44 +129,54 @@
           "Content-Type": "application/json"
         },
         "body": {
+          "isTermsAccepted": true,
+          "createdDate": "2018-07-26T19:33:46.6818918",
+          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
           "self": {
-            "preferredName": "Joey",
             "phoneNumber": "3033033333",
-            "address": {
-              "line1": "111 Fake st",
-              "stateOrProvince": "CA",
-              "countryCode": "US",
-              "line2": "",
-              "city": "Denver",
-              "zipCode": "80202"
-            },
-            "firstName": "Joe",
-            "lastName": "Blow",
             "dateOfBirth": "1990-03-26T00:00:00",
-            "email": "myrtieschneider3216@barrows.name"
+            "lastName": "Blow",
+            "email": "archibaldshields3889@dach.org",
+            "address": {
+              "city": "Denver",
+              "zipCode": "80202",
+              "countryCode": "US",
+              "line1": "111 Fake st",
+              "line2": "",
+              "stateOrProvince": "CA"
+            },
+            "preferredName": "Joey",
+            "firstName": "Joe"
           },
           "isVerified": true,
-          "username": "myrtieschneider3216@barrows.name",
-          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
-          "isTermsAccepted": true,
-          "createdDate": "2018-07-26T19:33:46.6818918"
+          "username": "archibaldshields3889@dach.org"
         },
         "matchingRules": {
-          "$.body.self.preferredName": {
+          "$.body.isTermsAccepted": {
             "match": "type"
+          },
+          "$.body.createdDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          },
+          "$.body.termsAcceptedDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
           },
           "$.body.self.phoneNumber": {
             "match": "regex",
             "regex": "\\d{10}"
           },
-          "$.body.self.address.line1": {
+          "$.body.self.dateOfBirth": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+          },
+          "$.body.self.lastName": {
             "match": "type"
           },
-          "$.body.self.address.stateOrProvince": {
-            "match": "type"
-          },
-          "$.body.self.address.line2": {
-            "match": "type"
+          "$.body.self.email": {
+            "match": "regex",
+            "regex": "(.*)@(.*)"
           },
           "$.body.self.address.city": {
             "match": "type"
@@ -174,37 +184,74 @@
           "$.body.self.address.zipCode": {
             "match": "type"
           },
+          "$.body.self.address.line1": {
+            "match": "type"
+          },
+          "$.body.self.address.line2": {
+            "match": "type"
+          },
+          "$.body.self.address.stateOrProvince": {
+            "match": "type"
+          },
+          "$.body.self.preferredName": {
+            "match": "type"
+          },
           "$.body.self.firstName": {
             "match": "type"
-          },
-          "$.body.self.lastName": {
-            "match": "type"
-          },
-          "$.body.self.dateOfBirth": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
-          },
-          "$.body.self.email": {
-            "match": "regex",
-            "regex": "(.*)@(.*)"
           },
           "$.body.isVerified": {
             "match": "type"
           },
           "$.body.username": {
             "match": "type"
-          },
-          "$.body.termsAcceptedDate": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
-          },
-          "$.body.isTermsAccepted": {
-            "match": "type"
-          },
-          "$.body.createdDate": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
           }
+        }
+      }
+    },
+    {
+      "description": "A request with an invalid access token",
+      "providerState": "A user is not logged in",
+      "request": {
+        "method": "get",
+        "path": "/me",
+        "headers": {
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        "matchingRules": {
+          "$.headers.Authorization": {
+            "match": "regex",
+            "regex": "Bearer (.*?)"
+          }
+        }
+      },
+      "response": {
+        "status": 401,
+        "headers": {
+        }
+      }
+    },
+    {
+      "description": "A request with no access token",
+      "providerState": "A user is not logged in",
+      "request": {
+        "method": "get",
+        "path": "/me",
+        "headers": {
+          "Authorization": "Bearer ",
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        "matchingRules": {
+          "$.headers.Authorization": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 401,
+        "headers": {
         }
       }
     }

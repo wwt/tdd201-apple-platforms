@@ -170,6 +170,10 @@ class ContractTests: XCTestCase {
             .uponReceiving("A request with an invalid access token")
             .withRequest(method: .POST,
                          path: "/auth/refresh",
+                         headers: [
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                         ],
                          body: ["refreshToken": Matcher.somethingLike(User.refreshToken)])
             .willRespondWith(status: 401)
 

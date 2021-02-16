@@ -28,16 +28,19 @@ extension IdentityServiceProtocol where Self: RESTAPIProtocol {
 
     private var refresh: URLSession.ErasedDataTaskPublisher {
         self.post(endpoint: "auth/refresh",
-                  body: try? JSONSerialization.data(withJSONObject: ["refreshToken": User.refreshToken]))
-            .unwrapResultJSONFromAPI()
-            .tryMap { args -> URLSession.ErasedDataTaskPublisher.Output in
-                let json = try JSONSerialization.jsonObject(with: args.data) as? [String: Any]
-                guard let accessToken = json?["accessToken"] as? String else {
-                    throw API.AuthorizationError.unauthorized
-                }
-                User.accessToken = accessToken
-                return args
-            }.eraseToAnyPublisher()
+                  body: try? JSONSerialization.data(withJSONObject: ["refreshToken": User.refreshToken])) {
+            $0.acceptingJSON()
+                .sendingJSON()
+        }.catchUnauthorizedResponse()
+        .unwrapResultJSONFromAPI()
+        .tryMap { args -> URLSession.ErasedDataTaskPublisher.Output in
+            let json = try JSONSerialization.jsonObject(with: args.data) as? [String: Any]
+            guard let accessToken = json?["accessToken"] as? String else {
+                throw API.AuthorizationError.unauthorized
+            }
+            User.accessToken = accessToken
+            return args
+        }.eraseToAnyPublisher()
     }
 }
 

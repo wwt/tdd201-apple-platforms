@@ -10,13 +10,18 @@ import Combine
 
 extension URLSession.ErasedDataTaskPublisher {
     func retryOnceOnUnauthorizedResponse<P: Publisher>(chainedRequest: P) -> Self where P.Output == Output, P.Failure == Failure {
+        catchUnauthorizedResponse()
+            .retryOn(API.AuthorizationError.unauthorized,
+                     retries: 1, chainedPublisher: chainedRequest)
+            .eraseToAnyPublisher()
+    }
+
+    func catchUnauthorizedResponse() -> Self {
         tryMap { args -> URLSession.ErasedDataTaskPublisher.Output in
             if let res = args.response as? HTTPURLResponse, res.statusCode == 401 {
                 throw API.AuthorizationError.unauthorized
             }
             return args
-        }.retryOn(API.AuthorizationError.unauthorized,
-                  retries: 1, chainedPublisher: chainedRequest)
-        .eraseToAnyPublisher()
+        }.eraseToAnyPublisher()
     }
 }

@@ -1,6 +1,6 @@
-I, [2021-02-15T13:23:40.901960 #79862]  INFO -- : Cleared interactions
-I, [2021-02-15T13:23:40.907682 #79862]  INFO -- : Registered expected interaction GET /me
-D, [2021-02-15T13:23:40.908249 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.229593 #47216]  INFO -- : Cleared interactions
+I, [2021-02-16T12:04:21.236541 #47216]  INFO -- : Registered expected interaction GET /me
+D, [2021-02-16T12:04:21.237167 #47216] DEBUG -- : {
   "description": "A request for the profile information",
   "providerState": "A user with the correct ID exists",
   "request": {
@@ -29,6 +29,55 @@ D, [2021-02-15T13:23:40.908249 #79862] DEBUG -- : {
     },
     "body": {
       "self": {
+        "dateOfBirth": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "1990-03-26T00:00:00",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+            }
+          }
+        },
+        "email": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "gunnerzulauf@schneider.org",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "(.*)@(.*)"
+            }
+          }
+        },
+        "address": {
+          "line2": {
+            "json_class": "Pact::SomethingLike",
+            "contents": ""
+          },
+          "zipCode": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "80202"
+          },
+          "countryCode": "US",
+          "line1": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "111 Fake st"
+          },
+          "city": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "Denver"
+          },
+          "stateOrProvince": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "CA"
+          }
+        },
+        "firstName": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Joe"
+        },
         "phoneNumber": {
           "json_class": "Pact::Term",
           "data": {
@@ -40,63 +89,14 @@ D, [2021-02-15T13:23:40.908249 #79862] DEBUG -- : {
             }
           }
         },
-        "address": {
-          "line2": {
-            "json_class": "Pact::SomethingLike",
-            "contents": ""
-          },
-          "city": {
-            "json_class": "Pact::SomethingLike",
-            "contents": "Denver"
-          },
-          "stateOrProvince": {
-            "json_class": "Pact::SomethingLike",
-            "contents": "CA"
-          },
-          "line1": {
-            "json_class": "Pact::SomethingLike",
-            "contents": "111 Fake st"
-          },
-          "zipCode": {
-            "json_class": "Pact::SomethingLike",
-            "contents": "80202"
-          },
-          "countryCode": "US"
-        },
-        "email": {
-          "json_class": "Pact::Term",
-          "data": {
-            "generate": "arielleankunding3352@kohler.org",
-            "matcher": {
-              "json_class": "Regexp",
-              "o": 0,
-              "s": "(.*)@(.*)"
-            }
-          }
-        },
-        "firstName": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "Joe"
-        },
         "lastName": {
           "json_class": "Pact::SomethingLike",
           "contents": "Blow"
-        },
-        "dateOfBirth": {
-          "json_class": "Pact::Term",
-          "data": {
-            "generate": "1990-03-26T00:00:00",
-            "matcher": {
-              "json_class": "Regexp",
-              "o": 0,
-              "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
-            }
-          }
         }
       },
-      "username": {
+      "isVerified": {
         "json_class": "Pact::SomethingLike",
-        "contents": "arielleankunding3352@kohler.org"
+        "contents": true
       },
       "termsAcceptedDate": {
         "json_class": "Pact::Term",
@@ -109,9 +109,9 @@ D, [2021-02-15T13:23:40.908249 #79862] DEBUG -- : {
           }
         }
       },
-      "isVerified": {
+      "username": {
         "json_class": "Pact::SomethingLike",
-        "contents": true
+        "contents": "gunnerzulauf@schneider.org"
       },
       "isTermsAccepted": {
         "json_class": "Pact::SomethingLike",
@@ -132,8 +132,8 @@ D, [2021-02-15T13:23:40.908249 #79862] DEBUG -- : {
   },
   "metadata": null
 }
-I, [2021-02-15T13:23:40.917969 #79862]  INFO -- : Received request GET /me
-D, [2021-02-15T13:23:40.918539 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.247701 #47216]  INFO -- : Received request GET /me
+D, [2021-02-16T12:04:21.248177 #47216] DEBUG -- : {
   "path": "/me",
   "query": "",
   "method": "get",
@@ -149,14 +149,63 @@ D, [2021-02-15T13:23:40.918539 #79862] DEBUG -- : {
     "Version": "HTTP/1.1"
   }
 }
-I, [2021-02-15T13:23:40.919120 #79862]  INFO -- : Found matching response for GET /me
-D, [2021-02-15T13:23:40.919634 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.249180 #47216]  INFO -- : Found matching response for GET /me
+D, [2021-02-16T12:04:21.249827 #47216] DEBUG -- : {
   "status": 200,
   "headers": {
     "Content-Type": "application/json"
   },
   "body": {
     "self": {
+      "dateOfBirth": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "1990-03-26T00:00:00",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+          }
+        }
+      },
+      "email": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "gunnerzulauf@schneider.org",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(.*)@(.*)"
+          }
+        }
+      },
+      "address": {
+        "line2": {
+          "json_class": "Pact::SomethingLike",
+          "contents": ""
+        },
+        "zipCode": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "80202"
+        },
+        "countryCode": "US",
+        "line1": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "111 Fake st"
+        },
+        "city": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Denver"
+        },
+        "stateOrProvince": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "CA"
+        }
+      },
+      "firstName": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Joe"
+      },
       "phoneNumber": {
         "json_class": "Pact::Term",
         "data": {
@@ -168,63 +217,14 @@ D, [2021-02-15T13:23:40.919634 #79862] DEBUG -- : {
           }
         }
       },
-      "address": {
-        "line2": {
-          "json_class": "Pact::SomethingLike",
-          "contents": ""
-        },
-        "city": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "Denver"
-        },
-        "stateOrProvince": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "CA"
-        },
-        "line1": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "111 Fake st"
-        },
-        "zipCode": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "80202"
-        },
-        "countryCode": "US"
-      },
-      "email": {
-        "json_class": "Pact::Term",
-        "data": {
-          "generate": "arielleankunding3352@kohler.org",
-          "matcher": {
-            "json_class": "Regexp",
-            "o": 0,
-            "s": "(.*)@(.*)"
-          }
-        }
-      },
-      "firstName": {
-        "json_class": "Pact::SomethingLike",
-        "contents": "Joe"
-      },
       "lastName": {
         "json_class": "Pact::SomethingLike",
         "contents": "Blow"
-      },
-      "dateOfBirth": {
-        "json_class": "Pact::Term",
-        "data": {
-          "generate": "1990-03-26T00:00:00",
-          "matcher": {
-            "json_class": "Regexp",
-            "o": 0,
-            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
-          }
-        }
       }
     },
-    "username": {
+    "isVerified": {
       "json_class": "Pact::SomethingLike",
-      "contents": "arielleankunding3352@kohler.org"
+      "contents": true
     },
     "termsAcceptedDate": {
       "json_class": "Pact::Term",
@@ -237,9 +237,9 @@ D, [2021-02-15T13:23:40.919634 #79862] DEBUG -- : {
         }
       }
     },
-    "isVerified": {
+    "username": {
       "json_class": "Pact::SomethingLike",
-      "contents": true
+      "contents": "gunnerzulauf@schneider.org"
     },
     "isTermsAccepted": {
       "json_class": "Pact::SomethingLike",
@@ -258,17 +258,18 @@ D, [2021-02-15T13:23:40.919634 #79862] DEBUG -- : {
     }
   }
 }
-I, [2021-02-15T13:23:40.925193 #79862]  INFO -- : Verifying - interactions matched
-I, [2021-02-15T13:23:40.928979 #79862]  INFO -- : Writing pact for IdentityService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/CombineWithREST/tmp/pacts/combine-iosapp-identityservice.json
-I, [2021-02-15T13:23:40.948832 #79862]  INFO -- : Cleared interactions
-I, [2021-02-15T13:23:40.954049 #79862]  INFO -- : Registered expected interaction GET /me
-D, [2021-02-15T13:23:40.954555 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.256555 #47216]  INFO -- : Verifying - interactions matched
+I, [2021-02-16T12:04:21.260788 #47216]  INFO -- : Writing pact for IdentityService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/CombineWithREST/tmp/pacts/combine-iosapp-identityservice.json
+I, [2021-02-16T12:04:21.280389 #47216]  INFO -- : Cleared interactions
+I, [2021-02-16T12:04:21.285635 #47216]  INFO -- : Registered expected interaction GET /me
+D, [2021-02-16T12:04:21.286145 #47216] DEBUG -- : {
   "description": "A request for the profile information",
   "providerState": "A user with a preferred name and the correct ID exists",
   "request": {
     "method": "get",
     "path": "/me",
     "headers": {
+      "Accept": "application/json",
       "Content-Type": "application/json",
       "Authorization": {
         "json_class": "Pact::Term",
@@ -280,8 +281,7 @@ D, [2021-02-15T13:23:40.954555 #79862] DEBUG -- : {
             "s": "Bearer (.*?)"
           }
         }
-      },
-      "Accept": "application/json"
+      }
     }
   },
   "response": {
@@ -290,95 +290,6 @@ D, [2021-02-15T13:23:40.954555 #79862] DEBUG -- : {
       "Content-Type": "application/json"
     },
     "body": {
-      "self": {
-        "preferredName": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "Joey"
-        },
-        "phoneNumber": {
-          "json_class": "Pact::Term",
-          "data": {
-            "generate": "3033033333",
-            "matcher": {
-              "json_class": "Regexp",
-              "o": 0,
-              "s": "\\d{10}"
-            }
-          }
-        },
-        "address": {
-          "line1": {
-            "json_class": "Pact::SomethingLike",
-            "contents": "111 Fake st"
-          },
-          "stateOrProvince": {
-            "json_class": "Pact::SomethingLike",
-            "contents": "CA"
-          },
-          "countryCode": "US",
-          "line2": {
-            "json_class": "Pact::SomethingLike",
-            "contents": ""
-          },
-          "city": {
-            "json_class": "Pact::SomethingLike",
-            "contents": "Denver"
-          },
-          "zipCode": {
-            "json_class": "Pact::SomethingLike",
-            "contents": "80202"
-          }
-        },
-        "firstName": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "Joe"
-        },
-        "lastName": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "Blow"
-        },
-        "dateOfBirth": {
-          "json_class": "Pact::Term",
-          "data": {
-            "generate": "1990-03-26T00:00:00",
-            "matcher": {
-              "json_class": "Regexp",
-              "o": 0,
-              "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
-            }
-          }
-        },
-        "email": {
-          "json_class": "Pact::Term",
-          "data": {
-            "generate": "myrtieschneider3216@barrows.name",
-            "matcher": {
-              "json_class": "Regexp",
-              "o": 0,
-              "s": "(.*)@(.*)"
-            }
-          }
-        }
-      },
-      "isVerified": {
-        "json_class": "Pact::SomethingLike",
-        "contents": true
-      },
-      "username": {
-        "json_class": "Pact::SomethingLike",
-        "contents": "myrtieschneider3216@barrows.name"
-      },
-      "termsAcceptedDate": {
-        "json_class": "Pact::Term",
-        "data": {
-          "generate": "2018-07-26T19:33:46.8381401",
-          "matcher": {
-            "json_class": "Regexp",
-            "o": 0,
-            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
-          }
-        }
-      },
       "isTermsAccepted": {
         "json_class": "Pact::SomethingLike",
         "contents": true
@@ -393,13 +304,102 @@ D, [2021-02-15T13:23:40.954555 #79862] DEBUG -- : {
             "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
           }
         }
+      },
+      "termsAcceptedDate": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "2018-07-26T19:33:46.8381401",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          }
+        }
+      },
+      "self": {
+        "phoneNumber": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "3033033333",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "\\d{10}"
+            }
+          }
+        },
+        "dateOfBirth": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "1990-03-26T00:00:00",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+            }
+          }
+        },
+        "lastName": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Blow"
+        },
+        "email": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "archibaldshields3889@dach.org",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "(.*)@(.*)"
+            }
+          }
+        },
+        "address": {
+          "city": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "Denver"
+          },
+          "zipCode": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "80202"
+          },
+          "countryCode": "US",
+          "line1": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "111 Fake st"
+          },
+          "line2": {
+            "json_class": "Pact::SomethingLike",
+            "contents": ""
+          },
+          "stateOrProvince": {
+            "json_class": "Pact::SomethingLike",
+            "contents": "CA"
+          }
+        },
+        "preferredName": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Joey"
+        },
+        "firstName": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Joe"
+        }
+      },
+      "isVerified": {
+        "json_class": "Pact::SomethingLike",
+        "contents": true
+      },
+      "username": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "archibaldshields3889@dach.org"
       }
     }
   },
   "metadata": null
 }
-I, [2021-02-15T13:23:40.959624 #79862]  INFO -- : Received request GET /me
-D, [2021-02-15T13:23:40.960021 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.291480 #47216]  INFO -- : Received request GET /me
+D, [2021-02-16T12:04:21.291946 #47216] DEBUG -- : {
   "path": "/me",
   "query": "",
   "method": "get",
@@ -415,102 +415,13 @@ D, [2021-02-15T13:23:40.960021 #79862] DEBUG -- : {
     "Version": "HTTP/1.1"
   }
 }
-I, [2021-02-15T13:23:40.960425 #79862]  INFO -- : Found matching response for GET /me
-D, [2021-02-15T13:23:40.960938 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.292487 #47216]  INFO -- : Found matching response for GET /me
+D, [2021-02-16T12:04:21.293109 #47216] DEBUG -- : {
   "status": 200,
   "headers": {
     "Content-Type": "application/json"
   },
   "body": {
-    "self": {
-      "preferredName": {
-        "json_class": "Pact::SomethingLike",
-        "contents": "Joey"
-      },
-      "phoneNumber": {
-        "json_class": "Pact::Term",
-        "data": {
-          "generate": "3033033333",
-          "matcher": {
-            "json_class": "Regexp",
-            "o": 0,
-            "s": "\\d{10}"
-          }
-        }
-      },
-      "address": {
-        "line1": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "111 Fake st"
-        },
-        "stateOrProvince": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "CA"
-        },
-        "countryCode": "US",
-        "line2": {
-          "json_class": "Pact::SomethingLike",
-          "contents": ""
-        },
-        "city": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "Denver"
-        },
-        "zipCode": {
-          "json_class": "Pact::SomethingLike",
-          "contents": "80202"
-        }
-      },
-      "firstName": {
-        "json_class": "Pact::SomethingLike",
-        "contents": "Joe"
-      },
-      "lastName": {
-        "json_class": "Pact::SomethingLike",
-        "contents": "Blow"
-      },
-      "dateOfBirth": {
-        "json_class": "Pact::Term",
-        "data": {
-          "generate": "1990-03-26T00:00:00",
-          "matcher": {
-            "json_class": "Regexp",
-            "o": 0,
-            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
-          }
-        }
-      },
-      "email": {
-        "json_class": "Pact::Term",
-        "data": {
-          "generate": "myrtieschneider3216@barrows.name",
-          "matcher": {
-            "json_class": "Regexp",
-            "o": 0,
-            "s": "(.*)@(.*)"
-          }
-        }
-      }
-    },
-    "isVerified": {
-      "json_class": "Pact::SomethingLike",
-      "contents": true
-    },
-    "username": {
-      "json_class": "Pact::SomethingLike",
-      "contents": "myrtieschneider3216@barrows.name"
-    },
-    "termsAcceptedDate": {
-      "json_class": "Pact::Term",
-      "data": {
-        "generate": "2018-07-26T19:33:46.8381401",
-        "matcher": {
-          "json_class": "Regexp",
-          "o": 0,
-          "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
-        }
-      }
-    },
     "isTermsAccepted": {
       "json_class": "Pact::SomethingLike",
       "contents": true
@@ -525,21 +436,109 @@ D, [2021-02-15T13:23:40.960938 #79862] DEBUG -- : {
           "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
         }
       }
+    },
+    "termsAcceptedDate": {
+      "json_class": "Pact::Term",
+      "data": {
+        "generate": "2018-07-26T19:33:46.8381401",
+        "matcher": {
+          "json_class": "Regexp",
+          "o": 0,
+          "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+        }
+      }
+    },
+    "self": {
+      "phoneNumber": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "3033033333",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "\\d{10}"
+          }
+        }
+      },
+      "dateOfBirth": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "1990-03-26T00:00:00",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
+          }
+        }
+      },
+      "lastName": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Blow"
+      },
+      "email": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "archibaldshields3889@dach.org",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(.*)@(.*)"
+          }
+        }
+      },
+      "address": {
+        "city": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Denver"
+        },
+        "zipCode": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "80202"
+        },
+        "countryCode": "US",
+        "line1": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "111 Fake st"
+        },
+        "line2": {
+          "json_class": "Pact::SomethingLike",
+          "contents": ""
+        },
+        "stateOrProvince": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "CA"
+        }
+      },
+      "preferredName": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Joey"
+      },
+      "firstName": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Joe"
+      }
+    },
+    "isVerified": {
+      "json_class": "Pact::SomethingLike",
+      "contents": true
+    },
+    "username": {
+      "json_class": "Pact::SomethingLike",
+      "contents": "archibaldshields3889@dach.org"
     }
   }
 }
-I, [2021-02-15T13:23:40.965621 #79862]  INFO -- : Verifying - interactions matched
-I, [2021-02-15T13:23:40.969753 #79862]  INFO -- : Writing pact for IdentityService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/CombineWithREST/tmp/pacts/combine-iosapp-identityservice.json
-I, [2021-02-15T13:23:40.981490 #79862]  INFO -- : Cleared interactions
-I, [2021-02-15T13:23:40.986009 #79862]  INFO -- : Registered expected interaction GET /me
-D, [2021-02-15T13:23:40.986426 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.299987 #47216]  INFO -- : Verifying - interactions matched
+I, [2021-02-16T12:04:21.304789 #47216]  INFO -- : Writing pact for IdentityService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/CombineWithREST/tmp/pacts/combine-iosapp-identityservice.json
+I, [2021-02-16T12:04:21.317887 #47216]  INFO -- : Cleared interactions
+I, [2021-02-16T12:04:21.322605 #47216]  INFO -- : Registered expected interaction GET /me
+D, [2021-02-16T12:04:21.322997 #47216] DEBUG -- : {
   "description": "A request with an invalid access token",
   "providerState": "A user is not logged in",
   "request": {
     "method": "get",
     "path": "/me",
     "headers": {
-      "Content-Type": "application/json",
       "Authorization": {
         "json_class": "Pact::Term",
         "data": {
@@ -551,6 +550,7 @@ D, [2021-02-15T13:23:40.986426 #79862] DEBUG -- : {
           }
         }
       },
+      "Content-Type": "application/json",
       "Accept": "application/json"
     }
   },
@@ -561,13 +561,17 @@ D, [2021-02-15T13:23:40.986426 #79862] DEBUG -- : {
   },
   "metadata": null
 }
-I, [2021-02-15T13:23:40.986728 #79862]  INFO -- : Registered expected interaction POST /auth/refresh
-D, [2021-02-15T13:23:40.987048 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.323260 #47216]  INFO -- : Registered expected interaction POST /auth/refresh
+D, [2021-02-16T12:04:21.323574 #47216] DEBUG -- : {
   "description": "A request with an invalid access token",
   "providerState": "A user is not logged in",
   "request": {
     "method": "post",
     "path": "/auth/refresh",
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
     "body": {
       "refreshToken": {
         "json_class": "Pact::SomethingLike",
@@ -582,8 +586,8 @@ D, [2021-02-15T13:23:40.987048 #79862] DEBUG -- : {
   },
   "metadata": null
 }
-I, [2021-02-15T13:23:40.991147 #79862]  INFO -- : Received request GET /me
-D, [2021-02-15T13:23:40.991552 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.327986 #47216]  INFO -- : Received request GET /me
+D, [2021-02-16T12:04:21.328383 #47216] DEBUG -- : {
   "path": "/me",
   "query": "",
   "method": "get",
@@ -599,74 +603,55 @@ D, [2021-02-15T13:23:40.991552 #79862] DEBUG -- : {
     "Version": "HTTP/1.1"
   }
 }
-I, [2021-02-15T13:23:40.992016 #79862]  INFO -- : Found matching response for GET /me
-D, [2021-02-15T13:23:40.992368 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.328800 #47216]  INFO -- : Found matching response for GET /me
+D, [2021-02-16T12:04:21.329189 #47216] DEBUG -- : {
   "status": 401,
   "headers": {
   }
 }
-I, [2021-02-15T13:23:41.016693 #79862]  INFO -- : Received request POST /auth/refresh
-D, [2021-02-15T13:23:41.017161 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.352744 #47216]  INFO -- : Received request POST /auth/refresh
+D, [2021-02-16T12:04:21.353099 #47216] DEBUG -- : {
   "path": "/auth/refresh",
   "query": "",
   "method": "post",
-  "body": "{\"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\"}",
+  "body": {
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  },
   "headers": {
     "Content-Length": "174",
-    "Content-Type": "application/x-www-form-urlencoded",
+    "Content-Type": "application/json",
     "Host": "localhost:1234",
     "Connection": "keep-alive",
-    "Accept": "*/*",
+    "Accept": "application/json",
     "User-Agent": "CombineWithREST/1 CFNetwork/1220.1 Darwin/19.6.0",
     "Accept-Language": "en-us",
     "Accept-Encoding": "gzip, deflate",
     "Version": "HTTP/1.1"
   }
 }
-E, [2021-02-15T13:23:41.018416 #79862] ERROR -- : No matching interaction found for POST /auth/refresh
-E, [2021-02-15T13:23:41.018726 #79862] ERROR -- : Interaction diffs for that route:
-E, [2021-02-15T13:23:41.019729 #79862] ERROR -- : Diff with interaction: "A request with an invalid access token" given "A user is not logged in"
-Diff
---------------------------------------
-Key: - is expected 
-     + is actual 
-Matching keys and values are not shown
-
- {
--  "body": {
--    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
--  }
-+  "body": "{\"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\"}"
- }
-
-Description of differences
---------------------------------------
-* Expected a Hash (like {"refreshToken"=>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"}) but got a String ("{\"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\"}") at $.body
-
-W, [2021-02-15T13:23:41.024040 #79862]  WARN -- : Verifying - actual interactions do not match expected interactions. 
-Incorrect requests:
-	POST /auth/refresh (request body did not match)
-
-
-W, [2021-02-15T13:23:41.024361 #79862]  WARN -- : Incorrect requests:
-	POST /auth/refresh (request body did not match)
-
-
-I, [2021-02-15T13:23:41.113711 #79862]  INFO -- : Cleared interactions
-I, [2021-02-15T13:23:41.118461 #79862]  INFO -- : Registered expected interaction GET /me
-D, [2021-02-15T13:23:41.118853 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.353536 #47216]  INFO -- : Found matching response for POST /auth/refresh
+D, [2021-02-16T12:04:21.353853 #47216] DEBUG -- : {
+  "status": 401,
+  "headers": {
+  }
+}
+I, [2021-02-16T12:04:21.359508 #47216]  INFO -- : Verifying - interactions matched
+I, [2021-02-16T12:04:21.364320 #47216]  INFO -- : Writing pact for IdentityService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/CombineWithREST/tmp/pacts/combine-iosapp-identityservice.json
+I, [2021-02-16T12:04:21.375283 #47216]  INFO -- : Cleared interactions
+I, [2021-02-16T12:04:21.380496 #47216]  INFO -- : Registered expected interaction GET /me
+D, [2021-02-16T12:04:21.380910 #47216] DEBUG -- : {
   "description": "A request with no access token",
   "providerState": "A user is not logged in",
   "request": {
     "method": "get",
     "path": "/me",
     "headers": {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
       "Authorization": {
         "json_class": "Pact::SomethingLike",
         "contents": "Bearer "
-      }
+      },
+      "Content-Type": "application/json",
+      "Accept": "application/json"
     }
   },
   "response": {
@@ -676,8 +661,8 @@ D, [2021-02-15T13:23:41.118853 #79862] DEBUG -- : {
   },
   "metadata": null
 }
-I, [2021-02-15T13:23:41.119163 #79862]  INFO -- : Registered expected interaction POST /auth/refresh
-D, [2021-02-15T13:23:41.119450 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.381199 #47216]  INFO -- : Registered expected interaction POST /auth/refresh
+D, [2021-02-16T12:04:21.381503 #47216] DEBUG -- : {
   "description": "A request with no access token",
   "providerState": "A user is not logged in",
   "request": {
@@ -697,8 +682,8 @@ D, [2021-02-15T13:23:41.119450 #79862] DEBUG -- : {
   },
   "metadata": null
 }
-I, [2021-02-15T13:23:41.124009 #79862]  INFO -- : Received request GET /me
-D, [2021-02-15T13:23:41.124373 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.386399 #47216]  INFO -- : Received request GET /me
+D, [2021-02-16T12:04:21.386807 #47216] DEBUG -- : {
   "path": "/me",
   "query": "",
   "method": "get",
@@ -714,56 +699,37 @@ D, [2021-02-15T13:23:41.124373 #79862] DEBUG -- : {
     "Version": "HTTP/1.1"
   }
 }
-I, [2021-02-15T13:23:41.124764 #79862]  INFO -- : Found matching response for GET /me
-D, [2021-02-15T13:23:41.125049 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.387218 #47216]  INFO -- : Found matching response for GET /me
+D, [2021-02-16T12:04:21.387532 #47216] DEBUG -- : {
   "status": 401,
   "headers": {
   }
 }
-I, [2021-02-15T13:23:41.128665 #79862]  INFO -- : Received request POST /auth/refresh
-D, [2021-02-15T13:23:41.129010 #79862] DEBUG -- : {
+I, [2021-02-16T12:04:21.391850 #47216]  INFO -- : Received request POST /auth/refresh
+D, [2021-02-16T12:04:21.392230 #47216] DEBUG -- : {
   "path": "/auth/refresh",
   "query": "",
   "method": "post",
-  "body": "{\"refreshToken\":\"\"}",
+  "body": {
+    "refreshToken": ""
+  },
   "headers": {
     "Content-Length": "19",
-    "Content-Type": "application/x-www-form-urlencoded",
+    "Content-Type": "application/json",
     "Host": "localhost:1234",
     "Connection": "keep-alive",
-    "Accept": "*/*",
+    "Accept": "application/json",
     "User-Agent": "CombineWithREST/1 CFNetwork/1220.1 Darwin/19.6.0",
     "Accept-Language": "en-us",
     "Accept-Encoding": "gzip, deflate",
     "Version": "HTTP/1.1"
   }
 }
-E, [2021-02-15T13:23:41.129674 #79862] ERROR -- : No matching interaction found for POST /auth/refresh
-E, [2021-02-15T13:23:41.129925 #79862] ERROR -- : Interaction diffs for that route:
-E, [2021-02-15T13:23:41.130630 #79862] ERROR -- : Diff with interaction: "A request with no access token" given "A user is not logged in"
-Diff
---------------------------------------
-Key: - is expected 
-     + is actual 
-Matching keys and values are not shown
-
- {
--  "body": {
--    "refreshToken": ""
--  }
-+  "body": "{\"refreshToken\":\"\"}"
- }
-
-Description of differences
---------------------------------------
-* Expected a Hash but got a String ("{\"refreshToken\":\"\"}") at $.body
-
-W, [2021-02-15T13:23:41.134689 #79862]  WARN -- : Verifying - actual interactions do not match expected interactions. 
-Incorrect requests:
-	POST /auth/refresh (request body did not match)
-
-
-W, [2021-02-15T13:23:41.134990 #79862]  WARN -- : Incorrect requests:
-	POST /auth/refresh (request body did not match)
-
-
+I, [2021-02-16T12:04:21.393488 #47216]  INFO -- : Found matching response for POST /auth/refresh
+D, [2021-02-16T12:04:21.393802 #47216] DEBUG -- : {
+  "status": 401,
+  "headers": {
+  }
+}
+I, [2021-02-16T12:04:21.398324 #47216]  INFO -- : Verifying - interactions matched
+I, [2021-02-16T12:04:21.402324 #47216]  INFO -- : Writing pact for IdentityService to /Users/meadowh/workspace/tdd/tdd-201-apple-platforms/CombineWithREST/tmp/pacts/combine-iosapp-identityservice.json

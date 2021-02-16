@@ -107,6 +107,8 @@ class IdentityServiceTests: XCTestCase {
                              result: .success(validRefreshResponse))
             .thenVerifyRequest { request in
                 XCTAssertEqual(request.httpMethod, "POST")
+                XCTAssertEqual(request.value(forHTTPHeaderField: "Accept"), "application/json")
+                XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/json")
                 XCTAssertEqual(request.bodySteamAsData(), try? JSONSerialization.data(withJSONObject: ["refreshToken": User.refreshToken], options: []))
             }
             .thenRespondWith(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
