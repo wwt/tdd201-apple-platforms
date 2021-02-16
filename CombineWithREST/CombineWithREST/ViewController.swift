@@ -13,16 +13,17 @@ class ViewController: UIViewController {
 
     var ongoingCalls = Set<AnyCancellable>()
 
-    var fakeNameLabel: String?
-    var fakeErrorLabel: String?
+    @IBOutlet weak var nameLabel: UILabel!
 
     func fetchProfile() {
         identityService?.fetchProfile.sink(receiveValue: { [weak self] (result) in
             switch result {
                 case .success(let profile):
-                    self?.fakeNameLabel = [profile.firstName, profile.lastName].compactMap { $0 }.joined(separator: " ")
+                    self?.nameLabel?.text = [profile.firstName, profile.lastName].compactMap { $0 }.joined(separator: " ")
                 case .failure(let err):
-                    self?.fakeErrorLabel = err.localizedDescription
+                    let alertVC = UIAlertController(title: "Something went wrong", message: err.localizedDescription, preferredStyle: .alert)
+                    alertVC.addAction(UIAlertAction(title: "Ok", style: .default))
+                    self?.present(alertVC, animated: true)
             }
         })
         .store(in: &ongoingCalls)

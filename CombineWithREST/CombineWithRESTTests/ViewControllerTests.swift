@@ -10,13 +10,19 @@ import XCTest
 import Swinject
 import Cuckoo
 import Combine
+import UIUTest
 
 @testable import CombineWithREST
 
 class ViewControllerTests: XCTestCase {
+    var testViewController: ViewController!
 
     override func setUpWithError() throws {
+        UIView.setAnimationsEnabled(false)
+        UIViewController.initializeTestable()
         Container.default.removeAll()
+        testViewController = UIViewController.loadFromStoryboard(identifier: "ViewController")
+        XCTAssertNotNil(testViewController)
     }
 
     func testFetchingProfileFromAPI() throws {
@@ -27,12 +33,12 @@ class ViewControllerTests: XCTestCase {
             _ = when(stub.fetchProfile.get
                         .thenReturn(Result.Publisher(.success(expectedProfile)).eraseToAnyPublisher()))
         }
-        let testViewController = ViewController()
+        let nameLabel: UILabel? = testViewController.view.viewWithAccessibilityIdentifier("nameLabel") as? UILabel
 
         testViewController.fetchProfile()
 
         verify(mock, times(1)).fetchProfile.get()
-        XCTAssertEqual(testViewController.fakeNameLabel, [expectedProfile.firstName, expectedProfile.lastName].compactMap { $0 }.joined(separator: " "))
+        XCTAssertEqual(nameLabel?.text, [expectedProfile.firstName, expectedProfile.lastName].compactMap { $0 }.joined(separator: " "))
     }
 
     func testFetchingProfileDoesNotRetainAStrongReference() throws {
@@ -66,11 +72,18 @@ class ViewControllerTests: XCTestCase {
                         .thenReturn(Result.Publisher(.failure(err))
                                         .eraseToAnyPublisher()))
         }
-        let testViewController = ViewController()
 
         testViewController.fetchProfile()
+        RunLoop.current.singlePass()
 
         verify(mock, times(1)).fetchProfile.get()
-        XCTAssertEqual(testViewController.fakeErrorLabel, err.localizedDescription)
+        let alertVC = testViewController.presentedViewController as? UIAlertController
+        XCTAssertNotNil(alertVC, "Expected \(String(describing: testViewController.presentedViewController)) to be UIAlertController")
+        XCTAssertEqual(alertVC?.actions.count, 1)
+        XCTAssertEqual(alertVC?.actions.first?.style, .default)
+        XCTAssertEqual(alertVC?.actions.first?.title, "Ok")
+        XCTAssertEqual(alertVC?.preferredStyle, .alert)
+        XCTAssertEqual(alertVC?.title, "Something went wrong")
+        XCTAssertEqual(alertVC?.message, err.localizedDescription)
     }
 }

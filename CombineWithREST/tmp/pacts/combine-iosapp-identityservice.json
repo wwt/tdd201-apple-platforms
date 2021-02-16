@@ -13,9 +13,9 @@
         "method": "get",
         "path": "/me",
         "headers": {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          "Accept": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         },
         "matchingRules": {
           "$.headers.Authorization": {
@@ -30,48 +30,31 @@
           "Content-Type": "application/json"
         },
         "body": {
-          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
-          "createdDate": "2018-07-26T19:33:46.6818918",
           "self": {
-            "firstName": "Joe",
-            "dateOfBirth": "1990-03-26T00:00:00",
-            "lastName": "Blow",
+            "phoneNumber": "3033033333",
             "address": {
-              "line1": "111 Fake st",
               "city": "Denver",
               "stateOrProvince": "CA",
+              "zipCode": "80202",
               "countryCode": "US",
               "line2": "",
-              "zipCode": "80202"
+              "line1": "111 Fake st"
             },
-            "email": "leifnikolaus6056@raynor.name",
-            "phoneNumber": "3033033333"
+            "email": "ronnyquigley@kuhicbode.info",
+            "dateOfBirth": "1990-03-26T00:00:00",
+            "firstName": "Joe",
+            "lastName": "Blow"
           },
-          "isTermsAccepted": true,
+          "username": "ronnyquigley@kuhicbode.info",
+          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
           "isVerified": true,
-          "username": "leifnikolaus6056@raynor.name"
+          "isTermsAccepted": true,
+          "createdDate": "2018-07-26T19:33:46.6818918"
         },
         "matchingRules": {
-          "$.body.termsAcceptedDate": {
+          "$.body.self.phoneNumber": {
             "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
-          },
-          "$.body.createdDate": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
-          },
-          "$.body.self.firstName": {
-            "match": "type"
-          },
-          "$.body.self.dateOfBirth": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
-          },
-          "$.body.self.lastName": {
-            "match": "type"
-          },
-          "$.body.self.address.line1": {
-            "match": "type"
+            "regex": "\\d{10}"
           },
           "$.body.self.address.city": {
             "match": "type"
@@ -79,28 +62,45 @@
           "$.body.self.address.stateOrProvince": {
             "match": "type"
           },
+          "$.body.self.address.zipCode": {
+            "match": "type"
+          },
           "$.body.self.address.line2": {
             "match": "type"
           },
-          "$.body.self.address.zipCode": {
+          "$.body.self.address.line1": {
             "match": "type"
           },
           "$.body.self.email": {
             "match": "regex",
             "regex": "(.*)@(.*)"
           },
-          "$.body.self.phoneNumber": {
+          "$.body.self.dateOfBirth": {
             "match": "regex",
-            "regex": "\\d{10}"
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
           },
-          "$.body.isTermsAccepted": {
+          "$.body.self.firstName": {
             "match": "type"
           },
-          "$.body.isVerified": {
+          "$.body.self.lastName": {
             "match": "type"
           },
           "$.body.username": {
             "match": "type"
+          },
+          "$.body.termsAcceptedDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          },
+          "$.body.isVerified": {
+            "match": "type"
+          },
+          "$.body.isTermsAccepted": {
+            "match": "type"
+          },
+          "$.body.createdDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
           }
         }
       }
@@ -112,9 +112,9 @@
         "method": "get",
         "path": "/me",
         "headers": {
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          "Accept": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         },
         "matchingRules": {
           "$.headers.Authorization": {
@@ -129,81 +129,81 @@
           "Content-Type": "application/json"
         },
         "body": {
-          "termsAcceptedDate": "2018-07-26T19:33:46.8381401",
-          "createdDate": "2018-07-26T19:33:46.6818918",
-          "username": "renestark@wilderman.info",
-          "isVerified": true,
+          "isTermsAccepted": true,
+          "username": "janiskuhn@murphy.name",
           "self": {
-            "preferredName": "Joey",
-            "email": "renestark@wilderman.info",
-            "phoneNumber": "3033033333",
-            "firstName": "Joe",
-            "lastName": "Blow",
-            "dateOfBirth": "1990-03-26T00:00:00",
             "address": {
-              "city": "Denver",
               "stateOrProvince": "CA",
-              "line1": "111 Fake st",
+              "line2": "",
               "zipCode": "80202",
               "countryCode": "US",
-              "line2": ""
-            }
+              "city": "Denver",
+              "line1": "111 Fake st"
+            },
+            "phoneNumber": "3033033333",
+            "lastName": "Blow",
+            "preferredName": "Joey",
+            "firstName": "Joe",
+            "email": "janiskuhn@murphy.name",
+            "dateOfBirth": "1990-03-26T00:00:00"
           },
-          "isTermsAccepted": true
+          "createdDate": "2018-07-26T19:33:46.6818918",
+          "isVerified": true,
+          "termsAcceptedDate": "2018-07-26T19:33:46.8381401"
         },
         "matchingRules": {
-          "$.body.termsAcceptedDate": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
-          },
-          "$.body.createdDate": {
-            "match": "regex",
-            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          "$.body.isTermsAccepted": {
+            "match": "type"
           },
           "$.body.username": {
             "match": "type"
           },
-          "$.body.isVerified": {
+          "$.body.self.address.stateOrProvince": {
+            "match": "type"
+          },
+          "$.body.self.address.line2": {
+            "match": "type"
+          },
+          "$.body.self.address.zipCode": {
+            "match": "type"
+          },
+          "$.body.self.address.city": {
+            "match": "type"
+          },
+          "$.body.self.address.line1": {
+            "match": "type"
+          },
+          "$.body.self.phoneNumber": {
+            "match": "regex",
+            "regex": "\\d{10}"
+          },
+          "$.body.self.lastName": {
             "match": "type"
           },
           "$.body.self.preferredName": {
+            "match": "type"
+          },
+          "$.body.self.firstName": {
             "match": "type"
           },
           "$.body.self.email": {
             "match": "regex",
             "regex": "(.*)@(.*)"
           },
-          "$.body.self.phoneNumber": {
-            "match": "regex",
-            "regex": "\\d{10}"
-          },
-          "$.body.self.firstName": {
-            "match": "type"
-          },
-          "$.body.self.lastName": {
-            "match": "type"
-          },
           "$.body.self.dateOfBirth": {
             "match": "regex",
             "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})"
           },
-          "$.body.self.address.city": {
+          "$.body.createdDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
+          },
+          "$.body.isVerified": {
             "match": "type"
           },
-          "$.body.self.address.stateOrProvince": {
-            "match": "type"
-          },
-          "$.body.self.address.line1": {
-            "match": "type"
-          },
-          "$.body.self.address.zipCode": {
-            "match": "type"
-          },
-          "$.body.self.address.line2": {
-            "match": "type"
-          },
-          "$.body.isTermsAccepted": {
-            "match": "type"
+          "$.body.termsAcceptedDate": {
+            "match": "regex",
+            "regex": "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d+)"
           }
         }
       }
@@ -215,9 +215,9 @@
         "method": "get",
         "path": "/me",
         "headers": {
-          "Content-Type": "application/json",
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-          "Accept": "application/json"
+          "Accept": "application/json",
+          "Content-Type": "application/json"
         },
         "matchingRules": {
           "$.headers.Authorization": {
@@ -239,9 +239,9 @@
         "method": "get",
         "path": "/me",
         "headers": {
-          "Accept": "application/json",
+          "Authorization": "Bearer ",
           "Content-Type": "application/json",
-          "Authorization": "Bearer "
+          "Accept": "application/json"
         },
         "matchingRules": {
           "$.headers.Authorization": {
