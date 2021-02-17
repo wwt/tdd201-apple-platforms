@@ -32,7 +32,7 @@ target 'WriteToUserDefaults' do
   pod 'Swinject'
   
   target 'WriteToUserDefaultsTests' do
-    pod 'Cuckoo/OCMock'
+    
   end
 end
 

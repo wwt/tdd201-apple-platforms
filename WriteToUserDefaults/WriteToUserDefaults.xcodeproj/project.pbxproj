@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		005588C725DDD945006921D4 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005588C525DDD945006921D4 /* DependencyInjected.swift */; };
+		005588C825DDD945006921D4 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005588C625DDD945006921D4 /* ContainerExtensions.swift */; };
 		1901F936F9A76EC8BD7D0E3C /* Pods_WriteToUserDefaults_WriteToUserDefaultsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF92EE159E7F8E765BD7E770 /* Pods_WriteToUserDefaults_WriteToUserDefaultsTests.framework */; };
 		67695CDE18B5831118B85282 /* Pods_WriteToUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B413FDD407CCEDC978CA6851 /* Pods_WriteToUserDefaults.framework */; };
 		CA75BA8E25A3C0D800930AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75BA8D25A3C0D800930AB1 /* AppDelegate.swift */; };
@@ -15,9 +17,6 @@
 		CA75BA9525A3C0D800930AB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA75BA9325A3C0D800930AB1 /* Main.storyboard */; };
 		CA75BA9725A3C0D900930AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA75BA9625A3C0D900930AB1 /* Assets.xcassets */; };
 		CA75BA9A25A3C0D900930AB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA75BA9825A3C0D900930AB1 /* LaunchScreen.storyboard */; };
-		CA83BF1325C5FBB10088A3C0 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BF1225C5FBB10088A3C0 /* ViewControllerTests.swift */; };
-		CA9B146B25C9FB5000854956 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B146925C9FB5000854956 /* ContainerExtensions.swift */; };
-		CA9B146C25C9FB5000854956 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B146A25C9FB5000854956 /* DependencyInjected.swift */; };
 		CABCBDBE25B1FC620043AB44 /* DependencyInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCBDBD25B1FC620043AB44 /* DependencyInjectionTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		005588C525DDD945006921D4 /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = ../DependencyInjection/DependencyInjection/DependencyInjection/DependencyInjected.swift; sourceTree = SOURCE_ROOT; };
+		005588C625DDD945006921D4 /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = ../DependencyInjection/DependencyInjection/DependencyInjection/ContainerExtensions.swift; sourceTree = SOURCE_ROOT; };
 		42527C661CD905CF15923594 /* Pods-WriteToUserDefaults-WriteToUserDefaultsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WriteToUserDefaults-WriteToUserDefaultsTests.debug.xcconfig"; path = "Target Support Files/Pods-WriteToUserDefaults-WriteToUserDefaultsTests/Pods-WriteToUserDefaults-WriteToUserDefaultsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6286E1C4919DD68C019A3F0C /* Pods-WriteToUserDefaults.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WriteToUserDefaults.release.xcconfig"; path = "Target Support Files/Pods-WriteToUserDefaults/Pods-WriteToUserDefaults.release.xcconfig"; sourceTree = "<group>"; };
 		918DD1B1B9D3FFC424A0C695 /* Pods-WriteToUserDefaults.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WriteToUserDefaults.debug.xcconfig"; path = "Target Support Files/Pods-WriteToUserDefaults/Pods-WriteToUserDefaults.debug.xcconfig"; sourceTree = "<group>"; };
@@ -47,9 +48,6 @@
 		CA75BA9B25A3C0D900930AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA75BAA025A3C0D900930AB1 /* WriteToUserDefaultsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WriteToUserDefaultsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA75BAA625A3C0D900930AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA83BF1225C5FBB10088A3C0 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
-		CA9B146925C9FB5000854956 /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerExtensions.swift; sourceTree = "<group>"; };
-		CA9B146A25C9FB5000854956 /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjected.swift; sourceTree = "<group>"; };
 		CABCBDBD25B1FC620043AB44 /* DependencyInjectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionTests.swift; sourceTree = "<group>"; };
 		F829853F1C6950F05B0F670D /* Pods-WriteToUserDefaults-WriteToUserDefaultsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WriteToUserDefaults-WriteToUserDefaultsTests.release.xcconfig"; path = "Target Support Files/Pods-WriteToUserDefaults-WriteToUserDefaultsTests/Pods-WriteToUserDefaults-WriteToUserDefaultsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		005588C425DDD920006921D4 /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				005588C625DDD945006921D4 /* ContainerExtensions.swift */,
+				005588C525DDD945006921D4 /* DependencyInjected.swift */,
+			);
+			name = DependencyInjection;
+			sourceTree = "<group>";
+		};
 		298BE408664C64F1CF3475A8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +125,7 @@
 		CA75BA8C25A3C0D800930AB1 /* WriteToUserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				CA9B146825C9FB5000854956 /* DependencyInjection */,
+				005588C425DDD920006921D4 /* DependencyInjection */,
 				CA75BA8D25A3C0D800930AB1 /* AppDelegate.swift */,
 				CA75BA8F25A3C0D800930AB1 /* SceneDelegate.swift */,
 				CA75BA9125A3C0D800930AB1 /* ViewController.swift */,
@@ -135,19 +142,8 @@
 			children = (
 				CA75BAA625A3C0D900930AB1 /* Info.plist */,
 				CABCBDBD25B1FC620043AB44 /* DependencyInjectionTests.swift */,
-				CA83BF1225C5FBB10088A3C0 /* ViewControllerTests.swift */,
 			);
 			path = WriteToUserDefaultsTests;
-			sourceTree = "<group>";
-		};
-		CA9B146825C9FB5000854956 /* DependencyInjection */ = {
-			isa = PBXGroup;
-			children = (
-				CA9B146925C9FB5000854956 /* ContainerExtensions.swift */,
-				CA9B146A25C9FB5000854956 /* DependencyInjected.swift */,
-			);
-			name = DependencyInjection;
-			path = ../../DependencyInjection/DependencyInjection/DependencyInjection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,11 +369,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005588C725DDD945006921D4 /* DependencyInjected.swift in Sources */,
 				CA75BA9225A3C0D800930AB1 /* ViewController.swift in Sources */,
 				CA75BA8E25A3C0D800930AB1 /* AppDelegate.swift in Sources */,
 				CA75BA9025A3C0D800930AB1 /* SceneDelegate.swift in Sources */,
-				CA9B146B25C9FB5000854956 /* ContainerExtensions.swift in Sources */,
-				CA9B146C25C9FB5000854956 /* DependencyInjected.swift in Sources */,
+				005588C825DDD945006921D4 /* ContainerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +381,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA83BF1325C5FBB10088A3C0 /* ViewControllerTests.swift in Sources */,
 				CABCBDBE25B1FC620043AB44 /* DependencyInjectionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
