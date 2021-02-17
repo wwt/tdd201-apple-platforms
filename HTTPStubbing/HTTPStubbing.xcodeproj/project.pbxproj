@@ -19,7 +19,6 @@
 		CAA1C6AB25A3927F00E3F686 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C6A925A3927F00E3F686 /* Main.storyboard */; };
 		CAA1C6AD25A3928000E3F686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C6AC25A3928000E3F686 /* Assets.xcassets */; };
 		CAA1C6B025A3928000E3F686 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C6AE25A3928000E3F686 /* LaunchScreen.storyboard */; };
-		CAA1C6BB25A3928000E3F686 /* HTTPStubbingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C6BA25A3928000E3F686 /* HTTPStubbingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +50,6 @@
 		CAA1C6AF25A3928000E3F686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAA1C6B125A3928000E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAA1C6B625A3928000E3F686 /* HTTPStubbingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTTPStubbingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAA1C6BA25A3928000E3F686 /* HTTPStubbingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStubbingTests.swift; sourceTree = "<group>"; };
 		CAA1C6BC25A3928000E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB212DC04D65DA107278ABE0 /* Pods_HTTPStubbing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HTTPStubbing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -135,7 +133,6 @@
 		CAA1C6B925A3928000E3F686 /* HTTPStubbingTests */ = {
 			isa = PBXGroup;
 			children = (
-				CAA1C6BA25A3928000E3F686 /* HTTPStubbingTests.swift */,
 				CAA1C6BC25A3928000E3F686 /* Info.plist */,
 				CA4504D425B8A93400153FC4 /* URLRequestExtensions.swift */,
 				CA4504DC25B8A99900153FC4 /* StubAPIResponse.swift */,
@@ -361,7 +358,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA4504D525B8A93400153FC4 /* URLRequestExtensions.swift in Sources */,
-				CAA1C6BB25A3928000E3F686 /* HTTPStubbingTests.swift in Sources */,
 				CA4504DD25B8A99900153FC4 /* StubAPIResponse.swift in Sources */,
 				CA45050F25B8BD7200153FC4 /* WaitUntil.swift in Sources */,
 			);
