@@ -9,15 +9,10 @@
 /* Begin PBXBuildFile section */
 		00D1A5A625C8BD7E0002728A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A5A525C8BD7E0002728A /* User.swift */; };
 		00D1A5F225C8C32F0002728A /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A5F125C8C32F0002728A /* UserTests.swift */; };
-		00D1A5F725C8C6770002728A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A5F625C8C6770002728A /* UserService.swift */; };
-		00D1A5FB25C8C68D0002728A /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1A5FA25C8C68D0002728A /* UserServiceTests.swift */; };
 		446BB3E8BE6DC0072F471310 /* Pods_DependencyInjection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB26E3FABD54BC82885ADE9 /* Pods_DependencyInjection.framework */; };
 		9168FB3F010F52E45EF885ED /* Pods_DependencyInjection_DependencyInjectionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 300F2E1ACE6C6687648E07F9 /* Pods_DependencyInjection_DependencyInjectionTests.framework */; };
 		CA91E7B125C61B0E0027C6CC /* DependencyInjection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA91E7A725C61B0E0027C6CC /* DependencyInjection.framework */; };
-		CA91E7B625C61B0E0027C6CC /* DependencyInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91E7B525C61B0E0027C6CC /* DependencyInjectionTests.swift */; };
 		CA91E7B825C61B0E0027C6CC /* DependencyInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = CA91E7AA25C61B0E0027C6CC /* DependencyInjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA9B147C25C9FB7100854956 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B147A25C9FB7100854956 /* ContainerExtensions.swift */; };
-		CA9B147D25C9FB7100854956 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B147B25C9FB7100854956 /* DependencyInjected.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,8 +28,6 @@
 /* Begin PBXFileReference section */
 		00D1A5A525C8BD7E0002728A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00D1A5F125C8C32F0002728A /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
-		00D1A5F625C8C6770002728A /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		00D1A5FA25C8C68D0002728A /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
 		300F2E1ACE6C6687648E07F9 /* Pods_DependencyInjection_DependencyInjectionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DependencyInjection_DependencyInjectionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A03B602735D33767E0511F8 /* Pods-DependencyInjection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependencyInjection.debug.xcconfig"; path = "Target Support Files/Pods-DependencyInjection/Pods-DependencyInjection.debug.xcconfig"; sourceTree = "<group>"; };
 		5E401F09C7F356DA67E4CF6B /* Pods-DependencyInjection-DependencyInjectionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependencyInjection-DependencyInjectionTests.debug.xcconfig"; path = "Target Support Files/Pods-DependencyInjection-DependencyInjectionTests/Pods-DependencyInjection-DependencyInjectionTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -44,10 +37,7 @@
 		CA91E7AA25C61B0E0027C6CC /* DependencyInjection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DependencyInjection.h; sourceTree = "<group>"; };
 		CA91E7AB25C61B0E0027C6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA91E7B025C61B0E0027C6CC /* DependencyInjectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DependencyInjectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA91E7B525C61B0E0027C6CC /* DependencyInjectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionTests.swift; sourceTree = "<group>"; };
 		CA91E7B725C61B0E0027C6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA9B147A25C9FB7100854956 /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = DependencyInjection/DependencyInjection/ContainerExtensions.swift; sourceTree = SOURCE_ROOT; };
-		CA9B147B25C9FB7100854956 /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = DependencyInjection/DependencyInjection/DependencyInjected.swift; sourceTree = SOURCE_ROOT; };
 		D0D6DAF1629D2487B5E94FFE /* Pods-DependencyInjection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependencyInjection.release.xcconfig"; path = "Target Support Files/Pods-DependencyInjection/Pods-DependencyInjection.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,14 +68,6 @@
 				00D1A5A525C8BD7E0002728A /* User.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		00D1A5F525C8C6680002728A /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				00D1A5F625C8C6770002728A /* UserService.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		4693815DBD6B39481094261D /* Frameworks */ = {
@@ -132,9 +114,7 @@
 		CA91E7A925C61B0E0027C6CC /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
-				00D1A5F525C8C6680002728A /* Services */,
 				00D1A5A425C8BD720002728A /* Models */,
-				CA91E7E325C61B290027C6CC /* DependencyInjection */,
 				CA91E7AA25C61B0E0027C6CC /* DependencyInjection.h */,
 				CA91E7AB25C61B0E0027C6CC /* Info.plist */,
 			);
@@ -144,21 +124,10 @@
 		CA91E7B425C61B0E0027C6CC /* DependencyInjectionTests */ = {
 			isa = PBXGroup;
 			children = (
-				CA91E7B525C61B0E0027C6CC /* DependencyInjectionTests.swift */,
 				CA91E7B725C61B0E0027C6CC /* Info.plist */,
 				00D1A5F125C8C32F0002728A /* UserTests.swift */,
-				00D1A5FA25C8C68D0002728A /* UserServiceTests.swift */,
 			);
 			path = DependencyInjectionTests;
-			sourceTree = "<group>";
-		};
-		CA91E7E325C61B290027C6CC /* DependencyInjection */ = {
-			isa = PBXGroup;
-			children = (
-				CA9B147A25C9FB7100854956 /* ContainerExtensions.swift */,
-				CA9B147B25C9FB7100854956 /* DependencyInjected.swift */,
-			);
-			path = DependencyInjection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,7 +256,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml";
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml\n";
 		};
 		3E4A19484F99444EE86279E7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -375,9 +344,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA9B147D25C9FB7100854956 /* DependencyInjected.swift in Sources */,
-				CA9B147C25C9FB7100854956 /* ContainerExtensions.swift in Sources */,
-				00D1A5F725C8C6770002728A /* UserService.swift in Sources */,
 				00D1A5A625C8BD7E0002728A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,8 +353,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00D1A5F225C8C32F0002728A /* UserTests.swift in Sources */,
-				CA91E7B625C61B0E0027C6CC /* DependencyInjectionTests.swift in Sources */,
-				00D1A5FB25C8C68D0002728A /* UserServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

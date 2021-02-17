@@ -2,6 +2,49 @@ workspace 'TDD-201'
 
 inhibit_all_warnings!
 
+
+target 'DependencyInjection' do
+  platform :macos, '10.15'
+  project 'DependencyInjection/DependencyInjection.xcodeproj'
+  use_frameworks!
+
+  pod 'RealmSwift'
+
+  target 'DependencyInjectionTests' do
+
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 target 'MockingFramework' do
   platform :ios, '11.0'
   project 'MockingFramework/MockingFramework.xcodeproj'
@@ -33,19 +76,6 @@ target 'WriteToUserDefaults' do
   
   target 'WriteToUserDefaultsTests' do
     pod 'Cuckoo/OCMock'
-  end
-end
-
-target 'DependencyInjection' do
-  platform :macos, '10.15'
-  project 'DependencyInjection/DependencyInjection.xcodeproj'
-  use_frameworks!
-  
-  pod 'Swinject'
-  pod 'RealmSwift'
-  
-  target 'DependencyInjectionTests' do
-    
   end
 end
 
