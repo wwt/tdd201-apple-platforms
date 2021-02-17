@@ -40,8 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0052533325DC494C000E8F27 /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
-		0052533E25DC4967000E8F27 /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = "<group>"; };
+		0052533325DC494C000E8F27 /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ContractTestingTests/StubAPIResponse.swift; sourceTree = SOURCE_ROOT; };
+		0052533E25DC4967000E8F27 /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ContractTestingTests/URLRequestExtensions.swift; sourceTree = SOURCE_ROOT; };
 		00BB4D5125D469DF00905C5E /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 		00BB4D5325D469DF00905C5E /* users.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = users.js; sourceTree = "<group>"; };
 		00BB4D5525D469DF00905C5E /* app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = app.js; sourceTree = "<group>"; };
@@ -90,22 +90,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0052533025DC4937000E8F27 /* HTTPStubbing */ = {
-			isa = PBXGroup;
-			children = (
-				0052533325DC494C000E8F27 /* StubAPIResponse.swift */,
-			);
-			path = HTTPStubbing;
-			sourceTree = "<group>";
-		};
-		0052533925DC494F000E8F27 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0052533E25DC4967000E8F27 /* URLRequestExtensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		00BB4D4825D469DF00905C5E /* pact-node-provider */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,13 +189,29 @@
 		CAA1C3D525A3897800E3F686 /* ContractTestingTests */ = {
 			isa = PBXGroup;
 			children = (
-				0052533925DC494F000E8F27 /* Extensions */,
-				0052533025DC4937000E8F27 /* HTTPStubbing */,
+				CAF9881625DDD828008A6EDD /* HTTPStubbing */,
+				CAF9881525DDD81B008A6EDD /* Extensions */,
 				CAA1C3D625A3897800E3F686 /* ContractTests.swift */,
 				CAA1C3D825A3897800E3F686 /* Info.plist */,
 				CAF26D9B25B9E840009025A6 /* UserServiceTests.swift */,
 			);
 			path = ContractTestingTests;
+			sourceTree = "<group>";
+		};
+		CAF9881525DDD81B008A6EDD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0052533E25DC4967000E8F27 /* URLRequestExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		CAF9881625DDD828008A6EDD /* HTTPStubbing */ = {
+			isa = PBXGroup;
+			children = (
+				0052533325DC494C000E8F27 /* StubAPIResponse.swift */,
+			);
+			name = HTTPStubbing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
