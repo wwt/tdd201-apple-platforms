@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		002C1F8825D1C51D000018D8 /* DateFormatterExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */; };
-		0052532B25DC491C000E8F27 /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052532A25DC491C000E8F27 /* StubAPIResponse.swift */; };
 		00EC4D8F25DAF6CD002CFFF9 /* repository.js in Resources */ = {isa = PBXBuildFile; fileRef = 00EC265E25DAF6A6002CFFF9 /* repository.js */; };
 		00EC4D9025DAF6CD002CFFF9 /* user-repository.js in Resources */ = {isa = PBXBuildFile; fileRef = 00EC265F25DAF6A6002CFFF9 /* user-repository.js */; };
 		00EC6E6F25DAF6E1002CFFF9 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 00EC4D8425DAF6CB002CFFF9 /* index.html */; };
@@ -71,7 +70,6 @@
 
 /* Begin PBXFileReference section */
 		002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensionsTests.swift; sourceTree = "<group>"; };
-		0052532A25DC491C000E8F27 /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
 		00EC265E25DAF6A6002CFFF9 /* repository.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = repository.js; sourceTree = "<group>"; };
 		00EC265F25DAF6A6002CFFF9 /* user-repository.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "user-repository.js"; sourceTree = "<group>"; };
 		00EC4D8425DAF6CB002CFFF9 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -128,6 +126,7 @@
 		CAF26DC725B9F57A009025A6 /* ContractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTests.swift; sourceTree = "<group>"; };
 		CAF26DD225BA2C55009025A6 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		CAF26DD825BA2CFF009025A6 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
+		CAF9882E25DDD8E9008A6EDD /* StubAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,14 +149,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0052532925DC48EF000E8F27 /* HTTPStubbing */ = {
-			isa = PBXGroup;
-			children = (
-				0052532A25DC491C000E8F27 /* StubAPIResponse.swift */,
-			);
-			path = HTTPStubbing;
-			sourceTree = "<group>";
-		};
 		00EC265C25DAF6A6002CFFF9 /* auth-server */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,13 +271,13 @@
 		CA45042025B79A1000153FC4 /* CombineWithRESTTests */ = {
 			isa = PBXGroup;
 			children = (
+				CAF9882D25DDD8E3008A6EDD /* HTTPStubbing */,
 				CAF26DD225BA2C55009025A6 /* GeneratedMocks.swift */,
 				CA45060E25B8D3A900153FC4 /* APIs */,
 				CA4505BF25B8CE0000153FC4 /* CombineOperators */,
 				CA4505CE25B8CE9400153FC4 /* DependencyInjection */,
 				CA4505D525B8D1C100153FC4 /* Extensions */,
 				CAA7522425D2F4EA00248229 /* ExtensionsTests */,
-				0052532925DC48EF000E8F27 /* HTTPStubbing */,
 				CA4505E825B8D34000153FC4 /* Models */,
 				CA45042325B79A1000153FC4 /* Info.plist */,
 				CA45054D25B8C53700153FC4 /* WaitUntil.swift */,
@@ -398,6 +389,14 @@
 				002C1F8725D1C51D000018D8 /* DateFormatterExtensionsTests.swift */,
 			);
 			path = ExtensionsTests;
+			sourceTree = "<group>";
+		};
+		CAF9882D25DDD8E3008A6EDD /* HTTPStubbing */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9882E25DDD8E9008A6EDD /* StubAPIResponse.swift */,
+			);
+			name = HTTPStubbing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -685,7 +684,6 @@
 				CA4505E325B8D26300153FC4 /* URLRequestExtensionsTests.swift in Sources */,
 				CAF26DC825B9F57A009025A6 /* ContractTests.swift in Sources */,
 				002C1F8825D1C51D000018D8 /* DateFormatterExtensionsTests.swift in Sources */,
-				0052532B25DC491C000E8F27 /* StubAPIResponse.swift in Sources */,
 				CA4505D725B8D1D400153FC4 /* MockExtensions.swift in Sources */,
 				CA4505CB25B8CE7800153FC4 /* TestPublisher.swift in Sources */,
 				CA45061025B8D3B300153FC4 /* IdentityServiceTests.swift in Sources */,

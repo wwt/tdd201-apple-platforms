@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0052533425DC494C000E8F27 /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052533325DC494C000E8F27 /* StubAPIResponse.swift */; };
-		0052533F25DC4967000E8F27 /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052533E25DC4967000E8F27 /* URLRequestExtensions.swift */; };
 		00BB4D5925D469DF00905C5E /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 00BB4D5125D469DF00905C5E /* package.json */; };
 		00BB4D5A25D469DF00905C5E /* users.js in Resources */ = {isa = PBXBuildFile; fileRef = 00BB4D5325D469DF00905C5E /* users.js */; };
 		00BB4D5C25D469DF00905C5E /* app.js in Resources */ = {isa = PBXBuildFile; fileRef = 00BB4D5525D469DF00905C5E /* app.js */; };
@@ -40,8 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0052533325DC494C000E8F27 /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
-		0052533E25DC4967000E8F27 /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = "<group>"; };
 		00BB4D5125D469DF00905C5E /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 		00BB4D5325D469DF00905C5E /* users.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = users.js; sourceTree = "<group>"; };
 		00BB4D5525D469DF00905C5E /* app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = app.js; sourceTree = "<group>"; };
@@ -67,6 +63,8 @@
 		CAF26D6325B9CFC9009025A6 /* SomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeModel.swift; sourceTree = "<group>"; };
 		CAF26D6925B9D129009025A6 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		CAF26D9B25B9E840009025A6 /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
+		CAF9881E25DDD897008A6EDD /* URLRequestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = SOURCE_ROOT; };
+		CAF9882625DDD8A0008A6EDD /* StubAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = SOURCE_ROOT; };
 		CDB64F5A686319439676B02A /* Pods_ContractTesting_ContractTestingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContractTesting_ContractTestingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -90,22 +88,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0052533025DC4937000E8F27 /* HTTPStubbing */ = {
-			isa = PBXGroup;
-			children = (
-				0052533325DC494C000E8F27 /* StubAPIResponse.swift */,
-			);
-			path = HTTPStubbing;
-			sourceTree = "<group>";
-		};
-		0052533925DC494F000E8F27 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0052533E25DC4967000E8F27 /* URLRequestExtensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		00BB4D4825D469DF00905C5E /* pact-node-provider */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,13 +187,29 @@
 		CAA1C3D525A3897800E3F686 /* ContractTestingTests */ = {
 			isa = PBXGroup;
 			children = (
-				0052533925DC494F000E8F27 /* Extensions */,
-				0052533025DC4937000E8F27 /* HTTPStubbing */,
+				CAF9882125DDD89B008A6EDD /* HTTPStubbing */,
+				CAF9881925DDD892008A6EDD /* Extensions */,
 				CAA1C3D625A3897800E3F686 /* ContractTests.swift */,
 				CAA1C3D825A3897800E3F686 /* Info.plist */,
 				CAF26D9B25B9E840009025A6 /* UserServiceTests.swift */,
 			);
 			path = ContractTestingTests;
+			sourceTree = "<group>";
+		};
+		CAF9881925DDD892008A6EDD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9881E25DDD897008A6EDD /* URLRequestExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		CAF9882125DDD89B008A6EDD /* HTTPStubbing */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9882625DDD8A0008A6EDD /* StubAPIResponse.swift */,
+			);
+			name = HTTPStubbing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,9 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF26D9C25B9E840009025A6 /* UserServiceTests.swift in Sources */,
-				0052533F25DC4967000E8F27 /* URLRequestExtensions.swift in Sources */,
 				CAA1C3D725A3897800E3F686 /* ContractTests.swift in Sources */,
-				0052533425DC494C000E8F27 /* StubAPIResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
