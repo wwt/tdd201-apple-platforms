@@ -20,7 +20,7 @@ target 'WriteToFile' do
   pod 'Swinject'
   
   target 'WriteToFileTests' do
-    pod 'Cuckoo'
+
   end
 end
 
