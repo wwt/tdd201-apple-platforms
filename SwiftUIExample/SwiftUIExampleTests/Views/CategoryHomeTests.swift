@@ -1,5 +1,5 @@
 //
-//  CategoryViewTests.swift
+//  CategoryHomeTests.swift
 //  SwiftUIExampleTests
 //
 //  Created by Heather Meadow on 2/19/21.
@@ -15,7 +15,7 @@ import ViewInspector
 extension Inspection: InspectionEmissary where V: Inspectable { }
 extension CategoryHome: Inspectable { }
 
-class CategoryViewTests: XCTestCase {
+class CategoryHomeTests: XCTestCase {
 
     override func setUpWithError() throws {
 
