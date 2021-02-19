@@ -34,17 +34,6 @@ class CategoryRowTests: XCTestCase {
         XCTAssertEqual(try categoryName.attributes().font(), .headline)
         XCTAssertEqual(landmarks, ["Chilkoot Trail", "Lake McDonald", "Icy Bay"])
     }
-
-//    private func loadView<T: ObservableObject>(with data: T?) -> CategoryRow {
-//        let categoryRow = CategoryRow()
-//
-//        defer {
-//            if let data = data {
-//                ViewHosting.host(view: categoryRow.environmentObject(data))
-//            }
-//        }
-//        return categoryRow
-//    }
 }
 
 extension CategoryRowTests {
