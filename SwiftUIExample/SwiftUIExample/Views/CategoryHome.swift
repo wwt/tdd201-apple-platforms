@@ -26,5 +26,6 @@ struct CategoryHome: View {
 struct CategoryHome_Previews: PreviewProvider {
     static var previews: some View {
         CategoryHome()
+            .environmentObject(ModelData())
     }
 }
