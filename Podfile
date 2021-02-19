@@ -103,6 +103,17 @@ target 'UIKitWithStoryboard' do
 
 end
 
+target 'SwiftUIExample' do
+  platform :ios, '13.0'
+  project 'SwiftUIExample/SwiftUIExample.xcodeproj'
+  use_frameworks!
+
+
+  target 'SwiftUIExampleTests' do
+    pod 'ViewInspector'
+  end
+end
+
 target 'MutationTesting' do
   project 'MutationTesting/MutationTesting.xcodeproj'
   pod 'SwiftLint'
