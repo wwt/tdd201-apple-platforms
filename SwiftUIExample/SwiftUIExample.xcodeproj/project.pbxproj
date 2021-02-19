@@ -17,6 +17,8 @@
 		002D47B325E0675D000525C3 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D47B225E0675D000525C3 /* Inspection.swift */; };
 		002D480925E06F46000525C3 /* CategoryRowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D480825E06F46000525C3 /* CategoryRowTests.swift */; };
 		002D480D25E06F9E000525C3 /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D480C25E06F9E000525C3 /* CategoryRow.swift */; };
+		002D486125E081F7000525C3 /* CategoryItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D486025E081F7000525C3 /* CategoryItemTests.swift */; };
+		002D486525E08261000525C3 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D486425E08261000525C3 /* CategoryItem.swift */; };
 		BBB9738EC168E1F562E76E6C /* Pods_SwiftUIExample_SwiftUIExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E0F83637ED7E88C374F551 /* Pods_SwiftUIExample_SwiftUIExampleTests.framework */; };
 		CA45048E25B79A7800153FC4 /* SwiftUIExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45048D25B79A7800153FC4 /* SwiftUIExampleApp.swift */; };
 		CA45049225B79A7800153FC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA45049125B79A7800153FC4 /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		002D47B225E0675D000525C3 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		002D480825E06F46000525C3 /* CategoryRowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRowTests.swift; sourceTree = "<group>"; };
 		002D480C25E06F9E000525C3 /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
+		002D486025E081F7000525C3 /* CategoryItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemTests.swift; sourceTree = "<group>"; };
+		002D486425E08261000525C3 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		007EDD75F4DC2A86B7F6FD29 /* Pods_SwiftUIExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37161F9B33000965D279ACAA /* Pods-SwiftUIExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIExample.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIExample/Pods-SwiftUIExample.debug.xcconfig"; sourceTree = "<group>"; };
 		53088C5D5FD31011317EB2DC /* Pods-SwiftUIExample-SwiftUIExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIExample-SwiftUIExampleTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftUIExample-SwiftUIExampleTests/Pods-SwiftUIExample-SwiftUIExampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 			children = (
 				0001A04925E0531C0081DFB0 /* CategoryHome.swift */,
 				002D480C25E06F9E000525C3 /* CategoryRow.swift */,
+				002D486425E08261000525C3 /* CategoryItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 			children = (
 				002D474325E057C2000525C3 /* CategoryHomeTests.swift */,
 				002D480825E06F46000525C3 /* CategoryRowTests.swift */,
+				002D486025E081F7000525C3 /* CategoryItemTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -409,6 +415,7 @@
 			files = (
 				002D475225E05E36000525C3 /* Hike.swift in Sources */,
 				002D47B325E0675D000525C3 /* Inspection.swift in Sources */,
+				002D486525E08261000525C3 /* CategoryItem.swift in Sources */,
 				0001A04A25E0531C0081DFB0 /* CategoryHome.swift in Sources */,
 				002D474C25E05D7E000525C3 /* ModelData.swift in Sources */,
 				002D480D25E06F9E000525C3 /* CategoryRow.swift in Sources */,
@@ -423,6 +430,7 @@
 			files = (
 				002D474425E057C2000525C3 /* CategoryHomeTests.swift in Sources */,
 				002D480925E06F46000525C3 /* CategoryRowTests.swift in Sources */,
+				002D486125E081F7000525C3 /* CategoryItemTests.swift in Sources */,
 				CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
