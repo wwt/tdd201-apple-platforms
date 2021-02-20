@@ -30,10 +30,7 @@ class CategoryItemTests: XCTestCase {
 
         XCTAssertEqual(try name.string(), "Chilkoot Trail")
         XCTAssertEqual(try name.attributes().font(), .caption)
-        XCTAssertEqual(try image.actualImage(), landmark.image)
-        XCTAssertEqual(try image.cornerRadius(), 5)
-        XCTAssertEqual(try image.fixedFrame().width, 155)
-        XCTAssertEqual(try image.fixedFrame().height, 155)
+        XCTAssertEqual(try image.actualImage(), landmark.image.resizable())
     }
 }
 

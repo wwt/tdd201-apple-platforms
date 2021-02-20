@@ -29,10 +29,13 @@ class CategoryRowTests: XCTestCase {
         let scrollView = try vStack.find(ViewType.ScrollView.self)
         let hStack = try scrollView.find(ViewType.HStack.self)
 
-        let landmarks = try hStack.forEach(0).map { try $0.text(0).string() }
         XCTAssertEqual(try categoryName.string(), "Mountains")
         XCTAssertEqual(try categoryName.attributes().font(), .headline)
-        XCTAssertEqual(landmarks, ["Chilkoot Trail", "Lake McDonald", "Icy Bay"])
+
+        try hStack.forEach(0).enumerated().forEach {
+            let categoryItem: CategoryItem = try $0.element.find(CategoryItem.self).actualView()
+            XCTAssertEqual(categoryItem.landmark, landmarksData[$0.offset])
+        }
     }
 }
 

@@ -38,8 +38,12 @@ class CategoryHomeTests: XCTestCase {
 
         let exp = loadView(with: modelData).inspection.inspect { (view) in
             let list = try view.navigationView().list(0)
-            let categories = try list.forEach(0).map { try $0.text(0).string() }
-            XCTAssertEqual(categories, ["Lakes", "Mountains", "Rivers"])
+            try list.forEach(0).enumerated().forEach {
+                let row = try $0.element.find(CategoryRow.self).actualView()
+                let expectedKey = modelData.categories.keys.sorted()[$0.offset]
+                XCTAssertEqual(row.categoryName, expectedKey)
+                XCTAssertEqual(row.items, modelData.categories[expectedKey])
+            }
         }
 
         wait(for: [exp], timeout: 0.1)
