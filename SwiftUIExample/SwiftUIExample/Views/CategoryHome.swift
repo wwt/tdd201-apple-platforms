@@ -14,11 +14,11 @@ struct CategoryHome: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(modelData.categories.keys.sorted(), id: \.self) { key in
-                    CategoryRow(categoryName: key, items: modelData.categories[key] ?? [])
+                let list = modelData.categories.sorted(by: { $0.key < $1.key })
+                ForEach(Array(list.enumerated()), id: \.offset) {
+                    CategoryRow(categoryName: $0.element.key, items: $0.element.value)
                 }
-            }
-                .navigationTitle("Featured")
+            }.navigationTitle("Featured")
         }.onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }
 }
