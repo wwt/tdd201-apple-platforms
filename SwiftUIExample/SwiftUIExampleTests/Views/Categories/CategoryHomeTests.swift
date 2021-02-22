@@ -12,6 +12,12 @@ import ViewInspector
 
 @testable import SwiftUIExample
 
+/*
+ Navigation Title
+ Map
+
+ */
+
 extension Inspection: InspectionEmissary where V: Inspectable { }
 extension CategoryHome: Inspectable { }
 
@@ -23,11 +29,26 @@ class CategoryHomeTests: XCTestCase {
 
     func testCategoryHomeHasNavigationView() throws {
         let exp = loadView(with: ModelData()).inspection.inspect { (view) in
-            _ = try view.navigationView()
+            XCTAssertNoThrow(try view.navigationView())
         }
 
         wait(for: [exp], timeout: 0.1)
+    }
 
+    func testCategoryHomeDisplaysFeaturedLandmarks() throws {
+        let file = Bundle.main.url(forResource: "landmarkData", withExtension: "json")!
+        let data = try Data(contentsOf: file)
+        let modelData = ModelData()
+        modelData.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
+
+        let exp = loadView(with: modelData).inspection.inspect { (view) in
+            let list = try view.navigationView().list(0)
+            let image = try list.image(0)
+
+            XCTAssertEqual(try image.actualImage(), modelData.features[0].image.resizable())
+        }
+
+        wait(for: [exp], timeout: 0.1)
     }
 
     func testCategoryHomeDisplaysCategoriesOfLandmarks() throws {
@@ -38,7 +59,7 @@ class CategoryHomeTests: XCTestCase {
 
         let exp = loadView(with: modelData).inspection.inspect { (view) in
             let list = try view.navigationView().list(0)
-            try list.forEach(0).enumerated().forEach {
+            try list.find(ViewType.ForEach.self).enumerated().forEach {
                 let row = try $0.element.find(CategoryRow.self).actualView()
                 let expectedKey = modelData.categories.keys.sorted()[$0.offset]
                 XCTAssertEqual(row.categoryName, expectedKey)
@@ -47,7 +68,6 @@ class CategoryHomeTests: XCTestCase {
         }
 
         wait(for: [exp], timeout: 0.1)
-
     }
 
     private func loadView<T: ObservableObject>(with data: T) -> CategoryHome {

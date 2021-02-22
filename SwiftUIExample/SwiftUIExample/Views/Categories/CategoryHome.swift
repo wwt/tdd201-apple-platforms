@@ -14,10 +14,17 @@ struct CategoryHome: View {
     var body: some View {
         NavigationView {
             List {
+                modelData.features[0].image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 200)
+                    .clipped()
+                    .listRowInsets(EdgeInsets())
                 let list = modelData.categories.sorted(by: { $0.key < $1.key })
                 ForEach(Array(list.enumerated()), id: \.offset) {
                     CategoryRow(categoryName: $0.element.key, items: $0.element.value)
                 }
+                .listRowInsets(EdgeInsets())
             }.navigationTitle("Featured")
         }.onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }
