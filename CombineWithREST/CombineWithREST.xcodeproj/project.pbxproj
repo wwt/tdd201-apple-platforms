@@ -53,6 +53,7 @@
 		CA54DD1825D3142900A59B53 /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA54DD1725D3142900A59B53 /* URLRequestExtensions.swift */; };
 		CA9B147625C9FB5B00854956 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B147425C9FB5B00854956 /* ContainerExtensions.swift */; };
 		CA9B147725C9FB5B00854956 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9B147525C9FB5B00854956 /* DependencyInjected.swift */; };
+		CABDE21825E407D30041C477 /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9882E25DDD8E9008A6EDD /* StubAPIResponse.swift */; };
 		CAF26DC825B9F57A009025A6 /* ContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF26DC725B9F57A009025A6 /* ContractTests.swift */; };
 		CAF26DD325BA2C55009025A6 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF26DD225BA2C55009025A6 /* GeneratedMocks.swift */; };
 		CAF26DD925BA2CFF009025A6 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF26DD825BA2CFF009025A6 /* ViewControllerTests.swift */; };
@@ -684,6 +685,7 @@
 				CA4505E325B8D26300153FC4 /* URLRequestExtensionsTests.swift in Sources */,
 				CAF26DC825B9F57A009025A6 /* ContractTests.swift in Sources */,
 				002C1F8825D1C51D000018D8 /* DateFormatterExtensionsTests.swift in Sources */,
+				CABDE21825E407D30041C477 /* StubAPIResponse.swift in Sources */,
 				CA4505D725B8D1D400153FC4 /* MockExtensions.swift in Sources */,
 				CA4505CB25B8CE7800153FC4 /* TestPublisher.swift in Sources */,
 				CA45061025B8D3B300153FC4 /* IdentityServiceTests.swift in Sources */,
