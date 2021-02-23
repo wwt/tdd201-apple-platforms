@@ -16,13 +16,8 @@ extension CategoryRow: Inspectable { }
 
 class CategoryRowTests: XCTestCase {
 
-    override func setUpWithError() throws {
-
-    }
-
     func testCategoryRowDisplaysCategoryNameWithLandmarks() throws {
-        let data = try JSONSerialization.data(withJSONObject: Self.mountainLandmarks)
-        let landmarksData =  try JSONDecoder().decode([Landmark].self, from: data)
+        let landmarksData =  try JSONDecoder().decode([Landmark].self, from: Self.mountainLandmarks)
         let categoryRow = CategoryRow(categoryName: "Mountains", items: landmarksData)
         let vStack = try categoryRow.inspect().vStack()
         let categoryName = try vStack.text(0)
@@ -41,8 +36,8 @@ class CategoryRowTests: XCTestCase {
 
 extension CategoryRowTests {
     // swiftlint:disable line_length
-    static let mountainLandmarks: [[String: Any]] = [
-        [
+    static let mountainLandmarks = Data("""
+        [{
             "name": "Chilkoot Trail",
             "category": "Mountains",
             "city": "Skagway",
@@ -51,14 +46,14 @@ extension CategoryRowTests {
             "isFeatured": false,
             "isFavorite": true,
             "park": "Klondike Gold Rush National Historical Park",
-            "coordinates": [
+            "coordinates": {
                 "longitude": -135.334571,
                 "latitude": 59.560551
-            ],
+            },
             "description": "Suscipit inceptos est felis purus aenean aliquet adipiscing diam venenatis, augue nibh duis neque aliquam tellus condimentum sagittis vivamus, cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit libero molestie non ullamcorper, finibus imperdiet iaculis ad quam per luctus neque, ligula curae mauris parturient diam auctor eleifend laoreet ridiculus, hendrerit adipiscing sociosqu pretium nec velit aliquam. Inceptos egestas maecenas imperdiet eget id donec nisl curae congue, massa tortor vivamus ridiculus integer porta ultrices venenatis aliquet, curabitur et posuere blandit magnis dictum auctor lacinia, eleifend dolor in ornare vulputate ipsum morbi felis. Faucibus cursus malesuada orci ultrices diam nisl taciti torquent, tempor eros suspendisse euismod condimentum dis velit mi tristique, a quis etiam dignissim dictum porttitor lobortis ad fermentum, sapien consectetur dui dolor purus elit pharetra. Interdum mattis sapien ac orci vestibulum vulputate laoreet proin hac, maecenas mollis ridiculus morbi praesent cubilia vitae ligula vel, sem semper volutpat curae mauris justo nisl luctus, non eros primis ultrices nascetur erat varius integer.",
             "imageName": "chilkoottrail"
-        ],
-        [
+        },
+        {
             "name": "Lake McDonald",
             "category": "Mountains",
             "city": "West Glacier",
@@ -67,14 +62,14 @@ extension CategoryRowTests {
             "isFeatured": false,
             "isFavorite": false,
             "park": "Glacier National Park",
-            "coordinates": [
+            "coordinates": {
                 "longitude": -113.934831,
                 "latitude": 48.56002
-            ],
+            },
             "description": "Suscipit inceptos est felis purus aenean aliquet adipiscing diam venenatis, augue nibh duis neque aliquam tellus condimentum sagittis vivamus, cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit libero molestie non ullamcorper, finibus imperdiet iaculis ad quam per luctus neque, ligula curae mauris parturient diam auctor eleifend laoreet ridiculus, hendrerit adipiscing sociosqu pretium nec velit aliquam. Inceptos egestas maecenas imperdiet eget id donec nisl curae congue, massa tortor vivamus ridiculus integer porta ultrices venenatis aliquet, curabitur et posuere blandit magnis dictum auctor lacinia, eleifend dolor in ornare vulputate ipsum morbi felis. Faucibus cursus malesuada orci ultrices diam nisl taciti torquent, tempor eros suspendisse euismod condimentum dis velit mi tristique, a quis etiam dignissim dictum porttitor lobortis ad fermentum, sapien consectetur dui dolor purus elit pharetra. Interdum mattis sapien ac orci vestibulum vulputate laoreet proin hac, maecenas mollis ridiculus morbi praesent cubilia vitae ligula vel, sem semper volutpat curae mauris justo nisl luctus, non eros primis ultrices nascetur erat varius integer.",
             "imageName": "lakemcdonald"
-        ],
-        [
+        },
+        {
             "name": "Icy Bay",
             "category": "Mountains",
             "city": "Icy Bay",
@@ -83,14 +78,13 @@ extension CategoryRowTests {
             "isFeatured": false,
             "isFavorite": false,
             "park": "Wrangell-St. Elias National Park and Preserve",
-            "coordinates": [
+            "coordinates": {
                 "longitude": -141.518167,
                 "latitude": 60.089917
-            ],
+            },
             "description": "Suscipit inceptos est felis purus aenean aliquet adipiscing diam venenatis, augue nibh duis neque aliquam tellus condimentum sagittis vivamus, cras ante etiam sit conubia elit tempus accumsan libero, mattis per erat habitasse cubilia ligula penatibus curae. Sagittis lorem augue arcu blandit libero molestie non ullamcorper, finibus imperdiet iaculis ad quam per luctus neque, ligula curae mauris parturient diam auctor eleifend laoreet ridiculus, hendrerit adipiscing sociosqu pretium nec velit aliquam. Inceptos egestas maecenas imperdiet eget id donec nisl curae congue, massa tortor vivamus ridiculus integer porta ultrices venenatis aliquet, curabitur et posuere blandit magnis dictum auctor lacinia, eleifend dolor in ornare vulputate ipsum morbi felis. Faucibus cursus malesuada orci ultrices diam nisl taciti torquent, tempor eros suspendisse euismod condimentum dis velit mi tristique, a quis etiam dignissim dictum porttitor lobortis ad fermentum, sapien consectetur dui dolor purus elit pharetra. Interdum mattis sapien ac orci vestibulum vulputate laoreet proin hac, maecenas mollis ridiculus morbi praesent cubilia vitae ligula vel, sem semper volutpat curae mauris justo nisl luctus, non eros primis ultrices nascetur erat varius integer.",
             "imageName": "icybay"
-        ]
-    ]
+        }]
+    """.utf8)
     // swiftlint:enable line_length
-
 }

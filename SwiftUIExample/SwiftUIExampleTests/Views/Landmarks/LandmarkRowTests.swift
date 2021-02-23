@@ -1,8 +1,8 @@
 //
-//  CategoryItemTests.swift
+//  LandmarkRowTests.swift
 //  SwiftUIExampleTests
 //
-//  Created by Heather Meadow on 2/19/21.
+//  Created by Heather Meadow on 2/22/21.
 //
 
 import Foundation
@@ -12,28 +12,37 @@ import ViewInspector
 
 @testable import SwiftUIExample
 
-extension CategoryItem: Inspectable { }
+extension LandmarkRow: Inspectable { }
 
-class CategoryItemTests: XCTestCase {
+class LandmarkRowTests: XCTestCase {
 
     override func setUpWithError() throws {
 
     }
 
-    func testCategoryRowDisplaysCategoryNameWithLandmarks() throws {
-        let landmark = try JSONDecoder().decode([Landmark].self, from: Self.landmark).first!
-        let categoryItem = CategoryItem(landmark: landmark)
-        let vStack = try categoryItem.inspect().vStack()
-        let name = try vStack.find(ViewType.Text.self)
-        let image = try vStack.find(ViewType.Image.self)
+    func testFavoriteLandmarkRowDisplaysLandmarkWithStar() throws {
+        var expectedLandmark = try JSONDecoder().decode([Landmark].self, from: Self.landmark).first!
+        expectedLandmark.isFavorite = true
+        let landmarkRow = LandmarkRow(landmark: expectedLandmark)
 
-        XCTAssertEqual(try name.string(), "Chilkoot Trail")
-        XCTAssertEqual(try name.attributes().font(), .caption)
-        XCTAssertEqual(try image.actualImage(), landmark.image.resizable())
+        XCTAssertEqual(try landmarkRow.inspect().hStack().image(0).actualImage(), expectedLandmark.image.resizable())
+        XCTAssertEqual(try landmarkRow.inspect().hStack().text(1).string(), expectedLandmark.name)
+        XCTAssertEqual(try landmarkRow.inspect().hStack().image(3).actualImage(), Image(systemName: "star.fill"))
+        XCTAssertEqual(try landmarkRow.inspect().hStack().image(3).foregroundColor(), .yellow)
+    }
+
+    func testNonFavoritedLandmarkRowDisplaysLandmarkWithoutStar() throws {
+        var expectedLandmark = try JSONDecoder().decode([Landmark].self, from: Self.landmark).first!
+        expectedLandmark.isFavorite = false
+        let landmarkRow = LandmarkRow(landmark: expectedLandmark)
+
+        XCTAssertEqual(try landmarkRow.inspect().hStack().image(0).actualImage(), expectedLandmark.image.resizable())
+        XCTAssertEqual(try landmarkRow.inspect().hStack().text(1).string(), expectedLandmark.name)
+        XCTAssertThrowsError(try landmarkRow.inspect().hStack().image(3).actualImage(), "Expected to not find favorite image")
     }
 }
 
-extension CategoryItemTests {
+extension LandmarkRowTests {
     // swiftlint:disable line_length
     static let landmark = Data("""
         [{

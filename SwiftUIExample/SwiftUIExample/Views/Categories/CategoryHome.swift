@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoryHome: View {
     @EnvironmentObject var modelData: ModelData
-    let inspection = Inspection<Self>()
+    internal let inspection = Inspection<Self>()
 
     var body: some View {
         NavigationView {
@@ -26,7 +26,8 @@ struct CategoryHome: View {
                 }
                 .listRowInsets(EdgeInsets())
             }.navigationTitle("Featured")
-        }.onReceive(inspection.notice) { self.inspection.visit(self, $0) }
+        }
+        .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }
 }
 
