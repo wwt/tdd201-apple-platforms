@@ -24,6 +24,8 @@
 		0011EA8E25E5588D00E48AE8 /* GraphCapsuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EA8D25E5588D00E48AE8 /* GraphCapsuleTests.swift */; };
 		0011EACA25E561F700E48AE8 /* HikeGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EAC925E561F700E48AE8 /* HikeGraphTests.swift */; };
 		0011EACE25E5701B00E48AE8 /* HikeDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EACD25E5701B00E48AE8 /* HikeDetailTests.swift */; };
+		0011EAD225E5955200E48AE8 /* HikeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EAD125E5955200E48AE8 /* HikeViewTests.swift */; };
+		0011EAD725E595B900E48AE8 /* ViewHostingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EAD625E595B900E48AE8 /* ViewHostingExtension.swift */; };
 		002D474425E057C2000525C3 /* CategoryHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D474325E057C2000525C3 /* CategoryHomeTests.swift */; };
 		002D474825E05C45000525C3 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D474725E05C45000525C3 /* Landmark.swift */; };
 		002D474C25E05D7E000525C3 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D474B25E05D7E000525C3 /* ModelData.swift */; };
@@ -78,6 +80,8 @@
 		0011EA8D25E5588D00E48AE8 /* GraphCapsuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphCapsuleTests.swift; sourceTree = "<group>"; };
 		0011EAC925E561F700E48AE8 /* HikeGraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeGraphTests.swift; sourceTree = "<group>"; };
 		0011EACD25E5701B00E48AE8 /* HikeDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetailTests.swift; sourceTree = "<group>"; };
+		0011EAD125E5955200E48AE8 /* HikeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeViewTests.swift; sourceTree = "<group>"; };
+		0011EAD625E595B900E48AE8 /* ViewHostingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHostingExtension.swift; sourceTree = "<group>"; };
 		002D474325E057C2000525C3 /* CategoryHomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeTests.swift; sourceTree = "<group>"; };
 		002D474725E05C45000525C3 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 		002D474B25E05D7E000525C3 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -173,8 +177,17 @@
 				0011EA8D25E5588D00E48AE8 /* GraphCapsuleTests.swift */,
 				0011EAC925E561F700E48AE8 /* HikeGraphTests.swift */,
 				0011EACD25E5701B00E48AE8 /* HikeDetailTests.swift */,
+				0011EAD125E5955200E48AE8 /* HikeViewTests.swift */,
 			);
 			path = Hikes;
+			sourceTree = "<group>";
+		};
+		0011EAD525E595A500E48AE8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0011EAD625E595B900E48AE8 /* ViewHostingExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		002D473E25E057B3000525C3 /* Views */ = {
@@ -341,6 +354,7 @@
 		CA45049E25B79A7900153FC4 /* SwiftUIExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				0011EAD525E595A500E48AE8 /* Extensions */,
 				002D473E25E057B3000525C3 /* Views */,
 				CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */,
 				CA4504A125B79A7900153FC4 /* Info.plist */,
@@ -587,9 +601,11 @@
 				002D474425E057C2000525C3 /* CategoryHomeTests.swift in Sources */,
 				0011EACA25E561F700E48AE8 /* HikeGraphTests.swift in Sources */,
 				002D488F25E43578000525C3 /* CircleImageTests.swift in Sources */,
+				0011EAD225E5955200E48AE8 /* HikeViewTests.swift in Sources */,
 				002D480925E06F46000525C3 /* CategoryRowTests.swift in Sources */,
 				0011E9C125E45FD400E48AE8 /* LandmarkListTests.swift in Sources */,
 				002D486125E081F7000525C3 /* CategoryItemTests.swift in Sources */,
+				0011EAD725E595B900E48AE8 /* ViewHostingExtension.swift in Sources */,
 				002D489525E43AC2000525C3 /* FavoriteButtonTests.swift in Sources */,
 				002D487325E430F6000525C3 /* LandmarkDetailTests.swift in Sources */,
 				CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */,

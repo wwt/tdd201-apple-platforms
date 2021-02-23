@@ -28,7 +28,7 @@ class CategoryHomeTests: XCTestCase {
     }
 
     func testCategoryHomeHasNavigationView() throws {
-        let exp = loadView(with: ModelData()).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(CategoryHome(), data: ModelData()).inspection.inspect { (view) in
             XCTAssertNoThrow(try view.navigationView())
         }
 
@@ -41,7 +41,7 @@ class CategoryHomeTests: XCTestCase {
         let modelData = ModelData()
         modelData.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
 
-        let exp = loadView(with: modelData).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(CategoryHome(), data: modelData).inspection.inspect { (view) in
             let list = try view.navigationView().list(0)
             let image = try list.image(0)
 
@@ -57,7 +57,7 @@ class CategoryHomeTests: XCTestCase {
         let modelData = ModelData()
         modelData.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
 
-        let exp = loadView(with: modelData).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(CategoryHome(), data: modelData).inspection.inspect { (view) in
             let list = try view.navigationView().list(0)
             try list.find(ViewType.ForEach.self).enumerated().forEach {
                 let row = try $0.element.find(CategoryRow.self).actualView()
@@ -68,13 +68,5 @@ class CategoryHomeTests: XCTestCase {
         }
 
         wait(for: [exp], timeout: 0.1)
-    }
-
-    private func loadView<T: ObservableObject>(with data: T) -> CategoryHome {
-        let categoryHome = CategoryHome()
-        defer {
-            ViewHosting.host(view: categoryHome.environmentObject(data))
-        }
-        return categoryHome
     }
 }
