@@ -10,6 +10,7 @@ import SwiftUI
 struct HikeDetail: View {
     let hike: Hike
     @State var dataToShow = \Hike.Observation.elevation
+    internal let inspection = Inspection<Self>()
 
     var buttons = [
         ("Elevation", \Hike.Observation.elevation),
@@ -18,26 +19,25 @@ struct HikeDetail: View {
     ]
 
     var body: some View {
-        EmptyView()
-//        return VStack {
-//            HikeGraph(hike: hike, path: dataToShow)
-//                .frame(height: 200)
-//
-//            HStack(spacing: 25) {
-//                ForEach(buttons, id: \.0) { value in
-//                    Button(action: {
-//                        self.dataToShow = value.1
-//                    }) {
-//                        Text(value.0)
-//                            .font(.system(size: 15))
-//                            .foregroundColor(value.1 == self.dataToShow
-//                                ? Color.gray
-//                                : Color.accentColor)
-//                            .animation(nil)
-//                    }
-//                }
-//            }
-//        }
+        VStack {
+            HikeGraph(hike: hike, path: dataToShow)
+                .frame(height: 200)
+
+            HStack(spacing: 25) {
+                ForEach(buttons, id: \.0) { value in
+                    Button {
+                        self.dataToShow = value.1
+                    } label: {
+                        Text(value.0)
+                            .font(.system(size: 15))                            .foregroundColor(value.1 == self.dataToShow
+                                ? Color.gray
+                                : Color.accentColor)
+                            .animation(nil)
+                    }
+                }
+            }
+        }
+        .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }
 }
 
