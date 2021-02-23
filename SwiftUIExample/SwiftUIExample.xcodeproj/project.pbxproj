@@ -23,6 +23,7 @@
 		0011EA8925E557A600E48AE8 /* BadgeSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EA8425E557A600E48AE8 /* BadgeSymbol.swift */; };
 		0011EA8E25E5588D00E48AE8 /* GraphCapsuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EA8D25E5588D00E48AE8 /* GraphCapsuleTests.swift */; };
 		0011EACA25E561F700E48AE8 /* HikeGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EAC925E561F700E48AE8 /* HikeGraphTests.swift */; };
+		0011EACE25E5701B00E48AE8 /* HikeDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EACD25E5701B00E48AE8 /* HikeDetailTests.swift */; };
 		002D474425E057C2000525C3 /* CategoryHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D474325E057C2000525C3 /* CategoryHomeTests.swift */; };
 		002D474825E05C45000525C3 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D474725E05C45000525C3 /* Landmark.swift */; };
 		002D474C25E05D7E000525C3 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D474B25E05D7E000525C3 /* ModelData.swift */; };
@@ -76,6 +77,7 @@
 		0011EA8425E557A600E48AE8 /* BadgeSymbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeSymbol.swift; sourceTree = "<group>"; };
 		0011EA8D25E5588D00E48AE8 /* GraphCapsuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphCapsuleTests.swift; sourceTree = "<group>"; };
 		0011EAC925E561F700E48AE8 /* HikeGraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeGraphTests.swift; sourceTree = "<group>"; };
+		0011EACD25E5701B00E48AE8 /* HikeDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetailTests.swift; sourceTree = "<group>"; };
 		002D474325E057C2000525C3 /* CategoryHomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeTests.swift; sourceTree = "<group>"; };
 		002D474725E05C45000525C3 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 		002D474B25E05D7E000525C3 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				0011EA8D25E5588D00E48AE8 /* GraphCapsuleTests.swift */,
 				0011EAC925E561F700E48AE8 /* HikeGraphTests.swift */,
+				0011EACD25E5701B00E48AE8 /* HikeDetailTests.swift */,
 			);
 			path = Hikes;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */,
 				0011EA8E25E5588D00E48AE8 /* GraphCapsuleTests.swift in Sources */,
 				0011E9C525E45FE000E48AE8 /* LandmarkRowTests.swift in Sources */,
+				0011EACE25E5701B00E48AE8 /* HikeDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
