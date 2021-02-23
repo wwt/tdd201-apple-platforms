@@ -29,7 +29,7 @@ PODS:
   - SwiftLint (0.42.0)
   - Swinject (2.7.1)
   - UIUTest (1.7.0)
-  - ViewInspector (0.6.2)
+  - ViewInspector (0.6.3)
 
 DEPENDENCIES:
   - Cuckoo
@@ -68,7 +68,7 @@ SPEC CHECKSUMS:
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   UIUTest: 260d9054e9a882389d9a28d0fe9987feb82a7e9b
-  ViewInspector: 3a05b8604679322d87d4731b3b9dd69f64abd568
+  ViewInspector: 8917a1624002e865e13d6c4f30f7d6d60e7cfa7c
 
 PODFILE CHECKSUM: a8eb8181164d9078b3e1dc5e2b04fca90ecbb36c
 
