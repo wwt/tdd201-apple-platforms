@@ -28,12 +28,12 @@ struct HikeView: View {
                 HikeGraph(hike: hike, path: \.elevation)
                     .frame(width: 50, height: 30)
                     .animation(nil)
-//
-//                VStack(alignment: .leading) {
-//                    Text(hike.name)
-//                        .font(.headline)
-//                    Text(hike.distanceText)
-//                }
+
+                VStack(alignment: .leading) {
+                    Text(hike.name)
+                        .font(.headline)
+                    Text(hike.distanceText)
+                }
 //
 //                Spacer()
 //

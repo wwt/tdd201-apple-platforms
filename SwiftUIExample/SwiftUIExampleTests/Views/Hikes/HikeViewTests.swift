@@ -23,10 +23,10 @@ class HikeViewTests: XCTestCase {
             let hikeGraph = try view.find(HikeGraph.self)
             XCTAssertEqual(try hikeGraph.actualView().hike, hike)
             XCTAssertEqual(try hikeGraph.actualView().path, \.elevation)
-            XCTAssertEqual(try view.findAll(ViewType.Text.self).first?.string(), hike.name)
-            XCTAssertEqual(try view.findAll(ViewType.Text.self)[1].string(), hike.distanceText)
-
+            XCTAssertEqual(try view.find(ViewType.Text.self, index: 0).string(), hike.name)
+            XCTAssertEqual(try view.find(ViewType.Text.self, index: 1).string(), hike.distanceText)
         }
+
         wait(for: [exp], timeout: 0.1)
     }
 
@@ -43,11 +43,15 @@ extension InspectableView {
                  where condition: (InspectableView<T>) throws -> Bool = { _ in true }
     ) throws -> InspectableView<T> where T: KnownViewType {
         var matchedCount = 0
+        do {
+            
+        }
         let view = try find(where: { view -> Bool in
             guard let typedView = try? view.asInspectableView(ofType: T.self)
             else { return false }
             let matched = (try? condition(typedView)) == true
-            
+            defer { if matched { matchedCount += 1 } }
+            return matched && matchedCount == index
         })
         return try view.asInspectableView(ofType: T.self)
     }
