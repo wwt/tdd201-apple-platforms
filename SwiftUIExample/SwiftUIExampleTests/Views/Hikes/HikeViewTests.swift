@@ -44,15 +44,16 @@ extension InspectableView {
     ) throws -> InspectableView<T> where T: KnownViewType {
         var matchedCount = 0
         do {
-            
+            let view = try find(where: { view -> Bool in
+                guard let typedView = try? view.asInspectableView(ofType: T.self)
+                else { return false }
+                let matched = (try? condition(typedView)) == true
+                defer { if matched { matchedCount += 1 } }
+                return matched && matchedCount == index
+            })
+            return try view.asInspectableView(ofType: T.self)
+        } catch {
+            throw InspectionError.viewIndexOutOfBounds(index: Int(index), count: matchedCount)
         }
-        let view = try find(where: { view -> Bool in
-            guard let typedView = try? view.asInspectableView(ofType: T.self)
-            else { return false }
-            let matched = (try? condition(typedView)) == true
-            defer { if matched { matchedCount += 1 } }
-            return matched && matchedCount == index
-        })
-        return try view.asInspectableView(ofType: T.self)
     }
 }
