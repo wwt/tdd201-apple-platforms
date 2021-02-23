@@ -30,7 +30,7 @@ class LandmarkDetailTests: XCTestCase {
         let modelData = ModelData()
         modelData.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
 
-        let exp = loadView(with: modelData, landmark: expectedLandmark).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(LandmarkDetail(landmark: expectedLandmark), data: modelData).inspection.inspect { (view) in
             let scrollView = try view.scrollView(0)
             let mapView = try scrollView.find(MapView.self)
             let circleImage = try scrollView.find(CircleImage.self)
@@ -57,14 +57,6 @@ class LandmarkDetailTests: XCTestCase {
         }
 
         wait(for: [exp], timeout: 0.1)
-    }
-
-    private func loadView<T: ObservableObject>(with data: T, landmark: Landmark) -> LandmarkDetail {
-        let view = LandmarkDetail(landmark: landmark)
-        defer {
-            ViewHosting.host(view: view.environmentObject(data))
-        }
-        return view
     }
 }
 

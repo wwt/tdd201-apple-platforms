@@ -16,17 +16,13 @@ extension LandmarkList: Inspectable { }
 
 class LandmarkListTests: XCTestCase {
 
-    override func setUpWithError() throws {
-
-    }
-
     func testLandmarkListDisplaysTheThings() throws {
         let file = Bundle.main.url(forResource: "landmarkData", withExtension: "json")!
         let data = try Data(contentsOf: file)
         let modelData = ModelData()
         modelData.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
 
-        let exp = loadView(with: modelData).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(LandmarkList(), data: modelData).inspection.inspect { (view) in
             let list = try view.navigationView().find(ViewType.List.self)
             let toggle = try list.find(ViewType.Toggle.self)
 
@@ -51,7 +47,7 @@ class LandmarkListTests: XCTestCase {
         let modelData = ModelData()
         modelData.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
 
-        let exp = loadView(with: modelData).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(LandmarkList(), data: modelData).inspection.inspect { (view) in
             let list = try view.navigationView().find(ViewType.List.self)
             let toggle = try list.find(ViewType.Toggle.self)
 
@@ -64,13 +60,5 @@ class LandmarkListTests: XCTestCase {
         }
 
         wait(for: [exp], timeout: 0.1)
-    }
-
-    private func loadView<T: ObservableObject>(with data: T) -> LandmarkList {
-        let view = LandmarkList()
-        defer {
-            ViewHosting.host(view: view.environmentObject(data))
-        }
-        return view
     }
 }

@@ -18,7 +18,7 @@ class HikeDetailTests: XCTestCase {
 
     func testHikeDetail() throws {
         let hike = try getHikes().first!
-        let exp = loadView(with: hike).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(HikeDetail(hike: hike)).inspection.inspect { (view) in
             let hikeGraph = try view.find(HikeGraph.self)
 
             XCTAssertEqual(try hikeGraph.actualView().hike, hike)
@@ -36,7 +36,7 @@ class HikeDetailTests: XCTestCase {
 
     func testTappingButtonTogglesData() throws {
         let hike = try getHikes().first!
-        let exp = loadView(with: hike).inspection.inspect { (hikeDetail) in
+        let exp = ViewHosting.loadView(HikeDetail(hike: hike)).inspection.inspect { (hikeDetail) in
             let elevationButton = try hikeDetail.find(button: "Elevation")
             let heartRateButton = try hikeDetail.find(button: "Heart Rate")
             let paceButton = try hikeDetail.find(button: "Pace")
@@ -60,13 +60,5 @@ class HikeDetailTests: XCTestCase {
         let file = Bundle.main.url(forResource: "hikeData", withExtension: "json")!
         let data = try Data(contentsOf: file)
         return try JSONDecoder().decode([Hike].self, from: data)
-    }
-
-    private func loadView(with hike: Hike) -> HikeDetail {
-        let view = HikeDetail(hike: hike)
-        defer {
-            ViewHosting.host(view: view)
-        }
-        return view
     }
 }
