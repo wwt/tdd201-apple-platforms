@@ -51,7 +51,7 @@ target 'MockingFramework' do
   use_frameworks!
   
   target 'MockingFrameworkTests' do
-    pod 'Cuckoo'
+
   end
 end
 
@@ -63,7 +63,7 @@ target 'WriteToFile' do
   pod 'Swinject'
   
   target 'WriteToFileTests' do
-    pod 'Cuckoo'
+
   end
 end
 
@@ -71,11 +71,9 @@ target 'WriteToUserDefaults' do
   platform :ios, '11.0'
   project 'WriteToUserDefaults/WriteToUserDefaults.xcodeproj'
   use_frameworks!
-  
-  pod 'Swinject'
-  
+
   target 'WriteToUserDefaultsTests' do
-    pod 'Cuckoo/OCMock'
+
   end
 end
 
@@ -84,14 +82,8 @@ target 'CombineWithREST' do
   project 'CombineWithREST/CombineWithREST.xcodeproj'
   use_frameworks!
   
-  pod 'Swinject'
-  
   target 'CombineWithRESTTests' do
-    pod 'OHHTTPStubs/Swift'
-    pod 'Cuckoo'
-    pod 'Fakery'
-    pod 'PactConsumerSwift'
-    pod 'UIUTest'
+
   end
 end
 
@@ -101,9 +93,7 @@ target 'ContractTesting' do
   use_frameworks!
   
   target 'ContractTestingTests' do
-    pod 'OHHTTPStubs/Swift'
-    pod 'PactConsumerSwift'
-    pod 'Fakery'
+
   end
 end
 
@@ -113,7 +103,7 @@ target 'HTTPStubbing' do
   use_frameworks!
   
   target 'HTTPStubbingTests' do
-    pod 'OHHTTPStubs/Swift'
+
   end
   
 end
@@ -122,13 +112,9 @@ target 'UIKitWithStoryboard' do
   platform :ios, '11.0'
   project 'UIKitWithStoryboard/UIKitWithStoryboard.xcodeproj'
   use_frameworks!
-  pod 'Swinject'
 
   target 'UIKitWithStoryboardTests' do
-    pod 'UIUTest'
-    pod 'Cuckoo'
-    pod 'Cuckoo/OCMock'
-    pod 'Fakery'
+
   end
 
 end
