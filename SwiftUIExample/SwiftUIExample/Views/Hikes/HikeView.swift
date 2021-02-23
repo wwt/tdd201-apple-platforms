@@ -18,16 +18,16 @@ extension AnyTransition {
 }
 
 struct HikeView: View {
-//    var hike: Hike
+    internal let inspection = Inspection<Self>()
+    var hike: Hike
 //    @State private var showDetail = false
 
     var body: some View {
-        EmptyView()
-//        VStack {
-//            HStack {
-//                HikeGraph(hike: hike, path: \.elevation)
-//                    .frame(width: 50, height: 30)
-//                    .animation(nil)
+        VStack {
+            HStack {
+                HikeGraph(hike: hike, path: \.elevation)
+                    .frame(width: 50, height: 30)
+                    .animation(nil)
 //
 //                VStack(alignment: .leading) {
 //                    Text(hike.name)
@@ -48,13 +48,14 @@ struct HikeView: View {
 //                        .scaleEffect(showDetail ? 1.5 : 1)
 //                        .padding()
 //                }
-//            }
+            }
 //
 //            if showDetail {
 //                HikeDetail(hike: hike)
 //                    .transition(.moveAndFade)
 //            }
-//        }
+        }
+        .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }
 }
 
