@@ -23,6 +23,8 @@
 		00BB4E3D25D4B50200905C5E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4E3C25D4B50200905C5E /* Note.swift */; };
 		2FAB0D6660869FC65B03579D /* Pods_UIKitWithStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6491AB4815DD817F310D8D9 /* Pods_UIKitWithStoryboard.framework */; };
 		A7B2842940CA94CECF540115 /* Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACA2B83D190863F6EF7CF91 /* Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework */; };
+		CA7C093C25E6D3DE008B5F25 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9079625DDDA260018BD06 /* DependencyInjected.swift */; };
+		CA7C093F25E6D3E1008B5F25 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9079525DDDA260018BD06 /* ContainerExtensions.swift */; };
 		CAA1C34725A388F300E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C34625A388F300E3F686 /* AppDelegate.swift */; };
 		CAA1C34925A388F300E3F686 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C34825A388F300E3F686 /* SceneDelegate.swift */; };
 		CAA1C34B25A388F300E3F686 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C34A25A388F300E3F686 /* NoteDetailViewController.swift */; };
@@ -482,8 +484,10 @@
 				CAA1C34725A388F300E3F686 /* AppDelegate.swift in Sources */,
 				00BB4E3D25D4B50200905C5E /* Note.swift in Sources */,
 				00BB4DC025D4A5F400905C5E /* FileWriteable.swift in Sources */,
+				CA7C093C25E6D3DE008B5F25 /* DependencyInjected.swift in Sources */,
 				00BB4DB425D4A59400905C5E /* NotesService.swift in Sources */,
 				CAA1C34925A388F300E3F686 /* SceneDelegate.swift in Sources */,
+				CA7C093F25E6D3E1008B5F25 /* ContainerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
