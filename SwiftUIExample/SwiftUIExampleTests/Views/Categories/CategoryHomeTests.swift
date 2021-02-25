@@ -12,20 +12,7 @@ import ViewInspector
 
 @testable import SwiftUIExample
 
-/*
- Navigation Title
- Map
-
- */
-
-extension Inspection: InspectionEmissary where V: Inspectable { }
-extension CategoryHome: Inspectable { }
-
 class CategoryHomeTests: XCTestCase {
-
-    override func setUpWithError() throws {
-
-    }
 
     func testCategoryHomeHasNavigationView() throws {
         let exp = ViewHosting.loadView(CategoryHome(), data: ModelData()).inspection.inspect { (view) in

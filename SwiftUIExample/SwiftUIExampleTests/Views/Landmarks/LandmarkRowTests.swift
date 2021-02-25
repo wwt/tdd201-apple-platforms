@@ -12,8 +12,6 @@ import ViewInspector
 
 @testable import SwiftUIExample
 
-extension LandmarkRow: Inspectable { }
-
 class LandmarkRowTests: XCTestCase {
 
     override func setUpWithError() throws {

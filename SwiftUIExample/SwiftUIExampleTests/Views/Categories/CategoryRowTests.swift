@@ -12,8 +12,6 @@ import ViewInspector
 
 @testable import SwiftUIExample
 
-extension CategoryRow: Inspectable { }
-
 class CategoryRowTests: XCTestCase {
 
     func testCategoryRowDisplaysCategoryNameWithLandmarks() throws {

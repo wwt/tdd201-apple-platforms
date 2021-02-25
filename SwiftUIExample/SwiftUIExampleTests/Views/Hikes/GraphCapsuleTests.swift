@@ -12,8 +12,6 @@ import ViewInspector
 
 @testable import SwiftUIExample
 
-extension GraphCapsule: Inspectable { }
-
 class GraphCapsuleTests: XCTestCase {
 
     func testGraphCapsule() throws {
@@ -22,6 +20,5 @@ class GraphCapsuleTests: XCTestCase {
         let capsule = try graphCapsule.inspect().shape()
 
         XCTAssertEqual(try capsule.fixedHeight(), 0.95)
-//        XCTAssertEqual(try graphCapsule.inspect().shape().offset(), CGSize(width: 1, height: 1))
     }
 }

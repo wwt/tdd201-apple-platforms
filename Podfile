@@ -145,6 +145,7 @@ target 'SwiftUIExample' do
 
   target 'SwiftUIExampleTests' do
     pod 'ViewInspector'
+    pod 'Fakery'
   end
 end
 

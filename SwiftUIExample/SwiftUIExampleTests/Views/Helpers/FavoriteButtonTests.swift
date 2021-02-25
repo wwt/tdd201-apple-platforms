@@ -16,10 +16,6 @@ extension FavoriteButton: Inspectable { }
 
 class FavoriteButtonTests: XCTestCase {
 
-    override func setUpWithError() throws {
-
-    }
-
     func testFavoriteButtonNotSetIsDisplayedCorrectly() throws {
         let expectedImage = Image(systemName: "star")
         let binding = Binding<Bool>(wrappedValue: false)
