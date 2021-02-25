@@ -20,24 +20,24 @@ class ProfileEditorTests: XCTestCase {
                                       seasonalPhoto: Profile.Season.allCases.randomElement() ?? .autumn,
                                       goalDate: Faker().date.forward(5))
         let bindingProfile = Binding<Profile>(wrappedValue: expectedProfile)
-        let profileEditor = ProfileEditor(profile: bindingProfile)
+        let profileEditor = try ProfileEditor(profile: bindingProfile).inspect()
 
-        XCTAssertEqual(try profileEditor.inspect().find(ViewType.Text.self, index: 0).string(), "Username")
-        XCTAssertEqual(try profileEditor.inspect().find(ViewType.TextField.self).labelView().text().string(), "Username")
-        XCTAssertEqual(try profileEditor.inspect().find(ViewType.TextField.self).input(), expectedProfile.username)
+        XCTAssertEqual(try profileEditor.find(ViewType.Text.self, index: 0).string(), "Username")
+        XCTAssertEqual(try profileEditor.find(ViewType.TextField.self).labelView().text().string(), "Username")
+        XCTAssertEqual(try profileEditor.find(ViewType.TextField.self).input(), expectedProfile.username)
 
-        XCTAssertEqual(try profileEditor.inspect().find(ViewType.Text.self, index: 2).string(), "Enable Notifications")
-        XCTAssertEqual(try profileEditor.inspect().find(ViewType.Text.self, index: 3).string(), "Seasonal Photo")
+        XCTAssertEqual(try profileEditor.find(ViewType.Text.self, index: 2).string(), "Enable Notifications")
+        XCTAssertEqual(try profileEditor.find(ViewType.Text.self, index: 3).string(), "Seasonal Photo")
 
-        let picker = try profileEditor.inspect().find(ViewType.Picker.self)
+        let picker = try profileEditor.find(ViewType.Picker.self)
         XCTAssertEqual(try picker.labelView().text().string(), "Seasonal Photo")
         XCTAssertEqual(try picker.forEach(0).count, Profile.Season.allCases.count)
         try picker.forEach(0).enumerated().forEach {
             XCTAssertEqual(try $0.element.text().string(), Profile.Season.allCases[$0.offset].rawValue)
             XCTAssertEqual(try $0.element.text().tag(), Profile.Season.allCases[$0.offset])
         }
-//        XCTAssertEqual(try profileEditor.inspect().find(ViewType.DatePicker.self).  , "Goal Date")
-        XCTAssertEqual(try profileEditor.inspect().find(ViewType.DatePicker.self).labelView().text().string(), "Goal Date")
+        #warning("Have to test binding in XCUITests")
+        XCTAssertEqual(try profileEditor.find(ViewType.DatePicker.self).labelView().text().string(), "Goal Date")
     }
 
     func testToggleIsBoundToProfileNotifications() throws {
