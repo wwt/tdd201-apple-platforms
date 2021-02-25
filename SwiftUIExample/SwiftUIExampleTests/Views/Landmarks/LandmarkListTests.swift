@@ -55,8 +55,7 @@ class LandmarkListTests: XCTestCase {
             XCTAssertEqual(try list.find(ViewType.ForEach.self).count, modelData.landmarks.count)
             try toggle.tap()
             XCTAssert(try toggle.isOn())
-            #warning("Not broken in a bad way")
-//            XCTAssertEqual(try list.find(ViewType.ForEach.self).count, 3)
+            XCTAssertEqual(try view.navigationView().find(ViewType.List.self).find(ViewType.ForEach.self).count, 3)
         }
 
         wait(for: [exp], timeout: 0.1)

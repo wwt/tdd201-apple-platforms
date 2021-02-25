@@ -20,7 +20,7 @@ extension AnyTransition {
 struct HikeView: View {
     internal let inspection = Inspection<Self>()
     var hike: Hike
-//    @State private var showDetail = false
+    @State private var showDetail = false
 
     var body: some View {
         VStack {
@@ -34,26 +34,26 @@ struct HikeView: View {
                         .font(.headline)
                     Text(hike.distanceText)
                 }
-//
-//                Spacer()
-//
-//                Button(action: {
-//                    withAnimation {
-//                        self.showDetail.toggle()
-//                    }
-//                }) {
-//                    Image(systemName: "chevron.right.circle")
-//                        .imageScale(.large)
-//                        .rotationEffect(.degrees(showDetail ? 90 : 0))
-//                        .scaleEffect(showDetail ? 1.5 : 1)
-//                        .padding()
-//                }
+
+                Spacer()
+
+                Button {
+                    withAnimation {
+                        self.showDetail.toggle()
+                    }
+                } label: {
+                    Image(systemName: "chevron.right.circle")
+                        .imageScale(.large)
+                        .rotationEffect(.degrees(showDetail ? 90 : 0))
+                        .scaleEffect(showDetail ? 1.5 : 1)
+                        .padding()
+                }
             }
-//
-//            if showDetail {
-//                HikeDetail(hike: hike)
-//                    .transition(.moveAndFade)
-//            }
+
+            if showDetail {
+                HikeDetail(hike: hike)
+                    .transition(.moveAndFade)
+            }
         }
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }

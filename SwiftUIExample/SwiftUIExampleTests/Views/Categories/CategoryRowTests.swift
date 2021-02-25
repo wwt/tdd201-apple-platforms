@@ -19,17 +19,18 @@ class CategoryRowTests: XCTestCase {
     func testCategoryRowDisplaysCategoryNameWithLandmarks() throws {
         let landmarksData =  try JSONDecoder().decode([Landmark].self, from: Self.mountainLandmarks)
         let categoryRow = CategoryRow(categoryName: "Mountains", items: landmarksData)
-        let vStack = try categoryRow.inspect().vStack()
-        let categoryName = try vStack.text(0)
-        let scrollView = try vStack.find(ViewType.ScrollView.self)
-        let hStack = try scrollView.find(ViewType.HStack.self)
+        let categoryName = try categoryRow.inspect().find(ViewType.Text.self, index: 0)
 
         XCTAssertEqual(try categoryName.string(), "Mountains")
         XCTAssertEqual(try categoryName.attributes().font(), .headline)
 
-        try hStack.forEach(0).enumerated().forEach {
-            let categoryItem: CategoryItem = try $0.element.find(CategoryItem.self).actualView()
-            XCTAssertEqual(categoryItem.landmark, landmarksData[$0.offset])
+        XCTAssertEqual(try categoryRow.inspect().find(ViewType.ForEach.self).count, landmarksData.count)
+        try categoryRow.inspect().find(ViewType.ForEach.self).enumerated().forEach {
+            let navLink = try $0.element.find(ViewType.NavigationLink.self)
+            let landmarkDetail = try navLink.view(LandmarkDetail.self)
+            let categoryItem = try navLink.labelView().find(CategoryItem.self)
+            XCTAssertEqual(try landmarkDetail.actualView().landmark, landmarksData[$0.offset])
+            XCTAssertEqual(try categoryItem.actualView().landmark, landmarksData[$0.offset])
         }
     }
 }
