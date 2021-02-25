@@ -1,0 +1,89 @@
+{
+  "entries": {
+    "cask": {
+      "docker": {
+        "version": "3.1.0,51484",
+        "options": {
+          "full_name": "Docker"
+        }
+      }
+    },
+    "brew": {
+      "docker-compose": {
+        "version": "1.28.2",
+        "bottle": {
+          "rebuild": 0,
+          "cellar": ":any",
+          "prefix": "/usr/local",
+          "root_url": "https://homebrew.bintray.com/bottles",
+          "files": {
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/docker-compose-1.28.2.arm64_big_sur.bottle.tar.gz",
+              "sha256": "f147a50464261bd34bd8af04390584badc4241e9d37ca54332fe7dac07e1d570"
+            },
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/docker-compose-1.28.2.big_sur.bottle.tar.gz",
+              "sha256": "08525974a3404b234d7de572fea0f6095c3e6749df9fc192d571b1f815f00f3d"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/docker-compose-1.28.2.catalina.bottle.tar.gz",
+              "sha256": "94142a948bb19d5f80bf22d7c3aab0778ef48a0900ba1d8fd454fa070de31844"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/docker-compose-1.28.2.mojave.bottle.tar.gz",
+              "sha256": "8cb911e8ce3f82f81c7fde523269118c9986d2524fb7f6b45137636c7b9c418c"
+            }
+          }
+        }
+      },
+      "pact-ruby-standalone": {
+        "version": "1.88.37",
+        "bottle": false
+      },
+      "docker": {
+        "version": "20.10.3",
+        "bottle": {
+          "rebuild": 0,
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "root_url": "https://homebrew.bintray.com/bottles",
+          "files": {
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/docker-20.10.3.arm64_big_sur.bottle.tar.gz",
+              "sha256": "2c273b146a2f75d0e8ea241936b237a9df4fa57d6630d2ef048a9e5a6bf17b90"
+            },
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/docker-20.10.3.big_sur.bottle.tar.gz",
+              "sha256": "3e87d3a378049183f43aec030c916107dbd5bb613d0e7f0a8b5edd9e4a39a333"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/docker-20.10.3.catalina.bottle.tar.gz",
+              "sha256": "174df73c2f40d9d059a4e37c427dcd6558f39b7691d9e7e08ddc03b9978bc7be"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/docker-20.10.3.mojave.bottle.tar.gz",
+              "sha256": "bcc4af650906a9a697212d380564a9e0e6c3d707927aa05a5c5d001abb7fb9f6"
+            }
+          }
+        }
+      }
+    },
+    "tap": {
+      "pact-foundation/pact-ruby-standalone": {
+        "revision": "fc29b74102328c7645bbbeb4c70e28bc250984c0"
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "catalina": {
+        "HOMEBREW_VERSION": "3.0.1",
+        "HOMEBREW_PREFIX": "/usr/local",
+        "Homebrew/homebrew-core": "9652b75b2bbaf728f70c50b09cce39520c08321d",
+        "CLT": "1103.0.32.62",
+        "Xcode": "12.4",
+        "macOS": "10.15.7"
+      }
+    }
+  }
+}

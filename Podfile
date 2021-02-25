@@ -8,8 +8,22 @@ target 'ContractTesting' do
   use_frameworks!
 
   target 'ContractTestingTests' do
+    pod 'OHHTTPStubs/Swift'
+    pod 'PactConsumerSwift'
+    pod 'Fakery'
   end
 end
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94,7 +108,6 @@ target 'CombineWithREST' do
     pod 'Cuckoo'
     pod 'Fakery'
     pod 'PactConsumerSwift'
-    pod 'UIUTest'
   end
 end
 

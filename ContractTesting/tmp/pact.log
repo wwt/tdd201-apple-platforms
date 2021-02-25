@@ -1,0 +1,142 @@
+I, [2021-02-24T16:05:25.495267 #90817]  INFO -- : Cleared interactions
+I, [2021-02-24T16:05:25.501500 #90817]  INFO -- : Registered expected interaction GET /users/1
+D, [2021-02-24T16:05:25.501941 #90817] DEBUG -- : {
+  "description": "A request for that user",
+  "providerState": "A user with id 1 does not exist",
+  "request": {
+    "method": "get",
+    "path": "/users/1"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+    }
+  },
+  "metadata": null
+}
+I, [2021-02-24T16:05:25.512932 #90817]  INFO -- : Received request GET /users/1
+D, [2021-02-24T16:05:25.515521 #90817] DEBUG -- : {
+  "path": "/users/1",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Host": "localhost:1234",
+    "Accept": "*/*",
+    "Accept-Language": "en-us",
+    "Connection": "keep-alive",
+    "Accept-Encoding": "gzip, deflate",
+    "User-Agent": "ContractTesting/1 CFNetwork/1220.1 Darwin/19.6.0",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-02-24T16:05:25.516109 #90817]  INFO -- : Found matching response for GET /users/1
+D, [2021-02-24T16:05:25.516392 #90817] DEBUG -- : {
+  "status": 404,
+  "headers": {
+  }
+}
+I, [2021-02-24T16:05:25.520554 #90817]  INFO -- : Verifying - interactions matched
+I, [2021-02-24T16:05:25.525115 #90817]  INFO -- : Writing pact for UserService to /Users/tylerthompson/workspace/tdd-201-apple-platforms/ContractTesting/tmp/pacts/contracttesting-iosapp-userservice.json
+I, [2021-02-24T16:05:25.551499 #90817]  INFO -- : Cleared interactions
+I, [2021-02-24T16:05:25.555633 #90817]  INFO -- : Registered expected interaction GET /users/1
+D, [2021-02-24T16:05:25.556043 #90817] DEBUG -- : {
+  "description": "A request for that user",
+  "providerState": "A user with id 1 exists",
+  "request": {
+    "method": "get",
+    "path": "/users/1"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "application/json",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "application/json(.*)?$"
+          }
+        }
+      }
+    },
+    "body": {
+      "name": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Pat"
+      },
+      "age": {
+        "json_class": "Pact::SomethingLike",
+        "contents": 30
+      },
+      "email": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "lethastehr7560@heidenreichjerde.net",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "(.*)@(.*)"
+          }
+        }
+      }
+    }
+  },
+  "metadata": null
+}
+I, [2021-02-24T16:05:25.559314 #90817]  INFO -- : Received request GET /users/1
+D, [2021-02-24T16:05:25.559668 #90817] DEBUG -- : {
+  "path": "/users/1",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Host": "localhost:1234",
+    "Accept": "*/*",
+    "Accept-Language": "en-us",
+    "Connection": "keep-alive",
+    "Accept-Encoding": "gzip, deflate",
+    "User-Agent": "ContractTesting/1 CFNetwork/1220.1 Darwin/19.6.0",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-02-24T16:05:25.559957 #90817]  INFO -- : Found matching response for GET /users/1
+D, [2021-02-24T16:05:25.560294 #90817] DEBUG -- : {
+  "status": 200,
+  "headers": {
+    "Content-Type": {
+      "json_class": "Pact::Term",
+      "data": {
+        "generate": "application/json",
+        "matcher": {
+          "json_class": "Regexp",
+          "o": 0,
+          "s": "application/json(.*)?$"
+        }
+      }
+    }
+  },
+  "body": {
+    "name": {
+      "json_class": "Pact::SomethingLike",
+      "contents": "Pat"
+    },
+    "age": {
+      "json_class": "Pact::SomethingLike",
+      "contents": 30
+    },
+    "email": {
+      "json_class": "Pact::Term",
+      "data": {
+        "generate": "lethastehr7560@heidenreichjerde.net",
+        "matcher": {
+          "json_class": "Regexp",
+          "o": 0,
+          "s": "(.*)@(.*)"
+        }
+      }
+    }
+  }
+}
+I, [2021-02-24T16:05:25.563853 #90817]  INFO -- : Verifying - interactions matched
+I, [2021-02-24T16:05:25.567931 #90817]  INFO -- : Writing pact for UserService to /Users/tylerthompson/workspace/tdd-201-apple-platforms/ContractTesting/tmp/pacts/contracttesting-iosapp-userservice.json
