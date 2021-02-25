@@ -15,6 +15,8 @@ import ViewInspector
  Map
  GeometryReader - Proxy
  TabView - select tab
+ DatePicker - selection and date range
+ Formatted Date text
  */
 
 extension Inspection: InspectionEmissary where V: Inspectable { }
@@ -34,6 +36,7 @@ extension HikeDetail: Inspectable { }
 extension HikeView: Inspectable { }
 
 extension ProfileEditor: Inspectable { }
+extension ProfileSummary: Inspectable { }
 
 extension Badge: Inspectable { }
 extension MapView: Inspectable { }
