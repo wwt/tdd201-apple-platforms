@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-
 #warning("Have not TDD'd this yet - NO COVERAGE, GASP!")
 final class ModelData: ObservableObject {
     @Published var landmarks: [Landmark] = load("landmarkData.json")

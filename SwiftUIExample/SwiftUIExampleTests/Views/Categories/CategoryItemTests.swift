@@ -16,11 +16,7 @@ extension CategoryItem: Inspectable { }
 
 class CategoryItemTests: XCTestCase {
 
-    override func setUpWithError() throws {
-
-    }
-
-    func testCategoryRowDisplaysCategoryNameWithLandmarks() throws {
+    func testCategoryItemDisplaysCategoryNameWithLandmarks() throws {
         let landmark = try JSONDecoder().decode([Landmark].self, from: Self.landmark).first!
         let categoryItem = CategoryItem(landmark: landmark)
         let vStack = try categoryItem.inspect().vStack()
@@ -29,7 +25,7 @@ class CategoryItemTests: XCTestCase {
 
         XCTAssertEqual(try name.string(), "Chilkoot Trail")
         XCTAssertEqual(try name.attributes().font(), .caption)
-        XCTAssertEqual(try image.actualImage(), landmark.image.resizable())
+        XCTAssertEqual(try image.actualImage(), landmark.image.renderingMode(.original).resizable())
     }
 }
 

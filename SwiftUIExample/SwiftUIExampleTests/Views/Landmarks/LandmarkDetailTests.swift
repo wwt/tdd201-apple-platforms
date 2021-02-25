@@ -12,10 +12,6 @@ import ViewInspector
 
 @testable import SwiftUIExample
 
-#warning("Maybe put these elsewhere")
-extension LandmarkDetail: Inspectable { }
-extension MapView: Inspectable { }
-
 class LandmarkDetailTests: XCTestCase {
 
     override func setUpWithError() throws {

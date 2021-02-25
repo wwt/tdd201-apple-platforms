@@ -12,8 +12,6 @@ import ViewInspector
 
 @testable import SwiftUIExample
 
-extension HikeGraph: Inspectable { }
-
 class HikeGraphTests: XCTestCase {
 
     func testHikeGraph() throws {

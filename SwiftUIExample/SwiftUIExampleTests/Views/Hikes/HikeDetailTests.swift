@@ -12,8 +12,6 @@ import ViewInspector
 
 @testable import SwiftUIExample
 
-extension HikeDetail: Inspectable { }
-
 class HikeDetailTests: XCTestCase {
 
     func testHikeDetail() throws {

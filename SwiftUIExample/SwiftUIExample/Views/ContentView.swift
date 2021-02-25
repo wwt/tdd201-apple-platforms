@@ -15,14 +15,14 @@ struct ContentView: View {
         case featured
         case list
     }
-
+    #warning("Need to test this with XCUITests")
     var body: some View {
         TabView(selection: $selection) {
-//            CategoryHome()
-//                .tabItem {
-//                    Label("Featured", systemImage: "star")
-//                }
-//                .tag(Tab.featured)
+            CategoryHome()
+                .tabItem {
+                    Label("Featured", systemImage: "star")
+                }
+                .tag(Tab.featured)
 
             LandmarkList()
                 .tabItem {

@@ -12,8 +12,6 @@ import ViewInspector
 
 @testable import SwiftUIExample
 
-extension LandmarkList: Inspectable { }
-
 class LandmarkListTests: XCTestCase {
 
     func testLandmarkListDisplaysTheThings() throws {
