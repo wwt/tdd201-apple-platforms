@@ -88,21 +88,24 @@ class NotesServiceTests: XCTestCase {
     }
 
     func testNotesServiceReturnsError_WhenGettingContentsOfFileThrowsError() throws {
-        Container.default.register(Foundation.FileManager.self) { _ in FileManager.default }
+        let mockFileManager = MockFileManager()
+        let mockEnumerator = MockDirectoryEnumerator()
+        let expectedUrl1 = notesURL.appendingPathComponent("test1.txt")
+        let expectedUrl2 = notesURL.appendingPathComponent("test2.txt")
         enum Err: Error {
             case e1
         }
-        let mockEnumerator = MockDirectoryEnumerator()
-        let expectedUrl1 = URL(fileURLWithPath: "User/user1/test1.txt")
-        let expectedUrl2 = URL(fileURLWithPath: "User/user1/test2.txt")
         stub(mockEnumerator) { (stub) in
             when(stub.nextObject())
-                .thenReturn(expectedUrl1)
-                .thenReturn(expectedUrl2)
+                .thenReturn(expectedUrl1.lastPathComponent)
+                .thenReturn(expectedUrl2.lastPathComponent)
                 .thenReturn(nil)
         }
-        Container.default.register(FileManager.DirectoryEnumerator.self,
-                                   name: notesURL.absoluteString) { _ in mockEnumerator }
+        stub(mockFileManager) { (stub) in
+            when(stub.urls(for: any(), in: any())).thenReturn([notesURL])
+            when(stub.enumerator(atPath: anyString())).thenReturn(mockEnumerator)
+        }
+        Container.default.register(Foundation.FileManager.self) { _ in mockFileManager }
         Container.default.register(Result<String, Error>.self, name: "ReadFromFile") {(_:Resolver, _: URL, _: String.Encoding) in
             .failure(Err.e1)
         }

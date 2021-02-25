@@ -14,8 +14,6 @@ class NotesService {
             .urls(for: .documentDirectory, in: .userDomainMask).first
     }
 
-//    @DependencyInjected(name: notesURL?.absoluteString) var directoryEnumerator: FileManager.DirectoryEnumerator?
-
     @DependencyInjected var fileManager: Foundation.FileManager?
 
     func save<N: NoteWriteable>(note: N) throws {
