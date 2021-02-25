@@ -1,0 +1,63 @@
+{
+  "consumer": {
+    "name": "ContractTesting-iOSApp"
+  },
+  "provider": {
+    "name": "UserService"
+  },
+  "interactions": [
+    {
+      "description": "A request for that user",
+      "providerState": "A user with id 1 does not exist",
+      "request": {
+        "method": "get",
+        "path": "/users/1"
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+        }
+      }
+    },
+    {
+      "description": "A request for that user",
+      "providerState": "A user with id 1 exists",
+      "request": {
+        "method": "get",
+        "path": "/users/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "name": "Pat",
+          "age": 30,
+          "email": "lethastehr7560@heidenreichjerde.net"
+        },
+        "matchingRules": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json(.*)?$"
+          },
+          "$.body.name": {
+            "match": "type"
+          },
+          "$.body.age": {
+            "match": "type"
+          },
+          "$.body.email": {
+            "match": "regex",
+            "regex": "(.*)@(.*)"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
