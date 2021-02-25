@@ -2,6 +2,53 @@ workspace 'TDD-201'
 
 inhibit_all_warnings!
 
+target 'ContractTesting' do
+  platform :ios, '11.0'
+  project 'ContractTesting/ContractTesting.xcodeproj'
+  use_frameworks!
+
+  target 'ContractTestingTests' do
+    pod 'OHHTTPStubs/Swift'
+    pod 'PactConsumerSwift'
+    pod 'Fakery'
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 target 'MockingFramework' do
   platform :ios, '11.0'
   project 'MockingFramework/MockingFramework.xcodeproj'
@@ -61,19 +108,6 @@ target 'CombineWithREST' do
     pod 'Cuckoo'
     pod 'Fakery'
     pod 'PactConsumerSwift'
-    pod 'UIUTest'
-  end
-end
-
-target 'ContractTesting' do
-  platform :ios, '11.0'
-  project 'ContractTesting/ContractTesting.xcodeproj'
-  use_frameworks!
-  
-  target 'ContractTestingTests' do
-    pod 'OHHTTPStubs/Swift'
-    pod 'PactConsumerSwift'
-    pod 'Fakery'
   end
 end
 

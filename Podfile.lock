@@ -20,12 +20,12 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (9.1.0)
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
-  - PactConsumerSwift (0.10.0)
-  - Realm (10.5.1):
-    - Realm/Headers (= 10.5.1)
-  - Realm/Headers (10.5.1)
-  - RealmSwift (10.5.1):
-    - Realm (= 10.5.1)
+  - PactConsumerSwift (0.10.1)
+  - Realm (10.6.0):
+    - Realm/Headers (= 10.6.0)
+  - Realm/Headers (10.6.0)
+  - RealmSwift (10.6.0):
+    - Realm (= 10.6.0)
   - SwiftLint (0.42.0)
   - Swinject (2.7.1)
   - UIUTest (1.7.0)
@@ -62,14 +62,14 @@ SPEC CHECKSUMS:
   Fakery: 8146918b8dd6df98564dca10cbe8bd05354b8cc4
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
-  PactConsumerSwift: af7bbf91a4f4bd3d251c8d8b2ac31e596ae61705
-  Realm: 77fcb4e0b9f2963ea06f584749a0d7dc9cab95e1
-  RealmSwift: 6abe6aa6cd8b70cc1a87afcb9232cabea74ff1ac
+  PactConsumerSwift: 270ad8b4e83f9d5b2692d7bbed8fdd6ef39e56f3
+  Realm: 1ef421d4581513400ad4f8bd39c8157f3266c62e
+  RealmSwift: f80216fb8334b01ccf526e4f2dd5ff0da61863a2
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   UIUTest: 260d9054e9a882389d9a28d0fe9987feb82a7e9b
   ViewInspector: 8917a1624002e865e13d6c4f30f7d6d60e7cfa7c
 
-PODFILE CHECKSUM: a8eb8181164d9078b3e1dc5e2b04fca90ecbb36c
+PODFILE CHECKSUM: 84d2932a23c82f9d0f91be94363c93abf037c83e
 
 COCOAPODS: 1.10.0

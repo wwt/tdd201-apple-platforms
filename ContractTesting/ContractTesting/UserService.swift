@@ -2,25 +2,32 @@
 //  UserService.swift
 //  ContractTesting
 //
-//  Created by thompsty on 1/21/21.
+//  Created by thompsty on 2/16/21.
 //
 
 import Foundation
 
 struct UserService {
-    enum UserServiceError: Error {
-        case apiBorked
-    }
+    var baseURL: String = "https://fake.api.com/"
 
-    var baseURLString = "https://api.fake.com"
-    func getUser(callback: @escaping (Result<SomeModel, Error>) -> Void) {
-        URLSession.shared.dataTask(with: URL(string: "\(baseURLString)/users/1")!) { (data, _, err) in
-            guard let data = data,
-                  let model = try? JSONDecoder().decode(SomeModel.self, from: data) else {
-                callback(.failure(err ?? UserServiceError.apiBorked))
-                return
+    func getUser(id: Int, callback: @escaping (Result<User, Error>) -> Void) {
+        guard let url = URL(string: "\(baseURL)/users/\(id)") else {
+            return
+        }
+        URLSession.shared.dataTask(with: url) { data, res, err in
+            if let res = res as? HTTPURLResponse,
+               res.statusCode == 404 {
+                callback(.failure(UserServiceError.notFound))
             }
-            callback(.success(model))
+            guard let data = data,
+                  let user = try? JSONDecoder().decode(User.self, from: data) else { return }
+            callback(.success(user))
         }.resume()
+    }
+}
+
+extension UserService {
+    enum UserServiceError: Error {
+        case notFound
     }
 }
