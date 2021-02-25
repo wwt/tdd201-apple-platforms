@@ -13,7 +13,8 @@ struct SwiftUIExampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            CategoryHome().environmentObject(modelData)
+            ContentView()
+                .environmentObject(modelData)
         }
     }
 }

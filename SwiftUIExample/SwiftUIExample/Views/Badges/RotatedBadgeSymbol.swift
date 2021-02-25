@@ -11,10 +11,9 @@ struct RotatedBadgeSymbol: View {
     let angle: Angle
 
     var body: some View {
-        EmptyView()
-//        BadgeSymbol()
-//            .padding(-60)
-//            .rotationEffect(angle, anchor: .bottom)
+        BadgeSymbol()
+            .padding(-60)
+            .rotationEffect(angle, anchor: .bottom)
     }
 }
 
