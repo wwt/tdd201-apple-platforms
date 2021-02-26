@@ -32,11 +32,11 @@ struct ProfileSummary: View {
                     ScrollView(.horizontal) {
                         HStack {
                             HikeBadge(name: "First Hike")
-//                            HikeBadge(name: "Earth Day")
-//                                .hueRotation(Angle(degrees: 90))
-//                            HikeBadge(name: "Tenth Hike")
-//                                .grayscale(0.5)
-//                                .hueRotation(Angle(degrees: 45))
+                            HikeBadge(name: "Earth Day")
+                                .hueRotation(Angle(degrees: 90))
+                            HikeBadge(name: "Tenth Hike")
+                                .grayscale(0.5)
+                                .hueRotation(Angle(degrees: 45))
                         }
                         .padding(.bottom)
                     }
@@ -45,10 +45,11 @@ struct ProfileSummary: View {
                 Divider()
 
                 VStack(alignment: .leading) {
-//                    Text("Recent Hikes")
-//                        .font(.headline)
-
-//                    HikeView(hike: modelData.hikes[0])
+                    Text("Recent Hikes")
+                        .font(.headline)
+                    if let hike = modelData.hikes.first {
+                        HikeView(hike: hike)
+                    }
                 }
             }
             .padding()

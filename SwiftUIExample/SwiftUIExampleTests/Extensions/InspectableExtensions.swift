@@ -37,6 +37,7 @@ extension HikeView: Inspectable { }
 
 extension ProfileEditor: Inspectable { }
 extension ProfileSummary: Inspectable { }
+extension ProfileHost: Inspectable { }
 
 extension Badge: Inspectable { }
 extension MapView: Inspectable { }

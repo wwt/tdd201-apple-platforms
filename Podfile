@@ -14,41 +14,6 @@ target 'ContractTesting' do
   end
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 target 'MockingFramework' do
   platform :ios, '11.0'
   project 'MockingFramework/MockingFramework.xcodeproj'
