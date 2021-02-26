@@ -17,6 +17,9 @@ import ViewInspector
  TabView - select tab
  DatePicker - selection and date range
  Formatted Date text
+ Private @State
+ EnvironmentObjects in child views
+ toolbar 
  */
 
 extension Inspection: InspectionEmissary where V: Inspectable { }
