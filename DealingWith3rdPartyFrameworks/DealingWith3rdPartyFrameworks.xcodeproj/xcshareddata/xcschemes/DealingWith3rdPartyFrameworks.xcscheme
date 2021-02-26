@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CAA1C41625A389F400E3F686"
+               BuildableName = "DealingWith3rdPartyFrameworksTests.xctest"
+               BlueprintName = "DealingWith3rdPartyFrameworksTests"
+               ReferencedContainer = "container:DealingWith3rdPartyFrameworks.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

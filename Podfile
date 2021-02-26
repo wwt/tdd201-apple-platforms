@@ -112,6 +112,10 @@ target 'SwiftUIExample' do
     pod 'ViewInspector'
     pod 'Fakery'
   end
+
+  target 'SwiftUIExampleUITests' do
+    pod 'Swinject'
+  end
 end
 
 target 'MutationTesting' do

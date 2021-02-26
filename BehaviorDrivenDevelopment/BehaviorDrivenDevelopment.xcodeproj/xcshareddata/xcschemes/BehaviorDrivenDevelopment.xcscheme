@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CAA1C55C25A38B0E00E3F686"
+               BuildableName = "BehaviorDrivenDevelopmentUITests.xctest"
+               BlueprintName = "BehaviorDrivenDevelopmentUITests"
+               ReferencedContainer = "container:BehaviorDrivenDevelopment.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CAA1C55125A38B0E00E3F686"
+               BuildableName = "BehaviorDrivenDevelopmentTests.xctest"
+               BlueprintName = "BehaviorDrivenDevelopmentTests"
+               ReferencedContainer = "container:BehaviorDrivenDevelopment.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
