@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CategoryHome: View {
     @EnvironmentObject var modelData: ModelData
+    @State private var showingProfile = false
     internal let inspection = Inspection<Self>()
 
     var body: some View {
@@ -25,7 +26,19 @@ struct CategoryHome: View {
                     CategoryRow(categoryName: $0.element.key, items: $0.element.value)
                 }
                 .listRowInsets(EdgeInsets())
-            }.navigationTitle("Featured")
+            }
+            .navigationTitle("Featured")
+            .toolbar {
+                #warning("Toolbars can't be tested and environment objects are evil")
+                Button(action: { showingProfile.toggle() }) {
+                    Image(systemName: "person.crop.circle")
+                        .accessibilityLabel("User Profile")
+                }
+            }
+            .sheet(isPresented: $showingProfile) {
+                ProfileHost()
+                    .environmentObject(modelData)
+            }
         }
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }
