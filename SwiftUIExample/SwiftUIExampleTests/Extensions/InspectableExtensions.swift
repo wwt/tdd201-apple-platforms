@@ -11,7 +11,6 @@ import ViewInspector
 @testable import SwiftUIExample
 #warning("Not tested list")
 /*
- Navigation Title
  Map
  GeometryReader - Proxy
  TabView - select tab
