@@ -39,6 +39,7 @@
 		0011EB5825E8340A00E48AE8 /* ProfileEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EB5725E8340A00E48AE8 /* ProfileEditorTests.swift */; };
 		0011EB9625E8506B00E48AE8 /* ProfileSummaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EB9525E8506B00E48AE8 /* ProfileSummaryTests.swift */; };
 		0011EB9A25E8625E00E48AE8 /* ProfileHostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011EB9925E8625E00E48AE8 /* ProfileHostTests.swift */; };
+		0011EBF125E87FFB00E48AE8 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0011EBF025E87FFA00E48AE8 /* LICENSE.txt */; };
 		002D474425E057C2000525C3 /* CategoryHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D474325E057C2000525C3 /* CategoryHomeTests.swift */; };
 		002D474825E05C45000525C3 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D474725E05C45000525C3 /* Landmark.swift */; };
 		002D474C25E05D7E000525C3 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D474B25E05D7E000525C3 /* ModelData.swift */; };
@@ -108,6 +109,7 @@
 		0011EB5725E8340A00E48AE8 /* ProfileEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorTests.swift; sourceTree = "<group>"; };
 		0011EB9525E8506B00E48AE8 /* ProfileSummaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSummaryTests.swift; sourceTree = "<group>"; };
 		0011EB9925E8625E00E48AE8 /* ProfileHostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHostTests.swift; sourceTree = "<group>"; };
+		0011EBF025E87FFA00E48AE8 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		002D474325E057C2000525C3 /* CategoryHomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeTests.swift; sourceTree = "<group>"; };
 		002D474725E05C45000525C3 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 		002D474B25E05D7E000525C3 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -249,6 +251,14 @@
 			path = Badges;
 			sourceTree = "<group>";
 		};
+		0011EBEF25E87FB300E48AE8 /* LICENSE */ = {
+			isa = PBXGroup;
+			children = (
+				0011EBF025E87FFA00E48AE8 /* LICENSE.txt */,
+			);
+			path = LICENSE;
+			sourceTree = "<group>";
+		};
 		002D473E25E057B3000525C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +384,7 @@
 		CA45048125B79A7800153FC4 = {
 			isa = PBXGroup;
 			children = (
+				0011EBEF25E87FB300E48AE8 /* LICENSE */,
 				CA45048C25B79A7800153FC4 /* SwiftUIExample */,
 				CA45049E25B79A7900153FC4 /* SwiftUIExampleTests */,
 				CA45048B25B79A7800153FC4 /* Products */,
@@ -521,6 +532,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0011EBF125E87FFB00E48AE8 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

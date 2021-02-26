@@ -1,9 +1,9 @@
-//
-//  Hike.swift
-//  SwiftUIExample
-//
-//  Created by Heather Meadow on 2/19/21.
-//
+/*
+See LICENSE folder for this sample’s licensing information.
+
+Abstract:
+A representation of a hike.
+*/
 
 import Foundation
 
