@@ -5,7 +5,6 @@ Abstract:
 A view showing a scrollable list of landmarks.
 */
 
-
 import Foundation
 import SwiftUI
 
@@ -27,5 +26,16 @@ struct CategoryRow: View {
                 }
             }.frame(height: 185)
         }
+    }
+}
+
+struct CategoryRow_Previews: PreviewProvider {
+    static var landmarks = ModelData().landmarks
+
+    static var previews: some View {
+        CategoryRow(
+            categoryName: landmarks[0].category.rawValue,
+            items: Array(landmarks.prefix(4))
+        )
     }
 }

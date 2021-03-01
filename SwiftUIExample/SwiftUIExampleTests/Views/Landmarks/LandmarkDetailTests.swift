@@ -9,12 +9,18 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class LandmarkDetailTests: XCTestCase {
 
-    override func setUpWithError() throws {
+    func testUILooksAsExpected() throws {
+        let modelData = ModelData()
+        let view = LandmarkDetail(landmark: modelData.landmarks[1]).environmentObject(modelData)
+        throw XCTSkip()
+        assertSnapshot(matching: view, as: .image(precision: 0.99), record: true)
+        XCTFail("Snapshot not working as expected")
 
     }
 

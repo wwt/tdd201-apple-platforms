@@ -9,10 +9,22 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class HikeGraphTests: XCTestCase {
+    
+    func testUILooksAsExpected() throws {
+        let expectedHike = try getHikes().first!
+        let observationKeyPath: KeyPath<Hike.Observation, Range<Double>> = \.elevation
+
+        let view = HikeGraph(hike: expectedHike, path: observationKeyPath)
+        throw XCTSkip()
+        assertSnapshot(matching: view, as: .image(precision: 0.99), record: true)
+        XCTFail("Snapshot not working as expected")
+
+    }
 
     func testHikeGraph() throws {
         let expectedHike = try getHikes().first!

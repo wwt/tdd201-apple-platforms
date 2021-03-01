@@ -9,12 +9,18 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 extension FavoriteButton: Inspectable { }
 
 class FavoriteButtonTests: XCTestCase {
+
+    func testUILooksAsExpected() throws {
+        let view = FavoriteButton(isSet: Binding<Bool>(wrappedValue: true))
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
+    }
 
     func testFavoriteButtonNotSetIsDisplayedCorrectly() throws {
         let expectedImage = Image(systemName: "star")

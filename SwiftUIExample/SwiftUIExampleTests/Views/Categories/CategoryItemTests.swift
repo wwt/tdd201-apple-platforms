@@ -9,12 +9,19 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 extension CategoryItem: Inspectable { }
 
 class CategoryItemTests: XCTestCase {
+
+    func testUILooksAsExpected() throws {
+        let landmark = try JSONDecoder().decode([Landmark].self, from: Self.landmark).first!
+        let view = CategoryItem(landmark: landmark)
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
+    }
 
     func testCategoryItemDisplaysCategoryNameWithLandmarks() throws {
         let landmark = try JSONDecoder().decode([Landmark].self, from: Self.landmark).first!

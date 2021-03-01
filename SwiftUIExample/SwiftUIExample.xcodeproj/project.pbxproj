@@ -63,6 +63,11 @@
 		002D488F25E43578000525C3 /* CircleImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D488E25E43578000525C3 /* CircleImageTests.swift */; };
 		002D489525E43AC2000525C3 /* FavoriteButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D489425E43AC2000525C3 /* FavoriteButtonTests.swift */; };
 		0038EB1825ED6150000BE4B4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0038EB0C25ED607A000BE4B4 /* StringExtensions.swift */; };
+		0038EBD125ED7B9C000BE4B4 /* MapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0038EBD025ED7B9C000BE4B4 /* MapViewTests.swift */; };
+		0038EBD625ED7C3E000BE4B4 /* BadgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0038EBD525ED7C3E000BE4B4 /* BadgeTests.swift */; };
+		0038EBDB25ED7C8D000BE4B4 /* BadgeBackgroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0038EBDA25ED7C8D000BE4B4 /* BadgeBackgroundTests.swift */; };
+		0038EBE025ED7CB9000BE4B4 /* BadgeSymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0038EBDF25ED7CB9000BE4B4 /* BadgeSymbolTests.swift */; };
+		0038EBE525ED7CE4000BE4B4 /* RotatedBadgeSymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0038EBE425ED7CE4000BE4B4 /* RotatedBadgeSymbolTests.swift */; };
 		0A950C9F5DD37D53DCA75612 /* Pods_SwiftUIExample_SwiftUIExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA850DC8186F668A5BD2821 /* Pods_SwiftUIExample_SwiftUIExampleUITests.framework */; };
 		BBB9738EC168E1F562E76E6C /* Pods_SwiftUIExample_SwiftUIExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E0F83637ED7E88C374F551 /* Pods_SwiftUIExample_SwiftUIExampleTests.framework */; };
 		CA45048E25B79A7800153FC4 /* SwiftUIExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45048D25B79A7800153FC4 /* SwiftUIExampleApp.swift */; };
@@ -148,6 +153,11 @@
 		002D488E25E43578000525C3 /* CircleImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageTests.swift; sourceTree = "<group>"; };
 		002D489425E43AC2000525C3 /* FavoriteButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonTests.swift; sourceTree = "<group>"; };
 		0038EB0C25ED607A000BE4B4 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		0038EBD025ED7B9C000BE4B4 /* MapViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewTests.swift; sourceTree = "<group>"; };
+		0038EBD525ED7C3E000BE4B4 /* BadgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTests.swift; sourceTree = "<group>"; };
+		0038EBDA25ED7C8D000BE4B4 /* BadgeBackgroundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeBackgroundTests.swift; sourceTree = "<group>"; };
+		0038EBDF25ED7CB9000BE4B4 /* BadgeSymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeSymbolTests.swift; sourceTree = "<group>"; };
+		0038EBE425ED7CE4000BE4B4 /* RotatedBadgeSymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatedBadgeSymbolTests.swift; sourceTree = "<group>"; };
 		007EDD75F4DC2A86B7F6FD29 /* Pods_SwiftUIExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2366CC911CCCCFC440315435 /* Pods-SwiftUIExample-SwiftUIExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIExample-SwiftUIExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIExample-SwiftUIExampleUITests/Pods-SwiftUIExample-SwiftUIExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		37161F9B33000965D279ACAA /* Pods-SwiftUIExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIExample.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIExample/Pods-SwiftUIExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -278,6 +288,10 @@
 			isa = PBXGroup;
 			children = (
 				0011EB4D25E8309100E48AE8 /* HikeBadgeTests.swift */,
+				0038EBD525ED7C3E000BE4B4 /* BadgeTests.swift */,
+				0038EBDA25ED7C8D000BE4B4 /* BadgeBackgroundTests.swift */,
+				0038EBDF25ED7CB9000BE4B4 /* BadgeSymbolTests.swift */,
+				0038EBE425ED7CE4000BE4B4 /* RotatedBadgeSymbolTests.swift */,
 			);
 			path = Badges;
 			sourceTree = "<group>";
@@ -416,6 +430,7 @@
 			children = (
 				002D488E25E43578000525C3 /* CircleImageTests.swift */,
 				002D489425E43AC2000525C3 /* FavoriteButtonTests.swift */,
+				0038EBD025ED7B9C000BE4B4 /* MapViewTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -857,16 +872,20 @@
 				002D474425E057C2000525C3 /* CategoryHomeTests.swift in Sources */,
 				0011EB5825E8340A00E48AE8 /* ProfileEditorTests.swift in Sources */,
 				0011EACA25E561F700E48AE8 /* HikeGraphTests.swift in Sources */,
+				0038EBD125ED7B9C000BE4B4 /* MapViewTests.swift in Sources */,
 				0011EB9A25E8625E00E48AE8 /* ProfileHostTests.swift in Sources */,
+				0038EBE525ED7CE4000BE4B4 /* RotatedBadgeSymbolTests.swift in Sources */,
 				002D488F25E43578000525C3 /* CircleImageTests.swift in Sources */,
 				0011EAD225E5955200E48AE8 /* HikeViewTests.swift in Sources */,
 				0011EAE125E7FD8300E48AE8 /* InspectableViewExtensions.swift in Sources */,
 				002D480925E06F46000525C3 /* CategoryRowTests.swift in Sources */,
 				0011EB5425E8319100E48AE8 /* InspectableExtensions.swift in Sources */,
 				0011EB4E25E8309200E48AE8 /* HikeBadgeTests.swift in Sources */,
+				0038EBDB25ED7C8D000BE4B4 /* BadgeBackgroundTests.swift in Sources */,
 				0011E9C125E45FD400E48AE8 /* LandmarkListTests.swift in Sources */,
 				002D486125E081F7000525C3 /* CategoryItemTests.swift in Sources */,
 				0011EAD725E595B900E48AE8 /* ViewHostingExtension.swift in Sources */,
+				0038EBD625ED7C3E000BE4B4 /* BadgeTests.swift in Sources */,
 				002D489525E43AC2000525C3 /* FavoriteButtonTests.swift in Sources */,
 				0011EB2C25E80AE300E48AE8 /* ContentViewTests.swift in Sources */,
 				0011EB9625E8506B00E48AE8 /* ProfileSummaryTests.swift in Sources */,
@@ -874,6 +893,7 @@
 				CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */,
 				0011EA8E25E5588D00E48AE8 /* GraphCapsuleTests.swift in Sources */,
 				0011E9C525E45FE000E48AE8 /* LandmarkRowTests.swift in Sources */,
+				0038EBE025ED7CB9000BE4B4 /* BadgeSymbolTests.swift in Sources */,
 				0011EACE25E5701B00E48AE8 /* HikeDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

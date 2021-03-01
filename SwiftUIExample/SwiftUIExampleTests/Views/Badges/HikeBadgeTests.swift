@@ -9,10 +9,16 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class HikeBadgeTests: XCTestCase {
+
+    func testUILooksAsExpected() throws {
+        let view = HikeBadge(name: "name")
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
+    }
 
     func testHikeBadge() throws {
         let expectedName = "Charley"

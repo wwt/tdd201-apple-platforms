@@ -9,10 +9,16 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class CategoryHomeTests: XCTestCase {
+
+    func testUILooksAsExpected() throws {
+        let view = CategoryHome().environmentObject(ModelData())
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
+    }
 
     func testCategoryHomeHasNavigationView() throws {
         let exp = ViewHosting.loadView(CategoryHome(), data: ModelData()).inspection.inspect { (view) in

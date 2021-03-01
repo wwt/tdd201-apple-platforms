@@ -9,6 +9,7 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
@@ -16,8 +17,10 @@ extension CircleImage: Inspectable { }
 
 class CircleImageTests: XCTestCase {
 
-    override func setUpWithError() throws {
-
+    func testUILooksAsExpected() throws {
+        let expectedImage = Image("turtlerock")
+        let view = CircleImage(image: expectedImage)
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
     }
 
     func testCircleImageDisplaysImageCorrectly() throws {
