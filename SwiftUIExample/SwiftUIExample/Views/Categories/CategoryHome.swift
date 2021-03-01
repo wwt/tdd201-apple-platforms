@@ -27,6 +27,7 @@ struct CategoryHome: View {
                 }
                 .listRowInsets(EdgeInsets())
             }
+            .padding(1)
             .navigationTitle("Featured")
             .toolbar {
                 #warning("Toolbars can't be tested and environment objects are evil")

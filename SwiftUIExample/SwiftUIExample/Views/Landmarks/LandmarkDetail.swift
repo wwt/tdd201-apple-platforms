@@ -52,3 +52,12 @@ struct LandmarkDetail: View {
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }
 }
+
+struct LandmarkDetail_Previews: PreviewProvider {
+    static let modelData = ModelData()
+
+    static var previews: some View {
+        LandmarkDetail(landmark: modelData.landmarks[1])
+            .environmentObject(modelData)
+    }
+}

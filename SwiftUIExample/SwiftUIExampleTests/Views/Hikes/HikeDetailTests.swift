@@ -9,10 +9,19 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class HikeDetailTests: XCTestCase {
+
+    func testUILooksAsExpected() throws {
+        let hike = try getHikes().first!
+        let view = HikeDetail(hike: hike)
+        throw XCTSkip()
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
+        XCTFail("Snapshot not working as expected")
+    }
 
     func testHikeDetail() throws {
         let hike = try getHikes().first!

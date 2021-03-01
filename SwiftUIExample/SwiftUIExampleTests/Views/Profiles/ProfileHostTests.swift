@@ -10,10 +10,22 @@ import XCTest
 import SwiftUI
 import Fakery
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class ProfileHostTests: XCTestCase {
+    func testUILooksAsExpected() throws {
+        let expectedProfile = Profile(username: "user1",
+                                      prefersNotifications: true,
+                                      seasonalPhoto: .autumn,
+                                      goalDate: Date(timeIntervalSince1970: 1614627432))
+        let modelData = ModelData()
+        modelData.profile = expectedProfile
+        let view = ProfileHost().environmentObject(modelData)
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
+    }
+
     func testProfileHostActiveEditMode() throws {
         let bindingEditMode = Binding<EditMode>(wrappedValue: .active)
         let expectedProfile = Profile(username: "not the default username")

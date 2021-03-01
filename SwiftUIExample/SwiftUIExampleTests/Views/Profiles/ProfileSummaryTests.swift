@@ -10,10 +10,19 @@ import XCTest
 import SwiftUI
 import Fakery
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class ProfileSummaryTests: XCTestCase {
+
+    func testUILooksAsExpected() throws {
+        let view = ProfileSummary(profile: Profile.default).environmentObject(ModelData())
+        throw XCTSkip()
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
+        XCTFail("Snapshot not working as expected")
+    }
+    
     func testProfileSummary() throws {
         let expectedProfile = Profile(username: Faker().internet.username(),
                                       prefersNotifications: true,

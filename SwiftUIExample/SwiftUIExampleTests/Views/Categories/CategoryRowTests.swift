@@ -9,10 +9,20 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class CategoryRowTests: XCTestCase {
+
+    func testUILooksAsExpected() throws {
+        let landmarks = ModelData().landmarks
+        let view = CategoryRow(categoryName: landmarks[0].category.rawValue,
+                               items: Array(landmarks.prefix(4)))
+        throw XCTSkip()
+        assertSnapshot(matching: view, as: .image(precision: 0.99), record: true)
+        XCTFail("Snapshot not working as expected")
+    }
 
     func testCategoryRowDisplaysCategoryNameWithLandmarks() throws {
         let landmarksData =  try JSONDecoder().decode([Landmark].self, from: Self.mountainLandmarks)
@@ -33,6 +43,7 @@ class CategoryRowTests: XCTestCase {
     }
 }
 
+#warning("maybe don't do this")
 extension CategoryRowTests {
     // swiftlint:disable line_length
     static let mountainLandmarks = Data("""

@@ -9,13 +9,16 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class LandmarkRowTests: XCTestCase {
 
-    override func setUpWithError() throws {
-
+    func testUILooksAsExpected() throws {
+        let modelData = ModelData()
+        let view = LandmarkRow(landmark: modelData.landmarks.first!)
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
     }
 
     func testFavoriteLandmarkRowDisplaysLandmarkWithStar() throws {

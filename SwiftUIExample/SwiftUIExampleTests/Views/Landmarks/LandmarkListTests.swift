@@ -9,10 +9,16 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
+import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class LandmarkListTests: XCTestCase {
+
+    func testUILooksAsExpected() throws {
+        let view = LandmarkList().environmentObject(ModelData())
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
+    }
 
     func testLandmarkListDisplaysTheThings() throws {
         let file = Bundle.main.url(forResource: "landmarkData", withExtension: "json")!

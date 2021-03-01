@@ -26,6 +26,7 @@ PODS:
   - Realm/Headers (10.6.0)
   - RealmSwift (10.6.0):
     - Realm (= 10.6.0)
+  - SnapshotTesting (1.8.2)
   - SwiftLint (0.42.0)
   - Swinject (2.7.1)
   - UIUTest (1.7.0)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - OHHTTPStubs/Swift
   - PactConsumerSwift
   - RealmSwift
+  - SnapshotTesting (~> 1.8.1)
   - SwiftLint
   - Swinject
   - UIUTest
@@ -52,6 +54,7 @@ SPEC REPOS:
     - PactConsumerSwift
     - Realm
     - RealmSwift
+    - SnapshotTesting
     - SwiftLint
     - Swinject
     - UIUTest
@@ -65,11 +68,12 @@ SPEC CHECKSUMS:
   PactConsumerSwift: 270ad8b4e83f9d5b2692d7bbed8fdd6ef39e56f3
   Realm: 1ef421d4581513400ad4f8bd39c8157f3266c62e
   RealmSwift: f80216fb8334b01ccf526e4f2dd5ff0da61863a2
+  SnapshotTesting: 38947050d13960d57a4a9c166fcf51bca7d56970
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   UIUTest: 260d9054e9a882389d9a28d0fe9987feb82a7e9b
   ViewInspector: 8917a1624002e865e13d6c4f30f7d6d60e7cfa7c
 
-PODFILE CHECKSUM: d59cdeb67faff38fa9d2ea484b2c0ac99615fef2
+PODFILE CHECKSUM: 154a64514dd4e3ccf8511724f8505a52083c5f4f
 
 COCOAPODS: 1.10.1
