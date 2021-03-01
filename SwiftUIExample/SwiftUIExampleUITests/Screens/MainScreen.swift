@@ -30,6 +30,10 @@ struct LandmarkDetailScreen {
     var isVisible: Bool {
         XCUIApplication.current.navigationBars.firstMatch.identifier == landmark.rawValue
     }
+
+    var hasMap: Bool {
+        XCUIApplication.current.maps.firstMatch.exists
+    }
 }
 
 enum FeaturedScreen {
@@ -52,11 +56,26 @@ enum ProfileScreen {
     static var isVisible: Bool {
         XCUIApplication.current.staticTexts["g_kumar"].exists
     }
+
+    static var goalDateFormatted: Bool {
+        let goalDatePredicate = NSPredicate(format: "label BEGINSWITH 'Goal Date: '")
+        let goalDateLabel = XCUIApplication.current.staticTexts.element(matching: goalDatePredicate)
+        let dateString = goalDateLabel.label.matches(for: "^Goal Date: (.*)$").last ?? ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+
+        return goalDateLabel.exists && dateFormatter.date(from: dateString) != nil
+    }
 }
 
 enum LandmarksScreen {
     static var isVisible: Bool {
         XCUIApplication.current.navigationBars.firstMatch.identifier == "Landmarks"
+    }
+
+    @discardableResult static func goToLandmark(_ landmark: Landmarks) -> LandmarkDetailScreen {
+        XCUIApplication.current.tables.buttons[landmark.rawValue].tap()
+        return LandmarkDetailScreen(landmark: landmark)
     }
 }
 
