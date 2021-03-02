@@ -14,8 +14,8 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class HikeBadgeTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = HikeBadge(name: "name")
         assertSnapshot(matching: view, as: .image(precision: 0.99))
     }

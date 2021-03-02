@@ -15,7 +15,8 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class ProfileHostTests: XCTestCase {
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let expectedProfile = Profile(username: "user1",
                                       prefersNotifications: true,
                                       seasonalPhoto: .autumn,

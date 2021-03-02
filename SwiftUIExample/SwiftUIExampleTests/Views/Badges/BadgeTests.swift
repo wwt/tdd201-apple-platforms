@@ -13,8 +13,8 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class BadgeTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = Badge()
         assertSnapshot(matching: view, as: .image(precision: 0.99))
     }

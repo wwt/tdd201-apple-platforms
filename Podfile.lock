@@ -39,7 +39,7 @@ DEPENDENCIES:
   - OHHTTPStubs/Swift
   - PactConsumerSwift
   - RealmSwift
-  - SnapshotTesting (~> 1.8.1)
+  - SnapshotTesting
   - SwiftLint
   - Swinject
   - UIUTest
@@ -74,6 +74,6 @@ SPEC CHECKSUMS:
   UIUTest: 260d9054e9a882389d9a28d0fe9987feb82a7e9b
   ViewInspector: 8917a1624002e865e13d6c4f30f7d6d60e7cfa7c
 
-PODFILE CHECKSUM: 154a64514dd4e3ccf8511724f8505a52083c5f4f
+PODFILE CHECKSUM: 5a1c6381ded0702e8df78269cfb0f3bef76bebe4
 
 COCOAPODS: 1.10.1

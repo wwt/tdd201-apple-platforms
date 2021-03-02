@@ -13,9 +13,8 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class BadgeBackgroundTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
-        let view = BadgeBackground()
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
+        assertSnapshot(matching: BadgeBackground(), as: .image(drawHierarchyInKeyWindow: true, precision: 0.99))
     }
 }

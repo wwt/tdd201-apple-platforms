@@ -16,8 +16,8 @@ import SnapshotTesting
 extension CategoryItem: Inspectable { }
 
 class CategoryItemTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let landmark = try JSONDecoder().decode([Landmark].self, from: Self.landmark).first!
         let view = CategoryItem(landmark: landmark)
         assertSnapshot(matching: view, as: .image(precision: 0.99))

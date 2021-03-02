@@ -16,8 +16,8 @@ import SnapshotTesting
 extension FavoriteButton: Inspectable { }
 
 class FavoriteButtonTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = FavoriteButton(isSet: Binding<Bool>(wrappedValue: true))
         assertSnapshot(matching: view, as: .image(precision: 0.99))
     }

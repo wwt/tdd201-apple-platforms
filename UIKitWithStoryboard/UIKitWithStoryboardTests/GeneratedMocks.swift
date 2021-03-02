@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-02-25 18:27:06 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboard/Protocols/FileWriteable.swift at 2021-03-02 17:15:11 +0000
 
 //
 //  FileWriteable.swift
@@ -103,7 +103,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboard/Services/NotesService.swift at 2021-02-25 18:27:06 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboard/Services/NotesService.swift at 2021-03-02 17:15:11 +0000
 
 //
 //  NotesService.swift
@@ -313,7 +313,7 @@ import Swinject
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-02-25 18:27:06 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockDirectoryEnumerator.swift at 2021-03-02 17:15:11 +0000
 
 //
 //  MockDirectoryEnumerator.swift
@@ -418,7 +418,7 @@ import Foundation
 }
 
 
-// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockFileManager.swift at 2021-02-25 18:27:06 +0000
+// MARK: - Mocks generated from file: UIKitWithStoryboardTests/Mocks/MockFileManager.swift at 2021-03-02 17:15:11 +0000
 
 //
 //  MockFileManager.swift
