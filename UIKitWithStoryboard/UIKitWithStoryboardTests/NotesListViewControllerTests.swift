@@ -50,13 +50,11 @@ class NotesListViewControllerTests: XCTestCase {
     }
 
     func testTableViewContainsNotes() throws {
-        let mockNotesService = MockNotesService()
         let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
                              Note(name: "note2", contents: UUID().uuidString)]
-        stub(mockNotesService) { (stub) in
+        MockNotesService().stub { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
-        }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
+        }.registerIn(Container.default)
         let viewController = try getViewController()
 
         XCTAssertNotNil(viewController.tableView, "Expected to get a tableview from the view controller")
@@ -66,14 +64,12 @@ class NotesListViewControllerTests: XCTestCase {
     }
 
     func testSelectNoteGoesToDetails() throws {
-        let mockNotesService = MockNotesService()
         let expectedNote = Note(name: "note1", contents: UUID().uuidString)
         let expectedNotes = [expectedNote,
                              Note(name: "note2", contents: UUID().uuidString)]
-        stub(mockNotesService) { (stub) in
+        MockNotesService().stub { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
-        }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
+        }.registerIn(Container.default)
         let viewController = UIViewController.loadFromStoryboard(identifier: Identifiers.storyboard, forNavigation: true)!
         let index = IndexPath(row: 0, section: 0)
 
@@ -90,15 +86,13 @@ class NotesListViewControllerTests: XCTestCase {
     }
 
     func testUserCanAddANote() throws {
-        let mockNotesService = MockNotesService()
         let expectedNote = Note(name: "note1", contents: UUID().uuidString)
         let expectedNotes = [expectedNote,
                              Note(name: "note2", contents: UUID().uuidString)]
-        stub(mockNotesService) { (stub) in
+        let mockNotesService = MockNotesService().stub { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.save(note: any(Note.self))).thenDoNothing()
-        }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
+        }.registerIn(Container.default)
         let viewController = try getViewController()
 
         viewController.addButton?.simulateTouch()
@@ -114,13 +108,11 @@ class NotesListViewControllerTests: XCTestCase {
     }
 
     func testWhenUserAddsNote_TheNameIsUnique() throws {
-        let mockNotesService = MockNotesService()
         let expectedNotes = [Note(name: "note2", contents: UUID().uuidString)]
-        stub(mockNotesService) { (stub) in
+        let mockNotesService = MockNotesService().stub { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.save(note: any(Note.self))).thenDoNothing()
-        }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
+        }.registerIn(Container.default)
         let viewController = try getViewController()
 
         viewController.addButton?.simulateTouch()
@@ -135,13 +127,11 @@ class NotesListViewControllerTests: XCTestCase {
         enum Err: Error {
             case e1
         }
-        let mockNotesService = MockNotesService()
         let expectedNotes = [Note(name: "note2", contents: UUID().uuidString)]
-        stub(mockNotesService) { (stub) in
+        let mockNotesService = MockNotesService().stub { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.save(note: any(Note.self))).thenThrow(Err.e1)
-        }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
+        }.registerIn(Container.default)
         let viewController = try getViewController()
 
         viewController.addButton?.simulateTouch()
@@ -162,16 +152,14 @@ class NotesListViewControllerTests: XCTestCase {
     }
 
     func testWhenUserDeletesNote_UserIsPresentedConfirmModal() throws {
-        let mockNotesService = MockNotesService()
         let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
                              Note(name: "note2", contents: UUID().uuidString),
                              Note(name: "note3", contents: UUID().uuidString)]
         let expectedIndexPath = IndexPath(row: 1, section: 0)
-        stub(mockNotesService) { (stub) in
+        let mockNotesService = MockNotesService().stub { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
-        }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
+        }.registerIn(Container.default)
         let viewController = try getViewController()
         let tableView = viewController.tableView
 
@@ -194,17 +182,15 @@ class NotesListViewControllerTests: XCTestCase {
     }
 
     func testWhenUserDeletesNote_UserConfirmsDelete() throws {
-        let mockNotesService = MockNotesService()
         let note2 = Note(name: "note2", contents: UUID().uuidString)
         let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
                              note2,
                              Note(name: "note3", contents: UUID().uuidString)]
         let expectedIndexPath = IndexPath(row: 1, section: 0)
-        stub(mockNotesService) { (stub) in
+        let mockNotesService = MockNotesService().stub { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
-        }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
+        }.registerIn(Container.default)
         let viewController = try getViewController()
         let tableView = viewController.tableView
 
@@ -234,17 +220,15 @@ class NotesListViewControllerTests: XCTestCase {
     }
 
     func testWhenUserDeletesNote_UserConfirmsDeleteWithCorrectMethod() throws {
-        let mockNotesService = MockNotesService()
         let note = Note(name: "note2", contents: UUID().uuidString)
         let expectedIndexPath = IndexPath(row: 0, section: 0)
-        stub(mockNotesService) { (stub) in
+        MockNotesService().stub { (stub) in
             when(stub.getNotes()).thenReturn(.success([note]))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
-        }
+        }.registerIn(Container.default)
         let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
             stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
         }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
         let viewController = try getViewController()
 
         // Act
@@ -261,20 +245,18 @@ class NotesListViewControllerTests: XCTestCase {
     }
 
     func testWhenUserDeletesNote_UserCancelsDelete() throws {
-        let mockNotesService = MockNotesService()
         let note2 = Note(name: "note2", contents: UUID().uuidString)
         let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
                              note2,
                              Note(name: "note3", contents: UUID().uuidString)]
         let expectedIndexPath = IndexPath(row: 1, section: 0)
-        stub(mockNotesService) { (stub) in
+        let mockNotesService = MockNotesService().stub { stub in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
-        }
+        }.registerIn(Container.default)
         let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
             stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
         }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
         let viewController = try getViewController()
 
         // Act
@@ -299,16 +281,14 @@ class NotesListViewControllerTests: XCTestCase {
         enum Err: Error {
             case e1
         }
-        let mockNotesService = MockNotesService()
         let expectedNotes = [Note(name: "note1", contents: UUID().uuidString),
                              Note(name: "note2", contents: UUID().uuidString),
                              Note(name: "note3", contents: UUID().uuidString)]
         let expectedIndexPath = IndexPath(row: 1, section: 0)
-        stub(mockNotesService) { (stub) in
+        let mockNotesService = MockNotesService().stub { stub in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenThrow(Err.e1)
-        }
-        Container.default.register(NotesService.self) { _ in mockNotesService }
+        }.registerIn(Container.default)
         let viewController = try getViewController()
 
         let tableView = viewController.tableView

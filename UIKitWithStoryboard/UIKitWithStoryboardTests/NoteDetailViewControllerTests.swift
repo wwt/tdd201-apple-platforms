@@ -53,11 +53,9 @@ class NoteDetailViewControllerTests: XCTestCase {
     func testNoteContentsAreSavedWhenUserNavigatesBack() throws {
         let note = Note(name: "Note 1", contents: "")
         let expectedContents = Faker().lorem.paragraphs()
-        let mock = MockNotesService()
-        stub(mock) { (stub) in
+        let mock = MockNotesService().stub { (stub) in
             when(stub.save(note: any(Note.self))).thenDoNothing()
-        }
-        Container.default.register(NotesService.self) { _ in mock }
+        }.registerIn(Container.default)
         let viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: Identifier.storyboard)
         (viewController as? NoteDetailViewController)?.note = note
         let navController = UINavigationController(rootViewController: UIViewController())
