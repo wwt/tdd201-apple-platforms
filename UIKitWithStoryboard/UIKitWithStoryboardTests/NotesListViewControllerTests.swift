@@ -15,11 +15,19 @@ import Cuckoo
 
 class NotesListViewControllerTests: XCTestCase {
     override func setUpWithError() throws {
-        Container.default.removeAll()
         UIView.setAnimationsEnabled(false)
-        UIViewController.initializeTestable()
+
+        Container.default.removeAll()
         UIViewController.flushPendingTestArtifacts()
         UIViewController().loadForTesting()
+    }
+
+    override func tearDownWithError() throws {
+        Container.default.removeAll()
+        UIViewController.flushPendingTestArtifacts()
+        UIViewController().loadForTesting()
+
+        UIView.setAnimationsEnabled(true)
     }
 
     func testViewControllerCanLoadFromStoryboard() throws {

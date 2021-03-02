@@ -16,9 +16,19 @@ import Cuckoo
 
 class NoteDetailViewControllerTests: XCTestCase {
     override func setUpWithError() throws {
+        UIView.setAnimationsEnabled(false)
+
         Container.default.removeAll()
         UIViewController.flushPendingTestArtifacts()
         UIViewController().loadForTesting()
+    }
+
+    override func tearDownWithError() throws {
+        Container.default.removeAll()
+        UIViewController.flushPendingTestArtifacts()
+        UIViewController().loadForTesting()
+
+        UIView.setAnimationsEnabled(true)
     }
 
     func testNoteNameIsDisplayed() throws {
