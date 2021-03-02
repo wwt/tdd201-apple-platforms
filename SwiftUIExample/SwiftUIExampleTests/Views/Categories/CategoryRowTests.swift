@@ -14,14 +14,12 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class CategoryRowTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let landmarks = ModelData().landmarks
         let view = CategoryRow(categoryName: landmarks[0].category.rawValue,
                                items: Array(landmarks.prefix(4)))
-        throw XCTSkip()
-        assertSnapshot(matching: view, as: .image(precision: 0.99), record: true)
-        XCTFail("Snapshot not working as expected")
+        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
     }
 
     func testCategoryRowDisplaysCategoryNameWithLandmarks() throws {

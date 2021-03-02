@@ -15,6 +15,6 @@ import SnapshotTesting
 class BadgeBackgroundTests: XCTestCase {
     func testUIMatchesSnapshot() throws {
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        assertSnapshot(matching: BadgeBackground(), as: .image(drawHierarchyInKeyWindow: true, precision: 0.99))
+        assertSnapshot(matching: BadgeBackground(), as: .image(precision: 0.99))
     }
 }

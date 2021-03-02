@@ -14,13 +14,11 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class HikeDetailTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let hike = try getHikes().first!
         let view = HikeDetail(hike: hike)
-        throw XCTSkip()
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
-        XCTFail("Snapshot not working as expected")
+        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
     }
 
     func testHikeDetail() throws {

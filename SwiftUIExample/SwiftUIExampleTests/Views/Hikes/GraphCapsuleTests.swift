@@ -14,13 +14,12 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class GraphCapsuleTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        XCTFail("I AM BROKEN")
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = GraphCapsule(index: 0, height: 150, range: 10..<50, overallRange: 0..<100)
             .colorMultiply(.blue)
-        throw XCTSkip()
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
-        XCTFail("Snapshot not working as expected")
+        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .fixed(width: 40, height: 150)))
     }
 
     func testGraphCapsule() throws {

@@ -14,14 +14,12 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class LandmarkDetailTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        XCTFail("We HAVE to wait for the map, or this will not work")
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let modelData = ModelData()
         let view = LandmarkDetail(landmark: modelData.landmarks[1]).environmentObject(modelData)
-        throw XCTSkip()
-        assertSnapshot(matching: view, as: .image(precision: 0.99), record: true)
-        XCTFail("Snapshot not working as expected")
-
+        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
     }
 
     func testLandmarkDetailDisplaysTheThings() throws {

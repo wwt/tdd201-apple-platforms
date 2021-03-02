@@ -14,15 +14,10 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class ContentViewTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
-        throw XCTSkip("Heather didn't do her job yet...")
-        let exp = ViewHosting.loadView(CategoryHome(), data: ModelData()).inspection.inspect { _ in
-            let x = UIApplication.shared.windows.last?.rootViewController
-            assertSnapshot(matching: x!, as: .image(precision: 0.99))
-        }
-
-        wait(for: [exp], timeout: 5) // Must wait longer due to precision slowing snapshot down
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
+        let view = CategoryHome().environmentObject(ModelData())
+        assertSnapshot(matching: view, as: .image(precision: 0.99))
     }
 
     func testContentView() throws {

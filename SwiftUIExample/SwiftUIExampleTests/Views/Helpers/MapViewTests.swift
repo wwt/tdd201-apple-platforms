@@ -15,12 +15,11 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class MapViewTests: XCTestCase {
-
     // ViewInspector does not currently support Map() - 03/01/21
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        XCTFail("This will not work until we wait for the map to load")
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = MapView(coordinate: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868))
-        throw XCTSkip("Wait for map to load")
-        assertSnapshot(matching: view, as: .image(precision: 0.99), record: true)
-        XCTFail("Snapshot not working as expected")
+        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
     }
 }
