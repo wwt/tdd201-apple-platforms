@@ -14,29 +14,31 @@ import Cuckoo
 @testable import UIKitWithStoryboard
 
 class NotesListViewControllerTests: XCTestCase {
-    var viewController: NotesListViewController!
-
     override func setUpWithError() throws {
         Container.default.removeAll()
         UIView.setAnimationsEnabled(false)
         UIViewController.initializeTestable()
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true)
-        XCTAssertNotNil(viewController, "Expected to load NotesListViewController from storyboard")
+        UIViewController.flushPendingTestArtifacts()
+        UIViewController().loadForTesting()
+    }
+
+    func testViewControllerCanLoadFromStoryboard() throws {
+        XCTAssertNoThrow(try getViewController())
     }
 
     func testViewControllerHasCorrectTitle() throws {
-        XCTAssertEqual(viewController.title, "Notes")
+        XCTAssertEqual(try getViewController().title, "Notes")
     }
 
     func testViewControllerHasATitleLabel() throws {
-        let titleLabel = viewController.view?.viewWithAccessibilityIdentifier("TitleLabel") as? UILabel
+        let titleLabel = try getViewController().view?.viewWithAccessibilityIdentifier("TitleLabel") as? UILabel
 
         XCTAssertNotNil(titleLabel, "Title Label should exist on view")
         XCTAssertEqual(titleLabel?.text, "Notes")
     }
 
     func testViewControllerHasAnAddNoteButton() throws {
-        let addButton = viewController.view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton
+        let addButton = try getViewController().view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton
         XCTAssertNotNil(addButton)
     }
 
@@ -47,9 +49,8 @@ class NotesListViewControllerTests: XCTestCase {
         stub(mockNotesService) { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
         }
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
-            Container.default.register(NotesService.self) { _ in mockNotesService }
-        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        let viewController = try getViewController()
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
         XCTAssertNotNil(tableView, "Expected to get a tableview from the view controller")
@@ -66,16 +67,12 @@ class NotesListViewControllerTests: XCTestCase {
         stub(mockNotesService) { (stub) in
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
         }
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
-            Container.default.register(NotesService.self) { _ in mockNotesService }
-        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        let viewController = UIViewController.loadFromStoryboard(identifier: Identifiers.storyboard, forNavigation: true)!
         let index = IndexPath(row: 0, section: 0)
-        let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
-            stubber.when(mock.deselectRow(at: index, animated: true)).thenDoNothing()
-        }
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
-        tableView?.delegate?.tableView?(mockTableView, didSelectRowAt: index)
+        tableView?.simulateTouch(at: index)
 
         RunLoop.current.singlePass()
 
@@ -84,7 +81,7 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(topVC?.note?.name, expectedNote.name)
         XCTAssertEqual(topVC?.note?.contents, expectedNote.contents)
 
-        objcVerify(mockTableView.deselectRow(at: index, animated: true))
+        XCTAssertEqual(tableView?.cellIsSelected(at: index), false, "Cell should not be selected after navigation")
     }
 
     func testUserCanAddANote() throws {
@@ -96,9 +93,8 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.save(note: any(Note.self))).thenDoNothing()
         }
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
-            Container.default.register(NotesService.self) { _ in mockNotesService }
-        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        let viewController = try getViewController()
 
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
         let addButton = viewController.view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton
@@ -123,9 +119,8 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.save(note: any(Note.self))).thenDoNothing()
         }
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController", forNavigation: true) { _ in
-            Container.default.register(NotesService.self) { _ in mockNotesService }
-        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        let viewController = try getViewController()
 
         let addButton = viewController.view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton
 
@@ -148,9 +143,8 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.save(note: any(Note.self))).thenThrow(Err.e1)
         }
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
-            Container.default.register(NotesService.self) { _ in mockNotesService }
-        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        let viewController = try getViewController()
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
         let addButton = viewController.view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton
 
@@ -158,8 +152,8 @@ class NotesListViewControllerTests: XCTestCase {
 
         XCTAssertNotNil(addButton)
         XCTAssertNotNil(tableView)
-        XCTAssertEqual(viewController.notes.count, 1)
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 1)
+        XCTAssertEqual(tableView?.visibleCells.count, 1)
         verify(mockNotesService, times(1)).save(note: any(Note.self))
 
         RunLoop.current.singlePass()
@@ -183,9 +177,8 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
         }
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
-            Container.default.register(NotesService.self) { _ in mockNotesService }
-        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        let viewController = try getViewController()
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
         tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
@@ -201,8 +194,8 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(alertVC?.actions.first?.title, "No")
         XCTAssertEqual(alertVC?.actions.last?.style, .destructive)
         XCTAssertEqual(alertVC?.actions.last?.title, "Yes")
-        XCTAssertEqual(viewController.notes.count, 3)
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 3)
+        XCTAssert(tableView?.visibleCells.count ?? 0 > 1, "At least 1 cell should be visible")
         verify(mockNotesService, times(0)).delete(note: any(Note.self))
     }
 
@@ -217,24 +210,20 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
         }
-        let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
-            stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
-        }
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
-            Container.default.register(NotesService.self) { _ in mockNotesService }
-        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        let viewController = try getViewController()
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
         // Act
-        tableView?.dataSource?.tableView?(mockTableView, commit: .delete, forRowAt: expectedIndexPath)
+        tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
 
         // Assert
         RunLoop.current.singlePass()
         let alertVC = viewController.presentedViewController as? UIAlertController
         XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.presentedViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.actions.count, 2)
-        XCTAssertEqual(viewController.notes.count, 3)
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 3)
+        XCTAssert(tableView?.visibleCells.count ?? 0 > 1, "At least 1 cell should be visible")
         verify(mockNotesService, times(0)).delete(note: any(Note.self))
 
         // Act
@@ -246,8 +235,36 @@ class NotesListViewControllerTests: XCTestCase {
         verify(mockNotesService, times(1)).delete(note: argumentCaptor.capture())
         XCTAssertEqual(argumentCaptor.value?.name, note2.name)
         XCTAssertEqual(argumentCaptor.value?.contents, note2.contents)
+        XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 2)
+        XCTAssert(tableView?.visibleCells.count ?? 0 > 1, "At least 1 cell should be visible")
+    }
+
+    func testWhenUserDeletesNote_UserConfirmsDeleteWithCorrectMethod() throws {
+        let mockNotesService = MockNotesService()
+        let note = Note(name: "note2", contents: UUID().uuidString)
+        let expectedIndexPath = IndexPath(row: 0, section: 0)
+        stub(mockNotesService) { (stub) in
+            when(stub.getNotes()).thenReturn(.success([note]))
+            when(stub.delete(note: any(Note.self))).thenDoNothing()
+        }
+        let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
+            stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
+        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        let viewController = try getViewController()
+        let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
+
+        // Act
+        tableView?.dataSource?.tableView?(mockTableView, commit: .delete, forRowAt: expectedIndexPath)
+
+        // Assert
+        RunLoop.current.singlePass()
+        let alertVC = viewController.presentedViewController as? UIAlertController
+        alertVC?.action(withStyle: .destructive)?.simulateTouch()
+        RunLoop.current.singlePass()
+
+        // Assert
         objcVerify(mockTableView.deleteRows(at: [expectedIndexPath], with: .fade))
-        XCTAssertEqual(viewController.tableView(tableView!, numberOfRowsInSection: 0), 2)
     }
 
     func testWhenUserDeletesNote_UserCancelsDelete() throws {
@@ -264,9 +281,8 @@ class NotesListViewControllerTests: XCTestCase {
         let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
             stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
         }
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
-            Container.default.register(NotesService.self) { _ in mockNotesService }
-        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        let viewController = try getViewController()
 
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
@@ -283,8 +299,8 @@ class NotesListViewControllerTests: XCTestCase {
         alertVC?.action(withStyle: .cancel)?.simulateTouch()
 
         // Assert
-        XCTAssertEqual(viewController.notes.count, 3)
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 3)
+        XCTAssert(tableView?.visibleCells.count ?? 0 > 1, "At least 1 cell should be visible")
         verify(mockNotesService, times(0)).delete(note: any(Note.self))
     }
 
@@ -301,9 +317,8 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenThrow(Err.e1)
         }
-        viewController = UIViewController.loadFromStoryboard(identifier: "NotesListViewController") { _ in
-            Container.default.register(NotesService.self) { _ in mockNotesService }
-        }
+        Container.default.register(NotesService.self) { _ in mockNotesService }
+        let viewController = try getViewController()
 
         let tableView: UITableView? = viewController.view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView
 
@@ -315,11 +330,11 @@ class NotesListViewControllerTests: XCTestCase {
 
         RunLoop.current.singlePass()
         XCTAssertNotNil(tableView)
-        XCTAssertEqual(viewController.notes.count, 3)
         XCTAssertEqual(tableView?.numberOfRows(inSection: 0), 3)
+        XCTAssert(tableView?.visibleCells.count ?? 0 > 1, "At least 1 cell should be visible")
         verify(mockNotesService, times(1)).delete(note: any(Note.self))
 
-        waitUntil(viewController.presentedViewController == nil)
+        waitUntil(viewController.presentedViewController !== alertVC)
         alertVC = viewController.presentedViewController as? UIAlertController
         XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.presentedViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.preferredStyle, .alert)
@@ -328,5 +343,19 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(alertVC?.actions.count, 1)
         XCTAssertEqual(alertVC?.actions.first?.style, .default)
         XCTAssertEqual(alertVC?.actions.first?.title, "Ok")
+    }
+}
+
+extension NotesListViewControllerTests {
+    enum Identifiers {
+        static let storyboard = "NotesListViewController"
+    }
+
+    func getViewController() throws -> UIViewController {
+        guard let viewController = UIViewController.loadFromStoryboard(identifier: Identifiers.storyboard) else {
+            throw XCTSkip("\(Identifiers.storyboard) does not exist on storyboard")
+        }
+
+        return viewController
     }
 }
