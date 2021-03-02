@@ -367,3 +367,9 @@ extension NotesListViewControllerTests {
         return viewController
     }
 }
+
+fileprivate extension UIViewController {
+    var titleLabel: UILabel? { view?.viewWithAccessibilityIdentifier("TitleLabel") as? UILabel }
+    var addButton: UIButton? { view?.viewWithAccessibilityIdentifier("AddNoteButton") as? UIButton }
+    var tableView: UITableView? { view?.viewWithAccessibilityIdentifier("NotesTableView") as? UITableView }
+}
