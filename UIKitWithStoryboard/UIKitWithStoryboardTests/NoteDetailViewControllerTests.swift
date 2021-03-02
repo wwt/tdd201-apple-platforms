@@ -15,36 +15,29 @@ import Cuckoo
 @testable import UIKitWithStoryboard
 
 class NoteDetailViewControllerTests: XCTestCase {
-    var viewController: NoteDetailViewController!
-
     override func setUpWithError() throws {
         Container.default.removeAll()
-        viewController = UIViewController.loadFromStoryboard(identifier: "NoteDetailViewController")
-        XCTAssertNotNil(viewController, "Expected to load NoteDetailViewController from storyboard")
+        UIViewController.flushPendingTestArtifacts()
+        UIViewController().loadForTesting()
     }
 
     func testNoteNameIsDisplayed() throws {
         let note = Note(name: "Note 1", contents: UUID().uuidString)
-        viewController = UIViewController.loadFromStoryboard(identifier: "NoteDetailViewController") { initialViewController in
-            initialViewController.note = note
+        let viewController = UIViewController.loadFromStoryboard(identifier: Identifier.storyboard) {
+            let initialViewController = $0 as? NoteDetailViewController
+            initialViewController?.note = note
         }
 
-        let noteNameLabel: UILabel? = viewController.view?.viewWithAccessibilityIdentifier("NameLabel") as? UILabel
-
-        XCTAssertNotNil(viewController.note)
-        XCTAssertEqual(noteNameLabel?.text, note.name)
+        XCTAssertEqual(viewController?.noteNameLabel?.text, note.name)
     }
 
     func testNoteContentsAreDisplayed() throws {
         let note = Note(name: "Note 1", contents: UUID().uuidString)
-        viewController = UIViewController.loadFromStoryboard(identifier: "NoteDetailViewController") { initialViewController in
-            initialViewController.note = note
+        let viewController = UIViewController.loadFromStoryboard(identifier: Identifier.storyboard) { let initialViewController = $0 as? NoteDetailViewController
+            initialViewController?.note = note
         }
 
-        let textView: UITextView? = viewController.view?.viewWithAccessibilityIdentifier("ContentsTextView") as? UITextView
-
-        XCTAssertNotNil(viewController.note)
-        XCTAssertEqual(textView?.text, note.contents)
+        XCTAssertEqual(viewController?.contentsTextView?.text, note.contents)
     }
 
     func testNoteContentsAreSavedWhenUserNavigatesBack() throws {
@@ -55,13 +48,13 @@ class NoteDetailViewControllerTests: XCTestCase {
             when(stub.save(note: any(Note.self))).thenDoNothing()
         }
         Container.default.register(NotesService.self) { _ in mock }
-        viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "NoteDetailViewController") as NoteDetailViewController
-        viewController.note = note
+        let viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: Identifier.storyboard)
+        (viewController as? NoteDetailViewController)?.note = note
         let navController = UINavigationController(rootViewController: UIViewController())
         navController.loadForTesting()
         navController.pushViewController(viewController, animated: false)
         RunLoop.current.singlePass()
-        let textView: UITextView? = viewController.view?.viewWithAccessibilityIdentifier("ContentsTextView") as? UITextView
+        let textView = viewController.contentsTextView
 
         textView?.simulateTouch()
         textView?.simulateTyping(expectedContents)
@@ -73,4 +66,15 @@ class NoteDetailViewControllerTests: XCTestCase {
         XCTAssertEqual(argumentCaptor.value?.name, note.name)
         XCTAssertEqual(argumentCaptor.value?.contents, expectedContents)
     }
+}
+
+extension NoteDetailViewControllerTests {
+    enum Identifier {
+        static let storyboard = "NoteDetailViewController"
+    }
+}
+
+fileprivate extension UIViewController {
+    var noteNameLabel: UILabel? { view?.viewWithAccessibilityIdentifier("NameLabel") as? UILabel }
+    var contentsTextView: UITextView? { view?.viewWithAccessibilityIdentifier("ContentsTextView") as? UITextView }
 }
