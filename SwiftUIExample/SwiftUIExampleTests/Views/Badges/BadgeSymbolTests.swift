@@ -14,7 +14,8 @@ import SnapshotTesting
 
 class BadgeSymbolTests: XCTestCase {
 
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = BadgeSymbol()
         assertSnapshot(matching: view, as: .image(precision: 0.99))
     }

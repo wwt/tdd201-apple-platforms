@@ -15,8 +15,8 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class ProfileEditorTests: XCTestCase {
-
-    func testUILooksAsExpected_NotificationsOn() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let expectedProfile = Profile(username: "user1",
                                       prefersNotifications: true,
                                       seasonalPhoto: .autumn,

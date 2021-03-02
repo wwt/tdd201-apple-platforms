@@ -14,8 +14,8 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class CategoryHomeTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = CategoryHome().environmentObject(ModelData())
         assertSnapshot(matching: view, as: .image(precision: 0.99))
     }

@@ -74,6 +74,7 @@
 		CA45049225B79A7800153FC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA45049125B79A7800153FC4 /* Assets.xcassets */; };
 		CA45049525B79A7800153FC4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA45049425B79A7800153FC4 /* Preview Assets.xcassets */; };
 		CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */; };
+		CA63666325EEADA400D65B3F /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63660725EEAC5200D65B3F /* UIDeviceExtensions.swift */; };
 		D21FBB8F56E94A1AF2DB28F0 /* Pods_SwiftUIExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007EDD75F4DC2A86B7F6FD29 /* Pods_SwiftUIExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -175,6 +176,7 @@
 		CA45049B25B79A7800153FC4 /* SwiftUIExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleTests.swift; sourceTree = "<group>"; };
 		CA4504A125B79A7900153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA63660725EEAC5200D65B3F /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 		0011EAD525E595A500E48AE8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CA63660725EEAC5200D65B3F /* UIDeviceExtensions.swift */,
 				0011EAD625E595B900E48AE8 /* ViewHostingExtension.swift */,
 				0011EAE025E7FD8300E48AE8 /* InspectableViewExtensions.swift */,
 				0011EB5325E8319100E48AE8 /* InspectableExtensions.swift */,
@@ -894,6 +897,7 @@
 				0011EA8E25E5588D00E48AE8 /* GraphCapsuleTests.swift in Sources */,
 				0011E9C525E45FE000E48AE8 /* LandmarkRowTests.swift in Sources */,
 				0038EBE025ED7CB9000BE4B4 /* BadgeSymbolTests.swift in Sources */,
+				CA63666325EEADA400D65B3F /* UIDeviceExtensions.swift in Sources */,
 				0011EACE25E5701B00E48AE8 /* HikeDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

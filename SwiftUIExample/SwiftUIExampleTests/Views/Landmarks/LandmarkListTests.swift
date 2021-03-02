@@ -14,8 +14,8 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class LandmarkListTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = LandmarkList().environmentObject(ModelData())
         assertSnapshot(matching: view, as: .image(precision: 0.99))
     }
