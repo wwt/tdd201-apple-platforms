@@ -74,7 +74,6 @@ class NotesListViewControllerTests: XCTestCase {
         let index = IndexPath(row: 0, section: 0)
 
         viewController.tableView?.simulateTouch(at: index)
-
         RunLoop.current.singlePass()
 
         let topVC: NoteDetailViewController? = viewController.navigationController?.topViewController as? NoteDetailViewController
@@ -140,7 +139,6 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(viewController.tableView?.visibleCells.count, 1)
         verify(mockNotesService, times(1)).save(note: any(Note.self))
 
-        RunLoop.current.singlePass()
         let alertVC = viewController.presentedViewController as? UIAlertController
         XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.navigationController?.visibleViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.preferredStyle, .alert)
@@ -165,7 +163,6 @@ class NotesListViewControllerTests: XCTestCase {
 
         tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
 
-        RunLoop.current.singlePass()
         let alertVC = viewController.presentedViewController as? UIAlertController
         XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.presentedViewController)) to be UIAlertController")
         XCTAssertEqual(alertVC?.preferredStyle, .alert)
@@ -196,19 +193,8 @@ class NotesListViewControllerTests: XCTestCase {
 
         // Act
         tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
-
-        // Assert
-        RunLoop.current.singlePass()
         let alertVC = viewController.presentedViewController as? UIAlertController
-        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.presentedViewController)) to be UIAlertController")
-        XCTAssertEqual(alertVC?.actions.count, 2)
-        XCTAssertEqual(viewController.tableView?.numberOfRows(inSection: 0), 3)
-        XCTAssert(viewController.tableView?.visibleCells.count ?? 0 > 1, "At least 1 cell should be visible")
-        verify(mockNotesService, times(0)).delete(note: any(Note.self))
-
-        // Act
         alertVC?.action(withStyle: .destructive)?.simulateTouch()
-        RunLoop.current.singlePass()
 
         // Assert
         let argumentCaptor = ArgumentCaptor<Note>()
@@ -231,16 +217,10 @@ class NotesListViewControllerTests: XCTestCase {
         }
         let viewController = try getViewController()
 
-        // Act
         viewController.tableView?.dataSource?.tableView?(mockTableView, commit: .delete, forRowAt: expectedIndexPath)
-
-        // Assert
-        RunLoop.current.singlePass()
         let alertVC = viewController.presentedViewController as? UIAlertController
         alertVC?.action(withStyle: .destructive)?.simulateTouch()
-        RunLoop.current.singlePass()
 
-        // Assert
         objcVerify(mockTableView.deleteRows(at: [expectedIndexPath], with: .fade))
     }
 
@@ -254,21 +234,12 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.getNotes()).thenReturn(.success(expectedNotes))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
         }.registerIn(Container.default)
-        let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
-            stubber.when(mock.deleteRows(at: [expectedIndexPath], with: .fade)).thenDoNothing()
-        }
         let viewController = try getViewController()
+        let tableView = viewController.tableView
 
         // Act
-        viewController.tableView?.dataSource?.tableView?(mockTableView, commit: .delete, forRowAt: expectedIndexPath)
-
-        // Assert
-        RunLoop.current.singlePass()
+        tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
         let alertVC = viewController.presentedViewController as? UIAlertController
-        XCTAssertNotNil(alertVC, "Expected \(String(describing: viewController.presentedViewController)) to be UIAlertController")
-        XCTAssertEqual(alertVC?.actions.count, 2)
-
-        // Act
         alertVC?.action(withStyle: .cancel)?.simulateTouch()
 
         // Assert
@@ -290,19 +261,11 @@ class NotesListViewControllerTests: XCTestCase {
             when(stub.delete(note: any(Note.self))).thenThrow(Err.e1)
         }.registerIn(Container.default)
         let viewController = try getViewController()
-
         let tableView = viewController.tableView
 
         tableView?.dataSource?.tableView?(tableView!, commit: .delete, forRowAt: expectedIndexPath)
-
-        RunLoop.current.singlePass()
         var alertVC = viewController.presentedViewController as? UIAlertController
         alertVC?.action(withStyle: .destructive)?.simulateTouch()
-
-        RunLoop.current.singlePass()
-        XCTAssertEqual(viewController.tableView?.numberOfRows(inSection: 0), 3)
-        XCTAssert(viewController.tableView?.visibleCells.count ?? 0 > 1, "At least 1 cell should be visible")
-        verify(mockNotesService, times(1)).delete(note: any(Note.self))
 
         waitUntil(viewController.presentedViewController !== alertVC)
         alertVC = viewController.presentedViewController as? UIAlertController
@@ -313,6 +276,10 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssertEqual(alertVC?.actions.count, 1)
         XCTAssertEqual(alertVC?.actions.first?.style, .default)
         XCTAssertEqual(alertVC?.actions.first?.title, "Ok")
+
+        XCTAssertEqual(viewController.tableView?.numberOfRows(inSection: 0), 3)
+        XCTAssert(viewController.tableView?.visibleCells.count ?? 0 > 1, "At least 1 cell should be visible")
+        verify(mockNotesService, times(1)).delete(note: any(Note.self))
     }
 }
 
