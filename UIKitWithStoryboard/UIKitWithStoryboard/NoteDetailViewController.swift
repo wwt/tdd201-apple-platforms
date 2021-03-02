@@ -19,10 +19,9 @@ class NoteDetailViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        guard let contents = contentsTextView.text,
-              let name = note?.name,
-              (try? notesService?.save(note: Note(name: name, contents: contents))) != nil
-        else { return }
-
+        if let contents = contentsTextView.text,
+           let name = note?.name {
+            try? notesService?.save(note: Note(name: name, contents: contents))
+        }
     }
 }
