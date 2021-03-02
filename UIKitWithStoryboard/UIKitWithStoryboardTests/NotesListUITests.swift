@@ -1,5 +1,5 @@
 //
-//  NotesListViewController.swift
+//  NotesListUITests.swift
 //  UIKitWithStoryboardTests
 //
 //  Created by thompsty on 1/4/21.
@@ -13,7 +13,7 @@ import Cuckoo
 
 @testable import UIKitWithStoryboard
 
-class NotesListViewControllerTests: XCTestCase {
+class NotesListUITests: XCTestCase {
     override func setUpWithError() throws {
         UIView.setAnimationsEnabled(false)
 
@@ -205,7 +205,7 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssert(viewController.tableView?.visibleCells.count ?? 0 > 1, "At least 1 cell should be visible")
     }
 
-    func testWhenUserDeletesNote_UserConfirmsDeleteWithCorrectMethod() throws {
+    func testWhenUserDeletesNote_CellIsDeletedWithDeleteRows() throws {
         let note = Note(name: "note2", contents: UUID().uuidString)
         let expectedIndexPath = IndexPath(row: 0, section: 0)
         MockNotesService().stub { (stub) in
@@ -281,9 +281,23 @@ class NotesListViewControllerTests: XCTestCase {
         XCTAssert(viewController.tableView?.visibleCells.count ?? 0 > 1, "At least 1 cell should be visible")
         verify(mockNotesService, times(1)).delete(note: any(Note.self))
     }
+
+    func testDataIsGatheredAtViewWillAppearAndTableViewIsUpdated() throws {
+        let mockNotesService = MockNotesService().stub { stub in
+            when(stub.getNotes())
+                .thenReturn(.success([]))
+                .thenReturn(.success([Note(name: "Explosion", contents: "Detected")]))
+        }.registerIn(Container.default)
+        let viewController = try getViewController()
+
+        viewController.viewWillAppear(false)
+
+        verify(mockNotesService, times(2)).getNotes()
+        XCTAssertEqual(viewController.tableView?.visibleCells.count, 1)
+    }
 }
 
-extension NotesListViewControllerTests {
+extension NotesListUITests {
     enum Identifiers {
         static let storyboard = "NotesListViewController"
     }

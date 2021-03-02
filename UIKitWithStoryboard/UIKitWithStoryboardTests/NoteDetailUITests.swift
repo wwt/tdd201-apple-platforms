@@ -14,7 +14,7 @@ import Cuckoo
 
 @testable import UIKitWithStoryboard
 
-class NoteDetailViewControllerTests: XCTestCase {
+class NoteDetailUITests: XCTestCase {
     override func setUpWithError() throws {
         UIView.setAnimationsEnabled(false)
 
@@ -76,7 +76,7 @@ class NoteDetailViewControllerTests: XCTestCase {
     }
 }
 
-extension NoteDetailViewControllerTests {
+extension NoteDetailUITests {
     enum Identifier {
         static let storyboard = "NoteDetailViewController"
     }
