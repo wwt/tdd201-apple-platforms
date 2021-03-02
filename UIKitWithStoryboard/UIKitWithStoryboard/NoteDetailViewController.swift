@@ -8,10 +8,10 @@
 import UIKit
 
 class NoteDetailViewController: UIViewController {
-    @DependencyInjected var notesService: NotesService?
+    @DependencyInjected private var notesService: NotesService?
     var note: Note?
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var contentsTextView: UITextView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var contentsTextView: UITextView!
 
     override func viewDidLoad() {
         nameLabel.text = note?.name
