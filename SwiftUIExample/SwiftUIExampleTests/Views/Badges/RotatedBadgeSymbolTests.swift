@@ -14,9 +14,8 @@ import SnapshotTesting
 
 class RotatedBadgeSymbolTests: XCTestCase {
     func testUIMatchesSnapshot() throws {
-        XCTFail("Heather will fix this...")
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let view = RotatedBadgeSymbol(angle: .degrees(90))
-        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
+        let view = RotatedBadgeSymbol(angle: .degrees(5))
+        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .fixed(width: 400, height: 400)))
     }
 }

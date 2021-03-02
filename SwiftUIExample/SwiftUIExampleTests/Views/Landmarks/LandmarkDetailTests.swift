@@ -15,11 +15,14 @@ import SnapshotTesting
 
 class LandmarkDetailTests: XCTestCase {
     func testUIMatchesSnapshot() throws {
-        XCTFail("We HAVE to wait for the map, or this will not work")
+        // using dump ALMOST worked but was peering into memory addresses,
+        // we could use a custom snapshot and make this work,
+        // but it is out of the bounds of this lesson
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let modelData = ModelData()
+        modelData.profile.goalDate = Date(timeIntervalSince1970: 1000)
         let view = LandmarkDetail(landmark: modelData.landmarks[1]).environmentObject(modelData)
-        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
+        assertSnapshot(matching: view, as: .description)
     }
 
     func testLandmarkDetailDisplaysTheThings() throws {
