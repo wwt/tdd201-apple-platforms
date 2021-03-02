@@ -32,6 +32,7 @@
 		CAA1C35025A388F400E3F686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C34F25A388F400E3F686 /* Assets.xcassets */; };
 		CAA1C35325A388F400E3F686 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C35125A388F400E3F686 /* LaunchScreen.storyboard */; };
 		CAA1C35E25A388F400E3F686 /* NotesListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C35D25A388F400E3F686 /* NotesListViewControllerTests.swift */; };
+		CAC757E525EEF6FE00C2D568 /* MockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC757E425EEF6FE00C2D568 /* MockExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		CAA1C35F25A388F400E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAB9079525DDDA260018BD06 /* ContainerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = ../DependencyInjection/DependencyInjection/DependencyInjection/ContainerExtensions.swift; sourceTree = SOURCE_ROOT; };
 		CAB9079625DDDA260018BD06 /* DependencyInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = ../DependencyInjection/DependencyInjection/DependencyInjection/DependencyInjected.swift; sourceTree = SOURCE_ROOT; };
+		CAC757E425EEF6FE00C2D568 /* MockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockExtensions.swift; path = ../../../MockingFramework/MockingFrameworkTests/CuckooExtensions/MockExtensions.swift; sourceTree = "<group>"; };
 		D7F3D34A40A1951D574B26D0 /* Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig"; path = "Target Support Files/Pods-UIKitWithStoryboard-UIKitWithStoryboardTests/Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DACA2B83D190863F6EF7CF91 /* Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 		00BB4DD225D4A79500905C5E /* CukooHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				CAC757E425EEF6FE00C2D568 /* MockExtensions.swift */,
 				00BB4DD325D4A7B800905C5E /* URLMatcher.swift */,
 				00BB4DD925D4A7F200905C5E /* StringEncodingMatcher.swift */,
 			);
@@ -497,6 +500,7 @@
 			files = (
 				00BB4DDA25D4A7F200905C5E /* StringEncodingMatcher.swift in Sources */,
 				CAA1C35E25A388F400E3F686 /* NotesListViewControllerTests.swift in Sources */,
+				CAC757E525EEF6FE00C2D568 /* MockExtensions.swift in Sources */,
 				00BB4DC425D4A64A00905C5E /* NotesServiceTests.swift in Sources */,
 				00BB4DD425D4A7B800905C5E /* URLMatcher.swift in Sources */,
 				00BB4DDE25D4A86E00905C5E /* MockDirectoryEnumerator.swift in Sources */,
