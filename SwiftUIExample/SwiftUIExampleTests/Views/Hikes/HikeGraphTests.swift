@@ -15,13 +15,14 @@ import SnapshotTesting
 
 class HikeGraphTests: XCTestCase {
     func testUIMatchesSnapshot() throws {
-        XCTFail("it no work...cause capsules??????!?")
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let expectedHike = try getHikes().first!
         let observationKeyPath: KeyPath<Hike.Observation, Range<Double>> = \.elevation
 
         let view = HikeGraph(hike: expectedHike, path: observationKeyPath)
-        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
+        assertSnapshot(matching: view, as: .image(drawHierarchyInKeyWindow: true,
+                                                  precision: 0.99,
+                                                  layout: .device(config: .iPhoneXsMax)))
     }
 
     func testHikeGraph() throws {

@@ -15,11 +15,11 @@ import SnapshotTesting
 
 class GraphCapsuleTests: XCTestCase {
     func testUIMatchesSnapshot() throws {
-        XCTFail("I AM BROKEN")
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = GraphCapsule(index: 0, height: 150, range: 10..<50, overallRange: 0..<100)
-            .colorMultiply(.blue)
-        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .fixed(width: 40, height: 150)))
+        assertSnapshot(matching: view.colorMultiply(.blue), as: .image(drawHierarchyInKeyWindow: true,
+                                                                       precision: 0.99,
+                                                                       layout: .fixed(width: 400, height: view.height * view.heightRatio + 20)))
     }
 
     func testGraphCapsule() throws {
