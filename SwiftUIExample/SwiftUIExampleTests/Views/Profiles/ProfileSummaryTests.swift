@@ -15,12 +15,10 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class ProfileSummaryTests: XCTestCase {
-
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = ProfileSummary(profile: Profile.default).environmentObject(ModelData())
-        throw XCTSkip()
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
-        XCTFail("Snapshot not working as expected")
+        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
     }
     
     func testProfileSummary() throws {

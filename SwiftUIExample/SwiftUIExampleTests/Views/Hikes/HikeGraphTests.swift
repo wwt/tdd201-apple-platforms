@@ -14,16 +14,14 @@ import SnapshotTesting
 @testable import SwiftUIExample
 
 class HikeGraphTests: XCTestCase {
-    
-    func testUILooksAsExpected() throws {
+    func testUIMatchesSnapshot() throws {
+        XCTFail("it no work...cause capsules??????!?")
+        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let expectedHike = try getHikes().first!
         let observationKeyPath: KeyPath<Hike.Observation, Range<Double>> = \.elevation
 
         let view = HikeGraph(hike: expectedHike, path: observationKeyPath)
-        throw XCTSkip()
-        assertSnapshot(matching: view, as: .image(precision: 0.99), record: true)
-        XCTFail("Snapshot not working as expected")
-
+        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
     }
 
     func testHikeGraph() throws {
