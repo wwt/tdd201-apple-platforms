@@ -33,6 +33,7 @@
 		CAA1C35325A388F400E3F686 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C35125A388F400E3F686 /* LaunchScreen.storyboard */; };
 		CAA1C35E25A388F400E3F686 /* NotesListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C35D25A388F400E3F686 /* NotesListUITests.swift */; };
 		CAC757E525EEF6FE00C2D568 /* MockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC757E425EEF6FE00C2D568 /* MockExtensions.swift */; };
+		D7CC44CE25EF118A00BE3F4D /* UIUStoryboardTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CC44CD25EF118A00BE3F4D /* UIUStoryboardTestable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		CAB9079525DDDA260018BD06 /* ContainerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = ../DependencyInjection/DependencyInjection/DependencyInjection/ContainerExtensions.swift; sourceTree = SOURCE_ROOT; };
 		CAB9079625DDDA260018BD06 /* DependencyInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = ../DependencyInjection/DependencyInjection/DependencyInjection/DependencyInjected.swift; sourceTree = SOURCE_ROOT; };
 		CAC757E425EEF6FE00C2D568 /* MockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockExtensions.swift; path = ../../../MockingFramework/MockingFrameworkTests/CuckooExtensions/MockExtensions.swift; sourceTree = "<group>"; };
+		D7CC44CD25EF118A00BE3F4D /* UIUStoryboardTestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUStoryboardTestable.swift; sourceTree = "<group>"; };
 		D7F3D34A40A1951D574B26D0 /* Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig"; path = "Target Support Files/Pods-UIKitWithStoryboard-UIKitWithStoryboardTests/Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DACA2B83D190863F6EF7CF91 /* Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -217,6 +219,7 @@
 		CAA1C35C25A388F400E3F686 /* UIKitWithStoryboardTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7CC44CC25EF115E00BE3F4D /* Protocols */,
 				00BB4E3025D4AAB900905C5E /* Mocks */,
 				00BB4DE125D4A88300905C5E /* Services */,
 				00BB4DD225D4A79500905C5E /* CukooHelpers */,
@@ -237,6 +240,14 @@
 				CAB9079625DDDA260018BD06 /* DependencyInjected.swift */,
 			);
 			name = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		D7CC44CC25EF115E00BE3F4D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D7CC44CD25EF118A00BE3F4D /* UIUStoryboardTestable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -504,6 +515,7 @@
 				00BB4DC425D4A64A00905C5E /* NotesServiceTests.swift in Sources */,
 				00BB4DD425D4A7B800905C5E /* URLMatcher.swift in Sources */,
 				00BB4DDE25D4A86E00905C5E /* MockDirectoryEnumerator.swift in Sources */,
+				D7CC44CE25EF118A00BE3F4D /* UIUStoryboardTestable.swift in Sources */,
 				0082F89425D5E09800540724 /* WaitUntil.swift in Sources */,
 				00BB4D7D25D4A2CA00905C5E /* NoteDetailUITests.swift in Sources */,
 				00BB4E3425D4ABFE00905C5E /* DependencyInjectionTests.swift in Sources */,
