@@ -2,6 +2,45 @@ workspace 'TDD-201'
 
 inhibit_all_warnings!
 
+target 'MockingFramework' do
+  platform :ios, '11.0'
+  project 'MockingFramework/MockingFramework.xcodeproj'
+  use_frameworks!
+
+  target 'MockingFrameworkTests' do
+    
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 target 'ContractTesting' do
   platform :ios, '11.0'
   project 'ContractTesting/ContractTesting.xcodeproj'
@@ -11,16 +50,6 @@ target 'ContractTesting' do
     pod 'OHHTTPStubs/Swift'
     pod 'PactConsumerSwift'
     pod 'Fakery'
-  end
-end
-
-target 'MockingFramework' do
-  platform :ios, '11.0'
-  project 'MockingFramework/MockingFramework.xcodeproj'
-  use_frameworks!
-  
-  target 'MockingFrameworkTests' do
-    pod 'Cuckoo'
   end
 end
 

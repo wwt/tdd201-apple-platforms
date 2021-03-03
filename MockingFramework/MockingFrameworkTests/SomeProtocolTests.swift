@@ -23,16 +23,6 @@ class SomeProtocolTests: XCTestCase {
         verify(mock, times(1)).readOnlyProperty.get() // This is the SPY!
     }
 
-//    func testCallingOriginalImplementation_ReadOnlyProperty() throws {
-//        let mock = MockSomeProtocol()
-//        stub(mock) { (stub) in
-//            when(stub.readOnlyProperty.get).thenCallRealImplementation()
-//        }
-//
-//        XCTAssertEqual(mock.readOnlyProperty, "README")
-//        verify(mock, times(1)).readOnlyProperty.get() // This is the SPY!
-//    }
-
     func testPartialMock() throws {
         let mock = MockSomeProtocol()
         let original = SomeStructWithProtocol(readOnlyProperty: "READ ME", readWriteProperty: "WRITE ME", cantTouchThis: "NO TOUCHY")
