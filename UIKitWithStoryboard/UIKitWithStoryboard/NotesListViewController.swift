@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 class NotesListViewController: UIViewController {
-    @DependencyInjected var notesService: NotesService?
-    var notes: [Note] = []
+    @DependencyInjected private var notesService: NotesService?
+    private var notes: [Note] = []
 
-    @IBOutlet weak var notesTableView: UITableView!
+    @IBOutlet private weak var notesTableView: UITableView!
 
     override func viewWillAppear(_ animated: Bool) {
         switch notesService?.getNotes() {
@@ -32,7 +32,7 @@ class NotesListViewController: UIViewController {
         dst.note = note
     }
 
-    @IBAction func addNote() {
+    @IBAction private func addNote() {
         var note = Note(name: "note\(notes.count+1)", contents: "")
         let notesWithSameName = notes.filter { $0.name == note.name }
         if notesWithSameName.count > 0 {
@@ -52,7 +52,7 @@ class NotesListViewController: UIViewController {
 }
 
 extension NotesListViewController: UITableViewDataSource {
-    enum Identifiers {
+    private enum Identifiers {
         static let noteCell = "NotesTableViewReuseIdentifier"
     }
 
