@@ -8,7 +8,6 @@ target 'MockingFramework' do
   use_frameworks!
 
   target 'MockingFrameworkTests' do
-    
   end
 end
 

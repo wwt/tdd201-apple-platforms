@@ -177,7 +177,6 @@
 			buildConfigurationList = CAA1C4EB25A38A6800E3F686 /* Build configuration list for PBXNativeTarget "MockingFrameworkTests" */;
 			buildPhases = (
 				5601983BCF54B080C7CA6929 /* [CP] Check Pods Manifest.lock */,
-				CAB7539E25A4D5D000EF25C0 /* Generate Mocks */,
 				CAA1C4D025A38A6800E3F686 /* Sources */,
 				CAA1C4D125A38A6800E3F686 /* Frameworks */,
 				CAA1C4D225A38A6800E3F686 /* Resources */,
@@ -331,24 +330,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint --config ../.swiftlint.yml\n";
-		};
-		CAB7539E25A4D5D000EF25C0 /* Generate Mocks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Generate Mocks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/SomeClass.swift\" \\\n\"${INPUT_DIR}/SomeStruct.swift\"\n";
 		};
 		F50B0252A59507A7374D4687 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
