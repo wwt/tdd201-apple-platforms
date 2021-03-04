@@ -14,7 +14,7 @@ struct UserService {
         guard let url = URL(string: "\(baseURL)/users/\(id)") else {
             return
         }
-        URLSession.shared.dataTask(with: url) { data, res, err in
+        URLSession.shared.dataTask(with: url) { data, res, _ in
             if let res = res as? HTTPURLResponse,
                res.statusCode == 404 {
                 callback(.failure(UserServiceError.notFound))

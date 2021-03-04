@@ -37,4 +37,3 @@ extension InspectableView {
         return try find(ViewType.View<V>.self, index: index, where: condition)
     }
 }
-

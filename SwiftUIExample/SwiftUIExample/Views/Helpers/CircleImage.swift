@@ -23,4 +23,3 @@ struct CircleImage_Previews: PreviewProvider {
         CircleImage(image: Image("turtlerock"))
     }
 }
-

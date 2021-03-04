@@ -20,7 +20,7 @@ class ProfileSummaryTests: XCTestCase {
         let view = ProfileSummary(profile: Profile.default).environmentObject(ModelData())
         assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
     }
-    
+
     func testProfileSummary() throws {
         let expectedProfile = Profile(username: Faker().internet.username(),
                                       prefersNotifications: true,
