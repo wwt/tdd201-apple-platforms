@@ -14,7 +14,7 @@ import Swinject
 class DependencyInjectionTests: XCTestCase {
     static var customContainer: Container!
     static var customName: String = "name1"
-    
+
     override func setUpWithError() throws {
         Self.customContainer = Container()
         Container.default.removeAll()

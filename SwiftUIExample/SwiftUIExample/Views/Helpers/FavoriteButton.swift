@@ -11,7 +11,7 @@ struct FavoriteButton: View {
     @Binding var isSet: Bool
 
     var body: some View {
-        Button  {
+        Button {
             isSet.toggle()
         } label: {
             Image(systemName: isSet ? "star.fill" : "star")
