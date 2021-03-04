@@ -106,12 +106,15 @@ target 'SwiftUIExample' do
   platform :ios, '13.0'
   project 'SwiftUIExample/SwiftUIExample.xcodeproj'
   use_frameworks!
-
+  pod 'Swinject'
 
   target 'SwiftUIExampleTests' do
     pod 'ViewInspector'
     pod 'Fakery'
     pod 'SnapshotTesting'
+    pod 'OHHTTPStubs/Swift'
+    pod 'Cuckoo'
+    pod 'PactConsumerSwift'
   end
 
   target 'SwiftUIExampleUITests' do
