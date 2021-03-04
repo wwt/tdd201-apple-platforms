@@ -1,0 +1,16 @@
+{
+    "name": "pact-node-provider",
+    "version": "0.0.0",
+    "private": true,
+    "main": "app.js",
+    "scripts": {
+        "start": "node server.js",
+        "test": "node pact/provider_tests.js"
+    },
+    "dependencies": {
+        "express": "~4.16.1"
+    },
+    "devDependencies": {
+        "@pact-foundation/pact": "^9.15.0"
+    }
+}
