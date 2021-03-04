@@ -10,6 +10,7 @@ import Combine
 
 protocol HikesServiceProtocol {
     var fetchHikes: AnyPublisher<Result<[Hike], API.HikesService.FetchHikesError>, Never> { get }
+    var fetchLandmarks: AnyPublisher<Result<[Landmark], API.HikesService.FetchHikesError>, Never> { get }
 }
 
 extension HikesServiceProtocol where Self: RESTAPIProtocol {
@@ -17,12 +18,19 @@ extension HikesServiceProtocol where Self: RESTAPIProtocol {
         self.get(endpoint: "hikes") {
             $0.acceptingJSON()
                 .sendingJSON()
-        }.tryMap { (data, res) -> URLSession.ErasedDataTaskPublisher.Output in
-            print("")
-            return (data, res)
-        }
-        .map(\.data)
+        }.map(\.data)
         .decode(type: [Hike].self, decoder: JSONDecoder())
+        .map(Result.success)
+        .catch { error in Just(.failure(.apiBorked(error))) }
+        .eraseToAnyPublisher()
+    }
+
+    var fetchLandmarks: AnyPublisher<Result<[Landmark], API.HikesService.FetchHikesError>, Never> {
+        self.get(endpoint: "landmarks") {
+            $0.acceptingJSON()
+                .sendingJSON()
+        }.map(\.data)
+        .decode(type: [Landmark].self, decoder: JSONDecoder())
         .map(Result.success)
         .catch { error in Just(.failure(.apiBorked(error))) }
         .eraseToAnyPublisher()
@@ -31,7 +39,7 @@ extension HikesServiceProtocol where Self: RESTAPIProtocol {
 
 extension API {
     struct HikesService: HikesServiceProtocol, RESTAPIProtocol {
-        var baseURL = "http://localhost:3000/hikes"
+        var baseURL = "http://localhost:3000"
 
         enum FetchHikesError: Error {
             case apiBorked(Error)
