@@ -75,6 +75,17 @@
 		CA45049525B79A7800153FC4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA45049425B79A7800153FC4 /* Preview Assets.xcassets */; };
 		CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */; };
 		CA63666325EEADA400D65B3F /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63660725EEAC5200D65B3F /* UIDeviceExtensions.swift */; };
+		CAD904BE25F18FCC00C6132A /* URLSessionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904BD25F18FCC00C6132A /* URLSessionExtensions.swift */; };
+		CAD904C325F18FE400C6132A /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904C225F18FE400C6132A /* URLRequestExtensions.swift */; };
+		CAD904C825F1904800C6132A /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904C725F1904800C6132A /* BaseAPI.swift */; };
+		CAD904CD25F1906D00C6132A /* RESTAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904CC25F1906D00C6132A /* RESTAPIProtocol.swift */; };
+		CAD904D225F1908000C6132A /* HikesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904D125F1908000C6132A /* HikesService.swift */; };
+		CAD904DA25F1924500C6132A /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904D825F1924500C6132A /* DependencyInjected.swift */; };
+		CAD904DB25F1924500C6132A /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904D925F1924500C6132A /* ContainerExtensions.swift */; };
+		CAD904E025F1927A00C6132A /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904DF25F1927A00C6132A /* APITests.swift */; };
+		CAD904E525F192CD00C6132A /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904E425F192CD00C6132A /* StubAPIResponse.swift */; };
+		CAD9052C25F193B100C6132A /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD9052B25F193B100C6132A /* URLRequestExtensions.swift */; };
+		CAD9053425F1971800C6132A /* ContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD9053325F1971800C6132A /* ContractTests.swift */; };
 		D21FBB8F56E94A1AF2DB28F0 /* Pods_SwiftUIExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007EDD75F4DC2A86B7F6FD29 /* Pods_SwiftUIExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +188,17 @@
 		CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleTests.swift; sourceTree = "<group>"; };
 		CA4504A125B79A7900153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA63660725EEAC5200D65B3F /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
+		CAD904BD25F18FCC00C6132A /* URLSessionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtensions.swift; sourceTree = "<group>"; };
+		CAD904C225F18FE400C6132A /* URLRequestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtensions.swift; sourceTree = "<group>"; };
+		CAD904C725F1904800C6132A /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		CAD904CC25F1906D00C6132A /* RESTAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAPIProtocol.swift; sourceTree = "<group>"; };
+		CAD904D125F1908000C6132A /* HikesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikesService.swift; sourceTree = "<group>"; };
+		CAD904D825F1924500C6132A /* DependencyInjected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = ../../DependencyInjection/DependencyInjection/DependencyInjection/DependencyInjected.swift; sourceTree = "<group>"; };
+		CAD904D925F1924500C6132A /* ContainerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = ../../DependencyInjection/DependencyInjection/DependencyInjection/ContainerExtensions.swift; sourceTree = "<group>"; };
+		CAD904DF25F1927A00C6132A /* APITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
+		CAD904E425F192CD00C6132A /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
+		CAD9052B25F193B100C6132A /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = "<group>"; };
+		CAD9053325F1971800C6132A /* ContractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -496,6 +518,9 @@
 		CA45048C25B79A7800153FC4 /* SwiftUIExample */ = {
 			isa = PBXGroup;
 			children = (
+				CAD904D725F190D100C6132A /* DependencyInjection */,
+				CAD904BC25F18FBE00C6132A /* Extensions */,
+				CAD904B825F18F8400C6132A /* Network */,
 				002D47B125E0673C000525C3 /* Helpers */,
 				002D475825E05E9C000525C3 /* Resources */,
 				002D475025E05E15000525C3 /* Models */,
@@ -519,12 +544,52 @@
 		CA45049E25B79A7900153FC4 /* SwiftUIExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				CAD904B725F18F7D00C6132A /* Network */,
 				0011EAD525E595A500E48AE8 /* Extensions */,
 				002D473E25E057B3000525C3 /* Views */,
 				CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */,
 				CA4504A125B79A7900153FC4 /* Info.plist */,
 			);
 			path = SwiftUIExampleTests;
+			sourceTree = "<group>";
+		};
+		CAD904B725F18F7D00C6132A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CAD9052B25F193B100C6132A /* URLRequestExtensions.swift */,
+				CAD904E425F192CD00C6132A /* StubAPIResponse.swift */,
+				CAD904DF25F1927A00C6132A /* APITests.swift */,
+				CAD9053325F1971800C6132A /* ContractTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CAD904B825F18F8400C6132A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CAD904C725F1904800C6132A /* BaseAPI.swift */,
+				CAD904CC25F1906D00C6132A /* RESTAPIProtocol.swift */,
+				CAD904D125F1908000C6132A /* HikesService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CAD904BC25F18FBE00C6132A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CAD904BD25F18FCC00C6132A /* URLSessionExtensions.swift */,
+				CAD904C225F18FE400C6132A /* URLRequestExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CAD904D725F190D100C6132A /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				CAD904D925F1924500C6132A /* ContainerExtensions.swift */,
+				CAD904D825F1924500C6132A /* DependencyInjected.swift */,
+			);
+			name = DependencyInjection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -560,6 +625,7 @@
 				CA45048725B79A7800153FC4 /* Frameworks */,
 				CA45048825B79A7800153FC4 /* Resources */,
 				6D058887FE87CDEA6DFEAD8B /* Lint */,
+				14815D2BBDAAE59AC4676DC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -683,6 +749,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		14815D2BBDAAE59AC4676DC7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftUIExample/Pods-SwiftUIExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftUIExample/Pods-SwiftUIExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftUIExample/Pods-SwiftUIExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		196937071D6D17BE813AC569 /* Lint */ = {
@@ -836,8 +919,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD904CD25F1906D00C6132A /* RESTAPIProtocol.swift in Sources */,
 				0011EA8625E557A600E48AE8 /* HexagonParameters.swift in Sources */,
 				002D475225E05E36000525C3 /* Hike.swift in Sources */,
+				CAD904BE25F18FCC00C6132A /* URLSessionExtensions.swift in Sources */,
 				0011EB3A25E82F8400E48AE8 /* ProfileSummary.swift in Sources */,
 				0011EB2825E80A5800E48AE8 /* ContentView.swift in Sources */,
 				0011E9B925E45F7D00E48AE8 /* LandmarkRow.swift in Sources */,
@@ -848,21 +933,26 @@
 				002D486525E08261000525C3 /* CategoryItem.swift in Sources */,
 				002D488A25E433FB000525C3 /* FavoriteButton.swift in Sources */,
 				002D488925E433FB000525C3 /* MapView.swift in Sources */,
+				CAD904D225F1908000C6132A /* HikesService.swift in Sources */,
 				0001A04A25E0531C0081DFB0 /* CategoryHome.swift in Sources */,
 				002D486D25E43098000525C3 /* LandmarkDetail.swift in Sources */,
 				002D474C25E05D7E000525C3 /* ModelData.swift in Sources */,
 				002D480D25E06F9E000525C3 /* CategoryRow.swift in Sources */,
 				CA45048E25B79A7800153FC4 /* SwiftUIExampleApp.swift in Sources */,
+				CAD904C325F18FE400C6132A /* URLRequestExtensions.swift in Sources */,
 				0011EA7A25E5578100E48AE8 /* GraphCapsule.swift in Sources */,
 				0011EB3125E82F5100E48AE8 /* Profile.swift in Sources */,
 				0011EA7C25E5578100E48AE8 /* HikeView.swift in Sources */,
 				002D474825E05C45000525C3 /* Landmark.swift in Sources */,
 				0011EB4825E82FCF00E48AE8 /* HikeBadge.swift in Sources */,
 				0011EA8825E557A600E48AE8 /* BadgeBackground.swift in Sources */,
+				CAD904DB25F1924500C6132A /* ContainerExtensions.swift in Sources */,
 				002D488825E433FB000525C3 /* CircleImage.swift in Sources */,
 				0011EA7925E5578100E48AE8 /* HikeDetail.swift in Sources */,
+				CAD904DA25F1924500C6132A /* DependencyInjected.swift in Sources */,
 				0011EA7B25E5578100E48AE8 /* HikeGraph.swift in Sources */,
 				0011EA8525E557A600E48AE8 /* Badge.swift in Sources */,
+				CAD904C825F1904800C6132A /* BaseAPI.swift in Sources */,
 				0011EA8925E557A600E48AE8 /* BadgeSymbol.swift in Sources */,
 				0011EB3925E82F8400E48AE8 /* ProfileEditor.swift in Sources */,
 			);
@@ -873,11 +963,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				002D474425E057C2000525C3 /* CategoryHomeTests.swift in Sources */,
+				CAD9052C25F193B100C6132A /* URLRequestExtensions.swift in Sources */,
 				0011EB5825E8340A00E48AE8 /* ProfileEditorTests.swift in Sources */,
 				0011EACA25E561F700E48AE8 /* HikeGraphTests.swift in Sources */,
+				CAD9053425F1971800C6132A /* ContractTests.swift in Sources */,
 				0038EBD125ED7B9C000BE4B4 /* MapViewTests.swift in Sources */,
 				0011EB9A25E8625E00E48AE8 /* ProfileHostTests.swift in Sources */,
 				0038EBE525ED7CE4000BE4B4 /* RotatedBadgeSymbolTests.swift in Sources */,
+				CAD904E525F192CD00C6132A /* StubAPIResponse.swift in Sources */,
 				002D488F25E43578000525C3 /* CircleImageTests.swift in Sources */,
 				0011EAD225E5955200E48AE8 /* HikeViewTests.swift in Sources */,
 				0011EAE125E7FD8300E48AE8 /* InspectableViewExtensions.swift in Sources */,
@@ -886,6 +979,7 @@
 				0011EB4E25E8309200E48AE8 /* HikeBadgeTests.swift in Sources */,
 				0038EBDB25ED7C8D000BE4B4 /* BadgeBackgroundTests.swift in Sources */,
 				0011E9C125E45FD400E48AE8 /* LandmarkListTests.swift in Sources */,
+				CAD904E025F1927A00C6132A /* APITests.swift in Sources */,
 				002D486125E081F7000525C3 /* CategoryItemTests.swift in Sources */,
 				0011EAD725E595B900E48AE8 /* ViewHostingExtension.swift in Sources */,
 				0038EBD625ED7C3E000BE4B4 /* BadgeTests.swift in Sources */,
