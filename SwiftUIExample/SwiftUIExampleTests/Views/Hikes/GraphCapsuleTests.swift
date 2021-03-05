@@ -22,11 +22,12 @@ class GraphCapsuleTests: XCTestCase {
                                                                        layout: .fixed(width: 400, height: view.height * view.heightRatio + 20)))
     }
 
+    #warning("Need to test height ratio and offset ratio")
+
     func testGraphCapsule() throws {
         let graphCapsule = GraphCapsule(index: 0, height: 1.0, range: 1..<20, overallRange: 3..<23)
 
-        let capsule = try graphCapsule.inspect().shape()
-
-        XCTAssertEqual(try capsule.fixedHeight(), 0.95)
+        XCTAssertEqual(try graphCapsule.inspect().shape().fixedHeight(), 0.95)
+        XCTAssertEqual(try graphCapsule.inspect().shape().offset(), CGSize(width: 0.0, height: 0.1))
     }
 }

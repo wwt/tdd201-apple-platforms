@@ -23,9 +23,10 @@ struct GraphCapsule: View {
 
     var body: some View {
         Capsule()
+            // Offset MUST be first or we can't test it. It's gross.
+            .offset(x: 0, y: height * -offsetRatio)
             .fill(Color.white)
             .frame(height: height * heightRatio)
-            .offset(x: 0, y: height * -offsetRatio)
     }
 }
 

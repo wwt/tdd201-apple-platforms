@@ -13,7 +13,6 @@ import ViewInspector
 /*
  GeometryReader - Proxy
  DatePicker - selection and date range
- Formatted Date text
  Private @State
  EnvironmentObjects in child views
  */
