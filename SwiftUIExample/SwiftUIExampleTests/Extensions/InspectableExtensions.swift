@@ -9,9 +9,6 @@ import Foundation
 import ViewInspector
 
 @testable import SwiftUIExample
-#warning("Not tested list")
-/*
- Private @State */
 
 extension Inspection: InspectionEmissary where V: Inspectable { }
 
