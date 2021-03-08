@@ -19,16 +19,28 @@ enum ProfileScreen {
         XCUIApplication.current.staticTexts["Completed Badges"].exists
     }
 
-    static var elevationGraphVisible: Bool {
-        XCUIApplication.current.buttons[GraphType.elevation.rawValue].isSelected
+    static var elevationGraphHittable: Bool {
+        let expectation = XCTNSPredicateExpectation(predicate:
+                            NSPredicate(format: "isHittable == true"),
+                            object: XCUIApplication.current.buttons[GraphType.elevation.rawValue])
+        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
+        return result == .completed
     }
 
-    static var heartRateGraphVisible: Bool {
-        XCUIApplication.current.buttons[GraphType.heartRate.rawValue].isSelected
+    static var heartRateGraphHittable: Bool {
+        let expectation = XCTNSPredicateExpectation(predicate:
+                            NSPredicate(format: "isHittable == true"),
+                            object: XCUIApplication.current.buttons[GraphType.heartRate.rawValue])
+        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
+        return result == .completed
     }
 
-    static var paceGraphVisible: Bool {
-        XCUIApplication.current.buttons[GraphType.pace.rawValue].isSelected
+    static var paceGraphHittable: Bool {
+        let expectation = XCTNSPredicateExpectation(predicate:
+                            NSPredicate(format: "isHittable == true"),
+                            object: XCUIApplication.current.buttons[GraphType.pace.rawValue])
+        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
+        return result == .completed
     }
 
     static var goalDateFormatted: Bool {
@@ -54,13 +66,13 @@ enum ProfileScreen {
         return ProfileEditScreen.self
     }
 
-    @discardableResult static func toggleHikeGraph() -> ProfileEditScreen.Type {
+    @discardableResult static func toggleHikeGraph() -> Self.Type {
         XCUIApplication.current.buttons["chevron.right.circle"].tap()
-        return ProfileEditScreen.self
+        return Self.self
     }
 
-    @discardableResult static func changeGraph(to type: GraphType) -> ProfileEditScreen.Type {
+    @discardableResult static func changeGraph(to type: GraphType) -> Self.Type {
         XCUIApplication.current.buttons[type.rawValue].tap()
-        return ProfileEditScreen.self
+        return Self.self
     }
 }

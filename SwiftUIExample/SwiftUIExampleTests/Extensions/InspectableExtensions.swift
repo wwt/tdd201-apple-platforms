@@ -11,11 +11,7 @@ import ViewInspector
 @testable import SwiftUIExample
 #warning("Not tested list")
 /*
- GeometryReader - Proxy
- DatePicker - selection and date range
- Private @State
- EnvironmentObjects in child views
- */
+ Private @State */
 
 extension Inspection: InspectionEmissary where V: Inspectable { }
 

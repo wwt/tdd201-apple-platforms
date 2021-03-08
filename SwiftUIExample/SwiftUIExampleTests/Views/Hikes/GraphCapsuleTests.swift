@@ -16,6 +16,7 @@ import SnapshotTesting
 class GraphCapsuleTests: XCTestCase {
     func testUIMatchesSnapshot() throws {
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
+        UIApplication.shared.windows.first?.becomeKey()
         let view = GraphCapsule(index: 0, height: 150, range: 10..<50, overallRange: 0..<100)
         assertSnapshot(matching: view.colorMultiply(.blue), as: .image(drawHierarchyInKeyWindow: true,
                                                                        precision: 0.99,
