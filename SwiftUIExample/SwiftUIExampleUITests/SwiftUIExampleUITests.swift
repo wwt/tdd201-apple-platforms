@@ -59,7 +59,6 @@ class SwiftUIExampleUITests: XCTestCase {
         XCTAssert(LandmarksScreen
                     .toggleFavorites()
                     .isFavoritesOnly)
-        #warning("Too much testing? Since this is covered by unit test?")
         XCTAssertLessThan(LandmarksScreen.landmarksInList, count)
     }
 
@@ -70,11 +69,13 @@ class SwiftUIExampleUITests: XCTestCase {
         XCTAssert(ProfileScreen.goalDateFormatted)
     }
 
-    func testWhenTappingRecentHikesArror_HikeGraphElevationIsVisible() throws {
+    func testWhenTappingRecentHikesArror_HikeGraphIsVisible() throws {
         XCTAssert(FeaturedScreen.isVisible)
         FeaturedScreen.goToProfile()
         ProfileScreen.toggleHikeGraph()
-        XCTAssert(ProfileScreen.elevationGraphVisible)
+        XCTAssert(ProfileScreen.elevationGraphHittable)
+        XCTAssert(ProfileScreen.paceGraphHittable)
+        XCTAssert(ProfileScreen.heartRateGraphHittable)
     }
 
     func testWhenTappingProfileEdit_UserGoesToEditProfile() throws {
@@ -92,7 +93,7 @@ class SwiftUIExampleUITests: XCTestCase {
 //                        .toggleNotifications()
 //                        .notificationsEnabled)
     }
-    
+
     func testWhenEditingProfile_UserCanChangeUsername() throws {
         XCTAssert(FeaturedScreen.isVisible)
         FeaturedScreen.goToProfile().goToEditProfile()
@@ -100,7 +101,7 @@ class SwiftUIExampleUITests: XCTestCase {
                     .changeUsername(to: "heather")
                     .usernameMatches("heather"))
     }
-    
+
     func testWhenEditingProfile_UserCanChangeSeasonalPhoto() throws {
         XCTAssert(FeaturedScreen.isVisible)
         FeaturedScreen.goToProfile().goToEditProfile()

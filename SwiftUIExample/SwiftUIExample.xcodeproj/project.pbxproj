@@ -75,6 +75,7 @@
 		00A36CE525F67AB700C6E20C /* LandmarksScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36CE425F67AB700C6E20C /* LandmarksScreen.swift */; };
 		00A36CEA25F67B2700C6E20C /* XCUIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36CE925F67B2700C6E20C /* XCUIApplicationExtensions.swift */; };
 		00A36CEF25F67B8400C6E20C /* TextFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36CEE25F67B8400C6E20C /* TextFieldElement.swift */; };
+		00D8758525F6919D008F2019 /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8758425F6919D008F2019 /* DateFormatterExtensions.swift */; };
 		0A950C9F5DD37D53DCA75612 /* Pods_SwiftUIExample_SwiftUIExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA850DC8186F668A5BD2821 /* Pods_SwiftUIExample_SwiftUIExampleUITests.framework */; };
 		BBB9738EC168E1F562E76E6C /* Pods_SwiftUIExample_SwiftUIExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E0F83637ED7E88C374F551 /* Pods_SwiftUIExample_SwiftUIExampleTests.framework */; };
 		CA45048E25B79A7800153FC4 /* SwiftUIExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45048D25B79A7800153FC4 /* SwiftUIExampleApp.swift */; };
@@ -185,6 +186,7 @@
 		00A36CE425F67AB700C6E20C /* LandmarksScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksScreen.swift; sourceTree = "<group>"; };
 		00A36CE925F67B2700C6E20C /* XCUIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIApplicationExtensions.swift; sourceTree = "<group>"; };
 		00A36CEE25F67B8400C6E20C /* TextFieldElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldElement.swift; sourceTree = "<group>"; };
+		00D8758425F6919D008F2019 /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		2366CC911CCCCFC440315435 /* Pods-SwiftUIExample-SwiftUIExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIExample-SwiftUIExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIExample-SwiftUIExampleUITests/Pods-SwiftUIExample-SwiftUIExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		37161F9B33000965D279ACAA /* Pods-SwiftUIExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIExample.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIExample/Pods-SwiftUIExample.debug.xcconfig"; sourceTree = "<group>"; };
 		53088C5D5FD31011317EB2DC /* Pods-SwiftUIExample-SwiftUIExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIExample-SwiftUIExampleTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftUIExample-SwiftUIExampleTests/Pods-SwiftUIExample-SwiftUIExampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				0038EB0C25ED607A000BE4B4 /* StringExtensions.swift */,
 				00A36CE925F67B2700C6E20C /* XCUIApplicationExtensions.swift */,
 				00A36CEE25F67B8400C6E20C /* TextFieldElement.swift */,
+				00D8758425F6919D008F2019 /* DateFormatterExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -934,6 +937,7 @@
 				0011EC0925E883F700E48AE8 /* MainScreen.swift in Sources */,
 				00A36CEA25F67B2700C6E20C /* XCUIApplicationExtensions.swift in Sources */,
 				00A36CD125F67A2700C6E20C /* LandmarkDetailScreen.swift in Sources */,
+				00D8758525F6919D008F2019 /* DateFormatterExtensions.swift in Sources */,
 				0038EB1825ED6150000BE4B4 /* StringExtensions.swift in Sources */,
 				00A36CE025F67A8E00C6E20C /* ProfileEditScreen.swift in Sources */,
 				00A36CD625F67A5700C6E20C /* FeaturedScreen.swift in Sources */,
