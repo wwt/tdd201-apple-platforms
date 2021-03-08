@@ -28,6 +28,17 @@ class CategoryHomeTests: XCTestCase {
         wait(for: [exp], timeout: 0.1)
     }
 
+    func testCategoryHomeDoesNotCrashWhenNoLandmarks() throws {
+        let modelData = ModelData()
+        modelData.landmarks = []
+
+        let exp = ViewHosting.loadView(CategoryHome(), data: modelData).inspection.inspect { (view) in
+            XCTAssertThrowsError(try view.navigationView().list(0).image(0))
+        }
+
+        wait(for: [exp], timeout: 0.1)
+    }
+
     func testCategoryHomeDisplaysFeaturedLandmarks() throws {
         let file = Bundle.main.url(forResource: "landmarkData", withExtension: "json")!
         let data = try Data(contentsOf: file)
@@ -35,10 +46,7 @@ class CategoryHomeTests: XCTestCase {
         modelData.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
 
         let exp = ViewHosting.loadView(CategoryHome(), data: modelData).inspection.inspect { (view) in
-            let list = try view.navigationView().list(0)
-            let image = try list.image(0)
-
-            XCTAssertEqual(try image.actualImage(), modelData.features[0].image.resizable())
+            XCTAssertEqual(try view.navigationView().list(0).image(0).actualImage(), modelData.features[0].image.resizable())
         }
 
         wait(for: [exp], timeout: 0.1)
