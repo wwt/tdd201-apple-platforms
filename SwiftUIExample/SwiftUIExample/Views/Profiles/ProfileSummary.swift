@@ -8,7 +8,7 @@ A view that summarizes a profile.
 import SwiftUI
 
 struct ProfileSummary: View {
-    @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var appModel: AppModel
     var profile: Profile
     internal let inspection = Inspection<Self>()
 
@@ -47,7 +47,7 @@ struct ProfileSummary: View {
                 VStack(alignment: .leading) {
                     Text("Recent Hikes")
                         .font(.headline)
-                    if let hike = modelData.hikes.first {
+                    if let hike = appModel.hikes.first {
                         HikeView(hike: hike)
                     }
                 }
@@ -61,6 +61,6 @@ struct ProfileSummary: View {
 struct ProfileSummary_Previews: PreviewProvider {
     static var previews: some View {
         ProfileSummary(profile: Profile.default)
-            .environmentObject(ModelData())
+            .environmentObject(AppModel())
     }
 }

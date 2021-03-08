@@ -16,12 +16,16 @@ import SnapshotTesting
 class ContentViewTests: XCTestCase {
     func testUIMatchesSnapshot() throws {
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let view = CategoryHome().environmentObject(ModelData())
+
+        let appModel = AppModel()
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
+
+        let view = CategoryHome().environmentObject(appModel)
         assertSnapshot(matching: view, as: .image(precision: 0.99))
     }
 
     func testContentView() throws {
-        let exp = ViewHosting.loadView(ContentView(), data: ModelData()).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(ContentView(), data: AppModel()).inspection.inspect { (view) in
             let tabView = try view.find(ViewType.TabView.self)
 
             XCTAssertNoThrow(try tabView.view(CategoryHome.self, 0))

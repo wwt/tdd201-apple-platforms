@@ -19,11 +19,11 @@ class LandmarkDetailTests: XCTestCase {
         // we could use a custom snapshot and make this work,
         // but it is out of the bounds of this lesson
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let modelData = ModelData()
-        modelData.profile.goalDate = Date(timeIntervalSince1970: 1000)
-        modelData.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
+        let appModel = AppModel()
+        appModel.profile.goalDate = Date(timeIntervalSince1970: 1000)
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
-        let view = LandmarkDetail(landmark: modelData.landmarks[1]).environmentObject(modelData)
+        let view = LandmarkDetail(landmark: appModel.landmarks[1]).environmentObject(appModel)
         assertSnapshot(matching: view, as: .description)
     }
 
@@ -32,10 +32,10 @@ class LandmarkDetailTests: XCTestCase {
         expectedLandmark.isFavorite = false // explicitly set as false - it is true in model data
         let file = Bundle.main.url(forResource: "landmarkData", withExtension: "json")!
         let data = try Data(contentsOf: file)
-        let modelData = ModelData()
-        modelData.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
+        let appModel = AppModel()
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
 
-        let exp = ViewHosting.loadView(LandmarkDetail(landmark: expectedLandmark), data: modelData).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(LandmarkDetail(landmark: expectedLandmark), data: appModel).inspection.inspect { (view) in
             let scrollView = try view.scrollView(0)
             let mapView = try scrollView.find(MapView.self)
             let circleImage = try scrollView.find(CircleImage.self)
