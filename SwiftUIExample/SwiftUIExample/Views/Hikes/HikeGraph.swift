@@ -34,9 +34,14 @@ struct HikeGraph: View {
 
     var body: some View {
         let data = hike.observations
-        let overallRange = rangeOfRanges(data.lazy.map { $0[keyPath: path] })
-        let maxMagnitude = data.map { magnitude(of: $0[keyPath: path]) }.max()!
-        let heightRatio = 1 - CGFloat(maxMagnitude / magnitude(of: overallRange))
+        let ranges = data.lazy.map { $0[keyPath: path ]}
+        let firstRange = ranges.first ?? 0..<0
+        let overallRange = ranges.reduce(into: firstRange) { reducer, range in
+            reducer = min(reducer.lowerBound, range.lowerBound)..<max(reducer.upperBound, range.upperBound)
+        }
+
+        let maxMagnitude = ranges.map { $0.magnitude }.max(by: <) ?? firstRange.magnitude
+        let heightRatio = 1 - CGFloat(maxMagnitude / overallRange.magnitude )
 
         return GeometryReader { proxy in
             HStack(alignment: .bottom, spacing: proxy.size.width / 120) {
@@ -54,18 +59,6 @@ struct HikeGraph: View {
             }
         }
     }
-}
-
-func rangeOfRanges<C: Collection>(_ ranges: C) -> Range<Double>
-where C.Element == Range<Double> {
-    guard !ranges.isEmpty else { return 0..<0 }
-    let low = ranges.lazy.map { $0.lowerBound }.min()!
-    let high = ranges.lazy.map { $0.upperBound }.max()!
-    return low..<high
-}
-
-func magnitude(of range: Range<Double>) -> Double {
-    return range.upperBound - range.lowerBound
 }
 
 struct HikeGraph_Previews: PreviewProvider {
