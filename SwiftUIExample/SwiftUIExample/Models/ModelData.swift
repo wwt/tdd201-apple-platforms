@@ -10,8 +10,8 @@ import Combine
 
 #warning("Have not TDD'd this yet - NO COVERAGE, GASP!")
 final class ModelData: ObservableObject {
-    @Published var landmarks: [Landmark] = load("landmarkData.json")
-    var hikes: [Hike] = load("hikeData.json")
+    @Published var landmarks: [Landmark] = []
+    var hikes: [Hike] = []
     @Published var profile = Profile.default
 
     var features: [Landmark] {

@@ -27,6 +27,7 @@ struct Landmark: Hashable, Codable, Identifiable {
     }
 
     private var imageName: String
+    #warning("maybe don't do this... it hacky")
     var image: Image {
         Image(imageName)
     }

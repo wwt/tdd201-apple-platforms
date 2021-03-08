@@ -16,8 +16,9 @@ import SnapshotTesting
 class LandmarkRowTests: XCTestCase {
     func testUIMatchesSnapshot() throws {
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let modelData = ModelData()
-        let view = LandmarkRow(landmark: modelData.landmarks.first!)
+        let landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
+
+        let view = LandmarkRow(landmark: landmarks.first!)
         assertSnapshot(matching: view, as: .image(precision: 0.99))
     }
 

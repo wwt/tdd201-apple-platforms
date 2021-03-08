@@ -21,6 +21,8 @@ class LandmarkDetailTests: XCTestCase {
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let modelData = ModelData()
         modelData.profile.goalDate = Date(timeIntervalSince1970: 1000)
+        modelData.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
+
         let view = LandmarkDetail(landmark: modelData.landmarks[1]).environmentObject(modelData)
         assertSnapshot(matching: view, as: .description)
     }
