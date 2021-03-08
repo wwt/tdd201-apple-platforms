@@ -20,6 +20,7 @@ class HikeGraphTests: XCTestCase {
         let observationKeyPath: KeyPath<Hike.Observation, Range<Double>> = \.elevation
 
         let view = HikeGraph(hike: expectedHike, path: observationKeyPath)
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
         assertSnapshot(matching: view, as: .image(drawHierarchyInKeyWindow: true,
                                                   precision: 0.99,
                                                   layout: .device(config: .iPhoneXsMax)))
