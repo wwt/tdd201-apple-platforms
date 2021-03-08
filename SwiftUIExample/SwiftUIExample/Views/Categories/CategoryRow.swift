@@ -30,7 +30,7 @@ struct CategoryRow: View {
 }
 
 struct CategoryRow_Previews: PreviewProvider {
-    static var landmarks = ModelData().landmarks
+    static var landmarks = AppModel().landmarks
 
     static var previews: some View {
         CategoryRow(

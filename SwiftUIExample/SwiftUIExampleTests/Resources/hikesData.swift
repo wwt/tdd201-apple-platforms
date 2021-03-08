@@ -10,7 +10,7 @@ import XCTest
 
 // swiftlint:disable file_length
 extension XCTestCase {
-    var hikesData: Data {
+    var hikesJson: Data {
         Data("""
         [
             {

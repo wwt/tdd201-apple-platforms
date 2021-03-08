@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 #warning("Have not TDD'd this yet - NO COVERAGE, GASP!")
-final class ModelData: ObservableObject {
+final class AppModel: ObservableObject {
     @Published var landmarks: [Landmark] = []
     var hikes: [Hike] = []
     @Published var profile = Profile.default
