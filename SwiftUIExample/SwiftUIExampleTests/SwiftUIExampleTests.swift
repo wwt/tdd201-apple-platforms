@@ -6,28 +6,15 @@
 //
 
 import XCTest
+import ViewInspector
+import Swinject
+
 @testable import SwiftUIExample
 
 class SwiftUIExampleTests: XCTestCase {
+    func testDependenciesAreSetup() throws {
+        _ = SwiftUIExampleApp()
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        XCTAssert(Container.default.resolve(HikesServiceProtocol.self) is API.HikesService, "Expected API.HikesService to be registered inside container")
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

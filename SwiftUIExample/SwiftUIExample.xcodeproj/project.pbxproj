@@ -86,6 +86,8 @@
 		CA45049525B79A7800153FC4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA45049425B79A7800153FC4 /* Preview Assets.xcassets */; };
 		CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */; };
 		CA63666325EEADA400D65B3F /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63660725EEAC5200D65B3F /* UIDeviceExtensions.swift */; };
+		CA9575A425F6C698009507C6 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9575A325F6C698009507C6 /* GeneratedMocks.swift */; };
+		CA9575AD25F6C6E6009507C6 /* MockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9575AC25F6C6E6009507C6 /* MockExtensions.swift */; };
 		CAD904BE25F18FCC00C6132A /* URLSessionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904BD25F18FCC00C6132A /* URLSessionExtensions.swift */; };
 		CAD904C325F18FE400C6132A /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904C225F18FE400C6132A /* URLRequestExtensions.swift */; };
 		CAD904C825F1904800C6132A /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904C725F1904800C6132A /* BaseAPI.swift */; };
@@ -210,6 +212,8 @@
 		CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleTests.swift; sourceTree = "<group>"; };
 		CA4504A125B79A7900153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA63660725EEAC5200D65B3F /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
+		CA9575A325F6C698009507C6 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		CA9575AC25F6C6E6009507C6 /* MockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockExtensions.swift; path = ../../../MockingFramework/MockingFrameworkTests/CuckooExtensions/MockExtensions.swift; sourceTree = "<group>"; };
 		CAD904BD25F18FCC00C6132A /* URLSessionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtensions.swift; sourceTree = "<group>"; };
 		CAD904C225F18FE400C6132A /* URLRequestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtensions.swift; sourceTree = "<group>"; };
 		CAD904C725F1904800C6132A /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
@@ -584,6 +588,8 @@
 		CA45049E25B79A7900153FC4 /* SwiftUIExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				CA9575AB25F6C6CD009507C6 /* CuckooHelpers */,
+				CA9575A325F6C698009507C6 /* GeneratedMocks.swift */,
 				0016335A25F6A85400A227A4 /* Resources */,
 				CAD904B725F18F7D00C6132A /* Network */,
 				0011EAD525E595A500E48AE8 /* Extensions */,
@@ -592,6 +598,14 @@
 				CA4504A125B79A7900153FC4 /* Info.plist */,
 			);
 			path = SwiftUIExampleTests;
+			sourceTree = "<group>";
+		};
+		CA9575AB25F6C6CD009507C6 /* CuckooHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				CA9575AC25F6C6E6009507C6 /* MockExtensions.swift */,
+			);
+			path = CuckooHelpers;
 			sourceTree = "<group>";
 		};
 		CAD904B725F18F7D00C6132A /* Network */ = {
@@ -687,6 +701,7 @@
 				CA45049925B79A7800153FC4 /* Resources */,
 				196937071D6D17BE813AC569 /* Lint */,
 				980673101027D10CD1356445 /* [CP] Embed Pods Frameworks */,
+				CA95759F25F6C630009507C6 /* Generate Mocks */,
 			);
 			buildRules = (
 			);
@@ -919,6 +934,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftUIExample-SwiftUIExampleTests/Pods-SwiftUIExample-SwiftUIExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CA95759F25F6C630009507C6 /* Generate Mocks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Mocks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Network/HikesService.swift\"\n\n";
+		};
 		F384880B0F4578E49903C77F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1025,8 +1058,10 @@
 				0011EAD225E5955200E48AE8 /* HikeViewTests.swift in Sources */,
 				0011EAE125E7FD8300E48AE8 /* InspectableViewExtensions.swift in Sources */,
 				002D480925E06F46000525C3 /* CategoryRowTests.swift in Sources */,
+				CA9575A425F6C698009507C6 /* GeneratedMocks.swift in Sources */,
 				0016335625F6A60700A227A4 /* LandmarkExtensions.swift in Sources */,
 				0011EB5425E8319100E48AE8 /* InspectableExtensions.swift in Sources */,
+				CA9575AD25F6C6E6009507C6 /* MockExtensions.swift in Sources */,
 				0011EB4E25E8309200E48AE8 /* HikeBadgeTests.swift in Sources */,
 				0038EBDB25ED7C8D000BE4B4 /* BadgeBackgroundTests.swift in Sources */,
 				0011E9C125E45FD400E48AE8 /* LandmarkListTests.swift in Sources */,
