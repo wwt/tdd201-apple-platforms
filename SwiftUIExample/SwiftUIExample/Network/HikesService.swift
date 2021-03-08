@@ -10,6 +10,7 @@ import Combine
 
 protocol HikesServiceProtocol {
     var fetchHikes: AnyPublisher<Result<[Hike], API.HikesService.FetchHikesError>, Never> { get }
+    #warning("Error type on fetch landmarks weird?")
     var fetchLandmarks: AnyPublisher<Result<[Landmark], API.HikesService.FetchHikesError>, Never> { get }
 }
 
