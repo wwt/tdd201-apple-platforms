@@ -38,10 +38,8 @@ class LandmarkDetailTests: XCTestCase {
                                                category: .mountains,
                                                coordinates: .init(latitude: 59.560551, longitude: -135.334571),
                                                imageName: "chilkoottrail")
-        let file = Bundle.main.url(forResource: "landmarkData", withExtension: "json")!
-        let data = try Data(contentsOf: file)
         let appModel = AppModel()
-        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
         let exp = ViewHosting.loadView(LandmarkDetail(landmark: expectedLandmark), data: appModel).inspection.inspect { (view) in
             let scrollView = try view.scrollView(0)

@@ -68,8 +68,6 @@ class HikeViewTests: XCTestCase {
     }
 
     private func getHikes() throws -> [Hike] {
-        let file = Bundle.main.url(forResource: "hikeData", withExtension: "json")!
-        let data = try Data(contentsOf: file)
-        return try JSONDecoder().decode([Hike].self, from: data)
+        return try JSONDecoder().decode([Hike].self, from: hikesJson)
     }
 }
