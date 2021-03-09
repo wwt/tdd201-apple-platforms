@@ -19,7 +19,6 @@ class GraphCapsuleTests: XCTestCase {
         UIApplication.shared.windows.first?.makeKeyAndVisible()
         let view = GraphCapsule(index: 0, height: 150, range: 10..<50, overallRange: 0..<100)
         assertSnapshot(matching: view.colorMultiply(.blue), as: .image(drawHierarchyInKeyWindow: true,
-                                                                       precision: 0.99,
                                                                        layout: .fixed(width: 400, height: view.height * view.heightRatio + 20)))
     }
 

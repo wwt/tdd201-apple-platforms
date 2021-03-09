@@ -19,7 +19,7 @@ class CategoryRowTests: XCTestCase {
         let landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
         let view = CategoryRow(categoryName: landmarks[0].category.rawValue,
                                items: Array(landmarks.prefix(4)))
-        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
+        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
     }
 
     func testCategoryRowDisplaysCategoryNameWithLandmarks() throws {

@@ -17,8 +17,14 @@ import SnapshotTesting
 class ProfileSummaryTests: XCTestCase {
     func testUIMatchesSnapshot() throws {
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let view = ProfileSummary(profile: Profile.default).environmentObject(AppModel())
-        assertSnapshot(matching: view, as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
+
+        let appModel = AppModel()
+        appModel.hikes = try JSONDecoder().decode([Hike].self, from: hikesJson)
+
+        var profile = Profile.default
+        profile.goalDate = Date(timeIntervalSince1970: 13543535)
+        let view = ProfileSummary(profile: profile).environmentObject(appModel)
+        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
     }
 
     func testProfileSummary() throws {
@@ -72,6 +78,6 @@ class ProfileSummaryTests: XCTestCase {
             XCTAssertEqual(try view.find(ViewType.Text.self, index: 5).attributes().font(), .headline)
             XCTAssertThrowsError(try view.find(HikeView.self))
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3)
     }
 }

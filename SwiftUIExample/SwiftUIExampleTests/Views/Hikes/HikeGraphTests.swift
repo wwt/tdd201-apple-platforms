@@ -18,12 +18,10 @@ class HikeGraphTests: XCTestCase {
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let expectedHike = try getHikes().first!
         let observationKeyPath: KeyPath<Hike.Observation, Range<Double>> = \.elevation
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
         let view = HikeGraph(hike: expectedHike, path: observationKeyPath)
         UIApplication.shared.windows.first?.makeKeyAndVisible()
         assertSnapshot(matching: view, as: .image(drawHierarchyInKeyWindow: true,
-                                                  precision: 0.99,
-                                                  layout: .device(config: .iPhoneXsMax)))
+                                                  layout: .fixed(width: 200, height: 200)))
     }
 
     func testHikeGraph() throws {

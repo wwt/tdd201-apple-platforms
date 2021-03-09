@@ -23,7 +23,7 @@ class ProfileEditorTests: XCTestCase {
                                       goalDate: Date(timeIntervalSince1970: 1614627432))
         let bindingProfile = Binding<Profile>(wrappedValue: expectedProfile)
         let view = ProfileEditor(profile: bindingProfile)
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
+        assertSnapshot(matching: view, as: .image)
     }
 
     func testProfileEditor() throws {

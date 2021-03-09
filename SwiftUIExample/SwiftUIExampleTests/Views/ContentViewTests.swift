@@ -28,7 +28,7 @@ class ContentViewTests: XCTestCase {
         appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
         let view = CategoryHome().environmentObject(appModel)
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
+        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
     }
 
     func testContentView() throws {

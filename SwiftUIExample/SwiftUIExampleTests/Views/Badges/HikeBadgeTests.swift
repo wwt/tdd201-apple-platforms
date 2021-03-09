@@ -17,7 +17,7 @@ class HikeBadgeTests: XCTestCase {
     func testUIMatchesSnapshot() throws {
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let view = HikeBadge(name: "name")
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
+        assertSnapshot(matching: view, as: .image)
     }
 
     func testHikeBadge() throws {
