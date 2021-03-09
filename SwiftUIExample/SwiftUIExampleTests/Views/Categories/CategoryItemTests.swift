@@ -29,7 +29,7 @@ class CategoryItemTests: XCTestCase {
                                                coordinates: .init(latitude: 59.560551, longitude: -135.334571),
                                                imageName: "chilkoottrail")
         let view = CategoryItem(landmark: landmark)
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
+        assertSnapshot(matching: view, as: .image)
     }
 
     func testCategoryItemDisplaysCategoryNameWithLandmarks() throws {

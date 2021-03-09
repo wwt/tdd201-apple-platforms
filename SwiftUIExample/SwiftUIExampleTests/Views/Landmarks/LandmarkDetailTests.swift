@@ -42,7 +42,7 @@ class LandmarkDetailTests: XCTestCase {
         appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
         let exp = ViewHosting.loadView(LandmarkDetail(landmark: expectedLandmark), data: appModel).inspection.inspect { (view) in
-            let scrollView = try view.scrollView(0)
+            let scrollView = try view.scrollView()
             let mapView = try scrollView.find(MapView.self)
             let circleImage = try scrollView.find(CircleImage.self)
             let vStack = try scrollView.find(ViewType.VStack.self)

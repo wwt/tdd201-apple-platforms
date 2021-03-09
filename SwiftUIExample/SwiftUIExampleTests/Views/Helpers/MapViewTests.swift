@@ -18,7 +18,7 @@ class MapViewTests: XCTestCase {
     // ViewInspector does not currently support Map() - 03/01/21
     func testUIMatchesSnapshot() throws {
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let view = MapView(coordinate: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868))
+        let view = ViewHosting.loadView(MapView(coordinate: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868)))
         assertSnapshot(matching: view, as: .dump)
     }
 }

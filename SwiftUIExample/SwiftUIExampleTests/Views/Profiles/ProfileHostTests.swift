@@ -26,7 +26,7 @@ class ProfileHostTests: XCTestCase {
         appModel.hikes = try JSONDecoder().decode([Hike].self, from: hikesJson)
         appModel.profile = expectedProfile
         let view = ProfileHost().environmentObject(appModel)
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
+        assertSnapshot(matching: view, as: .image)
     }
 
     func testProfileHostActiveEditMode() throws {

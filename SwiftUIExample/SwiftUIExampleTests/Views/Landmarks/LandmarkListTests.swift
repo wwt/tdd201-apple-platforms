@@ -28,7 +28,7 @@ class LandmarkListTests: XCTestCase {
         appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
         let view = LandmarkList().environmentObject(appModel)
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
+        assertSnapshot(matching: view, as: .image)
     }
 
     func testLandmarkListDisplaysTheThings() throws {

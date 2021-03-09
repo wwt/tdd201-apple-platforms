@@ -19,7 +19,7 @@ class LandmarkRowTests: XCTestCase {
         let landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
         let view = LandmarkRow(landmark: landmarks.first!)
-        assertSnapshot(matching: view, as: .image(precision: 0.99))
+        assertSnapshot(matching: view, as: .image)
     }
 
     func testFavoriteLandmarkRowDisplaysLandmarkWithStar() throws {
