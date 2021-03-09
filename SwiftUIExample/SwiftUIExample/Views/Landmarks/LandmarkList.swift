@@ -12,7 +12,7 @@ struct LandmarkList: View {
     @EnvironmentObject var appModel: AppModel
     @ObservedObject private var viewModel = ViewModel()
     @State private var showFavoritesOnly = false
-    @State private var landmarksResult: Result<[Landmark], API.HikesService.FetchHikesError>? {
+    @State private var landmarksResult: Result<[Landmark], API.HikesService.Error>? {
         didSet {
             switch landmarksResult {
                 case .success(let landmarks): appModel.landmarks = landmarks

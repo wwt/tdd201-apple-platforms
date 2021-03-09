@@ -142,4 +142,66 @@ class ContractTests: XCTestCase {
             }.store(in: &ongoingCalls)
         }
     }
+
+    func testLandmarkCanBeFavorited() throws {
+        let service = API.HikesService(baseURL: hikesServiceProvider.baseUrl)
+        let expectedLandmark = Landmark.createForTests(id: 1,
+                                                       name: Faker().address.city(),
+                                                       park: Faker().address.city(),
+                                                       state: Faker().address.state(),
+                                                       description: Faker().lorem.paragraphs(),
+                                                       isFavorite: true,
+                                                       isFeatured: Bool.random(),
+                                                       category: Landmark.Category.allCases.randomElement()!,
+                                                       coordinates: Landmark.Coordinates(latitude: Faker().address.latitude(),
+                                                                                         longitude: Faker().address.longitude()))
+
+        hikesServiceProvider.given("A landmark that is NOT favorited with id 1")
+            .uponReceiving("A request to favorite a landmark")
+            .withRequest(method: .PUT, path: "/landmarks/1/favorite",
+                         headers: [
+                            "Content-Type": Matcher.term(matcher: "application/json(.*)?$", generate: "application/json"),
+                            "Accept": Matcher.term(matcher: "application/json(.*)?$", generate: "application/json")
+                         ],
+                         body: [
+                            "isFavorite": true
+                         ])
+            .willRespondWith(status: 200,
+                             headers: [
+                                "Content-Type": Matcher.term(matcher: "application/json(.*)?$", generate: "application/json")
+                             ],
+                             body: [
+                                "name": Matcher.somethingLike(expectedLandmark.name),
+                                "category": Matcher.term(matcher: Landmark.Category.allCases.map { $0.rawValue }.joined(separator: "|"),
+                                                         generate: expectedLandmark.category.rawValue),
+                                "city": Matcher.somethingLike(Faker().address.city()),
+                                "state": Matcher.somethingLike(expectedLandmark.state),
+                                "id": Matcher.somethingLike(expectedLandmark.id),
+                                "isFeatured": Matcher.somethingLike(expectedLandmark.isFeatured),
+                                "isFavorite": expectedLandmark.isFavorite,
+                                "park": Matcher.somethingLike(expectedLandmark.park),
+                                "coordinates": [
+                                    "longitude": Matcher.somethingLike(expectedLandmark.locationCoordinate.longitude),
+                                    "latitude": Matcher.somethingLike(expectedLandmark.locationCoordinate.latitude)
+                                ],
+                                "description": Matcher.somethingLike(expectedLandmark.description),
+                                "imageName": Matcher.somethingLike("turtlerock")
+                             ])
+
+        hikesServiceProvider.run { [self] (testComplete) in
+            service.setFavorite(to: true, on: expectedLandmark).sink {
+                switch $0 {
+                    case .success(let landmark):
+                        XCTAssert(landmark.isFavorite)
+                    case .failure(let err):
+                        if case .apiBorked(let error) = err {
+                            XCTFail(error.localizedDescription)
+                        } else {
+                            XCTFail(err.localizedDescription)
+                        }
+                }
+                testComplete()
+            }.store(in: &ongoingCalls)
+        }
+    }
 }
