@@ -32,13 +32,23 @@ class ContentViewTests: XCTestCase {
     }
 
     func testContentView() throws {
+        MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get).thenReturn(
+                Result.Publisher(.success([]))
+                    .eraseToAnyPublisher()
+            )
+            when(stub.fetchHikes.get).thenReturn(
+                Result.Publisher(.success([]))
+                    .eraseToAnyPublisher()
+            )
+        }.registerIn(Container.default)
         let exp = ViewHosting.loadView(ContentView(), data: AppModel()).inspection.inspect { (view) in
             let tabView = try view.find(ViewType.TabView.self)
 
             XCTAssertNoThrow(try tabView.view(CategoryHome.self, 0))
             XCTAssertThrowsError(try tabView.view(LandmarkList.self, 0))
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3)
     }
 
     func testContentView_FetchesHikesOnAppear() throws {
@@ -51,6 +61,9 @@ class ContentViewTests: XCTestCase {
             when(stub.fetchHikes.get).thenReturn(
                 Result.Publisher(.success(expectedHikes)).eraseToAnyPublisher()
             )
+            when(stub.fetchLandmarks.get).thenReturn(
+                Result.Publisher(.success([])).eraseToAnyPublisher()
+            )
         }.registerIn(Container.default)
 
         let appModel = AppModel()
@@ -62,7 +75,7 @@ class ContentViewTests: XCTestCase {
             verify(mockHikesService, times(1)).fetchHikes.get()
             XCTAssertEqual(appModel.hikes, expectedHikes)
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3)
     }
 
     func testContentView_FetchesLandmarksOnAppear() throws {
@@ -95,7 +108,28 @@ class ContentViewTests: XCTestCase {
             verify(mockHikesService, times(1)).fetchLandmarks.get()
             XCTAssertEqual(appModel.landmarks, expectedLandmarks)
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3)
+    }
+
+    func testContentView_ShowsProgressSpinnerWhileFetchingHikesAndLandmarks() throws {
+        MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get).thenReturn(
+                Result.Publisher(.success([]))
+                    .delay(for: 10, scheduler: DispatchQueue.main)
+                    .eraseToAnyPublisher()
+            )
+            when(stub.fetchHikes.get).thenReturn(
+                Result.Publisher(.success([]))
+                    .delay(for: 10, scheduler: DispatchQueue.main)
+                    .eraseToAnyPublisher()
+            )
+        }.registerIn(Container.default)
+
+        let appModel = AppModel()
+        let exp = ViewHosting.loadView(ContentView(), data: appModel).inspection.inspect { view in
+            _ = try view.tabView().progressView(0)
+        }
+        wait(for: [exp], timeout: 3)
     }
 
     #warning("😭 Alerts cannot be tested with ViewInspector...damn")

@@ -36,17 +36,21 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            CategoryHome()
-                .tabItem {
-                    Label("Featured", systemImage: "star")
-                }
-                .tag(Tab.featured)
+            if hikesResult == nil || landmarksResult == nil {
+                ProgressView()
+            } else {
+                CategoryHome()
+                    .tabItem {
+                        Label("Featured", systemImage: "star")
+                    }
+                    .tag(Tab.featured)
 
-            LandmarkList()
-                .tabItem {
-                    Label("List", systemImage: "list.bullet")
-                }
-                .tag(Tab.list)
+                LandmarkList()
+                    .tabItem {
+                        Label("List", systemImage: "list.bullet")
+                    }
+                    .tag(Tab.list)
+            }
         }
         .onAppear {
             viewModel.hikesService?.fetchHikes.map { Optional($0) }.receive(on: DispatchQueue.main)
