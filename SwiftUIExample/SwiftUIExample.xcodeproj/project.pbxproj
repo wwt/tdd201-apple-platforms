@@ -210,7 +210,7 @@
 		CA4504A125B79A7900153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA63660725EEAC5200D65B3F /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 		CA9575A325F6C698009507C6 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
-		CA9575AC25F6C6E6009507C6 /* MockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockExtensions.swift; path = ../../../MockingFramework/MockingFrameworkTests/CuckooExtensions/MockExtensions.swift; sourceTree = "<group>"; };
+		CA9575AC25F6C6E6009507C6 /* MockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockExtensions.swift; sourceTree = "<group>"; };
 		CA9575B425F6D35E009507C6 /* RangeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeExtensions.swift; sourceTree = "<group>"; };
 		CAD904BD25F18FCC00C6132A /* URLSessionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtensions.swift; sourceTree = "<group>"; };
 		CAD904C225F18FE400C6132A /* URLRequestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtensions.swift; sourceTree = "<group>"; };
@@ -576,7 +576,7 @@
 		CA45049E25B79A7900153FC4 /* SwiftUIExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				CA9575AB25F6C6CD009507C6 /* CuckooHelpers */,
+				CA5D13DF25F7CC9400A02B0B /* CuckooHelpers */,
 				CA9575A325F6C698009507C6 /* GeneratedMocks.swift */,
 				0016335A25F6A85400A227A4 /* Resources */,
 				CAD904B725F18F7D00C6132A /* Network */,
@@ -588,12 +588,12 @@
 			path = SwiftUIExampleTests;
 			sourceTree = "<group>";
 		};
-		CA9575AB25F6C6CD009507C6 /* CuckooHelpers */ = {
+		CA5D13DF25F7CC9400A02B0B /* CuckooHelpers */ = {
 			isa = PBXGroup;
 			children = (
 				CA9575AC25F6C6E6009507C6 /* MockExtensions.swift */,
 			);
-			path = CuckooHelpers;
+			name = CuckooHelpers;
 			sourceTree = "<group>";
 		};
 		CAD904B725F18F7D00C6132A /* Network */ = {
