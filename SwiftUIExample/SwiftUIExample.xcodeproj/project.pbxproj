@@ -685,12 +685,12 @@
 			buildConfigurationList = CA4504B225B79A7900153FC4 /* Build configuration list for PBXNativeTarget "SwiftUIExampleTests" */;
 			buildPhases = (
 				5D12E29847CFA460548C2288 /* [CP] Check Pods Manifest.lock */,
+				CA95759F25F6C630009507C6 /* Generate Mocks */,
 				CA45049725B79A7800153FC4 /* Sources */,
 				CA45049825B79A7800153FC4 /* Frameworks */,
 				CA45049925B79A7800153FC4 /* Resources */,
 				196937071D6D17BE813AC569 /* Lint */,
 				980673101027D10CD1356445 /* [CP] Embed Pods Frameworks */,
-				CA95759F25F6C630009507C6 /* Generate Mocks */,
 			);
 			buildRules = (
 			);

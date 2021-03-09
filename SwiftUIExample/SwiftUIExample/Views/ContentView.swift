@@ -12,7 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var appModel: AppModel
     @ObservedObject private var viewModel = ViewModel()
     @State private var selection: Tab = .featured
-    @State private var hikesResult: Result<[Hike], API.HikesService.FetchHikesError>? {
+    @State private var hikesResult: Result<[Hike], API.HikesService.Error>? {
         didSet {
             switch hikesResult {
                 case .success(let hikes): appModel.hikes = hikes
@@ -21,7 +21,7 @@ struct ContentView: View {
             }
         }
     }
-    @State private var landmarksResult: Result<[Landmark], API.HikesService.FetchHikesError>? {
+    @State private var landmarksResult: Result<[Landmark], API.HikesService.Error>? {
         didSet {
             switch landmarksResult {
                 case .success(let landmarks): appModel.landmarks = landmarks
