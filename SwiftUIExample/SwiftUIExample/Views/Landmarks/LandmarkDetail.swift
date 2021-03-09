@@ -47,6 +47,8 @@ struct LandmarkDetail: View {
             }
             .padding()
         }
+        .onChange(of: appModel.landmarks[landmarkIndex].isFavorite) { val in
+        }
         .navigationTitle(landmark.name)
         .navigationBarTitleDisplayMode(.inline)
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
