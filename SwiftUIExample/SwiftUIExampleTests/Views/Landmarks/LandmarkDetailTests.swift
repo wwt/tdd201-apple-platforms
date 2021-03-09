@@ -34,11 +34,10 @@ class LandmarkDetailTests: XCTestCase {
         let expectedLandmark = appModel.landmarks[0]
 
         let exp = ViewHosting.loadView(LandmarkDetail(landmark: expectedLandmark), data: appModel).inspection.inspect { (view) in
-            let scrollView = try view.scrollView()
-            let mapView = try scrollView.find(MapView.self)
-            let circleImage = try scrollView.find(CircleImage.self)
-            let vStack = try scrollView.find(ViewType.VStack.self)
-            let hStacks = scrollView.findAll(ViewType.HStack.self)
+            let mapView = try view.find(MapView.self)
+            let circleImage = try view.find(CircleImage.self)
+            let vStack = try view.find(ViewType.VStack.self)
+            let hStacks = view.findAll(ViewType.HStack.self)
             let nameText = try hStacks.first?.find(ViewType.Text.self)
             let favBtn = try hStacks.first?.find(FavoriteButton.self)
             let parkText = try hStacks.last?.text(0)
