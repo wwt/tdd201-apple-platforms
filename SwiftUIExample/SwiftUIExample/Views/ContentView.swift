@@ -1,6 +1,6 @@
 /*
  See LICENSE folder for this sample’s licensing information.
-
+ 
  Abstract:
  A view showing featured landmarks above a list of all of the landmarks.
  */
@@ -36,20 +36,20 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            if hikesResult == nil || landmarksResult == nil {
-                ProgressView()
-            } else {
-                CategoryHome()
-                    .tabItem {
-                        Label("Featured", systemImage: "star")
-                    }
-                    .tag(Tab.featured)
+            switch (hikesResult, landmarksResult) {
+                case (.none, .none): ProgressView()
+                default:
+                    CategoryHome()
+                        .tabItem {
+                            Label("Featured", systemImage: "star")
+                        }
+                        .tag(Tab.featured)
 
-                LandmarkList()
-                    .tabItem {
-                        Label("List", systemImage: "list.bullet")
-                    }
-                    .tag(Tab.list)
+                    LandmarkList()
+                        .tabItem {
+                            Label("List", systemImage: "list.bullet")
+                        }
+                        .tag(Tab.list)
             }
         }
         .onAppear {

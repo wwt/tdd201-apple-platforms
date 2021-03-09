@@ -20,5 +20,3 @@ enum MainScreen {
         return Self.self
     }
 }
-
-
