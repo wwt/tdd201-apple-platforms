@@ -44,10 +44,8 @@ class CategoryHomeTests: XCTestCase {
     }
 
     func testCategoryHomeDisplaysFeaturedLandmarks() throws {
-        let file = Bundle.main.url(forResource: "landmarkData", withExtension: "json")!
-        let data = try Data(contentsOf: file)
         let appModel = AppModel()
-        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
         let exp = ViewHosting.loadView(CategoryHome(), data: appModel).inspection.inspect { (view) in
             XCTAssertEqual(try view.navigationView().list(0).image(0).actualImage(), appModel.features[0].image.resizable())
@@ -57,10 +55,8 @@ class CategoryHomeTests: XCTestCase {
     }
 
     func testCategoryHomeDisplaysCategoriesOfLandmarks() throws {
-        let file = Bundle.main.url(forResource: "landmarkData", withExtension: "json")!
-        let data = try Data(contentsOf: file)
         let appModel = AppModel()
-        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
         let exp = ViewHosting.loadView(CategoryHome(), data: appModel).inspection.inspect { (view) in
             let list = try view.navigationView().list(0)

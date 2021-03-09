@@ -32,10 +32,8 @@ class LandmarkListTests: XCTestCase {
     }
 
     func testLandmarkListDisplaysTheThings() throws {
-        let file = Bundle.main.url(forResource: "landmarkData", withExtension: "json")!
-        let data = try Data(contentsOf: file)
         let appModel = AppModel()
-        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
         let exp = ViewHosting.loadView(LandmarkList(), data: appModel).inspection.inspect { (view) in
             let list = try view.navigationView().find(ViewType.List.self)
@@ -57,10 +55,8 @@ class LandmarkListTests: XCTestCase {
     }
 
     func testLandmarkListTogglesFavorites() throws {
-        let file = Bundle.main.url(forResource: "landmarkData", withExtension: "json")!
-        let data = try Data(contentsOf: file)
         let appModel = AppModel()
-        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: data)
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
         let exp = ViewHosting.loadView(LandmarkList(), data: appModel).inspection.inspect { (view) in
             let list = try view.navigationView().find(ViewType.List.self)
