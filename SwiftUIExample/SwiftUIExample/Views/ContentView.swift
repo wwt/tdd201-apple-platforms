@@ -36,20 +36,13 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            switch (hikesResult, landmarksResult) {
-                case (.none, .none): ProgressView()
+            switch landmarksResult {
+                case .none:
+                    ProgressView().tab(.featured)
+                    ProgressView().tab(.list)
                 default:
-                    CategoryHome()
-                        .tabItem {
-                            Label("Featured", systemImage: "star")
-                        }
-                        .tag(Tab.featured)
-
-                    LandmarkList()
-                        .tabItem {
-                            Label("List", systemImage: "list.bullet")
-                        }
-                        .tag(Tab.list)
+                    CategoryHome().tab(.featured)
+                    LandmarkList().tab(.list)
             }
         }
         .onAppear {
@@ -83,6 +76,22 @@ extension ContentView {
     enum Tab {
         case featured
         case list
+    }
+}
+
+fileprivate extension View {
+    func tab(_ tab: ContentView.Tab) -> some View {
+        switch tab {
+            case .featured:
+                return tabItem {
+                    Label("Featured", systemImage: "star")
+                }.tag(tab)
+            case .list:
+                return tabItem {
+                    Label("List", systemImage: "list.bullet")
+                }
+                .tag(tab)
+        }
     }
 }
 
