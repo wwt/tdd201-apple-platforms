@@ -12,7 +12,7 @@ protocol HikesServiceProtocol {
     var fetchHikes: AnyPublisher<Result<[Hike], API.HikesService.Error>, Never> { get }
     var fetchLandmarks: AnyPublisher<Result<[Landmark], API.HikesService.Error>, Never> { get }
 
-    func setFavorite(to: Bool, on landmark:Landmark) -> AnyPublisher<Result<Landmark, API.HikesService.Error>, Never>
+    func setFavorite(to: Bool, on landmark: Landmark) -> AnyPublisher<Result<Landmark, API.HikesService.Error>, Never>
 }
 
 extension HikesServiceProtocol where Self: RESTAPIProtocol {

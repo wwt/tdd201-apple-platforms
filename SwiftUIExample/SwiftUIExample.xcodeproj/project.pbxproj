@@ -84,6 +84,17 @@
 		CA45049525B79A7800153FC4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA45049425B79A7800153FC4 /* Preview Assets.xcassets */; };
 		CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */; };
 		CA63666325EEADA400D65B3F /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63660725EEAC5200D65B3F /* UIDeviceExtensions.swift */; };
+		CA94883A25F7E00F00634668 /* landmark-repository.js in Resources */ = {isa = PBXBuildFile; fileRef = CA9461AB25F7DFF000634668 /* landmark-repository.js */; };
+		CA94883B25F7E00F00634668 /* repository.js in Resources */ = {isa = PBXBuildFile; fileRef = CA9461AC25F7DFF000634668 /* repository.js */; };
+		CA94883C25F7E00F00634668 /* hike-repository.js in Resources */ = {isa = PBXBuildFile; fileRef = CA9461AD25F7DFF000634668 /* hike-repository.js */; };
+		CA94883D25F7E00F00634668 /* server.js in Resources */ = {isa = PBXBuildFile; fileRef = CA9461AE25F7DFF000634668 /* server.js */; };
+		CA94A89C25F7E02000634668 /* package-lock.json in Resources */ = {isa = PBXBuildFile; fileRef = CA94883125F7E00E00634668 /* package-lock.json */; };
+		CA94A89D25F7E02000634668 /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = CA94883225F7E00E00634668 /* package.json */; };
+		CA94A89E25F7E02000634668 /* docker-compose.yml in Resources */ = {isa = PBXBuildFile; fileRef = CA94883325F7E00E00634668 /* docker-compose.yml */; };
+		CA94A89F25F7E02000634668 /* provider_tests.js in Resources */ = {isa = PBXBuildFile; fileRef = CA94883525F7E00E00634668 /* provider_tests.js */; };
+		CA94A8A025F7E02000634668 /* landmarks.js in Resources */ = {isa = PBXBuildFile; fileRef = CA94883725F7E00E00634668 /* landmarks.js */; };
+		CA94A8A125F7E02000634668 /* hikes.js in Resources */ = {isa = PBXBuildFile; fileRef = CA94883825F7E00E00634668 /* hikes.js */; };
+		CA94A8A225F7E02000634668 /* app.js in Resources */ = {isa = PBXBuildFile; fileRef = CA94883925F7E00E00634668 /* app.js */; };
 		CA9575A425F6C698009507C6 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9575A325F6C698009507C6 /* GeneratedMocks.swift */; };
 		CA9575AD25F6C6E6009507C6 /* MockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9575AC25F6C6E6009507C6 /* MockExtensions.swift */; };
 		CA9575B525F6D35E009507C6 /* RangeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9575B425F6D35E009507C6 /* RangeExtensions.swift */; };
@@ -209,6 +220,17 @@
 		CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleTests.swift; sourceTree = "<group>"; };
 		CA4504A125B79A7900153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA63660725EEAC5200D65B3F /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
+		CA9461AB25F7DFF000634668 /* landmark-repository.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "landmark-repository.js"; sourceTree = "<group>"; };
+		CA9461AC25F7DFF000634668 /* repository.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = repository.js; sourceTree = "<group>"; };
+		CA9461AD25F7DFF000634668 /* hike-repository.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "hike-repository.js"; sourceTree = "<group>"; };
+		CA9461AE25F7DFF000634668 /* server.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = server.js; sourceTree = "<group>"; };
+		CA94883125F7E00E00634668 /* package-lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "package-lock.json"; sourceTree = "<group>"; };
+		CA94883225F7E00E00634668 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		CA94883325F7E00E00634668 /* docker-compose.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = "docker-compose.yml"; sourceTree = "<group>"; };
+		CA94883525F7E00E00634668 /* provider_tests.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = provider_tests.js; sourceTree = "<group>"; };
+		CA94883725F7E00E00634668 /* landmarks.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = landmarks.js; sourceTree = "<group>"; };
+		CA94883825F7E00E00634668 /* hikes.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = hikes.js; sourceTree = "<group>"; };
+		CA94883925F7E00E00634668 /* app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = app.js; sourceTree = "<group>"; };
 		CA9575A325F6C698009507C6 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		CA9575AC25F6C6E6009507C6 /* MockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockExtensions.swift; sourceTree = "<group>"; };
 		CA9575B425F6D35E009507C6 /* RangeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeExtensions.swift; sourceTree = "<group>"; };
@@ -528,6 +550,7 @@
 		CA45048125B79A7800153FC4 = {
 			isa = PBXGroup;
 			children = (
+				CA9461A925F7DFF000634668 /* hikes-server */,
 				0011EBEF25E87FB300E48AE8 /* LICENSE */,
 				CA45048C25B79A7800153FC4 /* SwiftUIExample */,
 				CA45049E25B79A7900153FC4 /* SwiftUIExampleTests */,
@@ -594,6 +617,48 @@
 				CA9575AC25F6C6E6009507C6 /* MockExtensions.swift */,
 			);
 			name = CuckooHelpers;
+			sourceTree = "<group>";
+		};
+		CA9461A925F7DFF000634668 /* hikes-server */ = {
+			isa = PBXGroup;
+			children = (
+				CA9461AA25F7DFF000634668 /* Repository */,
+				CA9461AE25F7DFF000634668 /* server.js */,
+				CA94883125F7E00E00634668 /* package-lock.json */,
+				CA94883225F7E00E00634668 /* package.json */,
+				CA94883325F7E00E00634668 /* docker-compose.yml */,
+				CA94883425F7E00E00634668 /* pact */,
+				CA94883625F7E00E00634668 /* routes */,
+				CA94883925F7E00E00634668 /* app.js */,
+			);
+			path = "hikes-server";
+			sourceTree = "<group>";
+		};
+		CA9461AA25F7DFF000634668 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CA9461AB25F7DFF000634668 /* landmark-repository.js */,
+				CA9461AC25F7DFF000634668 /* repository.js */,
+				CA9461AD25F7DFF000634668 /* hike-repository.js */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CA94883425F7E00E00634668 /* pact */ = {
+			isa = PBXGroup;
+			children = (
+				CA94883525F7E00E00634668 /* provider_tests.js */,
+			);
+			path = pact;
+			sourceTree = "<group>";
+		};
+		CA94883625F7E00E00634668 /* routes */ = {
+			isa = PBXGroup;
+			children = (
+				CA94883725F7E00E00634668 /* landmarks.js */,
+				CA94883825F7E00E00634668 /* hikes.js */,
+			);
+			path = routes;
 			sourceTree = "<group>";
 		};
 		CAD904B725F18F7D00C6132A /* Network */ = {
@@ -756,8 +821,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA94883B25F7E00F00634668 /* repository.js in Resources */,
+				CA94883D25F7E00F00634668 /* server.js in Resources */,
+				CA94A89C25F7E02000634668 /* package-lock.json in Resources */,
 				CA45049525B79A7800153FC4 /* Preview Assets.xcassets in Resources */,
+				CA94883C25F7E00F00634668 /* hike-repository.js in Resources */,
+				CA94A8A025F7E02000634668 /* landmarks.js in Resources */,
+				CA94883A25F7E00F00634668 /* landmark-repository.js in Resources */,
+				CA94A8A225F7E02000634668 /* app.js in Resources */,
+				CA94A89F25F7E02000634668 /* provider_tests.js in Resources */,
+				CA94A89E25F7E02000634668 /* docker-compose.yml in Resources */,
+				CA94A89D25F7E02000634668 /* package.json in Resources */,
 				CA45049225B79A7800153FC4 /* Assets.xcassets in Resources */,
+				CA94A8A125F7E02000634668 /* hikes.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1260,6 +1336,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/hikes-server/node_modules/@pact-foundation/pact-node/standalone/darwin-1.88.37/pact/lib/ruby/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wwtas.tdd201.SwiftUIExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "TDD 201 iOS Development";
@@ -1284,6 +1364,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/hikes-server/node_modules/@pact-foundation/pact-node/standalone/darwin-1.88.37/pact/lib/ruby/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wwtas.tdd201.SwiftUIExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
