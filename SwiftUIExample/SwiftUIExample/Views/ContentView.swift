@@ -39,17 +39,17 @@ struct ContentView: View {
             switch landmarksResult {
                 case .none:
                     ProgressView().tab(.featured)
-                    ProgressView().tab(.list)
+                    EmptyView().tab(.list)
                 default:
                     CategoryHome().tab(.featured)
                     LandmarkList().tab(.list)
             }
         }
         .onAppear {
-            viewModel.hikesService?.fetchHikes.map { Optional($0) }.receive(on: DispatchQueue.main)
+            viewModel.hikesService?.fetchHikes.map(Optional.some).receive(on: DispatchQueue.main)
                 .assign(to: \.hikesResult, on: self).store(in: &viewModel.subscribers)
 
-            viewModel.hikesService?.fetchLandmarks.map { Optional($0) }.receive(on: DispatchQueue.main)
+            viewModel.hikesService?.fetchLandmarks.map(Optional.some).receive(on: DispatchQueue.main)
                 .assign(to: \.landmarksResult, on: self).store(in: &viewModel.subscribers)
         }
         .alert(isPresented: $showAlert) {
