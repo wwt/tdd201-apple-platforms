@@ -6,9 +6,12 @@ A view showing the details for a landmark.
 */
 
 import SwiftUI
+import Combine
 
 struct LandmarkDetail: View {
     @EnvironmentObject var appModel: AppModel
+    @ObservedObject private var viewModel = ViewModel()
+
     let inspection = Inspection<Self>()
 
     var landmark: Landmark
@@ -48,10 +51,23 @@ struct LandmarkDetail: View {
             .padding()
         }
         .onChange(of: appModel.landmarks[landmarkIndex].isFavorite) { val in
+            // NOTE: Call sink if you care about the value, use connect if it does not matter
+            viewModel.hikesService?
+                .setFavorite(to: val, on: appModel.landmarks[landmarkIndex])
+                .makeConnectable()
+                .connect()
+                .store(in: &viewModel.subscribers)
         }
         .navigationTitle(landmark.name)
         .navigationBarTitleDisplayMode(.inline)
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
+    }
+}
+
+extension LandmarkDetail {
+    fileprivate final class ViewModel: ObservableObject {
+        @DependencyInjected var hikesService: HikesServiceProtocol?
+        var subscribers = Set<AnyCancellable>()
     }
 }
 

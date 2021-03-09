@@ -10,22 +10,29 @@ import XCTest
 import SwiftUI
 import ViewInspector
 import SnapshotTesting
+import Cuckoo
+import Swinject
 
 @testable import SwiftUIExample
 
 class LandmarkDetailTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        // using dump ALMOST worked but was peering into memory addresses,
-        // we could use a custom snapshot and make this work,
-        // but it is out of the bounds of this lesson
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let appModel = AppModel()
-        appModel.profile.goalDate = Date(timeIntervalSince1970: 1000)
-        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
-
-        let view = LandmarkDetail(landmark: appModel.landmarks[1]).environmentObject(appModel)
-        assertSnapshot(matching: view, as: .description)
+    override func setUpWithError() throws {
+        Container.default.removeAll()
     }
+
+    #warning("ARGH! This screen will be the death of me, snapshot description capture memory addresses")
+//    func testUIMatchesSnapshot() throws {
+//        // using dump ALMOST worked but was peering into memory addresses,
+//        // we could use a custom snapshot and make this work,
+//        // but it is out of the bounds of this lesson
+//        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
+//        let appModel = AppModel()
+//        appModel.profile.goalDate = Date(timeIntervalSince1970: 1000)
+//        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
+//
+//        let view = LandmarkDetail(landmark: appModel.landmarks[1]).environmentObject(appModel)
+//        assertSnapshot(matching: view, as: .description)
+//    }
 
     func testLandmarkDetailDisplaysTheThings() throws {
         let appModel = AppModel()
@@ -64,14 +71,23 @@ class LandmarkDetailTests: XCTestCase {
     func testLandmarkDetail_OnChangeBullshit() throws {
         let appModel = AppModel()
         appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
-
         let expectedLandmark = appModel.landmarks[0]
+        let expectation = self.expectation(description: "Stub called")
+
+        let mockHikesService = MockHikesServiceProtocol().stub { stub in
+            when(stub.setFavorite(to: any(), on: any())).then { _ in
+                expectation.fulfill()
+                return Result.Publisher(.success(expectedLandmark)).eraseToAnyPublisher()
+            }
+        }.registerIn(Container.default)
 
         let exp = ViewHosting.loadView(LandmarkDetail(landmark: expectedLandmark), data: appModel).inspection.inspect { (view) in
             try view.find(FavoriteButton.self).button().tap()
-            XCTFail("There is not anything to assert because we got ahead of ourselves")
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp, expectation], timeout: 3)
+        let captor = ArgumentCaptor<Landmark>()
+        verify(mockHikesService, times(1)).setFavorite(to: !expectedLandmark.isFavorite, on: captor.capture())
+        XCTAssertEqual(captor.value?.id, expectedLandmark.id)
     }
 }
