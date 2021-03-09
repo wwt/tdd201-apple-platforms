@@ -28,18 +28,10 @@ class LandmarkDetailTests: XCTestCase {
     }
 
     func testLandmarkDetailDisplaysTheThings() throws {
-        let expectedLandmark = Landmark.createForTests(id: 1003,
-                                               name: "Chilkoot Trail",
-                                               park: "klondike Gold Rush National Historical Park",
-                                               state: "Alaska",
-                                               description: "I'm a little teapot",
-                                               isFavorite: false,
-                                               isFeatured: false,
-                                               category: .mountains,
-                                               coordinates: .init(latitude: 59.560551, longitude: -135.334571),
-                                               imageName: "chilkoottrail")
         let appModel = AppModel()
         appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
+
+        let expectedLandmark = appModel.landmarks[0]
 
         let exp = ViewHosting.loadView(LandmarkDetail(landmark: expectedLandmark), data: appModel).inspection.inspect { (view) in
             let scrollView = try view.scrollView()
@@ -65,6 +57,20 @@ class LandmarkDetailTests: XCTestCase {
             XCTAssertEqual(try aboutText.string(), "About \(expectedLandmark.name)")
             XCTAssertEqual(try descriptionText.string(), expectedLandmark.description)
             XCTAssertEqual(try hStacks.last?.font(), .subheadline)
+        }
+
+        wait(for: [exp], timeout: 0.1)
+    }
+
+    func testLandmarkDetail_OnChangeBullshit() throws {
+        let appModel = AppModel()
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
+
+        let expectedLandmark = appModel.landmarks[0]
+
+        let exp = ViewHosting.loadView(LandmarkDetail(landmark: expectedLandmark), data: appModel).inspection.inspect { (view) in
+            try view.find(FavoriteButton.self).button().tap()
+            XCTFail("There is not anything to assert because we got ahead of ourselves")
         }
 
         wait(for: [exp], timeout: 0.1)
