@@ -150,6 +150,6 @@ class ContentViewTests: XCTestCase {
     //            verify(mockHikesService, times(1)).fetchHikes.get()
     //            XCTAssertEqual(appModel.hikes, [])
     //        }
-    //        wait(for: [exp], timeout: 0.1)
+    //        wait(for: [exp], timeout: 3.0)
     //    }
 }

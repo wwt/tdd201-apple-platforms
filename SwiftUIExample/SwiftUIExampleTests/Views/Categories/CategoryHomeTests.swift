@@ -29,7 +29,7 @@ class CategoryHomeTests: XCTestCase {
             XCTAssertNoThrow(try view.navigationView())
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testCategoryHomeDoesNotCrashWhenNoLandmarks() throws {
@@ -40,7 +40,7 @@ class CategoryHomeTests: XCTestCase {
             XCTAssertThrowsError(try view.navigationView().list(0).image(0))
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testCategoryHomeDisplaysFeaturedLandmarks() throws {
@@ -51,7 +51,7 @@ class CategoryHomeTests: XCTestCase {
             XCTAssertEqual(try view.navigationView().list(0).image(0).actualImage(), appModel.features[0].image.resizable())
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testCategoryHomeDisplaysCategoriesOfLandmarks() throws {
@@ -68,6 +68,6 @@ class CategoryHomeTests: XCTestCase {
             }
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 }

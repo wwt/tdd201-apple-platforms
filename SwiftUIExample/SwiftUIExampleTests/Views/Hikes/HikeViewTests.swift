@@ -29,7 +29,7 @@ class HikeViewTests: XCTestCase {
 //            try view.find(ViewType.Button.self, index: 0).tap()
 //            assertSnapshot(matching: try view.actualView(), as: .description)
 //        }
-//        wait(for: [exp], timeout: 0.1)
+//        wait(for: [exp], timeout: 3.0)
 //    }
 
     func testHikeView() throws {
@@ -45,7 +45,7 @@ class HikeViewTests: XCTestCase {
             XCTAssertEqual(try button.find(ViewType.Image.self).actualImage(), Image(systemName: "chevron.right.circle"))
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testHikeViewShowsDetails() throws {
@@ -64,7 +64,7 @@ class HikeViewTests: XCTestCase {
             XCTAssertEqual(try view.find(ViewType.Button.self, index: 0).find(ViewType.Image.self).rotation().angle, Angle.degrees(90))
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     private func getHikes() throws -> [Hike] {

@@ -51,7 +51,7 @@ class LandmarkListTests: XCTestCase {
             XCTAssertEqual(try toggle.find(ViewType.Text.self).string(), "Favorites only")
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testLandmarkListTogglesFavorites() throws {
@@ -69,7 +69,7 @@ class LandmarkListTests: XCTestCase {
             XCTAssertEqual(try view.navigationView().find(ViewType.List.self).find(ViewType.ForEach.self).count, 3)
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testLandmarkListView_FetchesLandmarksOnAppear() throws {
@@ -102,6 +102,6 @@ class LandmarkListTests: XCTestCase {
             verify(mockHikesService, times(1)).fetchLandmarks.get()
             XCTAssertEqual(appModel.landmarks, expectedLandmarks)
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 }

@@ -29,7 +29,7 @@ class HikeDetailTests: XCTestCase {
 //
 //            assertSnapshot(matching: try view.actualView(), as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
 //        }
-//        wait(for: [exp], timeout: 0.1)
+//        wait(for: [exp], timeout: 3.0)
 //    }
 
     func testHikeDetail() throws {
@@ -47,7 +47,7 @@ class HikeDetailTests: XCTestCase {
                 XCTAssertEqual(try button.labelView().find(ViewType.Text.self).attributes().foregroundColor(), expectedColor)
             }
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testTappingButtonTogglesData() throws {
@@ -69,7 +69,7 @@ class HikeDetailTests: XCTestCase {
             XCTAssertEqual(try hikeDetail.actualView().dataToShow, \Hike.Observation.pace)
             XCTAssertEqual(try hikeDetail.find(HikeGraph.self).actualView().path, \Hike.Observation.pace)
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     private func getHikes() throws -> [Hike] {
