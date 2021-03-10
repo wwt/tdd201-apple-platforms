@@ -9,20 +9,10 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
-extension CircleImage: Inspectable { }
-
 class CircleImageTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let expectedImage = Image("turtlerock")
-        let view = CircleImage(image: expectedImage)
-        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
-    }
-
     func testCircleImageDisplaysImageCorrectly() throws {
         let expectedImage = Image("turtlerock")
         let circleImage = try CircleImage(image: expectedImage).inspect()

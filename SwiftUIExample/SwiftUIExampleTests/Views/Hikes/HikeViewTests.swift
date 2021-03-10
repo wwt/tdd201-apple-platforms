@@ -9,29 +9,10 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class HikeViewTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let hike = try getHikes().first!
-        let view = HikeView(hike: hike)
-        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
-    }
-
-    #warning("Cannot test UI of detail collapsed vs expanded :( ")
-//    func testUIMatchesSnapshot_DetailExpanded() throws {
-//        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-//        let hike = try getHikes().first!
-//        let exp = ViewHosting.loadView(HikeView(hike: hike)).inspection.inspect { (view) in
-//            try view.find(ViewType.Button.self, index: 0).tap()
-//            assertSnapshot(matching: try view.actualView(), as: .description)
-//        }
-//        wait(for: [exp], timeout: 3.0)
-//    }
-
     func testHikeView() throws {
         let hike = try getHikes().first!
         let exp = ViewHosting.loadView(HikeView(hike: hike)).inspection.inspect { (view) in

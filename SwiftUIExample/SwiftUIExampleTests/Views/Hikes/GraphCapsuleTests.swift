@@ -9,19 +9,10 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class GraphCapsuleTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-        let view = GraphCapsule(index: 0, height: 150, range: 10..<50, overallRange: 0..<100)
-        assertSnapshot(matching: view.colorMultiply(.blue), as: .image(drawHierarchyInKeyWindow: true,
-                                                                       layout: .fixed(width: 400, height: view.height * view.heightRatio + 20)))
-    }
-
     #warning("Need to test height ratio and offset ratio")
 
     func testGraphCapsule() throws {

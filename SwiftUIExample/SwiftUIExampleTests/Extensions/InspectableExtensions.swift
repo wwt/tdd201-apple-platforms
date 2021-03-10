@@ -32,3 +32,5 @@ extension ProfileHost: Inspectable { }
 
 extension Badge: Inspectable { }
 extension MapView: Inspectable { }
+extension CircleImage: Inspectable { }
+extension FavoriteButton: Inspectable { }

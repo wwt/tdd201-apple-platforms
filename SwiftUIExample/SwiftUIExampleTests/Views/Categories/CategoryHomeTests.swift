@@ -9,21 +9,10 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class CategoryHomeTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-
-        let appModel = AppModel()
-        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
-
-        let view = CategoryHome().environmentObject(appModel)
-        assertSnapshot(matching: view, as: .image(precision: 0.99994, layout: .device(config: .iPhoneXsMax)))
-    }
-
     func testCategoryHomeHasNavigationView() throws {
         let exp = ViewHosting.loadView(CategoryHome(), data: AppModel()).inspection.inspect { (view) in
             XCTAssertNoThrow(try view.navigationView())

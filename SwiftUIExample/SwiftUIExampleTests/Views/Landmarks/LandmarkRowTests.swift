@@ -9,19 +9,10 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class LandmarkRowTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
-
-        let view = LandmarkRow(landmark: landmarks.first!)
-        assertSnapshot(matching: view, as: .image)
-    }
-
     func testFavoriteLandmarkRowDisplaysLandmarkWithStar() throws {
         let expectedLandmark = Landmark.createForTests(id: 1003,
                                                name: "Chilkoot Trail",

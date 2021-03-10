@@ -9,19 +9,10 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class CategoryRowTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
-        let view = CategoryRow(categoryName: landmarks[0].category.rawValue,
-                               items: Array(landmarks.prefix(4)))
-        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
-    }
-
     func testCategoryRowDisplaysCategoryNameWithLandmarks() throws {
         let landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson).filter { $0.category == .mountains }
         let categoryRow = CategoryRow(categoryName: "Mountains", items: landmarks)

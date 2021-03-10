@@ -10,22 +10,10 @@ import XCTest
 import SwiftUI
 import Fakery
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class ProfileEditorTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let expectedProfile = Profile(username: "user1",
-                                      prefersNotifications: true,
-                                      seasonalPhoto: .autumn,
-                                      goalDate: Date(timeIntervalSince1970: 1614627432))
-        let bindingProfile = Binding<Profile>(wrappedValue: expectedProfile)
-        let view = ProfileEditor(profile: bindingProfile)
-        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
-    }
-
     func testProfileEditor() throws {
         let expectedProfile = Profile(username: Faker().internet.username(),
                                       prefersNotifications: true,
