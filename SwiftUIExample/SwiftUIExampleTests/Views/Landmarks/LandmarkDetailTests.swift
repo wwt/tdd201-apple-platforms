@@ -53,7 +53,7 @@ class LandmarkDetailTests: XCTestCase {
         wait(for: [exp], timeout: 3.0)
     }
 
-    func testLandmarkDetail_OnChangeBullshit() throws {
+    func testLandmarkDetail_CallsServerToSetFavorite_OnChangeOfIsFavorite() throws {
         let appModel = AppModel()
         appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
         let expectedLandmark = appModel.landmarks[0]
