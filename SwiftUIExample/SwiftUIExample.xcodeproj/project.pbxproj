@@ -270,7 +270,7 @@
 				0011EB3425E82F6A00E48AE8 /* Profiles */,
 				0011EA7F25E5578700E48AE8 /* Badges */,
 				0011EA7425E5576300E48AE8 /* Hikes */,
-				002D487825E43375000525C3 /* Helpers */,
+				002D487825E43375000525C3 /* ReusableViews */,
 				002D486925E4307E000525C3 /* Landmarks */,
 				002D486825E43070000525C3 /* Categories */,
 			);
@@ -408,7 +408,7 @@
 				0011EB4C25E8308000E48AE8 /* Badges */,
 				0011EB4B25E8306900E48AE8 /* Profiles */,
 				0011EA8C25E5586000E48AE8 /* Hikes */,
-				002D488D25E4356A000525C3 /* Helpers */,
+				002D488D25E4356A000525C3 /* ReusableViews */,
 				002D487125E430E7000525C3 /* Landmarks */,
 				002D487025E430DC000525C3 /* Categories */,
 				0011EB2B25E80AE300E48AE8 /* ContentViewTests.swift */,
@@ -427,12 +427,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		002D47B125E0673C000525C3 /* Helpers */ = {
+		002D47B125E0673C000525C3 /* ViewInspector */ = {
 			isa = PBXGroup;
 			children = (
 				002D47B225E0675D000525C3 /* Inspection.swift */,
 			);
-			path = Helpers;
+			path = ViewInspector;
 			sourceTree = "<group>";
 		};
 		002D486825E43070000525C3 /* Categories */ = {
@@ -475,23 +475,23 @@
 			path = Landmarks;
 			sourceTree = "<group>";
 		};
-		002D487825E43375000525C3 /* Helpers */ = {
+		002D487825E43375000525C3 /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
 				002D488525E433FB000525C3 /* CircleImage.swift */,
 				002D488725E433FB000525C3 /* FavoriteButton.swift */,
 				002D488625E433FB000525C3 /* MapView.swift */,
 			);
-			path = Helpers;
+			path = ReusableViews;
 			sourceTree = "<group>";
 		};
-		002D488D25E4356A000525C3 /* Helpers */ = {
+		002D488D25E4356A000525C3 /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
 				002D488E25E43578000525C3 /* CircleImageTests.swift */,
 				002D489425E43AC2000525C3 /* FavoriteButtonTests.swift */,
 			);
-			path = Helpers;
+			path = ReusableViews;
 			sourceTree = "<group>";
 		};
 		0038EB1125ED6136000BE4B4 /* Extensions */ = {
@@ -559,7 +559,7 @@
 				CAD904D725F190D100C6132A /* DependencyInjection */,
 				CAD904BC25F18FBE00C6132A /* Extensions */,
 				CAD904B825F18F8400C6132A /* Network */,
-				002D47B125E0673C000525C3 /* Helpers */,
+				002D47B125E0673C000525C3 /* ViewInspector */,
 				002D475025E05E15000525C3 /* Models */,
 				0001A04825E053030081DFB0 /* Views */,
 				CA45048D25B79A7800153FC4 /* SwiftUIExampleApp.swift */,

@@ -34,7 +34,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Start Servers"
-               scriptText = "&quot;$SRCROOT&quot;/scripts/start_server.sh&#10;docker-compose -f &quot;$SRCROOT&quot;/docker-compose.yml up&amp;&#10;&#10;">
+               scriptText = "&quot;$SRCROOT&quot;/scripts/start_server.sh&#10;docker-compose -f &quot;$SRCROOT&quot;/docker-compose.yml up&amp;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
@@ -86,7 +86,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0011EBF925E8839B00E48AE8"
@@ -129,7 +129,7 @@
          <ExecutionAction
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
-               title = "Stop Hikes Service"
+               title = "Stop Hikes Server"
                scriptText = "docker-compose -f &quot;$SRCROOT&quot;/docker-compose.yml down&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
