@@ -52,7 +52,7 @@ class ProfileSummaryTests: XCTestCase {
             XCTAssertEqual(try view.find(ViewType.Text.self, index: 5).attributes().font(), .headline)
             XCTAssertEqual(try view.find(HikeView.self).actualView().hike, appModel.hikes.first)
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testNotificationsAreNotEnabled() throws {
@@ -64,7 +64,7 @@ class ProfileSummaryTests: XCTestCase {
         let exp = ViewHosting.loadView(ProfileSummary(profile: expectedProfile), data: appModel).inspection.inspect { view in
             XCTAssertEqual(try view.find(ViewType.Text.self, index: 1).string(), "Notifications: Off")
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testMakeAppleCodeExplodeBecauseItsBad() throws {

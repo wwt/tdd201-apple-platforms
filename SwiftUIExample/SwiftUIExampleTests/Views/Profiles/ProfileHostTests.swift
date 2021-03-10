@@ -46,7 +46,7 @@ class ProfileHostTests: XCTestCase {
             XCTAssertEqual(appModel.profile.username, "A new name")
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testProfileHostInactiveEditMode() throws {
@@ -59,7 +59,7 @@ class ProfileHostTests: XCTestCase {
             XCTAssertNoThrow(try view.vStack().view(ProfileSummary.self, 1))
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testProfileHostCancelsEditing() throws {
@@ -75,7 +75,7 @@ class ProfileHostTests: XCTestCase {
             XCTAssertEqual(bindingEditMode.wrappedValue, .inactive)
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 }
 

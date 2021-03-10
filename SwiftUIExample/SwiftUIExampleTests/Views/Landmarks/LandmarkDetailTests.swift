@@ -65,7 +65,7 @@ class LandmarkDetailTests: XCTestCase {
             XCTAssertEqual(try hStacks.last?.font(), .subheadline)
         }
 
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 3.0)
     }
 
     func testLandmarkDetail_OnChangeBullshit() throws {
