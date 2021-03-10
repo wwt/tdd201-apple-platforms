@@ -28,7 +28,7 @@ enum LandmarksScreen {
     }
 
     @discardableResult static func toggleFavorites() -> Self.Type {
-        XCUIApplication.current.switches.firstMatch.tap()
+        XCUIApplication.current.tables.switches.firstMatch.tap()
         return Self.self
     }
 }

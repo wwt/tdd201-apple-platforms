@@ -19,8 +19,7 @@ class ProfileEditorTests: XCTestCase {
                                       prefersNotifications: true,
                                       seasonalPhoto: Profile.Season.allCases.randomElement() ?? .autumn,
                                       goalDate: Faker().date.forward(5))
-        let bindingProfile = Binding<Profile>(wrappedValue: expectedProfile)
-        let profileEditor = try ProfileEditor(profile: bindingProfile).inspect()
+        let profileEditor = try ProfileEditor(profile: .constant(expectedProfile)).inspect()
 
         XCTAssertEqual(try profileEditor.find(ViewType.Text.self, index: 0).string(), "Username")
         XCTAssertEqual(try profileEditor.find(ViewType.TextField.self).labelView().text().string(), "Username")
