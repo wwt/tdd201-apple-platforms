@@ -9,21 +9,10 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class HikeGraphTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let expectedHike = try getHikes().first!
-        let observationKeyPath: KeyPath<Hike.Observation, Range<Double>> = \.elevation
-        let view = HikeGraph(hike: expectedHike, path: observationKeyPath)
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-        assertSnapshot(matching: view, as: .image(drawHierarchyInKeyWindow: true,
-                                                  layout: .fixed(width: 200, height: 200)))
-    }
-
     func testHikeGraph() throws {
         let expectedHike = try getHikes().first!
         let observationKeyPath: KeyPath<Hike.Observation, Range<Double>> = \.elevation
@@ -31,7 +20,7 @@ class HikeGraphTests: XCTestCase {
         let hikeGraph = HikeGraph(hike: expectedHike, path: observationKeyPath)
         let geometryReader = try hikeGraph.inspect().geometryReader(0)
 
-        #warning("May need more testing")
+        XCTAssertEqual(try geometryReader.hStack().forEach(0).count, expectedHike.observations.count)
         try geometryReader.hStack().forEach(0).enumerated().forEach {
             let graphCapsule = try $0.element.find(GraphCapsule.self)
             XCTAssertEqual(try graphCapsule.colorMultiply(), .gray)

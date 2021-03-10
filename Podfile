@@ -111,7 +111,6 @@ target 'SwiftUIExample' do
   target 'SwiftUIExampleTests' do
     pod 'ViewInspector'
     pod 'Fakery'
-    pod 'SnapshotTesting'
     pod 'OHHTTPStubs/Swift'
     pod 'Cuckoo'
     pod 'PactConsumerSwift'

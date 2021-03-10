@@ -43,6 +43,7 @@ struct HikeGraph: View {
         let maxMagnitude = ranges.map { $0.magnitude }.max(by: <) ?? firstRange.magnitude
         let heightRatio = 1 - CGFloat(maxMagnitude / overallRange.magnitude )
 
+        #warning("SwiftUI says HA! No testing proxies for you, loser")
         return GeometryReader { proxy in
             HStack(alignment: .bottom, spacing: proxy.size.width / 120) {
                 ForEach(Array(data.enumerated()), id: \.offset) { index, observation in

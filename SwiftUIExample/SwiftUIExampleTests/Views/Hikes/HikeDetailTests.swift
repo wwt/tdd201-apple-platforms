@@ -9,29 +9,10 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class HikeDetailTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let hike = try getHikes().first!
-        let view = HikeDetail(hike: hike)
-        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
-    }
-
-    #warning("Cannot test UI of which graph is currently displayed :( ")
-//    func testUIMatchesSnapshot_HeartRate() throws {
-//        let hike = try getHikes().first!
-//        let exp = ViewHosting.loadView(HikeDetail(hike: hike)).inspection.inspect { (view) in
-//            try view.find(button: "Heart Rate").tap()
-//
-//            assertSnapshot(matching: try view.actualView(), as: .image(precision: 0.99, layout: .device(config: .iPhoneXsMax)))
-//        }
-//        wait(for: [exp], timeout: 3.0)
-//    }
-
     func testHikeDetail() throws {
         let hike = try getHikes().first!
         let exp = ViewHosting.loadView(HikeDetail(hike: hike)).inspection.inspect { (view) in

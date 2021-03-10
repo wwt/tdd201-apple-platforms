@@ -10,25 +10,10 @@ import XCTest
 import SwiftUI
 import Fakery
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class ProfileHostTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let expectedProfile = Profile(username: "user1",
-                                      prefersNotifications: true,
-                                      seasonalPhoto: .autumn,
-                                      goalDate: Date(timeIntervalSince1970: 1614627432))
-        let appModel = AppModel()
-        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
-        appModel.hikes = try JSONDecoder().decode([Hike].self, from: hikesJson)
-        appModel.profile = expectedProfile
-        let view = ProfileHost().environmentObject(appModel)
-        assertSnapshot(matching: view, as: .image)
-    }
-
     func testProfileHostActiveEditMode() throws {
         let bindingEditMode = Binding<EditMode>(wrappedValue: .active)
         let expectedProfile = Profile(username: "not the default username")

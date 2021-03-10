@@ -54,6 +54,7 @@ struct LandmarkDetail: View {
             // NOTE: Call sink if you care about the value, use connect if it does not matter
             viewModel.hikesService?
                 .setFavorite(to: val, on: appModel.landmarks[landmarkIndex])
+                .debounce(for: .seconds(0.3), scheduler: RunLoop.main)
                 .makeConnectable()
                 .connect()
                 .store(in: &viewModel.subscribers)

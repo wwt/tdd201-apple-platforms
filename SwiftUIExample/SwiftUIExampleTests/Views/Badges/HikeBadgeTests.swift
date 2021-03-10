@@ -9,17 +9,10 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 
 @testable import SwiftUIExample
 
 class HikeBadgeTests: XCTestCase {
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-        let view = HikeBadge(name: "name")
-        assertSnapshot(matching: view, as: .image)
-    }
-
     func testHikeBadge() throws {
         let expectedName = "Charley"
         let view = HikeBadge(name: expectedName)

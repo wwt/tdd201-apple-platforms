@@ -9,7 +9,6 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 import Swinject
 import Cuckoo
 import Fakery
@@ -19,16 +18,6 @@ import Fakery
 class LandmarkListTests: XCTestCase {
     override func setUpWithError() throws {
         Container.default.removeAll()
-    }
-
-    func testUIMatchesSnapshot() throws {
-        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-
-        let appModel = AppModel()
-        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
-
-        let view = LandmarkList().environmentObject(appModel)
-        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
     }
 
     func testLandmarkListDisplaysTheThings() throws {

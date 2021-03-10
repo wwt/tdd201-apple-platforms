@@ -9,7 +9,6 @@ import Foundation
 import XCTest
 import SwiftUI
 import ViewInspector
-import SnapshotTesting
 import Cuckoo
 import Swinject
 
@@ -19,20 +18,6 @@ class LandmarkDetailTests: XCTestCase {
     override func setUpWithError() throws {
         Container.default.removeAll()
     }
-
-    #warning("ARGH! This screen will be the death of me, snapshot description capture memory addresses")
-//    func testUIMatchesSnapshot() throws {
-//        // using dump ALMOST worked but was peering into memory addresses,
-//        // we could use a custom snapshot and make this work,
-//        // but it is out of the bounds of this lesson
-//        try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
-//        let appModel = AppModel()
-//        appModel.profile.goalDate = Date(timeIntervalSince1970: 1000)
-//        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
-//
-//        let view = LandmarkDetail(landmark: appModel.landmarks[1]).environmentObject(appModel)
-//        assertSnapshot(matching: view, as: .description)
-//    }
 
     func testLandmarkDetailDisplaysTheThings() throws {
         let appModel = AppModel()
