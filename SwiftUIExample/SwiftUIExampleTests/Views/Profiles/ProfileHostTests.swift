@@ -15,11 +15,10 @@ import ViewInspector
 
 class ProfileHostTests: XCTestCase {
     func testProfileHostActiveEditMode() throws {
-        let bindingEditMode = Binding<EditMode>(wrappedValue: .active)
         let expectedProfile = Profile(username: "not the default username")
         let appModel = AppModel()
         appModel.profile = expectedProfile
-        let exp = ViewHosting.loadView(ProfileHost(), data: appModel, keyPath: \.editMode, keyValue: bindingEditMode).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(ProfileHost(), data: appModel, keyPath: \.editMode, keyValue: .constant(.active)).inspection.inspect { (view) in
             XCTAssertEqual(try view.find(ViewType.Button.self).labelView().text().string(), "Cancel")
             XCTAssertNoThrow(try view.find(ViewType.EditButton.self))
             XCTAssertThrowsError(try view.vStack().view(ProfileSummary.self, 1))
@@ -36,8 +35,7 @@ class ProfileHostTests: XCTestCase {
 
     func testProfileHostInactiveEditMode() throws {
         let appModel = AppModel()
-        let bindingEditMode = Binding<EditMode>(wrappedValue: .inactive)
-        let exp = ViewHosting.loadView(ProfileHost(), data: appModel, keyPath: \.editMode, keyValue: bindingEditMode).inspection.inspect { (view) in
+        let exp = ViewHosting.loadView(ProfileHost(), data: appModel, keyPath: \.editMode, keyValue: .constant(.inactive)).inspection.inspect { (view) in
             XCTAssertThrowsError(try view.vStack().hStack(0).button(0))
             XCTAssertNoThrow(try view.vStack().hStack(0).editButton(2))
             XCTAssertThrowsError(try view.vStack().view(ProfileEditor.self, 1))

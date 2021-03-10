@@ -33,8 +33,8 @@
          <ExecutionAction
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
-               title = "Start Pact Server"
-               scriptText = "&quot;$SRCROOT&quot;/scripts/start_server.sh&#10;">
+               title = "Start Servers"
+               scriptText = "&quot;$SRCROOT&quot;/scripts/start_server.sh&#10;docker-compose -f &quot;$SRCROOT&quot;/docker-compose.yml up&amp;&#10;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
@@ -51,8 +51,8 @@
          <ExecutionAction
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
-               title = "Stop Pact Server"
-               scriptText = "&quot;$SRCROOT&quot;/scripts/stop_server.sh&#10;">
+               title = "Stop Servers"
+               scriptText = "&quot;$SRCROOT&quot;/scripts/stop_server.sh&#10;docker-compose -f &quot;$SRCROOT&quot;/docker-compose.yml down&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
@@ -86,7 +86,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0011EBF925E8839B00E48AE8"
@@ -107,6 +107,42 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Start Hikes Server"
+               scriptText = "docker-compose -f &quot;$SRCROOT&quot;/docker-compose.yml up&amp;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "CA45048925B79A7800153FC4"
+                     BuildableName = "SwiftUIExample.app"
+                     BlueprintName = "SwiftUIExample"
+                     ReferencedContainer = "container:SwiftUIExample.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Stop Hikes Service"
+               scriptText = "docker-compose -f &quot;$SRCROOT&quot;/docker-compose.yml down&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "CA45048925B79A7800153FC4"
+                     BuildableName = "SwiftUIExample.app"
+                     BlueprintName = "SwiftUIExample"
+                     ReferencedContainer = "container:SwiftUIExample.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference

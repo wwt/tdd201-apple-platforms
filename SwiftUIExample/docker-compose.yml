@@ -1,0 +1,6 @@
+version: '3'
+services:
+  hikes_server:
+    build: hikes-server/
+    ports:
+      - "3000:3000"
