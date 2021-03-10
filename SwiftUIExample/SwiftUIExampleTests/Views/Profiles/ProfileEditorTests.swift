@@ -36,7 +36,6 @@ class ProfileEditorTests: XCTestCase {
             XCTAssertEqual(try $0.element.text().string(), Profile.Season.allCases[$0.offset].rawValue)
             XCTAssertEqual(try $0.element.text().tag(), Profile.Season.allCases[$0.offset])
         }
-        #warning("Have to test binding in XCUITests")
         XCTAssertEqual(try profileEditor.find(ViewType.DatePicker.self).labelView().text().string(), "Goal Date")
     }
 

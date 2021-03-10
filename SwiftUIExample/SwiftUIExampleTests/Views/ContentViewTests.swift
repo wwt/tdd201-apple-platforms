@@ -19,7 +19,7 @@ class ContentViewTests: XCTestCase {
     override func setUpWithError() throws {
         Container.default.removeAll()
     }
-    
+
     func testContentView() throws {
         MockHikesServiceProtocol().stub { stub in
             when(stub.fetchLandmarks.get).thenReturn(
@@ -120,25 +120,4 @@ class ContentViewTests: XCTestCase {
         }
         wait(for: [exp], timeout: 3)
     }
-
-    #warning("😭 Alerts cannot be tested with ViewInspector...damn")
-    //    func testContentViewShowsError_IfHikesCanotBeFetched() throws {
-    //        enum Err: Error { case e1 }
-    //        let mockHikesService = MockHikesServiceProtocol().stub { stub in
-    //            when(stub.fetchHikes.get).thenReturn(
-    //                Result.Publisher(.failure(.apiBorked(Err.e1))).eraseToAnyPublisher()
-    //            )
-    //        }.registerIn(Container.default)
-    //
-    //        let appModel = AppModel()
-    //        let exp = ViewHosting.loadView(ContentView(), data: appModel).inspection.inspect { view in
-    //            // on appear called by ViewHosting, clear invocations for mock before continuing
-    //            clearInvocations(mockHikesService)
-    //            try view.tabView().callOnAppear()
-    //
-    //            verify(mockHikesService, times(1)).fetchHikes.get()
-    //            XCTAssertEqual(appModel.hikes, [])
-    //        }
-    //        wait(for: [exp], timeout: 3.0)
-    //    }
 }

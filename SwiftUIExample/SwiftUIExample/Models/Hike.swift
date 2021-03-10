@@ -7,7 +7,6 @@ A representation of a hike.
 
 import Foundation
 
-#warning("Have not TDD'd this yet - NO COVERAGE, GASP!")
 struct Hike: Codable, Hashable, Identifiable {
     var id: Int
     var name: String
@@ -17,6 +16,7 @@ struct Hike: Codable, Hashable, Identifiable {
 
     static var formatter = LengthFormatter()
 
+    #warning("Have not TDD'd this yet!")
     var distanceText: String {
         return Hike.formatter
             .string(fromValue: distance, unit: .kilometer)

@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
-#warning("Have not TDD'd this yet - NO COVERAGE, GASP!")
 struct Landmark: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
