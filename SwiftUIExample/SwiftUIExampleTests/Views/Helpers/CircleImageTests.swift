@@ -20,7 +20,7 @@ class CircleImageTests: XCTestCase {
         try XCTSkipUnless(UIDevice.current.isCorrectSimulatorForSnapshot)
         let expectedImage = Image("turtlerock")
         let view = CircleImage(image: expectedImage)
-        assertSnapshot(matching: view, as: .image)
+        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
     }
 
     func testCircleImageDisplaysImageCorrectly() throws {

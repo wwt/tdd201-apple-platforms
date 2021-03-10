@@ -21,7 +21,7 @@ class CategoryHomeTests: XCTestCase {
         appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
 
         let view = CategoryHome().environmentObject(appModel)
-        assertSnapshot(matching: view, as: .image)
+        assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneXsMax)))
     }
 
     func testCategoryHomeHasNavigationView() throws {
