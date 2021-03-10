@@ -84,7 +84,7 @@ class SwiftUIExampleUITests: XCTestCase {
         XCTAssert(ProfileEditScreen.isVisible)
     }
 
-    #warning("Switch is hittable but somehow tap() does not do anything :( ")
+    #warning("Switch is hittable but somehow tap() does not do anything :( I hate SwiftUI")
     func testWhenEditingProfile_UserCanChangeEnableNotificationSettings() throws {
         XCTAssert(FeaturedScreen.isVisible)
         FeaturedScreen.goToProfile().goToEditProfile()

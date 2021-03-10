@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileSummary: View {
     @EnvironmentObject var appModel: AppModel
+    @Binding var hikes: [Hike]
     var profile: Profile
     internal let inspection = Inspection<Self>()
 
@@ -47,7 +48,7 @@ struct ProfileSummary: View {
                 VStack(alignment: .leading) {
                     Text("Recent Hikes")
                         .font(.headline)
-                    if let hike = appModel.hikes.first {
+                    if let hike = hikes.first {
                         HikeView(hike: hike)
                     }
                 }
@@ -55,12 +56,5 @@ struct ProfileSummary: View {
             .padding()
         }
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
-    }
-}
-
-struct ProfileSummary_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileSummary(profile: Profile.default)
-            .environmentObject(AppModel())
     }
 }

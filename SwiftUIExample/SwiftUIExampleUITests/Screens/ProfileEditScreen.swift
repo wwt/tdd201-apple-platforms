@@ -79,7 +79,6 @@ enum ProfileEditScreen {
         let predicate = NSPredicate(format: "value ENDSWITH 'Collapsed'")
         let value = XCUIApplication.current.datePickers.firstMatch.otherElements.element(matching: predicate).value as? String
         let dateString = value?.matches(for: "^(.*?), (.*?), Collapsed$").last ?? ""
-        #warning("Darn you SwiftUI - different formates for different days")
         return dateString == DateFormatter("MMM d, yyyy").string(from: date)
             || dateString == DateFormatter("M/dd/yy").string(from: date)
     }

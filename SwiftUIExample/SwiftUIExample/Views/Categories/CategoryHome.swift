@@ -1,9 +1,9 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-A view showing featured landmarks above a list of landmarks grouped by category.
-*/
+ Abstract:
+ A view showing featured landmarks above a list of landmarks grouped by category.
+ */
 
 import SwiftUI
 
@@ -30,11 +30,11 @@ struct CategoryHome: View {
             .padding(1)
             .navigationTitle("Featured")
             .toolbar {
-                #warning("Toolbars can't be tested and environment objects are evil")
-                Button(action: { showingProfile.toggle() }) {
-                    Image(systemName: "person.crop.circle")
-                        .accessibilityLabel("User Profile")
-                }
+                Button { showingProfile.toggle() }
+                    label: {
+                        Image(systemName: "person.crop.circle")
+                            .accessibilityLabel("User Profile")
+                    }
             }
             .sheet(isPresented: $showingProfile) {
                 ProfileHost()
