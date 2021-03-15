@@ -21,7 +21,7 @@ class ProfileHostTests: XCTestCase {
         let exp = ViewHosting.loadView(ProfileHost(), data: appModel, keyPath: \.editMode, keyValue: .constant(.active)).inspection.inspect { (view) in
             XCTAssertEqual(try view.find(ViewType.Button.self).labelView().text().string(), "Cancel")
             XCTAssertNoThrow(try view.find(ViewType.EditButton.self))
-            XCTAssertThrowsError(try view.vStack().view(ProfileSummary.self, 1))
+            XCTAssertThrowsError(try view.find(ProfileSummary.self))
             let profileEditor = try view.find(ProfileEditor.self)
             XCTAssertEqual(try profileEditor.actualView().profile, expectedProfile)
             try profileEditor.actualView().$profile.wrappedValue.username = "A new name"
@@ -38,8 +38,8 @@ class ProfileHostTests: XCTestCase {
         let exp = ViewHosting.loadView(ProfileHost(), data: appModel, keyPath: \.editMode, keyValue: .constant(.inactive)).inspection.inspect { (view) in
             XCTAssertThrowsError(try view.vStack().hStack(0).button(0))
             XCTAssertNoThrow(try view.vStack().hStack(0).editButton(2))
-            XCTAssertThrowsError(try view.vStack().view(ProfileEditor.self, 1))
-            XCTAssertNoThrow(try view.vStack().view(ProfileSummary.self, 1))
+            XCTAssertThrowsError(try view.find(ProfileEditor.self))
+            XCTAssertNoThrow(try view.find(ProfileSummary.self))
         }
 
         wait(for: [exp], timeout: 3.0)

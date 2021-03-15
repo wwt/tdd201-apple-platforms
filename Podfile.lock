@@ -21,15 +21,15 @@ PODS:
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
   - PactConsumerSwift (0.10.1)
-  - Realm (10.7.0):
-    - Realm/Headers (= 10.7.0)
-  - Realm/Headers (10.7.0)
-  - RealmSwift (10.7.0):
-    - Realm (= 10.7.0)
-  - SwiftLint (0.42.0)
+  - Realm (10.7.2):
+    - Realm/Headers (= 10.7.2)
+  - Realm/Headers (10.7.2)
+  - RealmSwift (10.7.2):
+    - Realm (= 10.7.2)
+  - SwiftLint (0.43.0)
   - Swinject (2.7.1)
   - UIUTest (1.7.0)
-  - ViewInspector (0.6.3)
+  - ViewInspector (0.7.1)
 
 DEPENDENCIES:
   - Cuckoo
@@ -63,12 +63,12 @@ SPEC CHECKSUMS:
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   PactConsumerSwift: 270ad8b4e83f9d5b2692d7bbed8fdd6ef39e56f3
-  Realm: a03c41a3afbda6c197ba4dfba5428b8b54cc2df4
-  RealmSwift: 5e7abc842276d7fabd386e67afbf3efde54eb1c6
-  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
+  Realm: e523da9ade306c5ae87e85dc09fdef148d3e1cc1
+  RealmSwift: 4f6758c3adbdcc87f7b7777107226532a077f61c
+  SwiftLint: 0c645fdc6feed3e390c1701ab3cc669f88b42752
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   UIUTest: 260d9054e9a882389d9a28d0fe9987feb82a7e9b
-  ViewInspector: 8917a1624002e865e13d6c4f30f7d6d60e7cfa7c
+  ViewInspector: 33c53b81baf4a32148998c99752124fea4637499
 
 PODFILE CHECKSUM: 571b9797e15c551c575794bdafe7f410a4f6bd1e
 
