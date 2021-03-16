@@ -73,6 +73,7 @@ target 'CombineWithREST' do
     pod 'Cuckoo'
     pod 'Fakery'
     pod 'PactConsumerSwift'
+    pod 'UIUTest'
   end
 end
 

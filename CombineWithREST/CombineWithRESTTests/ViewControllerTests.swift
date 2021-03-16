@@ -15,7 +15,7 @@ import UIUTest
 @testable import CombineWithREST
 
 class ViewControllerTests: XCTestCase {
-    var testViewController: ViewController!
+    var testViewController: UIViewController!
 
     override func setUpWithError() throws {
         UIView.setAnimationsEnabled(false)
@@ -26,31 +26,27 @@ class ViewControllerTests: XCTestCase {
     }
 
     func testFetchingProfileFromAPI() throws {
-        let mock = MockIdentityServiceProtocol()
-            .registerIn(container: Container.default)
         let expectedProfile = try User.Profile.createForTests()
-        stub(mock) { stub in
-            _ = when(stub.fetchProfile.get
-                        .thenReturn(Result.Publisher(.success(expectedProfile)).eraseToAnyPublisher()))
-        }
-        let nameLabel: UILabel? = testViewController.view.viewWithAccessibilityIdentifier("nameLabel") as? UILabel
+        let mock = MockIdentityServiceProtocol().stub { stub in
+            when(stub.fetchProfile.get)
+                .thenReturn(Result.Publisher(.success(expectedProfile)).eraseToAnyPublisher())
+        }.registerIn(Container.default)
 
-        testViewController.fetchProfile()
+        // Ideally this would be through the UI, like a button press
+        (testViewController as? ViewController)?.fetchProfile()
 
         verify(mock, times(1)).fetchProfile.get()
-        XCTAssertEqual(nameLabel?.text, [expectedProfile.firstName, expectedProfile.lastName].compactMap { $0 }.joined(separator: " "))
+        XCTAssertEqual(testViewController.nameLabel?.text, [expectedProfile.firstName, expectedProfile.lastName].compactMap { $0 }.joined(separator: " "))
     }
 
     func testFetchingProfileDoesNotRetainAStrongReference() throws {
-        let mock = MockIdentityServiceProtocol()
-            .registerIn(container: Container.default)
         let profile = try User.Profile.createForTests()
-        stub(mock) { stub in
-            _ = when(stub.fetchProfile.get
-                        .thenReturn(Result.Publisher(.success(profile))
-                                        .delay(for: .seconds(10), scheduler: RunLoop.main)
-                                        .eraseToAnyPublisher()))
-        }
+        let mock = MockIdentityServiceProtocol().stub { stub in
+            when(stub.fetchProfile.get)
+                .thenReturn(Result.Publisher(.success(profile))
+                                .delay(for: .seconds(10), scheduler: RunLoop.main)
+                                .eraseToAnyPublisher())
+        }.registerIn(Container.default)
         var testViewController: ViewController? = ViewController()
         XCTAssertEqual(testViewController?.ongoingCalls.count, 0)
         weak var ref = testViewController
@@ -65,15 +61,14 @@ class ViewControllerTests: XCTestCase {
 
     func testFetchingProfileWhenThereIsAnError() throws {
         let err = API.IdentityService.FetchProfileError.apiBorked(API.AuthorizationError.unauthorized)
-        let mock = MockIdentityServiceProtocol()
-            .registerIn(container: Container.default)
-        stub(mock) { stub in
-            _ = when(stub.fetchProfile.get
-                        .thenReturn(Result.Publisher(.failure(err))
-                                        .eraseToAnyPublisher()))
-        }
+        let mock = MockIdentityServiceProtocol().stub { stub in
+            when(stub.fetchProfile.get)
+                .thenReturn(Result.Publisher(.failure(err))
+                                .eraseToAnyPublisher())
+        }.registerIn(Container.default)
 
-        testViewController.fetchProfile()
+        // Ideally this would be through the UI, like a button press
+        (testViewController as? ViewController)?.fetchProfile()
         RunLoop.current.singlePass()
 
         verify(mock, times(1)).fetchProfile.get()
@@ -86,4 +81,8 @@ class ViewControllerTests: XCTestCase {
         XCTAssertEqual(alertVC?.title, "Something went wrong")
         XCTAssertEqual(alertVC?.message, err.localizedDescription)
     }
+}
+
+fileprivate extension UIViewController {
+    var nameLabel: UILabel? { view?.viewWithAccessibilityIdentifier("nameLabel") as? UILabel }
 }

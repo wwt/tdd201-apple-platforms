@@ -14,6 +14,7 @@
 		002D702725D453B800ECD81C /* FakeUNNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D702625D453B800ECD81C /* FakeUNNotification.swift */; };
 		002D702B25D453EB00ECD81C /* UNNotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D702A25D453EB00ECD81C /* UNNotificationTests.swift */; };
 		23D7EB8893B827F50B7825E0 /* Pods_MockingFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6615F19D4C3E2283EBDA7984 /* Pods_MockingFramework.framework */; };
+		CA61585D25FFE62C0028D86F /* MockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA61585C25FFE62C0028D86F /* MockExtensions.swift */; };
 		CAA1C4C225A38A6800E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C4C125A38A6800E3F686 /* AppDelegate.swift */; };
 		CAA1C4C425A38A6800E3F686 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C4C325A38A6800E3F686 /* SceneDelegate.swift */; };
 		CAA1C4C925A38A6800E3F686 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C4C725A38A6800E3F686 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		6615F19D4C3E2283EBDA7984 /* Pods_MockingFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockingFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C893F1806A9220795DB0A6F /* Pods-MockingFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockingFramework.debug.xcconfig"; path = "Target Support Files/Pods-MockingFramework/Pods-MockingFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		A15AFB35006E6CD11342B8BC /* Pods-MockingFramework-MockingFrameworkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockingFramework-MockingFrameworkTests.release.xcconfig"; path = "Target Support Files/Pods-MockingFramework-MockingFrameworkTests/Pods-MockingFramework-MockingFrameworkTests.release.xcconfig"; sourceTree = "<group>"; };
+		CA61585C25FFE62C0028D86F /* MockExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExtensions.swift; sourceTree = "<group>"; };
 		CAA1C4BE25A38A6800E3F686 /* MockingFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockingFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C4C125A38A6800E3F686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAA1C4C325A38A6800E3F686 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +59,6 @@
 		CAA1C4DA25A38A6800E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAB7538825A4D4AF00EF25C0 /* SomeClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeClass.swift; sourceTree = "<group>"; };
 		CAB7539825A4D58000EF25C0 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
-		CAC757DC25EEF6C500C2D568 /* MockExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExtensions.swift; sourceTree = "<group>"; };
 		EC29C0108E3E51468BB82715 /* Pods-MockingFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockingFramework.release.xcconfig"; path = "Target Support Files/Pods-MockingFramework/Pods-MockingFramework.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +103,14 @@
 			path = ../Pods;
 			sourceTree = "<group>";
 		};
+		CA61585B25FFE6050028D86F /* CuckooExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				CA61585C25FFE62C0028D86F /* MockExtensions.swift */,
+			);
+			path = CuckooExtensions;
+			sourceTree = "<group>";
+		};
 		CAA1C4B525A38A6800E3F686 = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +149,7 @@
 		CAA1C4D725A38A6800E3F686 /* MockingFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
-				CAC757DB25EEF6B600C2D568 /* CuckooExtensions */,
+				CA61585B25FFE6050028D86F /* CuckooExtensions */,
 				CAB7539825A4D58000EF25C0 /* GeneratedMocks.swift */,
 				CAA1C4DA25A38A6800E3F686 /* Info.plist */,
 				00032B0025D43DE9008747D4 /* SomeClassTests.swift */,
@@ -150,14 +159,6 @@
 				002D702A25D453EB00ECD81C /* UNNotificationTests.swift */,
 			);
 			path = MockingFrameworkTests;
-			sourceTree = "<group>";
-		};
-		CAC757DB25EEF6B600C2D568 /* CuckooExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				CAC757DC25EEF6C500C2D568 /* MockExtensions.swift */,
-			);
-			path = CuckooExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,6 +400,7 @@
 				00032B0925D43E05008747D4 /* SomeProtocolTests.swift in Sources */,
 				002D702B25D453EB00ECD81C /* UNNotificationTests.swift in Sources */,
 				002D702725D453B800ECD81C /* FakeUNNotification.swift in Sources */,
+				CA61585D25FFE62C0028D86F /* MockExtensions.swift in Sources */,
 				00032B0125D43DE9008747D4 /* SomeClassTests.swift in Sources */,
 				CAB7539925A4D58000EF25C0 /* GeneratedMocks.swift in Sources */,
 			);
