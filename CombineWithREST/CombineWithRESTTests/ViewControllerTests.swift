@@ -25,6 +25,12 @@ class ViewControllerTests: XCTestCase {
         XCTAssertNotNil(testViewController)
     }
 
+    override func tearDownWithError() throws {
+        UIView.setAnimationsEnabled(false)
+        UIViewController.flushPendingTestArtifacts()
+        UIViewController().loadForTesting()
+    }
+
     func testFetchingProfileFromAPI() throws {
         let expectedProfile = try User.Profile.createForTests()
         let mock = MockIdentityServiceProtocol().stub { stub in
@@ -69,7 +75,6 @@ class ViewControllerTests: XCTestCase {
 
         // Ideally this would be through the UI, like a button press
         (testViewController as? ViewController)?.fetchProfile()
-        RunLoop.current.singlePass()
 
         verify(mock, times(1)).fetchProfile.get()
         let alertVC = testViewController.presentedViewController as? UIAlertController

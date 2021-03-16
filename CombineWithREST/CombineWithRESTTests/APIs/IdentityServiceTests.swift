@@ -144,9 +144,6 @@ class IdentityServiceTests: XCTestCase {
             .thenRespondWith(request: .init(.post, urlString: "\(API.IdentityService().baseURL)/auth/refresh"),
                              statusCode: 200,
                              result: .success(try JSONSerialization.data(withJSONObject: [:])))
-            .thenRespondWith(request: .init(.get, urlString: "\(API.IdentityService().baseURL)/me"),
-                             statusCode: 200,
-                             result: .success(validProfileJSON.data(using: .utf8)!))
 
         let api = API.IdentityService()
 

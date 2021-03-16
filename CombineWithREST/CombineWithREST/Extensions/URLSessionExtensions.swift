@@ -17,5 +17,5 @@ extension URLSession {
         dataTaskPublisher(for: request)
             .mapError { $0 }
             .eraseToAnyPublisher()
-    }
+   }
 }

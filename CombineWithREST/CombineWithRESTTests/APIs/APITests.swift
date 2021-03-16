@@ -11,6 +11,7 @@
 import Foundation
 import XCTest
 import Combine
+import OHHTTPStubs
 
 @testable import CombineWithREST
 
@@ -28,6 +29,11 @@ class APITests: XCTestCase {
         subscribers.forEach { $0.cancel() }
         subscribers.removeAll()
         Self.swizzled.removeAll()
+        stub { _ in true } response: { _ in HTTPStubsResponse() }
+    }
+
+    override func tearDownWithError() throws {
+        HTTPStubs.removeAllStubs()
     }
 
     func testAPIMakesAGETRequest() throws {
