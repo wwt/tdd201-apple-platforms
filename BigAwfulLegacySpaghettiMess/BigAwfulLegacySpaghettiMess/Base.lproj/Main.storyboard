@@ -297,7 +297,7 @@
                         <outlet property="spaghetti" destination="rjR-2S-U7L" id="XnM-RL-XsA"/>
                         <outlet property="spaghettiLabel" destination="uA5-HC-VRe" id="x5C-9k-jXF"/>
                         <outlet property="spaghettiTapped" destination="OGt-ss-fXC" id="5tl-g6-2Bc"/>
-                        <segue destination="stc-NB-Gdj" kind="show" identifier="PastaDetail" id="OMH-qL-4Dm"/>
+                        <segue destination="stc-NB-Gdj" kind="show" identifier="DetailPage" id="OMH-qL-4Dm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7iE-1S-HTK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -445,7 +445,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fF0-U9-2RN"/>
+        <segue reference="OMH-qL-4Dm"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="captions.bubble" catalog="system" width="128" height="110"/>
