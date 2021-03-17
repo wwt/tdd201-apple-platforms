@@ -58,6 +58,9 @@
 		006D6B79260270EF003A6240 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D6B48260270EF003A6240 /* SessionDelegate.swift */; };
 		CA4504CA25B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4504C925B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.swift */; };
 		CA75BAC925A3F9D800930AB1 /* ConstantsAndHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75BAC825A3F9D800930AB1 /* ConstantsAndHelpers.swift */; };
+		CA9F23A12602808A00C7C159 /* ThatOneFileEverybodyHates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F23A02602808A00C7C159 /* ThatOneFileEverybodyHates.swift */; };
+		CA9F23AA2602816E00C7C159 /* NotworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F23A92602816E00C7C159 /* NotworkManager.swift */; };
+		CA9F23B02602835100C7C159 /* Pasta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F23AF2602835100C7C159 /* Pasta.swift */; };
 		CAA1C5DC25A38DFB00E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C5DB25A38DFB00E3F686 /* AppDelegate.swift */; };
 		CAA1C5DE25A38DFB00E3F686 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C5DD25A38DFB00E3F686 /* SceneDelegate.swift */; };
 		CAA1C5E025A38DFB00E3F686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C5DF25A38DFB00E3F686 /* ViewController.swift */; };
@@ -139,6 +142,9 @@
 		CA4504C925B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigAwfulLegacySpaghettiMessUITests.swift; sourceTree = "<group>"; };
 		CA4504CB25B79AFD00153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA75BAC825A3F9D800930AB1 /* ConstantsAndHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsAndHelpers.swift; sourceTree = "<group>"; };
+		CA9F23A02602808A00C7C159 /* ThatOneFileEverybodyHates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThatOneFileEverybodyHates.swift; sourceTree = "<group>"; };
+		CA9F23A92602816E00C7C159 /* NotworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotworkManager.swift; sourceTree = "<group>"; };
+		CA9F23AF2602835100C7C159 /* Pasta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pasta.swift; sourceTree = "<group>"; };
 		CAA1C5D825A38DFB00E3F686 /* BigAwfulLegacySpaghettiMess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigAwfulLegacySpaghettiMess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C5DB25A38DFB00E3F686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAA1C5DD25A38DFB00E3F686 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,42 +186,9 @@
 		006D6B14260270EF003A6240 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				CA9F23A82602815400C7C159 /* ActuallyAlamofireLOL */,
 				006D6B15260270EF003A6240 /* Demo */,
-				006D6B26260270EF003A6240 /* MultipartFormData.swift */,
-				006D6B27260270EF003A6240 /* RequestInterceptor.swift */,
-				006D6B28260270EF003A6240 /* NetworkReachabilityManager.swift */,
-				006D6B29260270EF003A6240 /* ParameterEncoder.swift */,
-				006D6B2A260270EF003A6240 /* URLSessionConfiguration+Alamofire.swift */,
-				006D6B2B260270EF003A6240 /* Session.swift */,
-				006D6B2C260270EF003A6240 /* OperationQueue+Alamofire.swift */,
-				006D6B2D260270EF003A6240 /* CachedResponseHandler.swift */,
-				006D6B2E260270EF003A6240 /* StringEncoding+Alamofire.swift */,
-				006D6B2F260270EF003A6240 /* DispatchQueue+Alamofire.swift */,
-				006D6B30260270EF003A6240 /* RetryPolicy.swift */,
-				006D6B31260270EF003A6240 /* Protected.swift */,
-				006D6B32260270EF003A6240 /* ParameterEncoding.swift */,
-				006D6B33260270EF003A6240 /* ServerTrustEvaluation.swift */,
-				006D6B34260270EF003A6240 /* AFError.swift */,
-				006D6B35260270EF003A6240 /* RedirectHandler.swift */,
-				006D6B36260270EF003A6240 /* URLEncodedFormEncoder.swift */,
-				006D6B37260270EF003A6240 /* AlamofireExtended.swift */,
-				006D6B38260270EF003A6240 /* HTTPMethod.swift */,
-				006D6B39260270EF003A6240 /* MultipartUpload.swift */,
-				006D6B3A260270EF003A6240 /* URLRequest+Alamofire.swift */,
-				006D6B3B260270EF003A6240 /* URLConvertible+URLRequestConvertible.swift */,
-				006D6B3C260270EF003A6240 /* RequestTaskMap.swift */,
-				006D6B3D260270EF003A6240 /* Validation.swift */,
-				006D6B3E260270EF003A6240 /* Notifications.swift */,
-				006D6B3F260270EF003A6240 /* AuthenticationInterceptor.swift */,
-				006D6B40260270EF003A6240 /* Response.swift */,
-				006D6B41260270EF003A6240 /* Alamofire.swift */,
-				006D6B42260270EF003A6240 /* Result+Alamofire.swift */,
-				006D6B43260270EF003A6240 /* Request.swift */,
-				006D6B44260270EF003A6240 /* HTTPHeaders.swift */,
-				006D6B45260270EF003A6240 /* EventMonitor.swift */,
-				006D6B46260270EF003A6240 /* Combine.swift */,
-				006D6B47260270EF003A6240 /* ResponseSerialization.swift */,
-				006D6B48260270EF003A6240 /* SessionDelegate.swift */,
+				CA9F23A92602816E00C7C159 /* NotworkManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -259,6 +232,64 @@
 			path = BigAwfulLegacySpaghettiMessUITests;
 			sourceTree = "<group>";
 		};
+		CA9F239F2602807F00C7C159 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CA9F23A02602808A00C7C159 /* ThatOneFileEverybodyHates.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		CA9F23A82602815400C7C159 /* ActuallyAlamofireLOL */ = {
+			isa = PBXGroup;
+			children = (
+				006D6B26260270EF003A6240 /* MultipartFormData.swift */,
+				006D6B27260270EF003A6240 /* RequestInterceptor.swift */,
+				006D6B28260270EF003A6240 /* NetworkReachabilityManager.swift */,
+				006D6B29260270EF003A6240 /* ParameterEncoder.swift */,
+				006D6B2A260270EF003A6240 /* URLSessionConfiguration+Alamofire.swift */,
+				006D6B2B260270EF003A6240 /* Session.swift */,
+				006D6B2C260270EF003A6240 /* OperationQueue+Alamofire.swift */,
+				006D6B2D260270EF003A6240 /* CachedResponseHandler.swift */,
+				006D6B2E260270EF003A6240 /* StringEncoding+Alamofire.swift */,
+				006D6B2F260270EF003A6240 /* DispatchQueue+Alamofire.swift */,
+				006D6B30260270EF003A6240 /* RetryPolicy.swift */,
+				006D6B31260270EF003A6240 /* Protected.swift */,
+				006D6B32260270EF003A6240 /* ParameterEncoding.swift */,
+				006D6B33260270EF003A6240 /* ServerTrustEvaluation.swift */,
+				006D6B34260270EF003A6240 /* AFError.swift */,
+				006D6B35260270EF003A6240 /* RedirectHandler.swift */,
+				006D6B36260270EF003A6240 /* URLEncodedFormEncoder.swift */,
+				006D6B37260270EF003A6240 /* AlamofireExtended.swift */,
+				006D6B38260270EF003A6240 /* HTTPMethod.swift */,
+				006D6B39260270EF003A6240 /* MultipartUpload.swift */,
+				006D6B3A260270EF003A6240 /* URLRequest+Alamofire.swift */,
+				006D6B3B260270EF003A6240 /* URLConvertible+URLRequestConvertible.swift */,
+				006D6B3C260270EF003A6240 /* RequestTaskMap.swift */,
+				006D6B3D260270EF003A6240 /* Validation.swift */,
+				006D6B3E260270EF003A6240 /* Notifications.swift */,
+				006D6B3F260270EF003A6240 /* AuthenticationInterceptor.swift */,
+				006D6B40260270EF003A6240 /* Response.swift */,
+				006D6B41260270EF003A6240 /* Alamofire.swift */,
+				006D6B42260270EF003A6240 /* Result+Alamofire.swift */,
+				006D6B43260270EF003A6240 /* Request.swift */,
+				006D6B44260270EF003A6240 /* HTTPHeaders.swift */,
+				006D6B45260270EF003A6240 /* EventMonitor.swift */,
+				006D6B46260270EF003A6240 /* Combine.swift */,
+				006D6B47260270EF003A6240 /* ResponseSerialization.swift */,
+				006D6B48260270EF003A6240 /* SessionDelegate.swift */,
+			);
+			path = ActuallyAlamofireLOL;
+			sourceTree = "<group>";
+		};
+		CA9F23AE2602834500C7C159 /* Modles */ = {
+			isa = PBXGroup;
+			children = (
+				CA9F23AF2602835100C7C159 /* Pasta.swift */,
+			);
+			path = Modles;
+			sourceTree = "<group>";
+		};
 		CAA1C5CF25A38DFB00E3F686 = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +313,8 @@
 		CAA1C5DA25A38DFB00E3F686 /* BigAwfulLegacySpaghettiMess */ = {
 			isa = PBXGroup;
 			children = (
+				CA9F23AE2602834500C7C159 /* Modles */,
+				CA9F239F2602807F00C7C159 /* Utilities */,
 				006D6B14260270EF003A6240 /* Networking */,
 				CAA1C5DB25A38DFB00E3F686 /* AppDelegate.swift */,
 				CAA1C5DD25A38DFB00E3F686 /* SceneDelegate.swift */,
@@ -447,11 +480,13 @@
 				006D6B62260270EF003A6240 /* Protected.swift in Sources */,
 				006D6B53260270EF003A6240 /* DataMatcher.swift in Sources */,
 				006D6B6F260270EF003A6240 /* Notifications.swift in Sources */,
+				CA9F23A12602808A00C7C159 /* ThatOneFileEverybodyHates.swift in Sources */,
 				006D6B50260270EF003A6240 /* URLHook.swift in Sources */,
 				006D6B71260270EF003A6240 /* Response.swift in Sources */,
 				006D6B5F260270EF003A6240 /* StringEncoding+Alamofire.swift in Sources */,
 				CAA1C5E025A38DFB00E3F686 /* ViewController.swift in Sources */,
 				006D6B51260270EF003A6240 /* StringMatcher.swift in Sources */,
+				CA9F23AA2602816E00C7C159 /* NotworkManager.swift in Sources */,
 				006D6B61260270EF003A6240 /* RetryPolicy.swift in Sources */,
 				006D6B78260270EF003A6240 /* ResponseSerialization.swift in Sources */,
 				006D6B76260270EF003A6240 /* EventMonitor.swift in Sources */,
@@ -463,6 +498,7 @@
 				006D6B5E260270EF003A6240 /* CachedResponseHandler.swift in Sources */,
 				006D6B52260270EF003A6240 /* Matcher.swift in Sources */,
 				006D6B60260270EF003A6240 /* DispatchQueue+Alamofire.swift in Sources */,
+				CA9F23B02602835100C7C159 /* Pasta.swift in Sources */,
 				006D6B5D260270EF003A6240 /* OperationQueue+Alamofire.swift in Sources */,
 				006D6B5A260270EF003A6240 /* ParameterEncoder.swift in Sources */,
 				006D6B70260270EF003A6240 /* AuthenticationInterceptor.swift in Sources */,
