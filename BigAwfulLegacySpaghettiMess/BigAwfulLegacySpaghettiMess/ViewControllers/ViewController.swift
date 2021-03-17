@@ -37,8 +37,10 @@ class ViewController: UIViewController, TappableViewDelegate {
 //    }
     override func viewDidLoad() {
         tappableView?.tapDelegate = self
+        macaroni?.isUserInteractionEnabled = false
         NetworkManager.getPastas {
             self.self.loadPasts()
+            self.macaroni?.isUserInteractionEnabled = true
         }
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -54,12 +56,12 @@ class ViewController: UIViewController, TappableViewDelegate {
 
     public func loadPasts() {
         indicator?.isHidden = true
-        let spaghetti = NetworkManager.pastaCache.first { (pasta) -> Bool in
+        let spaghetti​ = NetworkManager.pastaCache.first { (pasta) -> Bool in
             pasta.name == Constants.ViewControllerConstants.spaghetti
         }
-        spaghettiLabel?.text = spaghetti?.name
+        spaghettiLabel?.text = spaghetti​?.name
 //        spaghetti?.image = spaghetti?.image
-        self.spaghetti?.image = spaghetti?.image.toImage
+        spaghetti?.image = spaghetti​?.image.toImage
 
         let carbonara = NetworkManager.pastaCache.filter { (pasta) -> Bool in
             pasta.name == Constants.ViewControllerConstants.cabonari

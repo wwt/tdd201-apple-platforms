@@ -28,6 +28,20 @@ class BigAwfulLegacySpaghettiMessTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 6)
+        expectation = self.expectation(description: "Self-fulfilling propehcy")
+        currentEnvironment = .stage
+        NetworkManager.getPastas {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 6)
+
+        NetworkManager.didMakeAtLeastOneRequest = false
+        expectation = self.expectation(description: "Self-fulfilling propehcy")
+        currentEnvironment = .stage
+        NetworkManager.getPasta(pastaName: Constants.Network.macaroni) { _ in
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 6)
 
         expectation = self.expectation(description: "Self-fulfilling propehcy")
         currentEnvironment = .stage
@@ -35,8 +49,6 @@ class BigAwfulLegacySpaghettiMessTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 6)
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
     func testPerformanceExample() throws {
