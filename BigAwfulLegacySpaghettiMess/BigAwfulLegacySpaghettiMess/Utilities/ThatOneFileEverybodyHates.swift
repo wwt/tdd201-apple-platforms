@@ -51,6 +51,10 @@ func ConvertSinglePastaResponse(data: AFDataResponse<Data?>) -> APIResult<Pasta>
 
 }
 
+//extension Data {
+//    
+//}
+
 /***** BEWARE OF INVISIBLE CODE */
 
 

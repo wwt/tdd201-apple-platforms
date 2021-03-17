@@ -56,6 +56,7 @@
 		006D6B77260270EF003A6240 /* Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D6B46260270EF003A6240 /* Combine.swift */; };
 		006D6B78260270EF003A6240 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D6B47260270EF003A6240 /* ResponseSerialization.swift */; };
 		006D6B79260270EF003A6240 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D6B48260270EF003A6240 /* SessionDelegate.swift */; };
+		CA1D958A2602ACE300EB3C13 /* PastaDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D95892602ACE300EB3C13 /* PastaDetail.swift */; };
 		CA4504CA25B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4504C925B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.swift */; };
 		CA75BAC925A3F9D800930AB1 /* ConstantsAndHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75BAC825A3F9D800930AB1 /* ConstantsAndHelpers.swift */; };
 		CA9F23A12602808A00C7C159 /* ThatOneFileEverybodyHates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F23A02602808A00C7C159 /* ThatOneFileEverybodyHates.swift */; };
@@ -142,6 +143,7 @@
 		006D6B46260270EF003A6240 /* Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Combine.swift; sourceTree = "<group>"; };
 		006D6B47260270EF003A6240 /* ResponseSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerialization.swift; sourceTree = "<group>"; };
 		006D6B48260270EF003A6240 /* SessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
+		CA1D95892602ACE300EB3C13 /* PastaDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastaDetail.swift; sourceTree = "<group>"; };
 		CA4504C725B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigAwfulLegacySpaghettiMessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA4504C925B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigAwfulLegacySpaghettiMessUITests.swift; sourceTree = "<group>"; };
 		CA4504CB25B79AFD00153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				CAA1C5DF25A38DFB00E3F686 /* ViewController.swift */,
+				CA1D95892602ACE300EB3C13 /* PastaDetail.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				006D6B79260270EF003A6240 /* SessionDelegate.swift in Sources */,
 				006D6B63260270EF003A6240 /* ParameterEncoding.swift in Sources */,
 				CA75BAC925A3F9D800930AB1 /* ConstantsAndHelpers.swift in Sources */,
+				CA1D958A2602ACE300EB3C13 /* PastaDetail.swift in Sources */,
 				006D6B5B260270EF003A6240 /* URLSessionConfiguration+Alamofire.swift in Sources */,
 				006D6B4B260270EF003A6240 /* StubResponse.swift in Sources */,
 				006D6B65260270EF003A6240 /* AFError.swift in Sources */,

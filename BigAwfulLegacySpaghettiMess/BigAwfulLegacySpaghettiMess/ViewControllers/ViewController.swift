@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController, TappableViewDelegate {
     func didGetTapped() {
         guard !NetworkManager.makingRequest else { return }
-        performSegue(withIdentifier: Constants.ViewControllerConstants.segueToDetailPage, sender: Constants.ViewControllerConstants.spaghetti)
+        performSegue(withIdentifier: Constants.ViewControllerConstants.segueToDetailPage, sender: Constants.ViewControllerConstants.cabonari)
     }
 
 
@@ -44,6 +44,12 @@ class ViewController: UIViewController, TappableViewDelegate {
         // Do any additional setup after loading the view.
 
 //        loadPasts()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard sender is String else { return }
+        let dst = segue.destination as! PastaDetail
+        dst.pastName = sender as! String
     }
 
     public func loadPasts() {

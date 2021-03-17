@@ -22,9 +22,16 @@ class BigAwfulLegacySpaghettiMessTests: XCTestCase {
         ViewController().viewDidLoad()
         ViewController().loadPasts()
         ViewController().didGetTapped()
-        let expectation = self.expectation(description: "Self-fulfilling propehcy")
+        var expectation = self.expectation(description: "Self-fulfilling propehcy")
         currentEnvironment = .stage
         NetworkManager.getPastas {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 6)
+
+        expectation = self.expectation(description: "Self-fulfilling propehcy")
+        currentEnvironment = .stage
+        NetworkManager.getPasta(pastaName: Constants.Network.macaroni) { _ in
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 6)

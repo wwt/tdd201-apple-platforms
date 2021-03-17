@@ -310,10 +310,10 @@
             </objects>
             <point key="canvasLocation" x="661" y="147"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Pasta Detail-->
         <scene sceneID="QtU-4z-0JN">
             <objects>
-                <tableViewController id="stc-NB-Gdj" sceneMemberID="viewController">
+                <tableViewController id="stc-NB-Gdj" customClass="PastaDetail" customModule="BigAwfulLegacySpaghettiMess" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IKl-Xs-tUr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -321,7 +321,7 @@
                         <sections>
                             <tableViewSection id="1n7-0h-prO">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fwf-L2-sV7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fwf-L2-sV7" customClass="PastaDetailTitleCell" customModule="BigAwfulLegacySpaghettiMess" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fwf-L2-sV7" id="dnW-DR-I9a">
@@ -342,6 +342,9 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="HEE-Nw-xnF" secondAttribute="trailing" id="iKh-7Z-cSm"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="HEE-Nw-xnF" id="9j7-1I-iix"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dZW-ha-WSC">
                                         <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
