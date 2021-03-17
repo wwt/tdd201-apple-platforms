@@ -10,6 +10,7 @@ import UIKit
 
 class PastaDetail: UITableViewController {
     var pastName: String = Constants.ViewControllerConstants.macaroni
+    var interactor = PastaDetailInteractor()
 
     override func viewDidLoad() {
         NetworkManager.getPasta(pastaName: pastName) { pasta in

@@ -57,6 +57,10 @@
 		006D6B78260270EF003A6240 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D6B47260270EF003A6240 /* ResponseSerialization.swift */; };
 		006D6B79260270EF003A6240 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D6B48260270EF003A6240 /* SessionDelegate.swift */; };
 		CA1D958A2602ACE300EB3C13 /* PastaDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D95892602ACE300EB3C13 /* PastaDetail.swift */; };
+		CA1D95902602B81200EB3C13 /* PastaDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D958F2602B81200EB3C13 /* PastaDetailInteractor.swift */; };
+		CA1D95982602B81D00EB3C13 /* PastaDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D95972602B81D00EB3C13 /* PastaDetailPresenter.swift */; };
+		CA1D959D2602B82800EB3C13 /* PastaDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D959C2602B82800EB3C13 /* PastaDetailEntity.swift */; };
+		CA1D95A22602B82F00EB3C13 /* PastaDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D95A12602B82F00EB3C13 /* PastaDetailRouter.swift */; };
 		CA4504CA25B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4504C925B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.swift */; };
 		CA75BAC925A3F9D800930AB1 /* ConstantsAndHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75BAC825A3F9D800930AB1 /* ConstantsAndHelpers.swift */; };
 		CA9F23A12602808A00C7C159 /* ThatOneFileEverybodyHates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F23A02602808A00C7C159 /* ThatOneFileEverybodyHates.swift */; };
@@ -144,6 +148,10 @@
 		006D6B47260270EF003A6240 /* ResponseSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerialization.swift; sourceTree = "<group>"; };
 		006D6B48260270EF003A6240 /* SessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		CA1D95892602ACE300EB3C13 /* PastaDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastaDetail.swift; sourceTree = "<group>"; };
+		CA1D958F2602B81200EB3C13 /* PastaDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastaDetailInteractor.swift; sourceTree = "<group>"; };
+		CA1D95972602B81D00EB3C13 /* PastaDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastaDetailPresenter.swift; sourceTree = "<group>"; };
+		CA1D959C2602B82800EB3C13 /* PastaDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastaDetailEntity.swift; sourceTree = "<group>"; };
+		CA1D95A12602B82F00EB3C13 /* PastaDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastaDetailRouter.swift; sourceTree = "<group>"; };
 		CA4504C725B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigAwfulLegacySpaghettiMessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA4504C925B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigAwfulLegacySpaghettiMessUITests.swift; sourceTree = "<group>"; };
 		CA4504CB25B79AFD00153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -233,6 +241,18 @@
 			path = Matchers;
 			sourceTree = "<group>";
 		};
+		CA1D958E2602B80300EB3C13 /* PastaDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CA1D95892602ACE300EB3C13 /* PastaDetail.swift */,
+				CA1D958F2602B81200EB3C13 /* PastaDetailInteractor.swift */,
+				CA1D95972602B81D00EB3C13 /* PastaDetailPresenter.swift */,
+				CA1D959C2602B82800EB3C13 /* PastaDetailEntity.swift */,
+				CA1D95A12602B82F00EB3C13 /* PastaDetailRouter.swift */,
+			);
+			path = PastaDetail;
+			sourceTree = "<group>";
+		};
 		CA4504C825B79AFD00153FC4 /* BigAwfulLegacySpaghettiMessUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,8 +331,8 @@
 		CA9F23C62602A44D00C7C159 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CA1D958E2602B80300EB3C13 /* PastaDetail */,
 				CAA1C5DF25A38DFB00E3F686 /* ViewController.swift */,
-				CA1D95892602ACE300EB3C13 /* PastaDetail.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -530,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA1D95982602B81D00EB3C13 /* PastaDetailPresenter.swift in Sources */,
 				006D6B72260270EF003A6240 /* Alamofire.swift in Sources */,
 				006D6B74260270EF003A6240 /* Request.swift in Sources */,
 				006D6B62260270EF003A6240 /* Protected.swift in Sources */,
@@ -540,6 +561,7 @@
 				006D6B50260270EF003A6240 /* URLHook.swift in Sources */,
 				006D6B71260270EF003A6240 /* Response.swift in Sources */,
 				006D6B5F260270EF003A6240 /* StringEncoding+Alamofire.swift in Sources */,
+				CA1D95A22602B82F00EB3C13 /* PastaDetailRouter.swift in Sources */,
 				CAA1C5E025A38DFB00E3F686 /* ViewController.swift in Sources */,
 				006D6B51260270EF003A6240 /* StringMatcher.swift in Sources */,
 				CA9F23AA2602816E00C7C159 /* NotworkManager.swift in Sources */,
@@ -553,6 +575,7 @@
 				006D6B64260270EF003A6240 /* ServerTrustEvaluation.swift in Sources */,
 				CAA1C5DC25A38DFB00E3F686 /* AppDelegate.swift in Sources */,
 				D7247A1626029F1200238D47 /* Constants.swift in Sources */,
+				CA1D95902602B81200EB3C13 /* PastaDetailInteractor.swift in Sources */,
 				006D6B5E260270EF003A6240 /* CachedResponseHandler.swift in Sources */,
 				006D6B52260270EF003A6240 /* Matcher.swift in Sources */,
 				006D6B60260270EF003A6240 /* DispatchQueue+Alamofire.swift in Sources */,
@@ -587,6 +610,7 @@
 				006D6B63260270EF003A6240 /* ParameterEncoding.swift in Sources */,
 				CA75BAC925A3F9D800930AB1 /* ConstantsAndHelpers.swift in Sources */,
 				CA1D958A2602ACE300EB3C13 /* PastaDetail.swift in Sources */,
+				CA1D959D2602B82800EB3C13 /* PastaDetailEntity.swift in Sources */,
 				006D6B5B260270EF003A6240 /* URLSessionConfiguration+Alamofire.swift in Sources */,
 				006D6B4B260270EF003A6240 /* StubResponse.swift in Sources */,
 				006D6B65260270EF003A6240 /* AFError.swift in Sources */,
