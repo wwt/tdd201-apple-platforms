@@ -35,7 +35,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KpD-eV-lh7" userLabel="indicatr">
                                 <rect key="frame" x="0.0" y="384" width="414" height="128"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="rTG-KN-vNt">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="rTG-KN-vNt">
                                         <rect key="frame" x="197" y="54" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
@@ -43,7 +43,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q9X-QC-RvI">
-                                <rect key="frame" x="0.0" y="88" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YaS-vF-w0l">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -212,16 +212,16 @@
                                         </constraints>
                                     </view>
                                     <view opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvp-St-eX2">
-                                        <rect key="frame" x="0.0" y="150" width="414" height="574"/>
+                                        <rect key="frame" x="0.0" y="150" width="414" height="624"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="233-Sp-89U">
-                                                <rect key="frame" x="0.0" y="0.0" width="401.5" height="574"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="401.5" height="624"/>
                                                 <state key="normal" title=" ">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyF-eB-S3p" userLabel="pasta">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="574"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -231,10 +231,10 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2F-gF-xin" userLabel="indicator">
-                                                <rect key="frame" x="401.5" y="0.0" width="12.5" height="574"/>
+                                                <rect key="frame" x="401.5" y="0.0" width="12.5" height="624"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7OJ-or-Fw2">
-                                                        <rect key="frame" x="0.0" y="2" width="12.5" height="570.5"/>
+                                                        <rect key="frame" x="0.0" y="2" width="12.5" height="620.5"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
