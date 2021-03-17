@@ -92,10 +92,7 @@ public struct StubRequest: Hashable {
     urlMatcher.matches(string: url?.absoluteString)
   }
 
-  private func matchesHeaders(_ headersToMatch: [String: String]?) -> Bool {
-    guard let headersToMatch = headersToMatch else {
-      return headers.isEmpty
-    }
+  private func matchesHeaders(_ headersToMatch: HTTPHeaders) -> Bool {
     for key in headers.keys {
       guard let value = headersToMatch[key] else {
         return false
