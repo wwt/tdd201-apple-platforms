@@ -19,6 +19,15 @@ class BigAwfulLegacySpaghettiMessTests: XCTestCase {
     }
 
     func testExample() throws {
+        ViewController().viewDidLoad()
+        ViewController().loadPasts()
+        ViewController().didGetTapped()
+        let expectation = self.expectation(description: "Self-fulfilling propehcy")
+        currentEnvironment = .stage
+        NetworkManager.getPastas {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 6)
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

@@ -7,7 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, TappableViewDelegate {
+    func didGetTapped() {
+        guard !NetworkManager.makingRequest else { return }
+        performSegue(withIdentifier: Constants.ViewControllerConstants.segueToDetailPage, sender: Constants.ViewControllerConstants.spaghetti)
+    }
+
 
     @IBOutlet weak var indicator: UIView!
     @IBOutlet weak var spaghettiLabel: UILabel!
@@ -19,10 +24,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var Alfrado: UIImageView!
     @IBOutlet weak var penneLabel: UILabel!
     @IBOutlet weak var penne: UIImageView!
-
+    @IBOutlet weak var tappableView: TappableView!
 
     @IBOutlet var spaghettiTapped: UITapGestureRecognizer!
     @IBAction func spaghettiTapped(_ sender: Any) {
+        guard !NetworkManager.makingRequest else { return }
 //        performSegue(withIdentifier: "PastaDetail", sender: <#T##Any?#>)
         performSegue(withIdentifier: Constants.ViewControllerConstants.segueToDetailPage, sender: Constants.ViewControllerConstants.spaghetti)
     }
@@ -30,6 +36,7 @@ class ViewController: UIViewController {
 //        return <#UITableViewController(coder: coder)#>
 //    }
     override func viewDidLoad() {
+        tappableView?.tapDelegate = self
         NetworkManager.getPastas {
             self.self.loadPasts()
         }
@@ -40,19 +47,19 @@ class ViewController: UIViewController {
     }
 
     public func loadPasts() {
-        indicator.isHidden = true
+        indicator?.isHidden = true
         let spaghetti = NetworkManager.pastaCache.first { (pasta) -> Bool in
             pasta.name == Constants.ViewControllerConstants.spaghetti
         }
-        spaghettiLabel.text = spaghetti?.name
+        spaghettiLabel?.text = spaghetti?.name
 //        spaghetti?.image = spaghetti?.image
-        self.spaghetti.image = spaghetti?.image.toImage
+        self.spaghetti?.image = spaghetti?.image.toImage
 
         let carbonara = NetworkManager.pastaCache.filter { (pasta) -> Bool in
             pasta.name == Constants.ViewControllerConstants.cabonari
         }.first
-        self.Carbinara.text = carbonara?.name
-        self.carbonara.image = carbonara?.image.toImage
+        self.Carbinara?.text = carbonara?.name
+        self.carbonara?.image = carbonara?.image.toImage
 
 //        carbonara = NetworkManager.pastaCache.filter { (pasta) -> Bool in
 //            pasta.name == "macaroni"

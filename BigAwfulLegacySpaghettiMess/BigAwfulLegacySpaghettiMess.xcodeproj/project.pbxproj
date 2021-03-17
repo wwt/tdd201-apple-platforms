@@ -61,6 +61,7 @@
 		CA9F23A12602808A00C7C159 /* ThatOneFileEverybodyHates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F23A02602808A00C7C159 /* ThatOneFileEverybodyHates.swift */; };
 		CA9F23AA2602816E00C7C159 /* NotworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F23A92602816E00C7C159 /* NotworkManager.swift */; };
 		CA9F23B02602835100C7C159 /* Pasta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F23AF2602835100C7C159 /* Pasta.swift */; };
+		CA9F23BF2602A32300C7C159 /* TappableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9F23BE2602A32300C7C159 /* TappableView.swift */; };
 		CAA1C5DC25A38DFB00E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C5DB25A38DFB00E3F686 /* AppDelegate.swift */; };
 		CAA1C5DE25A38DFB00E3F686 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C5DD25A38DFB00E3F686 /* SceneDelegate.swift */; };
 		CAA1C5E025A38DFB00E3F686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C5DF25A38DFB00E3F686 /* ViewController.swift */; };
@@ -148,6 +149,7 @@
 		CA9F23A02602808A00C7C159 /* ThatOneFileEverybodyHates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThatOneFileEverybodyHates.swift; sourceTree = "<group>"; };
 		CA9F23A92602816E00C7C159 /* NotworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotworkManager.swift; sourceTree = "<group>"; };
 		CA9F23AF2602835100C7C159 /* Pasta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pasta.swift; sourceTree = "<group>"; };
+		CA9F23BE2602A32300C7C159 /* TappableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableView.swift; sourceTree = "<group>"; };
 		CAA1C5D825A38DFB00E3F686 /* BigAwfulLegacySpaghettiMess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigAwfulLegacySpaghettiMess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C5DB25A38DFB00E3F686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAA1C5DD25A38DFB00E3F686 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -296,6 +298,22 @@
 			path = Modles;
 			sourceTree = "<group>";
 		};
+		CA9F23BD2602A31A00C7C159 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				CA9F23BE2602A32300C7C159 /* TappableView.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		CA9F23C62602A44D00C7C159 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CAA1C5DF25A38DFB00E3F686 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		CAA1C5CF25A38DFB00E3F686 = {
 			isa = PBXGroup;
 			children = (
@@ -319,13 +337,14 @@
 		CAA1C5DA25A38DFB00E3F686 /* BigAwfulLegacySpaghettiMess */ = {
 			isa = PBXGroup;
 			children = (
+				CA9F23C62602A44D00C7C159 /* ViewControllers */,
+				CA9F23BD2602A31A00C7C159 /* Custom Views */,
 				D7247A1426029EFB00238D47 /* Constants and Helpers */,
 				CA9F23AE2602834500C7C159 /* Modles */,
 				CA9F239F2602807F00C7C159 /* Utilities */,
 				006D6B14260270EF003A6240 /* Networking */,
 				CAA1C5DB25A38DFB00E3F686 /* AppDelegate.swift */,
 				CAA1C5DD25A38DFB00E3F686 /* SceneDelegate.swift */,
-				CAA1C5DF25A38DFB00E3F686 /* ViewController.swift */,
 				CAA1C5E125A38DFB00E3F686 /* Main.storyboard */,
 				CAA1C5E425A38DFC00E3F686 /* Assets.xcassets */,
 				CAA1C5E625A38DFC00E3F686 /* LaunchScreen.storyboard */,
@@ -537,6 +556,7 @@
 				CA9F23B02602835100C7C159 /* Pasta.swift in Sources */,
 				006D6B5D260270EF003A6240 /* OperationQueue+Alamofire.swift in Sources */,
 				006D6B5A260270EF003A6240 /* ParameterEncoder.swift in Sources */,
+				CA9F23BF2602A32300C7C159 /* TappableView.swift in Sources */,
 				006D6B70260270EF003A6240 /* AuthenticationInterceptor.swift in Sources */,
 				006D6B56260270EF003A6240 /* URL+HippolyteAdditions.swift in Sources */,
 				006D6B6C260270EF003A6240 /* URLConvertible+URLRequestConvertible.swift in Sources */,

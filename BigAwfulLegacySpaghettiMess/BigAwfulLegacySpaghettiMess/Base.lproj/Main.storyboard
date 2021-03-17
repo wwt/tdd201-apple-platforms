@@ -96,7 +96,7 @@
                                             <outletCollection property="gestureRecognizers" destination="OGt-ss-fXC" appends="YES" id="98f-fx-RvO"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krT-Ah-kfE">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krT-Ah-kfE" customClass="TappableView" customModule="BigAwfulLegacySpaghettiMess" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzG-qm-4VE" userLabel="pasta">
@@ -297,6 +297,7 @@
                         <outlet property="spaghetti" destination="rjR-2S-U7L" id="XnM-RL-XsA"/>
                         <outlet property="spaghettiLabel" destination="uA5-HC-VRe" id="x5C-9k-jXF"/>
                         <outlet property="spaghettiTapped" destination="OGt-ss-fXC" id="5tl-g6-2Bc"/>
+                        <outlet property="tappableView" destination="krT-Ah-kfE" id="dSb-dO-hlN"/>
                         <segue destination="stc-NB-Gdj" kind="show" identifier="DetailPage" id="OMH-qL-4Dm"/>
                     </connections>
                 </viewController>

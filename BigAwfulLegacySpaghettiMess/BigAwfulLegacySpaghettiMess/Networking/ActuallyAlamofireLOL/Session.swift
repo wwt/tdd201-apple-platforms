@@ -1196,7 +1196,7 @@ extension Session: RequestDelegate {
             }
 
             if let retryDelay = timeDelay {
-                self.rootQueue.after(retryDelay) { retry() }
+//                self.rootQueue.after(retryDelay) { retry() }
             } else {
                 retry()
             }

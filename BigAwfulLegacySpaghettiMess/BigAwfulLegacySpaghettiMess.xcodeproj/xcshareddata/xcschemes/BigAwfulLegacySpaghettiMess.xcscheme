@@ -20,6 +20,20 @@
                ReferencedContainer = "container:BigAwfulLegacySpaghettiMess.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CA4504C625B79AFD00153FC4"
+               BuildableName = "BigAwfulLegacySpaghettiMessUITests.xctest"
+               BlueprintName = "BigAwfulLegacySpaghettiMessUITests"
+               ReferencedContainer = "container:BigAwfulLegacySpaghettiMess.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -46,16 +60,6 @@
                BlueprintIdentifier = "CAA1C5ED25A38DFC00E3F686"
                BuildableName = "BigAwfulLegacySpaghettiMessTests.xctest"
                BlueprintName = "BigAwfulLegacySpaghettiMessTests"
-               ReferencedContainer = "container:BigAwfulLegacySpaghettiMess.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CA4504C625B79AFD00153FC4"
-               BuildableName = "BigAwfulLegacySpaghettiMessUITests.xctest"
-               BlueprintName = "BigAwfulLegacySpaghettiMessUITests"
                ReferencedContainer = "container:BigAwfulLegacySpaghettiMess.xcodeproj">
             </BuildableReference>
          </TestableReference>
