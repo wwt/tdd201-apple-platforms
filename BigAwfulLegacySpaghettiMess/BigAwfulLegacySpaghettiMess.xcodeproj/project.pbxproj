@@ -68,6 +68,9 @@
 		CAA1C5E525A38DFC00E3F686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C5E425A38DFC00E3F686 /* Assets.xcassets */; };
 		CAA1C5E825A38DFC00E3F686 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C5E625A38DFC00E3F686 /* LaunchScreen.storyboard */; };
 		CAA1C5F325A38DFC00E3F686 /* BigAwfulLegacySpaghettiMessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C5F225A38DFC00E3F686 /* BigAwfulLegacySpaghettiMessTests.swift */; };
+		D7247A1626029F1200238D47 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7247A1526029F1200238D47 /* Constants.swift */; };
+		D7247A1F26029F4100238D47 /* Constants2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7247A1E26029F4100238D47 /* Constants2.swift */; };
+		D7247A2B2602A0C400238D47 /* NetworkingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7247A2A2602A0C400238D47 /* NetworkingConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +159,9 @@
 		CAA1C5EE25A38DFC00E3F686 /* BigAwfulLegacySpaghettiMessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigAwfulLegacySpaghettiMessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C5F225A38DFC00E3F686 /* BigAwfulLegacySpaghettiMessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigAwfulLegacySpaghettiMessTests.swift; sourceTree = "<group>"; };
 		CAA1C5F425A38DFC00E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7247A1526029F1200238D47 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D7247A1E26029F4100238D47 /* Constants2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants2.swift; sourceTree = "<group>"; };
+		D7247A2A2602A0C400238D47 /* NetworkingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +319,7 @@
 		CAA1C5DA25A38DFB00E3F686 /* BigAwfulLegacySpaghettiMess */ = {
 			isa = PBXGroup;
 			children = (
+				D7247A1426029EFB00238D47 /* Constants and Helpers */,
 				CA9F23AE2602834500C7C159 /* Modles */,
 				CA9F239F2602807F00C7C159 /* Utilities */,
 				006D6B14260270EF003A6240 /* Networking */,
@@ -335,6 +342,32 @@
 				CAA1C5F425A38DFC00E3F686 /* Info.plist */,
 			);
 			path = BigAwfulLegacySpaghettiMessTests;
+			sourceTree = "<group>";
+		};
+		D7247A1426029EFB00238D47 /* Constants and Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D7247A292602A0A800238D47 /* Networking Constants */,
+				D7247A1D26029F3300238D47 /* Views */,
+				D7247A1526029F1200238D47 /* Constants.swift */,
+			);
+			path = "Constants and Helpers";
+			sourceTree = "<group>";
+		};
+		D7247A1D26029F3300238D47 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7247A1E26029F4100238D47 /* Constants2.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D7247A292602A0A800238D47 /* Networking Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D7247A2A2602A0C400238D47 /* NetworkingConstants.swift */,
+			);
+			path = "Networking Constants";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,6 +513,7 @@
 				006D6B62260270EF003A6240 /* Protected.swift in Sources */,
 				006D6B53260270EF003A6240 /* DataMatcher.swift in Sources */,
 				006D6B6F260270EF003A6240 /* Notifications.swift in Sources */,
+				D7247A1F26029F4100238D47 /* Constants2.swift in Sources */,
 				CA9F23A12602808A00C7C159 /* ThatOneFileEverybodyHates.swift in Sources */,
 				006D6B50260270EF003A6240 /* URLHook.swift in Sources */,
 				006D6B71260270EF003A6240 /* Response.swift in Sources */,
@@ -487,6 +521,7 @@
 				CAA1C5E025A38DFB00E3F686 /* ViewController.swift in Sources */,
 				006D6B51260270EF003A6240 /* StringMatcher.swift in Sources */,
 				CA9F23AA2602816E00C7C159 /* NotworkManager.swift in Sources */,
+				D7247A2B2602A0C400238D47 /* NetworkingConstants.swift in Sources */,
 				006D6B61260270EF003A6240 /* RetryPolicy.swift in Sources */,
 				006D6B78260270EF003A6240 /* ResponseSerialization.swift in Sources */,
 				006D6B76260270EF003A6240 /* EventMonitor.swift in Sources */,
@@ -495,6 +530,7 @@
 				006D6B67260270EF003A6240 /* URLEncodedFormEncoder.swift in Sources */,
 				006D6B64260270EF003A6240 /* ServerTrustEvaluation.swift in Sources */,
 				CAA1C5DC25A38DFB00E3F686 /* AppDelegate.swift in Sources */,
+				D7247A1626029F1200238D47 /* Constants.swift in Sources */,
 				006D6B5E260270EF003A6240 /* CachedResponseHandler.swift in Sources */,
 				006D6B52260270EF003A6240 /* Matcher.swift in Sources */,
 				006D6B60260270EF003A6240 /* DispatchQueue+Alamofire.swift in Sources */,
