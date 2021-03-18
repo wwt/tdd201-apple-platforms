@@ -17,12 +17,16 @@ protocol PastaDetailPresenterOutput: class {
 
 class PastaDetailPresenter: PastaDetailPresenterOutput, PastaDetailInteractorInput {
     var interactor: PastaDetailInteractorOutput!
+    var view: PastaDetailPresenterInput!
 
     func getPasta(pastaName: String, _ callback: ((Pasta) -> ())?) {
-        interactor.getPasta(pastaName: pastaName, callback)
+        DispatchQueue.main.async { [self] in
+            interactor.getPasta(pastaName: pastaName, callback)
+        }
     }
 
-    init(input: PastaDetailPresenterInput) {
+    init(view: PastaDetailPresenterInput) {
+        self.view = view
         self.interactor = PastaDetailInteractor(self)
     }
 }

@@ -15,8 +15,4 @@ class PastaDetailRouter {
         self.sourceVC = sourceVC
         self.dstVC = dstVC
     }
-
-    func routeToPastaDetail(_ pasta:Pasta) {
-        sourceVC.performSegue(withIdentifier: Constants.ViewControllerConstants.segueToDetailPage, sender: pasta.name)
-    }
 }

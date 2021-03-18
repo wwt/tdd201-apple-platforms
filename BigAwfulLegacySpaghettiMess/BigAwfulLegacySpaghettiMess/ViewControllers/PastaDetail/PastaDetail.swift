@@ -8,15 +8,14 @@
 import Foundation
 import UIKit
 
-class PastaDetail: UITableViewController {
+class PastaDetail: UITableViewController, PastaDetailPresenterInput {
     var pastName: String = Constants.ViewControllerConstants.macaroni
-    var interactor = PastaDetailInteractor()
+    var presenter: PastaDetailPresenterOutput!
 
     override func viewDidLoad() {
-        NetworkManager.getPasta(pastaName: pastName) { pasta in
-            DispatchQueue.main.async { [self] in
-                (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PastaDetailTitleCell).titleLabel.text = pasta.name
-            }
+        presenter = PastaDetailPresenter(view: self)
+        NetworkManager.getPasta(pastaName: pastName) { [self] pasta in
+            (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PastaDetailTitleCell).titleLabel.text = pasta.name
         }
     }
 }
