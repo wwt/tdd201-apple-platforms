@@ -17,6 +17,7 @@ class PastaDetail: UITableViewController, PastaDetailPresenterInput {
         presenter.getPasta(pastaName: pastName) { [self] pasta in
             (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PastaDetailTitleCell).titleLabel.text = pasta.name
             (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! PastaDetailImageCell).customImageView.image = pasta.image.toImage
+            (tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! PastaDetailDescriptionCell).textView.text = pasta.description
         }
     }
 }
@@ -27,4 +28,8 @@ class PastaDetailTitleCell: UITableViewCell {
 
 class PastaDetailImageCell: UITableViewCell {
     @IBOutlet var customImageView: UIImageView!
+}
+
+class PastaDetailDescriptionCell: UITableViewCell {
+    @IBOutlet var textView: UITextView!
 }
