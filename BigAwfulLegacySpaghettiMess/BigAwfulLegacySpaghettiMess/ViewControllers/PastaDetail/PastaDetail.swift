@@ -14,12 +14,17 @@ class PastaDetail: UITableViewController, PastaDetailPresenterInput {
 
     override func viewDidLoad() {
         presenter = PastaDetailPresenter(view: self)
-        NetworkManager.getPasta(pastaName: pastName) { [self] pasta in
+        presenter.getPasta(pastaName: pastName) { [self] pasta in
             (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! PastaDetailTitleCell).titleLabel.text = pasta.name
+            (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! PastaDetailImageCell).customImageView.image = pasta.image.toImage
         }
     }
 }
 
 class PastaDetailTitleCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
+}
+
+class PastaDetailImageCell: UITableViewCell {
+    @IBOutlet var customImageView: UIImageView!
 }
