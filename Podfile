@@ -2,6 +2,37 @@ workspace 'TDD-201'
 
 inhibit_all_warnings!
 
+
+target 'SwiftUIExample' do
+  platform :ios, '13.0'
+  project 'SwiftUIExample/SwiftUIExample.xcodeproj'
+  use_frameworks!
+  pod 'Swinject'
+
+  target 'SwiftUIExampleTests' do
+    pod 'Fakery'
+    pod 'OHHTTPStubs/Swift'
+    pod 'Cuckoo'
+    pod 'PactConsumerSwift'
+  end
+
+  target 'SwiftUIExampleUITests' do
+    pod 'Swinject'
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
 target 'ContractTesting' do
   platform :ios, '11.0'
   project 'ContractTesting/ContractTesting.xcodeproj'
@@ -101,25 +132,6 @@ target 'UIKitWithStoryboard' do
     pod 'Fakery'
   end
 
-end
-
-target 'SwiftUIExample' do
-  platform :ios, '13.0'
-  project 'SwiftUIExample/SwiftUIExample.xcodeproj'
-  use_frameworks!
-  pod 'Swinject'
-
-  target 'SwiftUIExampleTests' do
-    pod 'ViewInspector'
-    pod 'Fakery'
-    pod 'OHHTTPStubs/Swift'
-    pod 'Cuckoo'
-    pod 'PactConsumerSwift'
-  end
-
-  target 'SwiftUIExampleUITests' do
-    pod 'Swinject'
-  end
 end
 
 target 'MutationTesting' do

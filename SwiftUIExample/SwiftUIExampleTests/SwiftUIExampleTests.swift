@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import ViewInspector
 import Swinject
 
 @testable import SwiftUIExample
