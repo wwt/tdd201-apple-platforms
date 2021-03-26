@@ -45,7 +45,7 @@ class NoteDetailUITests: XCTestCase, UIUStoryboardTestable {
 
     func testNoteContentsAreDisplayed() throws {
         let expectedContent = Faker().lorem.paragraphs(amount: 3)
-        let note = Note(name: "Note 1", contents: expectedContent)
+        let note = Note(name: "Note 2", contents: expectedContent)
         let viewController = UIViewController.loadFromStoryboard(identifier: storyboardIdentifier) {
             let initialViewController = $0 as? NoteDetailViewController
             initialViewController?.note = note

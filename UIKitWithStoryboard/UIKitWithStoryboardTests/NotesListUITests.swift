@@ -62,7 +62,7 @@ class NotesListUITests: XCTestCase, UIUStoryboardTestable {
         }.registerIn(Container.default)
         let viewController = try getViewController()
 
-        XCTAssertNotNil(viewController.notesTableView, "Expected to get a tableview from the view controller")
+        XCTAssertNotNil(viewController.notesTableView, "Notes table view should exist on view")
         XCTAssertEqual(viewController.notesTableView?.numberOfRows(inSection: 0), expectedNotes.count)
         XCTAssertEqual(viewController.notesTableView?.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text, expectedNotes.first?.name)
         XCTAssertEqual(viewController.notesTableView?.cellForRow(at: IndexPath(row: 1, section: 0))?.textLabel?.text, expectedNotes.last?.name)
@@ -85,7 +85,6 @@ class NotesListUITests: XCTestCase, UIUStoryboardTestable {
         XCTAssertEqual(argumentCaptor.value?.name, "note3")
         XCTAssertEqual(argumentCaptor.value?.contents, "")
 
-        XCTAssertNotNil(viewController.notesTableView, "Expected to get a tableview from the view controller")
         XCTAssertEqual(viewController.notesTableView?.numberOfRows(inSection: 0), expectedNotes.count+1)
         XCTAssertEqual(viewController.notesTableView?.cellForRow(at: IndexPath(row: expectedNotes.count, section: 0))?.textLabel?.text, argumentCaptor.value?.name)
     }
@@ -282,7 +281,7 @@ class NotesListUITests: XCTestCase, UIUStoryboardTestable {
     func testWhenUserDeletesNote_CellIsDeletedWithDeleteRows() throws {
         let expectedIndexPath = IndexPath(row: 0, section: 0)
         MockNotesService().stub { stub in
-            when(stub.getNotes()).thenReturn(.success([Note(name: "note1", contents: UUID().uuidString)]))
+            when(stub.getNotes()).thenReturn(.success([Note(name: "note1", contents: "content")]))
             when(stub.delete(note: any(Note.self))).thenDoNothing()
         }.registerIn(Container.default)
         let mockTableView = objcStub(for: UITableView.self) { (stubber, mock) in
