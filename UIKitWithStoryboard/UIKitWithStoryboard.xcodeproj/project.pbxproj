@@ -10,8 +10,6 @@
 		0082F89425D5E09800540724 /* WaitUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082F89325D5E09800540724 /* WaitUntil.swift */; };
 		0082F8C925D6DD7200540724 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082F8C825D6DD7200540724 /* MockFileManager.swift */; };
 		0082F90025D702DA00540724 /* NoteWriteable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082F8FF25D702DA00540724 /* NoteWriteable.swift */; };
-		00BB4D7525D4A25400905C5E /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D7425D4A25400905C5E /* NotesListViewController.swift */; };
-		00BB4D7D25D4A2CA00905C5E /* NoteDetailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D7C25D4A2CA00905C5E /* NoteDetailUITests.swift */; };
 		00BB4DB425D4A59400905C5E /* NotesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DB325D4A59400905C5E /* NotesService.swift */; };
 		00BB4DC025D4A5F400905C5E /* FileWriteable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DBF25D4A5F400905C5E /* FileWriteable.swift */; };
 		00BB4DC425D4A64A00905C5E /* NotesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4DC325D4A64A00905C5E /* NotesServiceTests.swift */; };
@@ -27,13 +25,10 @@
 		CA7C093F25E6D3E1008B5F25 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9079525DDDA260018BD06 /* ContainerExtensions.swift */; };
 		CAA1C34725A388F300E3F686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C34625A388F300E3F686 /* AppDelegate.swift */; };
 		CAA1C34925A388F300E3F686 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C34825A388F300E3F686 /* SceneDelegate.swift */; };
-		CAA1C34B25A388F300E3F686 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C34A25A388F300E3F686 /* NoteDetailViewController.swift */; };
 		CAA1C34E25A388F300E3F686 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C34C25A388F300E3F686 /* Main.storyboard */; };
 		CAA1C35025A388F400E3F686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C34F25A388F400E3F686 /* Assets.xcassets */; };
 		CAA1C35325A388F400E3F686 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA1C35125A388F400E3F686 /* LaunchScreen.storyboard */; };
-		CAA1C35E25A388F400E3F686 /* NotesListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA1C35D25A388F400E3F686 /* NotesListUITests.swift */; };
 		CAC757E525EEF6FE00C2D568 /* MockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC757E425EEF6FE00C2D568 /* MockExtensions.swift */; };
-		D7CC44CE25EF118A00BE3F4D /* UIUStoryboardTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CC44CD25EF118A00BE3F4D /* UIUStoryboardTestable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +45,6 @@
 		0082F89325D5E09800540724 /* WaitUntil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitUntil.swift; sourceTree = "<group>"; };
 		0082F8C825D6DD7200540724 /* MockFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
 		0082F8FF25D702DA00540724 /* NoteWriteable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWriteable.swift; sourceTree = "<group>"; };
-		00BB4D7425D4A25400905C5E /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
-		00BB4D7C25D4A2CA00905C5E /* NoteDetailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailUITests.swift; sourceTree = "<group>"; };
 		00BB4DB325D4A59400905C5E /* NotesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesService.swift; sourceTree = "<group>"; };
 		00BB4DBF25D4A5F400905C5E /* FileWriteable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWriteable.swift; sourceTree = "<group>"; };
 		00BB4DC325D4A64A00905C5E /* NotesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesServiceTests.swift; sourceTree = "<group>"; };
@@ -68,18 +61,15 @@
 		CAA1C34325A388F300E3F686 /* UIKitWithStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitWithStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA1C34625A388F300E3F686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAA1C34825A388F300E3F686 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CAA1C34A25A388F300E3F686 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		CAA1C34D25A388F300E3F686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CAA1C34F25A388F400E3F686 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAA1C35225A388F400E3F686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAA1C35425A388F400E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAA1C35925A388F400E3F686 /* UIKitWithStoryboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIKitWithStoryboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAA1C35D25A388F400E3F686 /* NotesListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListUITests.swift; sourceTree = "<group>"; };
 		CAA1C35F25A388F400E3F686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAB9079525DDDA260018BD06 /* ContainerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContainerExtensions.swift; path = ../DependencyInjection/DependencyInjection/DependencyInjection/ContainerExtensions.swift; sourceTree = SOURCE_ROOT; };
 		CAB9079625DDDA260018BD06 /* DependencyInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DependencyInjected.swift; path = ../DependencyInjection/DependencyInjection/DependencyInjection/DependencyInjected.swift; sourceTree = SOURCE_ROOT; };
 		CAC757E425EEF6FE00C2D568 /* MockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockExtensions.swift; path = ../../../MockingFramework/MockingFrameworkTests/CuckooExtensions/MockExtensions.swift; sourceTree = "<group>"; };
-		D7CC44CD25EF118A00BE3F4D /* UIUStoryboardTestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUStoryboardTestable.swift; sourceTree = "<group>"; };
 		D7F3D34A40A1951D574B26D0 /* Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig"; path = "Target Support Files/Pods-UIKitWithStoryboard-UIKitWithStoryboardTests/Pods-UIKitWithStoryboard-UIKitWithStoryboardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DACA2B83D190863F6EF7CF91 /* Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitWithStoryboard_UIKitWithStoryboardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -206,12 +196,10 @@
 				00BB4DB225D4A57100905C5E /* Services */,
 				CAA1C34625A388F300E3F686 /* AppDelegate.swift */,
 				CAA1C34825A388F300E3F686 /* SceneDelegate.swift */,
-				CAA1C34A25A388F300E3F686 /* NoteDetailViewController.swift */,
 				CAA1C34C25A388F300E3F686 /* Main.storyboard */,
 				CAA1C34F25A388F400E3F686 /* Assets.xcassets */,
 				CAA1C35125A388F400E3F686 /* LaunchScreen.storyboard */,
 				CAA1C35425A388F400E3F686 /* Info.plist */,
-				00BB4D7425D4A25400905C5E /* NotesListViewController.swift */,
 			);
 			path = UIKitWithStoryboard;
 			sourceTree = "<group>";
@@ -219,14 +207,11 @@
 		CAA1C35C25A388F400E3F686 /* UIKitWithStoryboardTests */ = {
 			isa = PBXGroup;
 			children = (
-				D7CC44CC25EF115E00BE3F4D /* Protocols */,
 				00BB4E3025D4AAB900905C5E /* Mocks */,
 				00BB4DE125D4A88300905C5E /* Services */,
 				00BB4DD225D4A79500905C5E /* CukooHelpers */,
 				00BB4DCC25D4A76E00905C5E /* GeneratedMocks.swift */,
-				CAA1C35D25A388F400E3F686 /* NotesListUITests.swift */,
 				CAA1C35F25A388F400E3F686 /* Info.plist */,
-				00BB4D7C25D4A2CA00905C5E /* NoteDetailUITests.swift */,
 				00BB4E3325D4ABFE00905C5E /* DependencyInjectionTests.swift */,
 				0082F89325D5E09800540724 /* WaitUntil.swift */,
 			);
@@ -240,14 +225,6 @@
 				CAB9079625DDDA260018BD06 /* DependencyInjected.swift */,
 			);
 			name = DependencyInjection;
-			sourceTree = "<group>";
-		};
-		D7CC44CC25EF115E00BE3F4D /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				D7CC44CD25EF118A00BE3F4D /* UIUStoryboardTestable.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -492,9 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00BB4D7525D4A25400905C5E /* NotesListViewController.swift in Sources */,
 				0082F90025D702DA00540724 /* NoteWriteable.swift in Sources */,
-				CAA1C34B25A388F300E3F686 /* NoteDetailViewController.swift in Sources */,
 				CAA1C34725A388F300E3F686 /* AppDelegate.swift in Sources */,
 				00BB4E3D25D4B50200905C5E /* Note.swift in Sources */,
 				00BB4DC025D4A5F400905C5E /* FileWriteable.swift in Sources */,
@@ -510,14 +485,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				00BB4DDA25D4A7F200905C5E /* StringEncodingMatcher.swift in Sources */,
-				CAA1C35E25A388F400E3F686 /* NotesListUITests.swift in Sources */,
 				CAC757E525EEF6FE00C2D568 /* MockExtensions.swift in Sources */,
 				00BB4DC425D4A64A00905C5E /* NotesServiceTests.swift in Sources */,
 				00BB4DD425D4A7B800905C5E /* URLMatcher.swift in Sources */,
 				00BB4DDE25D4A86E00905C5E /* MockDirectoryEnumerator.swift in Sources */,
-				D7CC44CE25EF118A00BE3F4D /* UIUStoryboardTestable.swift in Sources */,
 				0082F89425D5E09800540724 /* WaitUntil.swift in Sources */,
-				00BB4D7D25D4A2CA00905C5E /* NoteDetailUITests.swift in Sources */,
 				00BB4E3425D4ABFE00905C5E /* DependencyInjectionTests.swift in Sources */,
 				00BB4DCD25D4A76E00905C5E /* GeneratedMocks.swift in Sources */,
 				0082F8C925D6DD7200540724 /* MockFileManager.swift in Sources */,

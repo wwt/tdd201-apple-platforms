@@ -2,6 +2,36 @@ workspace 'TDD-201'
 
 inhibit_all_warnings!
 
+target 'UIKitWithStoryboard' do
+  platform :ios, '11.0'
+  project 'UIKitWithStoryboard/UIKitWithStoryboard.xcodeproj'
+  use_frameworks!
+  pod 'Swinject'
+
+  target 'UIKitWithStoryboardTests' do
+    pod 'Cuckoo'
+  end
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 target 'ContractTesting' do
   platform :ios, '11.0'
   project 'ContractTesting/ContractTesting.xcodeproj'
@@ -86,21 +116,6 @@ target 'HTTPStubbing' do
     pod 'OHHTTPStubs/Swift'
   end
   
-end
-
-target 'UIKitWithStoryboard' do
-  platform :ios, '11.0'
-  project 'UIKitWithStoryboard/UIKitWithStoryboard.xcodeproj'
-  use_frameworks!
-  pod 'Swinject'
-
-  target 'UIKitWithStoryboardTests' do
-    pod 'UIUTest'
-    pod 'Cuckoo'
-    pod 'Cuckoo/OCMock'
-    pod 'Fakery'
-  end
-
 end
 
 target 'SwiftUIExample' do
