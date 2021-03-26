@@ -14,7 +14,9 @@ import Cuckoo
 
 @testable import UIKitWithStoryboard
 
-class NoteDetailUITests: XCTestCase {
+class NoteDetailUITests: XCTestCase, UIUStoryboardTestable {
+    typealias ViewControllerUnderTest = NoteDetailViewController
+
     override func setUpWithError() throws {
         UIView.setAnimationsEnabled(false)
 
@@ -32,8 +34,8 @@ class NoteDetailUITests: XCTestCase {
     }
 
     func testNoteNameIsDisplayed() throws {
-        let note = Note(name: "Note 1", contents: UUID().uuidString)
-        let viewController = UIViewController.loadFromStoryboard(identifier: Identifier.storyboard) {
+        let note = Note(name: "Note 1", contents: "")
+        let viewController = UIViewController.loadFromStoryboard(identifier: storyboardIdentifier) {
             let initialViewController = $0 as? NoteDetailViewController
             initialViewController?.note = note
         }
@@ -42,8 +44,10 @@ class NoteDetailUITests: XCTestCase {
     }
 
     func testNoteContentsAreDisplayed() throws {
-        let note = Note(name: "Note 1", contents: UUID().uuidString)
-        let viewController = UIViewController.loadFromStoryboard(identifier: Identifier.storyboard) { let initialViewController = $0 as? NoteDetailViewController
+        let expectedContent = Faker().lorem.paragraphs(amount: 3)
+        let note = Note(name: "Note 1", contents: expectedContent)
+        let viewController = UIViewController.loadFromStoryboard(identifier: storyboardIdentifier) {
+            let initialViewController = $0 as? NoteDetailViewController
             initialViewController?.note = note
         }
 
@@ -52,11 +56,11 @@ class NoteDetailUITests: XCTestCase {
 
     func testNoteContentsAreSavedWhenUserNavigatesBack() throws {
         let note = Note(name: "Note 1", contents: "")
-        let expectedContents = Faker().lorem.paragraphs()
-        let mock = MockNotesService().stub { (stub) in
+        let expectedContent = Faker().lorem.paragraphs()
+        let mock = MockNotesService().stub { stub in
             when(stub.save(note: any(Note.self))).thenDoNothing()
         }.registerIn(Container.default)
-        let viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: Identifier.storyboard)
+        let viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: storyboardIdentifier)
         (viewController as? NoteDetailViewController)?.note = note
         let navController = UINavigationController(rootViewController: UIViewController())
         navController.loadForTesting()
@@ -65,20 +69,14 @@ class NoteDetailUITests: XCTestCase {
         let textView = viewController.contentsTextView
 
         textView?.simulateTouch()
-        textView?.simulateTyping(expectedContents)
+        textView?.simulateTyping(expectedContent)
         viewController.navigationController?.backButton?.simulateTouch()
         RunLoop.current.singlePass()
 
         let argumentCaptor = ArgumentCaptor<Note>()
         verify(mock, times(1)).save(note: argumentCaptor.capture())
         XCTAssertEqual(argumentCaptor.value?.name, note.name)
-        XCTAssertEqual(argumentCaptor.value?.contents, expectedContents)
-    }
-}
-
-extension NoteDetailUITests {
-    enum Identifier {
-        static let storyboard = "NoteDetailViewController"
+        XCTAssertEqual(argumentCaptor.value?.contents, expectedContent)
     }
 }
 

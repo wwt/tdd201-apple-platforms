@@ -38,6 +38,7 @@ class NotesListViewController: UIViewController {
         if notesWithSameName.count > 0 {
             note = Note(name: "note\(notes.count+1) (\(notesWithSameName.count))", contents: "")
         }
+
         do {
             try notesService?.save(note: note)
             notes.append(note)
@@ -72,7 +73,7 @@ extension NotesListViewController: UITableViewDataSource {
             let note = notes[indexPath.row]
 
             let confirmationAlert = UIAlertController(title: "Confirm delete", message: "Are you sure you want to delete?", preferredStyle: .alert)
-            confirmationAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            confirmationAlert.addAction(UIAlertAction(title: "No", style: .cancel))
             confirmationAlert.addAction(UIAlertAction(title: "Yes", style: .destructive) { _ in
                 do {
                     try self.notesService?.delete(note: note)
@@ -81,7 +82,7 @@ extension NotesListViewController: UITableViewDataSource {
                 } catch {
                     confirmationAlert.dismiss(animated: true) {
                         let alert = UIAlertController(title: "Unable to delete note", message: error.localizedDescription, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default))
                         self.present(alert, animated: true)
                     }
                 }
@@ -97,6 +98,6 @@ extension NotesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let note = notes[indexPath.row]
-        performSegue(withIdentifier: "SegueToNoteDetailsViewController", sender: note)
+        performSegue(withIdentifier: "SegueToNoteDetailViewController", sender: note)
     }
 }
