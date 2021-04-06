@@ -12,6 +12,7 @@ import ViewInspector
 
 extension Inspection: InspectionEmissary where V: Inspectable { }
 
+extension NotificationView: Inspectable { }
 extension ContentView: Inspectable { }
 extension LandmarkDetail: Inspectable { }
 extension LandmarkList: Inspectable { }

@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct NotificationView: View {
-    var body: some View {
-        Text("Hello, World!")
-    }
-}
+    let title: String?
+    let message: String?
+    let landmarkId: Int?
+    let landmarkImage: Image?
 
-struct NotificationView_Previews: PreviewProvider {
-    static var previews: some View {
-        NotificationView()
+    var body: some View {
+        VStack {
+            if let image = landmarkImage {
+                CircleImage(image: image.resizable()).scaledToFit()
+            }
+
+            Text(title ?? "Unknown Landmark")
+                .font(.headline)
+            Text(message ?? "You are within 5 miles of one of your favorite landmarks.")
+                .font(.caption)
+        }
+        .lineLimit(0)
     }
 }
