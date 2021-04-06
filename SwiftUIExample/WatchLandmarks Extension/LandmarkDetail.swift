@@ -8,17 +8,37 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
-    @EnvironmentObject var modelData: AppModel
+    @EnvironmentObject var appModel: AppModel
     var landmark: Landmark
     let inspection = Inspection<Self>()
 
     var landmarkIndex: Int {
-        modelData.landmarks.firstIndex(where: { $0.id == landmark.id })!
+        appModel.landmarks.firstIndex(where: { $0.id == landmark.id })!
     }
 
     var body: some View {
-        CircleImage(image: landmark.image.resizable())
-            .scaledToFill()
-            .onReceive(inspection.notice) { inspection.visit(self, $0) }
+        ScrollView {
+            VStack {
+                CircleImage(image: landmark.image.resizable())
+                    .scaledToFit()
+                Text(landmark.name)
+                    .font(.headline)
+                    .lineLimit(0)
+                Toggle(isOn: $appModel.landmarks[landmarkIndex].isFavorite) {
+                    Text("Favorite")
+                }
+                Divider()
+                Text(landmark.park)
+                    .font(.caption)
+                    .bold()
+                    .lineLimit(0)
+                Text(landmark.state)
+                    .font(.caption)
+                Divider()
+                MapView(coordinate: landmark.locationCoordinate)
+                    .scaledToFit()
+            }.padding()
+        }
+        .onReceive(inspection.notice) { inspection.visit(self, $0) }
     }
 }

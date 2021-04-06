@@ -78,6 +78,7 @@
 		391C61950668E5B2D9747E4A /* Pods_SwiftUIExample_WatchLandmarks_Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FA197F5526C985B62CD529 /* Pods_SwiftUIExample_WatchLandmarks_Framework.framework */; };
 		AFF987D3A87CB2AFBA88D35C /* Pods_SwiftUIExample_WatchLandmarks_FrameworkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BB622EF265A0D00DB66E2C /* Pods_SwiftUIExample_WatchLandmarks_FrameworkTests.framework */; };
 		BBB9738EC168E1F562E76E6C /* Pods_SwiftUIExample_SwiftUIExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E0F83637ED7E88C374F551 /* Pods_SwiftUIExample_SwiftUIExampleTests.framework */; };
+		CA2D332B261CF18700B364B9 /* LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011E9BC25E45FBF00E48AE8 /* LandmarkList.swift */; };
 		CA34CB04261CE2D90095FBFC /* WatchLandmarks_Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA34CAFB261CE2D80095FBFC /* WatchLandmarks_Framework.framework */; };
 		CA34CB09261CE2D90095FBFC /* WatchLandmarks_FrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34CB08261CE2D90095FBFC /* WatchLandmarks_FrameworkTests.swift */; };
 		CA34CB0B261CE2D90095FBFC /* WatchLandmarks_Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = CA34CAFD261CE2D80095FBFC /* WatchLandmarks_Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -751,7 +752,6 @@
 				CA34CC31261CE4810095FBFC /* Extensions */,
 				CA34CB08261CE2D90095FBFC /* WatchLandmarks_FrameworkTests.swift */,
 				CA34CB0A261CE2D90095FBFC /* Info.plist */,
-				CA34CBE1261CE3E30095FBFC /* LandmarkDetailTests.swift */,
 				CA34CC89261CE5890095FBFC /* LandmarksData.swift */,
 			);
 			path = WatchLandmarks_FrameworkTests;
@@ -776,6 +776,7 @@
 		CA34CC43261CE4BA0095FBFC /* Landmarks */ = {
 			isa = PBXGroup;
 			children = (
+				CA34CBE1261CE3E30095FBFC /* LandmarkDetailTests.swift */,
 			);
 			path = Landmarks;
 			sourceTree = "<group>";
@@ -1677,6 +1678,7 @@
 				CA34CB29261CE3040095FBFC /* Hike.swift in Sources */,
 				CA34CBD1261CE3AB0095FBFC /* CircleImage.swift in Sources */,
 				CA34CB1B261CE2FC0095FBFC /* ContainerExtensions.swift in Sources */,
+				CA2D332B261CF18700B364B9 /* LandmarkList.swift in Sources */,
 				CA34CB1E261CE2FC0095FBFC /* Inspection.swift in Sources */,
 				CA34CB2C261CE3040095FBFC /* Profile.swift in Sources */,
 				CA34CB1A261CE2FC0095FBFC /* RESTAPIProtocol.swift in Sources */,

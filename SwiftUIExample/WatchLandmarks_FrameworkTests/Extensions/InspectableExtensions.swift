@@ -13,7 +13,7 @@ import ViewInspector
 extension Inspection: InspectionEmissary where V: Inspectable { }
 
 extension ContentView: Inspectable { }
-
 extension LandmarkDetail: Inspectable { }
 
 extension CircleImage: Inspectable { }
+extension MapView: Inspectable { }
