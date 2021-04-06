@@ -135,6 +135,8 @@ target 'SwiftUIExample' do
   target 'WatchLandmarks_FrameworkTests' do
     pod 'Swinject'
     pod 'ViewInspector'
+    pod 'Cuckoo'
+    pod 'Fakery'
   end
 end
 
