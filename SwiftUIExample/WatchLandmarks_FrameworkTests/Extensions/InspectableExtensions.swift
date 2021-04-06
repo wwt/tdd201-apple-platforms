@@ -14,6 +14,7 @@ extension Inspection: InspectionEmissary where V: Inspectable { }
 
 extension ContentView: Inspectable { }
 extension LandmarkDetail: Inspectable { }
+extension LandmarkList: Inspectable { }
 
 extension CircleImage: Inspectable { }
 extension MapView: Inspectable { }

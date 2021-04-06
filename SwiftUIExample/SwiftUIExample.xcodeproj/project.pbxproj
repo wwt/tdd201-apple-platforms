@@ -167,6 +167,8 @@
 		D7D00C3F261D00D300703BC9 /* LandmarkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011E9B825E45F7D00E48AE8 /* LandmarkRow.swift */; };
 		D7D00C48261D02B200703BC9 /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D00C47261D02B200703BC9 /* ContentViewTests.swift */; };
 		D7D00C97261D033800703BC9 /* MockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9575AC25F6C6E6009507C6 /* MockExtensions.swift */; };
+		D7D00CDC261D0D2A00703BC9 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D00CDB261D0D2A00703BC9 /* GeneratedMocks.swift */; };
+		D7D00D3A261D118C00703BC9 /* LandmarkExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D00D39261D118C00703BC9 /* LandmarkExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -387,6 +389,8 @@
 		D7D00991261CD0BB00703BC9 /* WatchLandmarks Extension */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "WatchLandmarks Extension"; sourceTree = "<group>"; };
 		D7D00992261CD0BC00703BC9 /* SwiftUIExample */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftUIExample; sourceTree = "<group>"; };
 		D7D00C47261D02B200703BC9 /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
+		D7D00CDB261D0D2A00703BC9 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		D7D00D39261D118C00703BC9 /* LandmarkExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkExtensions.swift; sourceTree = "<group>"; };
 		D9111B8E02DD836B876AA61C /* Pods-SwiftUIExample-WatchLandmarks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIExample-WatchLandmarks.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIExample-WatchLandmarks/Pods-SwiftUIExample-WatchLandmarks.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -752,6 +756,7 @@
 		CA34CB07261CE2D90095FBFC /* WatchLandmarks_FrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7D00CDB261D0D2A00703BC9 /* GeneratedMocks.swift */,
 				CA34CC42261CE4B10095FBFC /* Views */,
 				CA34CC31261CE4810095FBFC /* Extensions */,
 				CA34CB08261CE2D90095FBFC /* WatchLandmarks_FrameworkTests.swift */,
@@ -765,6 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				CA34CC32261CE48D0095FBFC /* InspectableExtensions.swift */,
+				D7D00D39261D118C00703BC9 /* LandmarkExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1630,7 +1636,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Network/HikesService.swift\"\n\n";
+			shellScript = "# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${TARGET_NAME}/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"WatchLandmarks_Framework\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/Network/HikesService.swift\"\n\n";
 		};
 		F31E1E919A82159A63CA93AB /* Lint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1730,10 +1736,12 @@
 				D7D00C97261D033800703BC9 /* MockExtensions.swift in Sources */,
 				CA34CCA1261CE61E0095FBFC /* InspectableViewExtensions.swift in Sources */,
 				CA34CC8A261CE5890095FBFC /* LandmarksData.swift in Sources */,
+				D7D00CDC261D0D2A00703BC9 /* GeneratedMocks.swift in Sources */,
 				D7D00C48261D02B200703BC9 /* ContentViewTests.swift in Sources */,
 				CA34CC5B261CE5080095FBFC /* ViewHostingExtension.swift in Sources */,
 				CA34CBE2261CE3E30095FBFC /* LandmarkDetailTests.swift in Sources */,
 				CA34CB09261CE2D90095FBFC /* WatchLandmarks_FrameworkTests.swift in Sources */,
+				D7D00D3A261D118C00703BC9 /* LandmarkExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

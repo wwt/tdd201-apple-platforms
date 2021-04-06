@@ -32,37 +32,8 @@ class ContentViewTests: XCTestCase {
             )
         }.registerIn(Container.default)
         let exp = ViewHosting.loadView(ContentView(), data: AppModel()).inspection.inspect { (view) in
-            let tabView = try view.find(ViewType.TabView.self)
 
-            XCTAssertNoThrow(try tabView.view(CategoryHome.self, 0))
-            XCTAssertThrowsError(try tabView.view(LandmarkList.self, 0))
-        }
-        wait(for: [exp], timeout: 3)
-    }
-
-    func testContentView_FetchesHikesOnAppear() throws {
-        let expectedHikes = [Hike(id: Int.random(in: 1000..<10000),
-                                  name: UUID().uuidString,
-                                  distance: Double.random(in: 100...200),
-                                  difficulty: Int.random(in: 1...10),
-                                  observations: [])]
-        let mockHikesService = MockHikesServiceProtocol().stub { stub in
-            when(stub.fetchHikes.get).thenReturn(
-                Result.Publisher(.success(expectedHikes)).eraseToAnyPublisher()
-            )
-            when(stub.fetchLandmarks.get).thenReturn(
-                Result.Publisher(.success([])).eraseToAnyPublisher()
-            )
-        }.registerIn(Container.default)
-
-        let appModel = AppModel()
-        let exp = ViewHosting.loadView(ContentView(), data: appModel).inspection.inspect { view in
-            // on appear called by ViewHosting, clear invocations for mock before continuing
-            clearInvocations(mockHikesService)
-            try view.tabView().callOnAppear()
-
-            verify(mockHikesService, times(1)).fetchHikes.get()
-            XCTAssertEqual(appModel.hikes, expectedHikes)
+            XCTAssertNoThrow(try view.group().view(LandmarkList.self, 0))
         }
         wait(for: [exp], timeout: 3)
     }
@@ -92,7 +63,7 @@ class ContentViewTests: XCTestCase {
         let exp = ViewHosting.loadView(ContentView(), data: appModel).inspection.inspect { view in
             // on appear called by ViewHosting, clear invocations for mock before continuing
             clearInvocations(mockHikesService)
-            try view.tabView().callOnAppear()
+            try view.group().callOnAppear()
 
             verify(mockHikesService, times(1)).fetchLandmarks.get()
             XCTAssertEqual(appModel.landmarks, expectedLandmarks)
@@ -116,7 +87,7 @@ class ContentViewTests: XCTestCase {
 
         let appModel = AppModel()
         let exp = ViewHosting.loadView(ContentView(), data: appModel).inspection.inspect { view in
-            _ = try view.tabView().progressView(0)
+            _ = try view.group().progressView(0)
         }
         wait(for: [exp], timeout: 3)
     }
