@@ -10,6 +10,7 @@ import SwiftUI
 struct LandmarkDetail: View {
     @EnvironmentObject var modelData: AppModel
     var landmark: Landmark
+    let inspection = Inspection<Self>()
 
     var landmarkIndex: Int {
         modelData.landmarks.firstIndex(where: { $0.id == landmark.id })!
@@ -18,5 +19,6 @@ struct LandmarkDetail: View {
     var body: some View {
         CircleImage(image: landmark.image.resizable())
             .scaledToFill()
+            .onReceive(inspection.notice) { inspection.visit(self, $0) }
     }
 }
