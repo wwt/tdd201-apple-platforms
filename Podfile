@@ -118,6 +118,16 @@ target 'SwiftUIExample' do
   end
 
   target 'SwiftUIExampleUITests' do
+#    pod 'Swinject'
+  end
+
+  target 'WatchLandmarks' do
+    platform :watchos, '7.2'
+    pod 'Swinject'
+  end
+
+  target 'WatchLandmarks Extension' do
+    platform :watchos, '7.2'
     pod 'Swinject'
   end
 end
