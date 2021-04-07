@@ -10,10 +10,10 @@ import SwiftUI
 import UserNotifications
 
 class NotificationController: WKUserNotificationHostingController<NotificationView> {
-    @DependencyInjected var notificationy: Notificationy!
+    @DependencyInjected var notificationResponder: NotificationRespondable!
 
     override var body: NotificationView {
-        return notificationy.body
+        return notificationResponder.body
     }
 
     override func willActivate() {
@@ -27,6 +27,6 @@ class NotificationController: WKUserNotificationHostingController<NotificationVi
     }
 
     override func didReceive(_ notification: UNNotification) {
-        notificationy.didReceive(notification)
+        notificationResponder.didReceive(notification)
     }
 }

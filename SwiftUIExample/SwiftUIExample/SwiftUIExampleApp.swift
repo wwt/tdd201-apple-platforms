@@ -14,7 +14,7 @@ struct SwiftUIExampleApp: App {
     @StateObject private var appModel = AppModel()
 
     init() {
-        Container.default.register(HikesServiceProtocol.self) { _ in API.HikesService() }
+        ContainerRegistration.registerAllDependenciesIn(container: Container.default)
     }
 
     var body: some Scene {

@@ -8,12 +8,12 @@
 import UserNotifications
 import SwiftUI
 
-protocol Notificationy {
+protocol NotificationRespondable {
     var body: NotificationView { get }
     func didReceive(_ notification: UNNotification)
 }
 
-class TestableNotificationController: Notificationy {
+class TestableNotificationController: NotificationRespondable {
     var title: String?
     var message: String?
     var landmarkId: Int?

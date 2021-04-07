@@ -109,6 +109,12 @@
 		CA45049225B79A7800153FC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA45049125B79A7800153FC4 /* Assets.xcassets */; };
 		CA45049525B79A7800153FC4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA45049425B79A7800153FC4 /* Preview Assets.xcassets */; };
 		CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */; };
+		CA73D311261DFDAB0052C472 /* FakeUNNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73D310261DFDAB0052C472 /* FakeUNNotification.swift */; };
+		CA73D31A261DFE7A0052C472 /* DependencyInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73D319261DFE7A0052C472 /* DependencyInjectionTests.swift */; };
+		CA73D322261DFEC40052C472 /* SwiftUIExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA45048D25B79A7800153FC4 /* SwiftUIExampleApp.swift */; };
+		CA73D32B261DFFE50052C472 /* ContainerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73D32A261DFFE50052C472 /* ContainerRegistration.swift */; };
+		CA73D334261E00400052C472 /* ContainerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73D333261E00400052C472 /* ContainerRegistration.swift */; };
+		CA73D33C261E00700052C472 /* ContainerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73D333261E00400052C472 /* ContainerRegistration.swift */; };
 		CA94883A25F7E00F00634668 /* landmark-repository.js in Resources */ = {isa = PBXBuildFile; fileRef = CA9461AB25F7DFF000634668 /* landmark-repository.js */; };
 		CA94883B25F7E00F00634668 /* repository.js in Resources */ = {isa = PBXBuildFile; fileRef = CA9461AC25F7DFF000634668 /* repository.js */; };
 		CA94883C25F7E00F00634668 /* hike-repository.js in Resources */ = {isa = PBXBuildFile; fileRef = CA9461AD25F7DFF000634668 /* hike-repository.js */; };
@@ -349,6 +355,10 @@
 		CA45049B25B79A7800153FC4 /* SwiftUIExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleTests.swift; sourceTree = "<group>"; };
 		CA4504A125B79A7900153FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA73D310261DFDAB0052C472 /* FakeUNNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUNNotification.swift; sourceTree = "<group>"; };
+		CA73D319261DFE7A0052C472 /* DependencyInjectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionTests.swift; sourceTree = "<group>"; };
+		CA73D32A261DFFE50052C472 /* ContainerRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerRegistration.swift; sourceTree = "<group>"; };
+		CA73D333261E00400052C472 /* ContainerRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerRegistration.swift; sourceTree = "<group>"; };
 		CA9461AB25F7DFF000634668 /* landmark-repository.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "landmark-repository.js"; sourceTree = "<group>"; };
 		CA9461AC25F7DFF000634668 /* repository.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = repository.js; sourceTree = "<group>"; };
 		CA9461AD25F7DFF000634668 /* hike-repository.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "hike-repository.js"; sourceTree = "<group>"; };
@@ -770,6 +780,8 @@
 				CA34CB0A261CE2D90095FBFC /* Info.plist */,
 				CA34CC89261CE5890095FBFC /* LandmarksData.swift */,
 				D7D00D4B261D1CB500703BC9 /* NotificationControllerTests.swift */,
+				CA73D310261DFDAB0052C472 /* FakeUNNotification.swift */,
+				CA73D319261DFE7A0052C472 /* DependencyInjectionTests.swift */,
 			);
 			path = WatchLandmarks_FrameworkTests;
 			sourceTree = "<group>";
@@ -959,6 +971,7 @@
 			children = (
 				CAD904D925F1924500C6132A /* ContainerExtensions.swift */,
 				CAD904D825F1924500C6132A /* DependencyInjected.swift */,
+				CA73D32A261DFFE50052C472 /* ContainerRegistration.swift */,
 			);
 			name = DependencyInjection;
 			sourceTree = "<group>";
@@ -985,6 +998,7 @@
 				D7D0093B261CCCF300703BC9 /* Preview Content */,
 				D7D00969261CCE5400703BC9 /* LandmarkDetail.swift */,
 				D7D00D63261D23AF00703BC9 /* TestableNotificationController.swift */,
+				CA73D333261E00400052C472 /* ContainerRegistration.swift */,
 			);
 			path = "WatchLandmarks Extension";
 			sourceTree = "<group>";
@@ -1728,11 +1742,13 @@
 				CA34CB1C261CE2FC0095FBFC /* HikesService.swift in Sources */,
 				CA34CBD9261CE3B10095FBFC /* MapView.swift in Sources */,
 				CA34CB20261CE2FC0095FBFC /* URLSessionExtensions.swift in Sources */,
+				CA73D33C261E00700052C472 /* ContainerRegistration.swift in Sources */,
 				CA34CB2A261CE3040095FBFC /* ModelData.swift in Sources */,
 				CA34CB19261CE2FC0095FBFC /* URLRequestExtensions.swift in Sources */,
 				CA34CB1D261CE2FC0095FBFC /* DependencyInjected.swift in Sources */,
 				CA34CC72261CE5340095FBFC /* ContentView.swift in Sources */,
 				CA34CB1F261CE2FC0095FBFC /* BaseAPI.swift in Sources */,
+				CA73D322261DFEC40052C472 /* SwiftUIExampleApp.swift in Sources */,
 				CA34CB2B261CE3040095FBFC /* Landmark.swift in Sources */,
 				D7D00C3F261D00D300703BC9 /* LandmarkRow.swift in Sources */,
 				CA34CB35261CE3250095FBFC /* NotificationView.swift in Sources */,
@@ -1747,12 +1763,14 @@
 				D7D00C97261D033800703BC9 /* MockExtensions.swift in Sources */,
 				D7D00D4C261D1CB500703BC9 /* NotificationControllerTests.swift in Sources */,
 				CA34CCA1261CE61E0095FBFC /* InspectableViewExtensions.swift in Sources */,
+				CA73D31A261DFE7A0052C472 /* DependencyInjectionTests.swift in Sources */,
 				CA34CC8A261CE5890095FBFC /* LandmarksData.swift in Sources */,
 				D7D00CDC261D0D2A00703BC9 /* GeneratedMocks.swift in Sources */,
 				D7D00C48261D02B200703BC9 /* ContentViewTests.swift in Sources */,
 				CA34CC5B261CE5080095FBFC /* ViewHostingExtension.swift in Sources */,
 				D7D00D43261D157F00703BC9 /* NotificationViewTests.swift in Sources */,
 				CA34CBE2261CE3E30095FBFC /* LandmarkDetailTests.swift in Sources */,
+				CA73D311261DFDAB0052C472 /* FakeUNNotification.swift in Sources */,
 				CA34CB09261CE2D90095FBFC /* WatchLandmarks_FrameworkTests.swift in Sources */,
 				D7D00D3A261D118C00703BC9 /* LandmarkExtensions.swift in Sources */,
 			);
@@ -1770,6 +1788,7 @@
 				0011EB2825E80A5800E48AE8 /* ContentView.swift in Sources */,
 				0011E9B925E45F7D00E48AE8 /* LandmarkRow.swift in Sources */,
 				002D47B325E0675D000525C3 /* Inspection.swift in Sources */,
+				CA73D32B261DFFE50052C472 /* ContainerRegistration.swift in Sources */,
 				0011EB3825E82F8400E48AE8 /* ProfileHost.swift in Sources */,
 				0011E9BD25E45FBF00E48AE8 /* LandmarkList.swift in Sources */,
 				0011EA8725E557A600E48AE8 /* RotatedBadgeSymbol.swift in Sources */,
@@ -1865,6 +1884,7 @@
 				D7D00961261CCDC200703BC9 /* Profile.swift in Sources */,
 				D7D00960261CCDC200703BC9 /* LandmarkRow.swift in Sources */,
 				D7D00B8C261CD51E00703BC9 /* RESTAPIProtocol.swift in Sources */,
+				CA73D334261E00400052C472 /* ContainerRegistration.swift in Sources */,
 				D7D00D64261D23AF00703BC9 /* TestableNotificationController.swift in Sources */,
 				D7D00936261CCCF000703BC9 /* NotificationView.swift in Sources */,
 			);
