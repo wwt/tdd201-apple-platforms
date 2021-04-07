@@ -30,6 +30,21 @@ import UserNotifications
         set { _date = newValue }
     }
 
+    private var _request: UNNotificationRequest = UNNotificationRequest(identifier: "WRONG",
+                                                                        content: UNNotificationContent(),
+                                                                        trigger: nil)
+    override var request: UNNotificationRequest {
+        get { _request }
+        set { _request = newValue }
+    }
+}
+
+class FakeUNNotificationContent: UNNotificationContent {
+    var _userInfo: [AnyHashable: Any]!
+    override var userInfo: [AnyHashable: Any] {
+        get { _userInfo }
+        set { _userInfo = newValue }
+    }
 }
 
 class NotificationControllerTests: XCTestCase {
@@ -52,7 +67,20 @@ class NotificationControllerTests: XCTestCase {
         let notificationController = TestableNotificationController()
 
         // FakeUNNotification should have the data from above now
-        notificationController.didReceive(FakeUNNotification.new)
+        let notification = FakeUNNotification.new
+        let content = FakeUNNotificationContent()
+        content.userInfo = [
+            "aps": [
+                "alert": [
+                    "title": expectedTitle,
+                    "body": expectedMessage
+                ]
+            ],
+            "landmarkId": expectedLandmarkId,
+            "landmarkImage": "silversalmoncreek"
+        ]
+        notification.request = UNNotificationRequest(identifier: "", content: content, trigger: nil)
+        notificationController.didReceive(notification)
 
         let body = notificationController.body
 
@@ -62,4 +90,3 @@ class NotificationControllerTests: XCTestCase {
         XCTAssertEqual(body.landmarkImage, expectedLandmarkImage)
     }
 }
-
