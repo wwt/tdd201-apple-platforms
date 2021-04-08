@@ -54,6 +54,12 @@
 		CAD9052C25F193B100C6132A /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD9052B25F193B100C6132A /* URLRequestExtensions.swift */; };
 		CAD9053425F1971800C6132A /* ContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD9053325F1971800C6132A /* ContractTests.swift */; };
 		D21FBB8F56E94A1AF2DB28F0 /* Pods_SwiftUIExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007EDD75F4DC2A86B7F6FD29 /* Pods_SwiftUIExample.framework */; };
+		D74FD410261F63E900CF8F03 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD40F261F63E900CF8F03 /* Inspection.swift */; };
+		D74FD419261F65D400CF8F03 /* InspectableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD418261F65D400CF8F03 /* InspectableViewExtensions.swift */; };
+		D74FD421261F663900CF8F03 /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD420261F663900CF8F03 /* ContentViewTests.swift */; };
+		D74FD426261F6DD600CF8F03 /* CategoryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD425261F6DD600CF8F03 /* CategoryHome.swift */; };
+		D74FD430261F6E7600CF8F03 /* LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD42F261F6E7600CF8F03 /* LandmarkList.swift */; };
+		D74FD435261F72F900CF8F03 /* ViewHostingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD434261F72F900CF8F03 /* ViewHostingExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +139,12 @@
 		CAD904E425F192CD00C6132A /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
 		CAD9052B25F193B100C6132A /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = "<group>"; };
 		CAD9053325F1971800C6132A /* ContractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTests.swift; sourceTree = "<group>"; };
+		D74FD40F261F63E900CF8F03 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
+		D74FD418261F65D400CF8F03 /* InspectableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableViewExtensions.swift; sourceTree = "<group>"; };
+		D74FD420261F663900CF8F03 /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
+		D74FD425261F6DD600CF8F03 /* CategoryHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHome.swift; sourceTree = "<group>"; };
+		D74FD42F261F6E7600CF8F03 /* LandmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkList.swift; sourceTree = "<group>"; };
+		D74FD434261F72F900CF8F03 /* ViewHostingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHostingExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +178,8 @@
 		0001A04825E053030081DFB0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D74FD42B261F6E2700CF8F03 /* Landmarks */,
+				D74FD42A261F6DE600CF8F03 /* Categories */,
 				0011EB2725E80A5700E48AE8 /* ContentView.swift */,
 				0011EA7F25E5578700E48AE8 /* Badges */,
 			);
@@ -225,13 +239,6 @@
 				0016336325F6A9DE00A227A4 /* hikesData.swift */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		002D473E25E057B3000525C3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		002D475025E05E15000525C3 /* Models */ = {
@@ -296,6 +303,7 @@
 		CA45048C25B79A7800153FC4 /* SwiftUIExample */ = {
 			isa = PBXGroup;
 			children = (
+				D74FD40E261F63D700CF8F03 /* ViewInspector */,
 				CAD904D725F190D100C6132A /* DependencyInjection */,
 				CAD904BC25F18FBE00C6132A /* Extensions */,
 				CAD904B825F18F8400C6132A /* Network */,
@@ -320,14 +328,15 @@
 		CA45049E25B79A7900153FC4 /* SwiftUIExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				D74FD417261F65BB00CF8F03 /* ViewInspector */,
 				CA5D13DF25F7CC9400A02B0B /* CuckooHelpers */,
-				CA9575A325F6C698009507C6 /* GeneratedMocks.swift */,
-				0016335A25F6A85400A227A4 /* Resources */,
-				CAD904B725F18F7D00C6132A /* Network */,
 				0011EAD525E595A500E48AE8 /* Extensions */,
-				002D473E25E057B3000525C3 /* Views */,
-				CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */,
+				CA9575A325F6C698009507C6 /* GeneratedMocks.swift */,
 				CA4504A125B79A7900153FC4 /* Info.plist */,
+				CAD904B725F18F7D00C6132A /* Network */,
+				0016335A25F6A85400A227A4 /* Resources */,
+				CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */,
+				D74FD40A261F63B600CF8F03 /* Views */,
 			);
 			path = SwiftUIExampleTests;
 			sourceTree = "<group>";
@@ -419,6 +428,47 @@
 				CAD904D825F1924500C6132A /* DependencyInjected.swift */,
 			);
 			name = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		D74FD40A261F63B600CF8F03 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D74FD420261F663900CF8F03 /* ContentViewTests.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D74FD40E261F63D700CF8F03 /* ViewInspector */ = {
+			isa = PBXGroup;
+			children = (
+				D74FD40F261F63E900CF8F03 /* Inspection.swift */,
+			);
+			path = ViewInspector;
+			sourceTree = "<group>";
+		};
+		D74FD417261F65BB00CF8F03 /* ViewInspector */ = {
+			isa = PBXGroup;
+			children = (
+				D74FD418261F65D400CF8F03 /* InspectableViewExtensions.swift */,
+				D74FD434261F72F900CF8F03 /* ViewHostingExtensions.swift */,
+			);
+			path = ViewInspector;
+			sourceTree = "<group>";
+		};
+		D74FD42A261F6DE600CF8F03 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D74FD425261F6DD600CF8F03 /* CategoryHome.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		D74FD42B261F6E2700CF8F03 /* Landmarks */ = {
+			isa = PBXGroup;
+			children = (
+				D74FD42F261F6E7600CF8F03 /* LandmarkList.swift */,
+			);
+			path = Landmarks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -777,11 +827,13 @@
 				0011EA8625E557A600E48AE8 /* HexagonParameters.swift in Sources */,
 				002D475225E05E36000525C3 /* Hike.swift in Sources */,
 				CAD904BE25F18FCC00C6132A /* URLSessionExtensions.swift in Sources */,
+				D74FD426261F6DD600CF8F03 /* CategoryHome.swift in Sources */,
 				0011EB2825E80A5800E48AE8 /* ContentView.swift in Sources */,
 				0011EA8725E557A600E48AE8 /* RotatedBadgeSymbol.swift in Sources */,
 				CAD904D225F1908000C6132A /* HikesService.swift in Sources */,
 				002D474C25E05D7E000525C3 /* AppModel.swift in Sources */,
 				CA45048E25B79A7800153FC4 /* SwiftUIExampleApp.swift in Sources */,
+				D74FD430261F6E7600CF8F03 /* LandmarkList.swift in Sources */,
 				CAD904C325F18FE400C6132A /* URLRequestExtensions.swift in Sources */,
 				0011EB3125E82F5100E48AE8 /* Profile.swift in Sources */,
 				002D474825E05C45000525C3 /* Landmark.swift in Sources */,
@@ -791,6 +843,7 @@
 				0011EA8525E557A600E48AE8 /* Badge.swift in Sources */,
 				CAD904C825F1904800C6132A /* BaseAPI.swift in Sources */,
 				0011EA8925E557A600E48AE8 /* BadgeSymbol.swift in Sources */,
+				D74FD410261F63E900CF8F03 /* Inspection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,8 +856,11 @@
 				CAD9053425F1971800C6132A /* ContractTests.swift in Sources */,
 				CAD904E525F192CD00C6132A /* StubAPIResponse.swift in Sources */,
 				CA9575A425F6C698009507C6 /* GeneratedMocks.swift in Sources */,
+				D74FD435261F72F900CF8F03 /* ViewHostingExtensions.swift in Sources */,
 				CA9575AD25F6C6E6009507C6 /* MockExtensions.swift in Sources */,
+				D74FD421261F663900CF8F03 /* ContentViewTests.swift in Sources */,
 				CAD904E025F1927A00C6132A /* APITests.swift in Sources */,
+				D74FD419261F65D400CF8F03 /* InspectableViewExtensions.swift in Sources */,
 				CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */,
 				0016336425F6A9DE00A227A4 /* hikesData.swift in Sources */,
 				0052A2292608F7E900F672F4 /* LandmarkExtensions.swift in Sources */,
