@@ -23,20 +23,17 @@ class ContentViewTests: XCTestCase {
         }.registerIn(.default)
 
         let exp = ViewHosting.loadView(ContentView(), environmentObject: AppModel()).inspection.inspect { view in
-            XCTAssertNoThrow(try view.find(ViewType.TabView.self))
-            let tabView = try view.find(ViewType.TabView.self)
+            let tabView = XCTAssertNoThrowAndAssign(try view.find(ViewType.TabView.self))
 
-            XCTAssertNoThrow(try tabView.find(CategoryHome.self))
-            let categoryHome = try tabView.find(CategoryHome.self)
-            XCTAssertNoThrow(try categoryHome.tabItem().label())
-            XCTAssertEqual(try categoryHome.tabItem().label().title().text().string(), "Featured")
-            XCTAssertEqual(try categoryHome.tabItem().label().icon().image().actualImage(), Image(systemName: "star"))
+            let categoryHome = XCTAssertNoThrowAndAssign(try tabView?.find(CategoryHome.self))
+            XCTAssertNoThrow(try categoryHome?.tabItem().label())
+            XCTAssertEqual(try categoryHome?.tabItem().label().title().text().string(), "Featured")
+            XCTAssertEqual(try categoryHome?.tabItem().label().icon().image().actualImage(), Image(systemName: "star"))
 
-            XCTAssertNoThrow(try tabView.view(LandmarkList.self, 1))
-            let landmarkList = try tabView.view(LandmarkList.self, 1)
-            XCTAssertNoThrow(try landmarkList.tabItem().label())
-            XCTAssertEqual(try landmarkList.tabItem().label().title().text().string(), "List")
-            XCTAssertEqual(try landmarkList.tabItem().label().icon().image().actualImage(), Image(systemName: "list.bullet"))
+            let landmarkList = XCTAssertNoThrowAndAssign(try tabView?.view(LandmarkList.self, 1))
+            XCTAssertNoThrow(try landmarkList?.tabItem().label())
+            XCTAssertEqual(try landmarkList?.tabItem().label().title().text().string(), "List")
+            XCTAssertEqual(try landmarkList?.tabItem().label().icon().image().actualImage(), Image(systemName: "list.bullet"))
         }
         wait(for: [exp], timeout: 1.5)
     }
@@ -70,10 +67,9 @@ class ContentViewTests: XCTestCase {
         }.registerIn(.default)
 
         let exp = ViewHosting.loadView(ContentView(), environmentObject: AppModel()).inspection.inspect { view in
-            XCTAssertNoThrow(try view.find(ViewType.TabView.self))
-            let tabView = try view.find(ViewType.TabView.self)
+            let tabView = XCTAssertNoThrowAndAssign(try view.find(ViewType.TabView.self))
 
-            XCTAssertNoThrow(try tabView.find(ViewType.ProgressView.self))
+            XCTAssertNoThrow(try tabView?.find(ViewType.ProgressView.self))
         }
         wait(for: [exp], timeout: 1.5)
     }
@@ -111,10 +107,9 @@ class ContentViewTests: XCTestCase {
         }.registerIn(.default)
 
         let exp = ViewHosting.loadView(ContentView(), environmentObject: AppModel()).inspection.inspect { view in
-            XCTAssertNoThrow(try view.find(ViewType.TabView.self))
-            let tabView = try view.find(ViewType.TabView.self)
+            let tabView = XCTAssertNoThrowAndAssign(try view.find(ViewType.TabView.self))
 
-            XCTAssertNoThrow(try tabView.find(ViewType.ProgressView.self))
+            XCTAssertNoThrow(try tabView?.find(ViewType.ProgressView.self))
         }
         wait(for: [exp], timeout: 1.5)
     }

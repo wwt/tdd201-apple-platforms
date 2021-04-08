@@ -63,6 +63,7 @@
 		D74FD43A261F9C2400CF8F03 /* LandmarkListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD439261F9C2400CF8F03 /* LandmarkListTests.swift */; };
 		D74FD43F261F9F7E00CF8F03 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD43E261F9F7E00CF8F03 /* LandmarkDetail.swift */; };
 		D74FD444261F9FC700CF8F03 /* LandmarkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD443261F9FC700CF8F03 /* LandmarkRow.swift */; };
+		D74FD44C261FA8A800CF8F03 /* XCTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD44B261FA8A800CF8F03 /* XCTestExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		D74FD439261F9C2400CF8F03 /* LandmarkListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkListTests.swift; sourceTree = "<group>"; };
 		D74FD43E261F9F7E00CF8F03 /* LandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
 		D74FD443261F9FC700CF8F03 /* LandmarkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRow.swift; sourceTree = "<group>"; };
+		D74FD44B261FA8A800CF8F03 /* XCTestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				0052A2282608F7E900F672F4 /* LandmarkExtensions.swift */,
+				D74FD44B261FA8A800CF8F03 /* XCTestExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAD9052C25F193B100C6132A /* URLRequestExtensions.swift in Sources */,
+				D74FD44C261FA8A800CF8F03 /* XCTestExtensions.swift in Sources */,
 				D74FD43A261F9C2400CF8F03 /* LandmarkListTests.swift in Sources */,
 				0016335C25F6A88500A227A4 /* landmarkData.swift in Sources */,
 				CAD9053425F1971800C6132A /* ContractTests.swift in Sources */,
