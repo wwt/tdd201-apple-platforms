@@ -11,6 +11,9 @@ struct LandmarkList: View {
     let inspection = Inspection<Self>() // Enabling testability
     @EnvironmentObject var appModel: AppModel
     @State private var isFavoritesOnly = false
+    private var landmarks: [Landmark] {
+        isFavoritesOnly ? appModel.landmarks.filter(\.isFavorite) : appModel.landmarks
+    }
 
     var body: some View {
         NavigationView {
@@ -18,7 +21,7 @@ struct LandmarkList: View {
                 Toggle(isOn: $isFavoritesOnly) {
                     Text("Favorites only")
                 }
-                ForEach(appModel.landmarks.filter({$0.isFavorite || !isFavoritesOnly})) { landmark in
+                ForEach(landmarks) { landmark in
                     NavigationLink(
                         destination: LandmarkDetail(landmark: landmark)) {
                         LandmarkRow(landmark: landmark)
