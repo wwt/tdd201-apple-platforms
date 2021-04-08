@@ -10,14 +10,15 @@ import SwiftUI
 struct LandmarkList: View {
     let inspection = Inspection<Self>() // Enabling testability
     @EnvironmentObject var appModel: AppModel
+    @State private var isFavoritesOnly = false
 
     var body: some View {
         NavigationView {
             List {
-                Toggle(isOn: .constant(true)) {
+                Toggle(isOn: $isFavoritesOnly) {
                     Text("Favorites only")
                 }
-                ForEach(appModel.landmarks) { landmark in
+                ForEach(appModel.landmarks.filter({$0.isFavorite || !isFavoritesOnly})) { landmark in
                     NavigationLink(
                         destination: LandmarkDetail(landmark: landmark)) {
                         LandmarkRow(landmark: landmark)
