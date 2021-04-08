@@ -88,4 +88,23 @@ class LandmarkListTests: XCTestCase {
         }
         wait(for: [exp], timeout: 1.5)
     }
+
+    func testErrorDoesNotCrashWhenFetchLandmarksReturnsError() throws {
+        enum Err: Error { case e1 }
+        let mockHikesService = MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get).thenReturn(Result.Publisher(.failure(API.HikesService.Error.apiBorked(Err.e1))).eraseToAnyPublisher())
+        }.registerIn(.default)
+        let expectedLandmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
+        let appModel = AppModel()
+        appModel.landmarks = expectedLandmarks
+
+        let exp = ViewHosting.loadView(LandmarkList(), environmentObject: appModel).inspection.inspect { view in
+            // on appear called by ViewHosting, clear invocations for mock before continuing
+            clearInvocations(mockHikesService)
+            try view.navigationView().callOnAppear()
+            verify(mockHikesService, times(1)).fetchLandmarks.get()
+            XCTAssertEqual(appModel.landmarks, expectedLandmarks)
+        }
+        wait(for: [exp], timeout: 1.5)
+    }
 }
