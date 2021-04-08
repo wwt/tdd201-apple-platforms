@@ -14,3 +14,5 @@ extension Inspection: InspectionEmissary where V: Inspectable {}
 extension ContentView: Inspectable {}
 extension CategoryHome: Inspectable {}
 extension LandmarkList: Inspectable {}
+extension LandmarkDetail: Inspectable {}
+extension LandmarkRow: Inspectable {}
