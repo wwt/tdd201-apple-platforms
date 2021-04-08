@@ -12,19 +12,27 @@ struct ContentView: View {
     let inspection = Inspection<Self>() // Enabling testability
     @EnvironmentObject private var appModel: AppModel
     @ObservedObject private var viewModel = ViewModel()
-
+    @State private var hikesResult: Result<[Hike], API.HikesService.Error>? {
+        didSet {
+            if case .success(let hikes) = hikesResult {
+                appModel.hikes = hikes
+            }
+        }
+    }
+    
     var body: some View {
         TabView {
-            CategoryHome().tabItem { Label("Featured", systemImage: "star") }
-            LandmarkList().tabItem { Label("List", systemImage: "list.bullet") }
+            if hikesResult == nil {
+                ProgressView()
+            } else {
+                CategoryHome().tabItem { Label("Featured", systemImage: "star") }
+                LandmarkList().tabItem { Label("List", systemImage: "list.bullet") }
+            }
         }
         .onAppear {
             viewModel.hikeService?.fetchHikes
-                .sink { result in
-                    if case .success(let hikes) = result {
-                        appModel.hikes = hikes
-                    }
-                }.store(in: &viewModel.subscribers)
+                .sink { hikesResult = $0 }
+                .store(in: &viewModel.subscribers)
         }
         .onReceive(inspection.notice) {
             self.inspection.visit(self, $0)

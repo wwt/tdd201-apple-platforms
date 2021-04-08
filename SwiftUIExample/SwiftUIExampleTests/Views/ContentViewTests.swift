@@ -62,4 +62,20 @@ class ContentViewTests: XCTestCase {
         }
         wait(for: [exp], timeout: 1.5)
     }
+
+    func testProgressViewIsShownWhenFetchHikesIsInProgress() throws {
+        MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get).thenReturn(Result.Publisher(.success([])).eraseToAnyPublisher())
+            when(stub.fetchHikes.get).thenReturn(Result.Publisher(.success([])).delay(for: 1.8, scheduler: DispatchQueue.main).eraseToAnyPublisher())
+        }.registerIn(.default)
+
+        let exp = ViewHosting.loadView(ContentView(), environmentObject: AppModel()).inspection.inspect { view in
+            XCTAssertNoThrow(try view.find(ViewType.TabView.self))
+            let tabView = try view.find(ViewType.TabView.self)
+
+            XCTAssertNoThrow(try tabView.find(ViewType.ProgressView.self))
+        }
+        wait(for: [exp], timeout: 1.5)
+
+    }
 }
