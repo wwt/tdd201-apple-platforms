@@ -17,9 +17,10 @@ import Swinject
 
 class ContentViewTests: XCTestCase {
     func testViewHasExpectedViews() throws {
-        MockHikesServiceProtocol().stub { stub in when(stub.fetchLandmarks.get).thenReturn(Result.Publisher(.success([])).eraseToAnyPublisher())
+        MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get).thenReturn(Result.Publisher(.success([])).eraseToAnyPublisher())
             when(stub.fetchHikes.get).thenReturn(Result.Publisher(.success([])).eraseToAnyPublisher())
-        }.registerIn(Container.default)
+        }.registerIn(.default)
 
         let exp = ViewHosting.loadView(ContentView(), environmentObject: AppModel()).inspection.inspect { view in
             XCTAssertNoThrow(try view.find(ViewType.TabView.self))
@@ -36,6 +37,28 @@ class ContentViewTests: XCTestCase {
             XCTAssertNoThrow(try landmarkList.tabItem().label())
             XCTAssertEqual(try landmarkList.tabItem().label().title().text().string(), "List")
             XCTAssertEqual(try landmarkList.tabItem().label().icon().image().actualImage(), Image(systemName: "list.bullet"))
+        }
+        wait(for: [exp], timeout: 1.5)
+    }
+
+    func testFetchHikesWhenViewAppears() throws {
+        let expectedHikes = [Hike(id: Int.random(in: 1000..<10000),
+                                  name: UUID().uuidString,
+                                  distance: Double.random(in: 100...200),
+                                  difficulty: Int.random(in: 1...10),
+                                  observations: [])]
+        let hikesService = MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get).thenReturn(Result.Publisher(.success([])).eraseToAnyPublisher())
+            when(stub.fetchHikes.get).thenReturn(Result.Publisher(.success(expectedHikes)).eraseToAnyPublisher())
+        }.registerIn(.default)
+        let appModel = AppModel()
+
+        let exp = ViewHosting.loadView(ContentView(), environmentObject: appModel).inspection.inspect { view in
+            clearInvocations(hikesService)
+            try view.tabView().callOnAppear()
+
+            verify(hikesService, times(1)).fetchHikes.get()
+            XCTAssertEqual(appModel.hikes, expectedHikes)
         }
         wait(for: [exp], timeout: 1.5)
     }
