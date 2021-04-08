@@ -63,4 +63,29 @@ class LandmarkListTests: XCTestCase {
         }
         wait(for: [exp], timeout: 1.5)
     }
+
+    func testFetchLandmarksWhenViewAppears() throws {
+        let expectedLandmarks = [Landmark.createForTests(id: Int.random(in: 1000...10000),
+                                                         name: UUID().uuidString,
+                                                         park: UUID().uuidString,
+                                                         state: UUID().uuidString,
+                                                         description: UUID().uuidString,
+                                                         isFavorite: Bool.random(),
+                                                         isFeatured: Bool.random(),
+                                                         category: .mountains,
+                                                         coordinates: .init(latitude: 1, longitude: 2))]
+        let hikesService = MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get).thenReturn(Result.Publisher(.success(expectedLandmarks)).eraseToAnyPublisher())
+        }.registerIn(.default)
+        let appModel = AppModel()
+
+        let exp = ViewHosting.loadView(LandmarkList(), environmentObject: appModel).inspection.inspect { view in
+            clearInvocations(hikesService)
+            try view.navigationView().callOnAppear()
+
+            verify(hikesService, times(1)).fetchLandmarks.get()
+            XCTAssertEqual(appModel.landmarks, expectedLandmarks)
+        }
+        wait(for: [exp], timeout: 1.5)
+    }
 }
