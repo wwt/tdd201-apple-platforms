@@ -227,13 +227,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		002D473E25E057B3000525C3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		002D475025E05E15000525C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,7 +318,6 @@
 				0016335A25F6A85400A227A4 /* Resources */,
 				CAD904B725F18F7D00C6132A /* Network */,
 				0011EAD525E595A500E48AE8 /* Extensions */,
-				002D473E25E057B3000525C3 /* Views */,
 				CA45049F25B79A7900153FC4 /* SwiftUIExampleTests.swift */,
 				CA4504A125B79A7900153FC4 /* Info.plist */,
 			);
