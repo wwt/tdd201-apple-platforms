@@ -1,5 +1,5 @@
 //
-//  XCTestExtensions.swift
+//  XCTestAdditions.swift
 //  SwiftUIExampleTests
 //
 //  Created by Richard Gist on 4/8/21.
