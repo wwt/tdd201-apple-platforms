@@ -19,7 +19,7 @@ struct ContentView: View {
             }
         }
     }
-    
+
     var body: some View {
         TabView {
             if hikesResult == nil {
@@ -31,7 +31,9 @@ struct ContentView: View {
         }
         .onAppear {
             viewModel.hikeService?.fetchHikes
-                .sink { hikesResult = $0 }
+                .map(Optional.some)
+                .receive(on: DispatchQueue.main)
+                .assign(to: \.hikesResult, on: self)
                 .store(in: &viewModel.subscribers)
         }
         .onReceive(inspection.notice) {

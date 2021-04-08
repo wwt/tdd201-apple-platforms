@@ -76,6 +76,5 @@ class ContentViewTests: XCTestCase {
             XCTAssertNoThrow(try tabView.find(ViewType.ProgressView.self))
         }
         wait(for: [exp], timeout: 1.5)
-
     }
 }
