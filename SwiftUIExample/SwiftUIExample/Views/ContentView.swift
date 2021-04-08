@@ -19,10 +19,17 @@ struct ContentView: View {
             }
         }
     }
+    @State private var landmarksResult: Result<[Landmark], API.HikesService.Error>? {
+        didSet {
+            if case .success(let landmarks) = landmarksResult {
+                appModel.landmarks = landmarks
+            }
+        }
+    }
 
     var body: some View {
         TabView {
-            if hikesResult == nil {
+            if hikesResult == nil || landmarksResult == nil {
                 ProgressView()
             } else {
                 CategoryHome().tabItem { Label("Featured", systemImage: "star") }
@@ -34,6 +41,12 @@ struct ContentView: View {
                 .map(Optional.some)
                 .receive(on: DispatchQueue.main)
                 .assign(to: \.hikesResult, on: self)
+                .store(in: &viewModel.subscribers)
+
+            viewModel.hikeService?.fetchLandmarks
+                .map(Optional.some)
+                .receive(on: DispatchQueue.main)
+                .assign(to: \.landmarksResult, on: self)
                 .store(in: &viewModel.subscribers)
         }
         .onReceive(inspection.notice) {
