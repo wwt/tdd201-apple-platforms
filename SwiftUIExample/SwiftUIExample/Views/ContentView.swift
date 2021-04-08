@@ -11,6 +11,7 @@ import Combine
 struct ContentView: View {
     let inspection = Inspection<Self>() // Enabling testability
     @EnvironmentObject private var appModel: AppModel
+    @ObservedObject private var viewModel = ViewModel()
 
     var body: some View {
         TabView {
@@ -18,12 +19,12 @@ struct ContentView: View {
             LandmarkList().tabItem { Label("List", systemImage: "list.bullet") }
         }
         .onAppear {
-            _ = ViewModel().hikeService?.fetchHikes
+            viewModel.hikeService?.fetchHikes
                 .sink { result in
                     if case .success(let hikes) = result {
                         appModel.hikes = hikes
                     }
-                }
+                }.store(in: &viewModel.subscribers)
         }
         .onReceive(inspection.notice) {
             self.inspection.visit(self, $0)
