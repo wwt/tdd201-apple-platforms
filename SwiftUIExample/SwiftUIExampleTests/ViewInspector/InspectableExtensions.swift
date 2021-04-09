@@ -16,3 +16,7 @@ extension CategoryHome: Inspectable {}
 extension LandmarkList: Inspectable {}
 extension LandmarkDetail: Inspectable {}
 extension LandmarkRow: Inspectable {}
+
+extension MapView: Inspectable {}
+extension CircleImage: Inspectable {}
+extension FavoriteButton: Inspectable {}
