@@ -17,15 +17,7 @@ class LandmarkDetailTests: XCTestCase {
     func testViewHasExpectedViews() throws {
         let appModel = AppModel()
         appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
-        let landmark = Landmark.createForTests(id: Int.random(in: 1000...10000),
-                                               name: UUID().uuidString,
-                                               park: UUID().uuidString,
-                                               state: UUID().uuidString,
-                                               description: UUID().uuidString,
-                                               isFavorite: Bool.random(),
-                                               isFeatured: Bool.random(),
-                                               category: .mountains,
-                                               coordinates: .init(latitude: 1, longitude: 2))
+        let landmark = appModel.landmarks.randomElement()!
 
         let exp = ViewHosting.loadView(LandmarkDetail(landmark: landmark), environmentObject: appModel).inspection.inspect { view in
             let scrollView = XCTAssertNoThrowAndAssign(try view.find(ViewType.ScrollView.self))
@@ -51,6 +43,22 @@ class LandmarkDetailTests: XCTestCase {
             XCTAssertEqual(try landmarkAbout?.string(), "About \(landmark.name)")
             let landmarkDescription = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, index: 4))
             XCTAssertEqual(try landmarkDescription?.string(), landmark.description)
+        }
+        wait(for: [exp], timeout: 1.5)
+    }
+
+    func testAppModelUpdatedWhenFavoriteButtonIsTapped() throws {
+        let appModel = AppModel()
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
+        let landmarkIndex = appModel.landmarks.indices.randomElement()!
+        let landmark = appModel.landmarks[landmarkIndex]
+
+        let exp = ViewHosting.loadView(LandmarkDetail(landmark: landmark), environmentObject: appModel).inspection.inspect { view in
+            let favoriteButton = XCTAssertNoThrowAndAssign(try view.find(FavoriteButton.self))
+
+            XCTAssertNoThrow(try favoriteButton?.button().tap())
+
+            XCTAssertNotEqual(appModel.landmarks[landmarkIndex].isFavorite, landmark.isFavorite)
         }
         wait(for: [exp], timeout: 1.5)
     }
