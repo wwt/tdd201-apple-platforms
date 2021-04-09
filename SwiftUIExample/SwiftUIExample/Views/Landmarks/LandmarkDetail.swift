@@ -16,7 +16,7 @@ struct LandmarkDetail: View {
             MapView(coordinate: landmark.locationCoordinate)
             CircleImage(image: landmark.image)
             Text(landmark.name)
-            FavoriteButton(isSet: landmark.isFavorite)
+            FavoriteButton(isSet: .constant(landmark.isFavorite))
             Text(landmark.park)
             Text(landmark.state)
             Text("About \(landmark.name)")

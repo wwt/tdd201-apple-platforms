@@ -11,6 +11,7 @@ struct CircleImage: View {
     let image: Image
 
     var body: some View {
-        Text("CircleImage")
+        image
+            .clipShape(Circle())
     }
 }

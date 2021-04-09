@@ -70,6 +70,8 @@
 		D74FD46D2620CBC400CF8F03 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD46C2620CBC400CF8F03 /* MapView.swift */; };
 		D74FD4722620CD2000CF8F03 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD4712620CD2000CF8F03 /* CircleImage.swift */; };
 		D74FD4772620CD3C00CF8F03 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD4762620CD3C00CF8F03 /* FavoriteButton.swift */; };
+		D74FD47F2620D21100CF8F03 /* CircleImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD47E2620D21000CF8F03 /* CircleImageTests.swift */; };
+		D74FD4842620D35700CF8F03 /* FavoriteButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD4832620D35700CF8F03 /* FavoriteButtonTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +167,8 @@
 		D74FD46C2620CBC400CF8F03 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D74FD4712620CD2000CF8F03 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		D74FD4762620CD3C00CF8F03 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		D74FD47E2620D21000CF8F03 /* CircleImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageTests.swift; sourceTree = "<group>"; };
+		D74FD4832620D35700CF8F03 /* FavoriteButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,6 +463,8 @@
 				D74FD439261F9C2400CF8F03 /* LandmarkListTests.swift */,
 				D74FD450261FB97600CF8F03 /* LandmarkRowTests.swift */,
 				D74FD466261FC00700CF8F03 /* LandmarkDetailTests.swift */,
+				D74FD47E2620D21000CF8F03 /* CircleImageTests.swift */,
+				D74FD4832620D35700CF8F03 /* FavoriteButtonTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -901,6 +907,7 @@
 				CAD9053425F1971800C6132A /* ContractTests.swift in Sources */,
 				CAD904E525F192CD00C6132A /* StubAPIResponse.swift in Sources */,
 				D74FD451261FB97600CF8F03 /* LandmarkRowTests.swift in Sources */,
+				D74FD4842620D35700CF8F03 /* FavoriteButtonTests.swift in Sources */,
 				CA9575A425F6C698009507C6 /* GeneratedMocks.swift in Sources */,
 				D74FD459261FBC3500CF8F03 /* InspectableViewExtensions.swift in Sources */,
 				D74FD435261F72F900CF8F03 /* ViewHostingExtensions.swift in Sources */,
@@ -911,6 +918,7 @@
 				D74FD419261F65D400CF8F03 /* InspectableExtensions.swift in Sources */,
 				CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */,
 				0016336425F6A9DE00A227A4 /* hikesData.swift in Sources */,
+				D74FD47F2620D21100CF8F03 /* CircleImageTests.swift in Sources */,
 				0052A2292608F7E900F672F4 /* LandmarkExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
