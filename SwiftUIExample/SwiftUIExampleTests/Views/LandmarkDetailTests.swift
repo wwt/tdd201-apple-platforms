@@ -52,6 +52,9 @@ class LandmarkDetailTests: XCTestCase {
         appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
         let landmarkIndex = appModel.landmarks.indices.randomElement()!
         let landmark = appModel.landmarks[landmarkIndex]
+        MockHikesServiceProtocol().stub { stub in
+            when(stub.setFavorite(to: any(Bool.self), on: any(Landmark.self))).thenReturn(Result.Publisher(.success(landmark)).eraseToAnyPublisher())
+        }.registerIn(.default)
 
         let exp = ViewHosting.loadView(LandmarkDetail(landmark: landmark), environmentObject: appModel).inspection.inspect { view in
             let favoriteButton = XCTAssertNoThrowAndAssign(try view.find(FavoriteButton.self))
@@ -61,5 +64,26 @@ class LandmarkDetailTests: XCTestCase {
             XCTAssertNotEqual(appModel.landmarks[landmarkIndex].isFavorite, landmark.isFavorite)
         }
         wait(for: [exp], timeout: 1.5)
+    }
+
+    func testHikeServiceIsUpdatedWhenIsFavoriteChangesOnLandmark() throws {
+        let appModel = AppModel()
+        appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)
+        let landmarkIndex = appModel.landmarks.indices.randomElement()!
+        let landmark = appModel.landmarks[landmarkIndex]
+        let hikeService = MockHikesServiceProtocol().stub { stub in
+            when(stub.setFavorite(to: any(Bool.self), on: any(Landmark.self))).thenReturn(Result.Publisher(.success(landmark)).eraseToAnyPublisher())
+        }.registerIn(.default)
+
+        let exp = ViewHosting.loadView(LandmarkDetail(landmark: landmark), environmentObject: appModel).inspection.inspect { view in
+            XCTAssertNoThrow(try view.find(FavoriteButton.self).button().tap())
+        }
+        wait(for: [exp], timeout: 1.5)
+
+        let landmarkUpdated = ArgumentCaptor<Landmark>()
+        let changedTo = ArgumentCaptor<Bool>()
+        verify(hikeService, times(1)).setFavorite(to: changedTo.capture(), on: landmarkUpdated.capture())
+        XCTAssertEqual(changedTo.value, appModel.landmarks[landmarkIndex].isFavorite)
+        XCTAssertEqual(landmarkUpdated.value, appModel.landmarks[landmarkIndex])
     }
 }
