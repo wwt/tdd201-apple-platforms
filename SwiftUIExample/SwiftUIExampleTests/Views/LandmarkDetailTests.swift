@@ -29,19 +29,19 @@ class LandmarkDetailTests: XCTestCase {
             let circleImage = XCTAssertNoThrowAndAssign(try scrollView?.find(CircleImage.self))
             XCTAssertEqual(try circleImage?.actualView().image, landmark.image)
 
-            let landmarkName = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, index: 0))
+            let landmarkName = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self))
             XCTAssertEqual(try landmarkName?.string(), landmark.name)
 
             let favoriteButton = XCTAssertNoThrowAndAssign(try scrollView?.find(FavoriteButton.self))
             XCTAssertEqual(try favoriteButton?.actualView().isSet, landmark.isFavorite)
 
-            let landmarkPark = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, index: 1))
+            let landmarkPark = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, skipFound: 1))
             XCTAssertEqual(try landmarkPark?.string(), landmark.park)
-            let landmarkState = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, index: 2))
+            let landmarkState = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, skipFound: 2))
             XCTAssertEqual(try landmarkState?.string(), landmark.state)
-            let landmarkAbout = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, index: 3))
+            let landmarkAbout = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, skipFound: 3))
             XCTAssertEqual(try landmarkAbout?.string(), "About \(landmark.name)")
-            let landmarkDescription = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, index: 4))
+            let landmarkDescription = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, skipFound: 4))
             XCTAssertEqual(try landmarkDescription?.string(), landmark.description)
         }
         wait(for: [exp], timeout: 1.5)

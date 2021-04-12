@@ -65,7 +65,6 @@
 		D74FD444261F9FC700CF8F03 /* LandmarkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD443261F9FC700CF8F03 /* LandmarkRow.swift */; };
 		D74FD44C261FA8A800CF8F03 /* XCTestAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD44B261FA8A800CF8F03 /* XCTestAdditions.swift */; };
 		D74FD451261FB97600CF8F03 /* LandmarkRowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD450261FB97600CF8F03 /* LandmarkRowTests.swift */; };
-		D74FD459261FBC3500CF8F03 /* InspectableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD458261FBC3500CF8F03 /* InspectableViewExtensions.swift */; };
 		D74FD467261FC00700CF8F03 /* LandmarkDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD466261FC00700CF8F03 /* LandmarkDetailTests.swift */; };
 		D74FD46D2620CBC400CF8F03 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD46C2620CBC400CF8F03 /* MapView.swift */; };
 		D74FD4722620CD2000CF8F03 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74FD4712620CD2000CF8F03 /* CircleImage.swift */; };
@@ -162,7 +161,6 @@
 		D74FD443261F9FC700CF8F03 /* LandmarkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRow.swift; sourceTree = "<group>"; };
 		D74FD44B261FA8A800CF8F03 /* XCTestAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestAdditions.swift; sourceTree = "<group>"; };
 		D74FD450261FB97600CF8F03 /* LandmarkRowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRowTests.swift; sourceTree = "<group>"; };
-		D74FD458261FBC3500CF8F03 /* InspectableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableViewExtensions.swift; sourceTree = "<group>"; };
 		D74FD466261FC00700CF8F03 /* LandmarkDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetailTests.swift; sourceTree = "<group>"; };
 		D74FD46C2620CBC400CF8F03 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D74FD4712620CD2000CF8F03 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
@@ -482,7 +480,6 @@
 			children = (
 				D74FD418261F65D400CF8F03 /* InspectableExtensions.swift */,
 				D74FD434261F72F900CF8F03 /* ViewHostingExtensions.swift */,
-				D74FD458261FBC3500CF8F03 /* InspectableViewExtensions.swift */,
 			);
 			path = ViewInspector;
 			sourceTree = "<group>";
@@ -909,7 +906,6 @@
 				D74FD451261FB97600CF8F03 /* LandmarkRowTests.swift in Sources */,
 				D74FD4842620D35700CF8F03 /* FavoriteButtonTests.swift in Sources */,
 				CA9575A425F6C698009507C6 /* GeneratedMocks.swift in Sources */,
-				D74FD459261FBC3500CF8F03 /* InspectableViewExtensions.swift in Sources */,
 				D74FD435261F72F900CF8F03 /* ViewHostingExtensions.swift in Sources */,
 				D74FD467261FC00700CF8F03 /* LandmarkDetailTests.swift in Sources */,
 				CA9575AD25F6C6E6009507C6 /* MockExtensions.swift in Sources */,

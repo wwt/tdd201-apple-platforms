@@ -30,7 +30,7 @@ class ContentViewTests: XCTestCase {
             XCTAssertEqual(try categoryHome?.tabItem().label().title().text().string(), "Featured")
             XCTAssertEqual(try categoryHome?.tabItem().label().icon().image().actualImage(), Image(systemName: "star"))
 
-            let landmarkList = XCTAssertNoThrowAndAssign(try tabView?.view(LandmarkList.self, 1))
+            let landmarkList = XCTAssertNoThrowAndAssign(try tabView?.find(LandmarkList.self))
             XCTAssertNoThrow(try landmarkList?.tabItem().label())
             XCTAssertEqual(try landmarkList?.tabItem().label().title().text().string(), "List")
             XCTAssertEqual(try landmarkList?.tabItem().label().icon().image().actualImage(), Image(systemName: "list.bullet"))

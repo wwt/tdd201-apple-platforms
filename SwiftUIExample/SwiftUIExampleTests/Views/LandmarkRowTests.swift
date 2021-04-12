@@ -27,7 +27,7 @@ class LandmarkRowTests: XCTestCase {
         let image = XCTAssertNoThrowAndAssign(try landmarkRow.inspect().find(ViewType.Image.self))
         XCTAssertEqual(try image?.actualImage(), expectedLandmark.image.resizable())
         XCTAssertEqual(try landmarkRow.inspect().find(ViewType.Text.self).string(), expectedLandmark.name)
-        XCTAssertThrowsError(try landmarkRow.inspect().find(ViewType.Image.self, index: 1))
+        XCTAssertThrowsError(try landmarkRow.inspect().find(ViewType.Image.self, skipFound: 1))
     }
 
     func testViewHasExpectedViewsWhenIsFavoriteIsFalse() throws {
@@ -43,7 +43,7 @@ class LandmarkRowTests: XCTestCase {
         let landmarkRow = LandmarkRow(landmark: expectedLandmark)
 
         let image = XCTAssertNoThrowAndAssign(try landmarkRow.inspect().find(ViewType.Image.self))
-        let favoriteImage = XCTAssertNoThrowAndAssign(try landmarkRow.inspect().find(ViewType.Image.self, index: 1))
+        let favoriteImage = XCTAssertNoThrowAndAssign(try landmarkRow.inspect().find(ViewType.Image.self, skipFound: 1))
         XCTAssertEqual(try image?.actualImage(), expectedLandmark.image.resizable())
         XCTAssertEqual(try landmarkRow.inspect().find(ViewType.Text.self).string(), expectedLandmark.name)
         XCTAssertEqual(try favoriteImage?.actualImage(), Image(systemName: "star.fill"))

@@ -32,7 +32,7 @@ class LandmarkListTests: XCTestCase {
 
             try list?.find(ViewType.ForEach.self).enumerated().forEach { each in
                 let navigationLink = XCTAssertNoThrowAndAssign(try each.element.find(ViewType.NavigationLink.self))
-                let landmarkDetail = XCTAssertNoThrowAndAssign(try navigationLink?.view(LandmarkDetail.self))
+                let landmarkDetail = XCTAssertNoThrowAndAssign(try navigationLink?.find(LandmarkDetail.self))
                 let landmarkRow = XCTAssertNoThrowAndAssign(try navigationLink?.labelView().find(LandmarkRow.self))
 
                 XCTAssertEqual(try landmarkDetail?.actualView().landmark, appModel.landmarks[each.offset])

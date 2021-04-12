@@ -26,10 +26,10 @@ PODS:
   - Realm/Headers (10.7.2)
   - RealmSwift (10.7.2):
     - Realm (= 10.7.2)
-  - SwiftLint (0.43.0)
+  - SwiftLint (0.43.1)
   - Swinject (2.7.1)
-  - UIUTest (1.7.0)
-  - ViewInspector (0.7.2)
+  - UIUTest (1.8.0)
+  - ViewInspector (0.7.3)
 
 DEPENDENCIES:
   - Cuckoo
@@ -65,10 +65,10 @@ SPEC CHECKSUMS:
   PactConsumerSwift: 270ad8b4e83f9d5b2692d7bbed8fdd6ef39e56f3
   Realm: e523da9ade306c5ae87e85dc09fdef148d3e1cc1
   RealmSwift: 4f6758c3adbdcc87f7b7777107226532a077f61c
-  SwiftLint: 0c645fdc6feed3e390c1701ab3cc669f88b42752
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
-  UIUTest: 260d9054e9a882389d9a28d0fe9987feb82a7e9b
-  ViewInspector: b95742b9ce1a3f35992a49bfa239e35872d8376a
+  UIUTest: a6d4c2a961661e143f546fff08c4174745a95428
+  ViewInspector: ca40f5e4216dbf36abd1f4779d17807bedf7b498
 
 PODFILE CHECKSUM: 7d848399e951457e2e2c565ed1bfcfd6819d51ef
 
