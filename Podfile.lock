@@ -1,10 +1,10 @@
 PODS:
-  - Cuckoo (1.4.1):
-    - Cuckoo/Swift (= 1.4.1)
-  - Cuckoo/OCMock (1.4.1):
+  - Cuckoo (1.5.0):
+    - Cuckoo/Swift (= 1.5.0)
+  - Cuckoo/OCMock (1.5.0):
     - Cuckoo/Swift
     - OCMock (= 3.4.3)
-  - Cuckoo/Swift (1.4.1)
+  - Cuckoo/Swift (1.5.0)
   - Fakery (5.1.0)
   - OCMock (3.4.3)
   - OHHTTPStubs/Core (9.1.0)
@@ -21,15 +21,15 @@ PODS:
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
   - PactConsumerSwift (0.10.1)
-  - Realm (10.7.2):
-    - Realm/Headers (= 10.7.2)
-  - Realm/Headers (10.7.2)
-  - RealmSwift (10.7.2):
-    - Realm (= 10.7.2)
-  - SwiftLint (0.43.0)
+  - Realm (10.7.6):
+    - Realm/Headers (= 10.7.6)
+  - Realm/Headers (10.7.6)
+  - RealmSwift (10.7.6):
+    - Realm (= 10.7.6)
+  - SwiftLint (0.43.1)
   - Swinject (2.7.1)
-  - UIUTest (1.7.0)
-  - ViewInspector (0.7.1)
+  - UIUTest (1.8.0)
+  - ViewInspector (0.7.5)
 
 DEPENDENCIES:
   - Cuckoo
@@ -58,17 +58,17 @@ SPEC REPOS:
     - ViewInspector
 
 SPEC CHECKSUMS:
-  Cuckoo: 4625f7f54d9bb880123270e8969898d6c1d036b5
+  Cuckoo: 09ff1b7c6613b9c27dafea90702ca32208fe59d3
   Fakery: a90caff00ca5cacde6c161c3eafc72314a03d34d
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   PactConsumerSwift: 270ad8b4e83f9d5b2692d7bbed8fdd6ef39e56f3
-  Realm: e523da9ade306c5ae87e85dc09fdef148d3e1cc1
-  RealmSwift: 4f6758c3adbdcc87f7b7777107226532a077f61c
-  SwiftLint: 0c645fdc6feed3e390c1701ab3cc669f88b42752
+  Realm: ed860452717c8db8f4bf832b6807f7f2ce708839
+  RealmSwift: e31c4ddbcc42ac879313d656b86f9ca539f6f4f4
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
-  UIUTest: 260d9054e9a882389d9a28d0fe9987feb82a7e9b
-  ViewInspector: 33c53b81baf4a32148998c99752124fea4637499
+  UIUTest: a6d4c2a961661e143f546fff08c4174745a95428
+  ViewInspector: 42806cecffa37663af696253fc05f7e918ae70a9
 
 PODFILE CHECKSUM: 673ed44c12e9250e2bd231f1be328b41603714fc
 

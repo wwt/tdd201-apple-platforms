@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 extension Publisher {
-
     /// Attempts to recreate a failed subscription with the upstream publisher using a specified number of attempts to establish the connection.
     ///
     /// After exceeding the specified number of retries, the publisher passes the failure to the downstream receiver.
@@ -18,11 +17,18 @@ extension Publisher {
     /// - Parameter chainedRequest: An optional publisher of the same type, to chain before the retry
     /// - Returns: A publisher that attempts to recreate its subscription to a failed upstream publisher.
     // swiftlint:disable:next line_length
-    func retryOn<E: Error & Equatable, C: Publisher>(_ error: E, retries: UInt, chainedPublisher: C) -> Publishers.RetryOn<Self, E, C> where C.Output == Output, C.Failure == Failure {
-        return .init(upstream: self,
-                     retries: retries,
-                     error: error,
-                     chainedPublisher: chainedPublisher)
+    func retryOn<E: Error & Equatable, C: Publisher>(_ error: E, retries: UInt, chainedPublisher: C) -> AnyPublisher<Output, Failure> where C.Output == Output, C.Failure == Failure {
+        self.catch { error -> AnyPublisher<Output, Failure> in
+            guard retries > 0 else {
+                return Fail<Output, Failure>(error: error).eraseToAnyPublisher()
+            }
+
+            return chainedPublisher
+                .flatMap { _ in self }
+                .retry(Int(retries) - 1)
+                .eraseToAnyPublisher()
+        }
+        .eraseToAnyPublisher()
     }
 
     /// Attempts to recreate a failed subscription with the upstream publisher using a specified number of attempts to establish the connection.
@@ -31,57 +37,15 @@ extension Publisher {
     /// - Parameter error: An equatable error that should trigger the retry
     /// - Parameter retries: The number of times to attempt to recreate the subscription.
     /// - Returns: A publisher that attempts to recreate its subscription to a failed upstream publisher.
-    func retryOn<E: Error & Equatable>(_ error: E, retries: UInt) -> Publishers.RetryOn<Self, E, AnyPublisher<Output, Failure>> {
-        return .init(upstream: self,
-                     retries: retries,
-                     error: error,
-                     chainedPublisher: nil)
-    }
-}
-
-extension Publishers {
-
-    /// A publisher that attempts to recreate its subscription to a failed upstream publisher.
-    struct RetryOn<Upstream: Publisher, ErrorType: Error & Equatable, Chained: Publisher>: Publisher where Chained.Output == Upstream.Output, Chained.Failure == Upstream.Failure {
-
-        typealias Output = Upstream.Output
-
-        typealias Failure = Upstream.Failure
-
-        let upstream: Upstream
-        let retries: UInt
-        let error: ErrorType
-        let chainedPublisher: Chained?
-
-        /// Creates a publisher that attempts to recreate its subscription to a failed upstream publisher.
-        ///
-        /// - Parameters:
-        ///   - upstream: The publisher from which this publisher receives its elements.
-        ///   - error: An equatable error that should trigger the retry
-        ///   - retries: The number of times to attempt to recreate the subscription.
-        ///   - chainedPublisher: An optional publisher of the same type, to chain before the retry
-        init(upstream: Upstream, retries: UInt, error: ErrorType, chainedPublisher: Chained?) {
-            self.upstream = upstream
-            self.retries = retries
-            self.error = error
-            self.chainedPublisher = chainedPublisher
+    func retryOn<E: Error & Equatable>(_ error: E, retries: UInt) -> AnyPublisher<Output, Failure> {
+        self.catch { error -> AnyPublisher<Output, Failure> in
+            guard retries > 0 else {
+                return Fail<Output, Failure>(error: error).eraseToAnyPublisher()
+            }
+            return self
+                .retry(Int(retries) - 1)
+                .eraseToAnyPublisher()
         }
-
-        func receive<S: Subscriber>(subscriber: S) where Upstream.Failure == S.Failure, Upstream.Output == S.Input {
-            self.upstream
-                .catch { e -> AnyPublisher<Output, Failure> in
-                    guard (e as? ErrorType) == self.error,
-                          self.retries > 0 else {
-                        return Fail<Output, Failure>(error: e).eraseToAnyPublisher()
-                    }
-                    if let chainedPublisher = self.chainedPublisher {
-                        return chainedPublisher.flatMap { _ -> AnyPublisher<Output, Failure> in
-                            self.upstream.retryOn(self.error, retries: self.retries - 1).eraseToAnyPublisher()
-                        }.eraseToAnyPublisher()
-                    }
-                    return self.upstream.retryOn(self.error, retries: self.retries - 1).eraseToAnyPublisher()
-                }
-                .subscribe(subscriber)
-        }
+        .eraseToAnyPublisher()
     }
 }
