@@ -1,0 +1,5 @@
+cask "Docker"
+brew "docker"
+brew "docker-compose"
+tap "pact-foundation/pact-ruby-standalone"
+brew "pact-ruby-standalone"
