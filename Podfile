@@ -14,6 +14,7 @@ target 'SwiftUIExample' do
     pod 'OHHTTPStubs/Swift'
     pod 'Cuckoo'
     pod 'PactConsumerSwift'
+    pod 'ViewInspector'
   end
 
   target 'SwiftUIExampleUITests' do
