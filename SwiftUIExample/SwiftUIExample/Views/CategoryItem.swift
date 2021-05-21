@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CategoryItem: View {
+    let landmark: Landmark
+
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
@@ -15,6 +17,25 @@ struct CategoryItem: View {
 
 struct CategoryItem_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryItem()
+        // swiftlint:disable:next force_try
+        let landmark = try! JSONDecoder().decode(Landmark.self, from: Data("""
+{
+    "name": "Turtle Rock",
+    "category": "Rivers",
+    "city": "Twentynine Palms",
+    "state": "California",
+    "id": 1001,
+    "isFeatured": true,
+    "isFavorite": true,
+    "park": "Joshua Tree National Park",
+    "coordinates": {
+        "longitude": -116.166868,
+        "latitude": 34.011286
+    },
+    "description": "Test Description",
+    "imageName": "turtlerock"
+}
+""".utf8))
+        return CategoryItem(landmark: landmark)
     }
 }
