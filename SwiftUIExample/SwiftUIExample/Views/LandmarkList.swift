@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LandmarkList: View {
     @EnvironmentObject var appModel: AppModel
-    @ObservedObject fileprivate var viewModel = ViewModel()
+    @ObservedObject private var viewModel = ViewModel()
     @State private var landmarksResult: Result<[Landmark], API.HikesService.Error>? {
         didSet {
             switch landmarksResult {

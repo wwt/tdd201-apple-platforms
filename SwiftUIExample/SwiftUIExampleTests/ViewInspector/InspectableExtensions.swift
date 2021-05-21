@@ -19,5 +19,6 @@ extension LandmarkRow: Inspectable { }
 extension CategoryHome: Inspectable { }
 extension CategoryRow: Inspectable { }
 extension CategoryItem: Inspectable { }
+extension ContentView: Inspectable { }
 
 extension Inspection: InspectionEmissary where V: Inspectable { }
