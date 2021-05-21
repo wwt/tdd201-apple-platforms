@@ -28,6 +28,12 @@
 		AD3B93F426580DE800BEF831 /* LandmarkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B93F326580DE800BEF831 /* LandmarkRow.swift */; };
 		AD3B93F926580E2800BEF831 /* LandmarkListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B93F826580E2800BEF831 /* LandmarkListTests.swift */; };
 		AD3B93FE2658317C00BEF831 /* LandmarkRowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B93FD2658317C00BEF831 /* LandmarkRowTests.swift */; };
+		AD3B94062658365B00BEF831 /* CategoryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B94052658365B00BEF831 /* CategoryHome.swift */; };
+		AD3B940B2658366100BEF831 /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B940A2658366100BEF831 /* CategoryRow.swift */; };
+		AD3B94102658366700BEF831 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B940F2658366700BEF831 /* CategoryItem.swift */; };
+		AD3B94152658368000BEF831 /* CategoryHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B94142658368000BEF831 /* CategoryHomeTests.swift */; };
+		AD3B941A2658368900BEF831 /* CategoryRowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B94192658368900BEF831 /* CategoryRowTests.swift */; };
+		AD3B941F2658369100BEF831 /* CategoryItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B941E2658369100BEF831 /* CategoryItemTests.swift */; };
 		AD8B3DEF2656EC6300C7296F /* FavoriteButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B3DEE2656EC6300C7296F /* FavoriteButtonTests.swift */; };
 		AD8B3DFD265806FF00C7296F /* CircleImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B3DFC265806FF00C7296F /* CircleImageTests.swift */; };
 		BBB9738EC168E1F562E76E6C /* Pods_SwiftUIExample_SwiftUIExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E0F83637ED7E88C374F551 /* Pods_SwiftUIExample_SwiftUIExampleTests.framework */; };
@@ -119,6 +125,12 @@
 		AD3B93F326580DE800BEF831 /* LandmarkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRow.swift; sourceTree = "<group>"; };
 		AD3B93F826580E2800BEF831 /* LandmarkListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkListTests.swift; sourceTree = "<group>"; };
 		AD3B93FD2658317C00BEF831 /* LandmarkRowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRowTests.swift; sourceTree = "<group>"; };
+		AD3B94052658365B00BEF831 /* CategoryHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHome.swift; sourceTree = "<group>"; };
+		AD3B940A2658366100BEF831 /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
+		AD3B940F2658366700BEF831 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		AD3B94142658368000BEF831 /* CategoryHomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeTests.swift; sourceTree = "<group>"; };
+		AD3B94192658368900BEF831 /* CategoryRowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRowTests.swift; sourceTree = "<group>"; };
+		AD3B941E2658369100BEF831 /* CategoryItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemTests.swift; sourceTree = "<group>"; };
 		AD8B3DEE2656EC6300C7296F /* FavoriteButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonTests.swift; sourceTree = "<group>"; };
 		AD8B3DFC265806FF00C7296F /* CircleImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageTests.swift; sourceTree = "<group>"; };
 		CA45048A25B79A7800153FC4 /* SwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +210,9 @@
 				CCBC1F772656ADF1009AF666 /* LandmarkDetail.swift */,
 				CCBC1FCA2656B35A009AF666 /* MapView.swift */,
 				AD3B93EE26580DE100BEF831 /* LandmarkList.swift */,
+				AD3B94052658365B00BEF831 /* CategoryHome.swift */,
+				AD3B940A2658366100BEF831 /* CategoryRow.swift */,
+				AD3B940F2658366700BEF831 /* CategoryItem.swift */,
 				AD3B93F326580DE800BEF831 /* LandmarkRow.swift */,
 				CCBC1FD22656B548009AF666 /* CircleImage.swift */,
 				CCBC1FD72656B897009AF666 /* FavoriteButton.swift */,
@@ -467,6 +482,9 @@
 				AD8B3DEE2656EC6300C7296F /* FavoriteButtonTests.swift */,
 				AD3B93F826580E2800BEF831 /* LandmarkListTests.swift */,
 				AD3B93FD2658317C00BEF831 /* LandmarkRowTests.swift */,
+				AD3B94142658368000BEF831 /* CategoryHomeTests.swift */,
+				AD3B94192658368900BEF831 /* CategoryRowTests.swift */,
+				AD3B941E2658369100BEF831 /* CategoryItemTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -831,6 +849,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD3B94062658365B00BEF831 /* CategoryHome.swift in Sources */,
 				CAD904CD25F1906D00C6132A /* RESTAPIProtocol.swift in Sources */,
 				0011EA8625E557A600E48AE8 /* HexagonParameters.swift in Sources */,
 				002D475225E05E36000525C3 /* Hike.swift in Sources */,
@@ -840,12 +859,14 @@
 				CCBC1F782656ADF1009AF666 /* LandmarkDetail.swift in Sources */,
 				CAD904D225F1908000C6132A /* HikesService.swift in Sources */,
 				002D474C25E05D7E000525C3 /* AppModel.swift in Sources */,
+				AD3B94102658366700BEF831 /* CategoryItem.swift in Sources */,
 				CCBC1FD82656B897009AF666 /* FavoriteButton.swift in Sources */,
 				CA45048E25B79A7800153FC4 /* SwiftUIExampleApp.swift in Sources */,
 				CAD904C325F18FE400C6132A /* URLRequestExtensions.swift in Sources */,
 				0011EB3125E82F5100E48AE8 /* Profile.swift in Sources */,
 				AD3B93F426580DE800BEF831 /* LandmarkRow.swift in Sources */,
 				002D474825E05C45000525C3 /* Landmark.swift in Sources */,
+				AD3B940B2658366100BEF831 /* CategoryRow.swift in Sources */,
 				0011EA8825E557A600E48AE8 /* BadgeBackground.swift in Sources */,
 				CAD904DB25F1924500C6132A /* ContainerExtensions.swift in Sources */,
 				CAD904DA25F1924500C6132A /* DependencyInjected.swift in Sources */,
@@ -867,10 +888,13 @@
 				0016335C25F6A88500A227A4 /* landmarkData.swift in Sources */,
 				CAD9053425F1971800C6132A /* ContractTests.swift in Sources */,
 				CAD904E525F192CD00C6132A /* StubAPIResponse.swift in Sources */,
+				AD3B94152658368000BEF831 /* CategoryHomeTests.swift in Sources */,
 				AD8B3DFD265806FF00C7296F /* CircleImageTests.swift in Sources */,
 				AD3B93FE2658317C00BEF831 /* LandmarkRowTests.swift in Sources */,
 				CCBC1FC62656AF0F009AF666 /* LandmarkDetailTests.swift in Sources */,
 				CC8870C82656C67E008684E1 /* ViewHostingExtensions.swift in Sources */,
+				AD3B941A2658368900BEF831 /* CategoryRowTests.swift in Sources */,
+				AD3B941F2658369100BEF831 /* CategoryItemTests.swift in Sources */,
 				CA9575A425F6C698009507C6 /* GeneratedMocks.swift in Sources */,
 				CA9575AD25F6C6E6009507C6 /* MockExtensions.swift in Sources */,
 				CCBC1F7F2656AE4E009AF666 /* InspectableExtensions.swift in Sources */,

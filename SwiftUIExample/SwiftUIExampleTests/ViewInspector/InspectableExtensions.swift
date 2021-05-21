@@ -16,5 +16,8 @@ extension CircleImage: Inspectable { }
 extension FavoriteButton: Inspectable { }
 extension LandmarkList: Inspectable { }
 extension LandmarkRow: Inspectable { }
+extension CategoryHome: Inspectable { }
+extension CategoryRow: Inspectable { }
+extension CategoryItem: Inspectable { }
 
 extension Inspection: InspectionEmissary where V: Inspectable { }
