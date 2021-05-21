@@ -20,15 +20,31 @@ struct LandmarkDetail: View {
 
     var body: some View {
         ScrollView {
-            Text(landmark.name)
-            Text(landmark.park)
-            Text(landmark.state)
-            Text("About \(landmark.name)")
-            Text(landmark.description)
             MapView(coordinate: landmark.locationCoordinate)
             CircleImage(image: landmark.image)
-            FavoriteButton(isSet: $appModel.landmarks[landmarkIndex].isFavorite)
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(landmark.name)
+                        .font(.title)
+                    FavoriteButton(isSet: $appModel.landmarks[landmarkIndex].isFavorite)
+                }
+
+                HStack {
+                    Text(landmark.park)
+                    Spacer()
+                    Text(landmark.state)
+                }
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
+                Divider()
+                Text("About \(landmark.name)")
+                    .font(.title2)
+                Text(landmark.description)
+            }
+            .padding()
         }
+        .navigationBarTitle(landmark.name, displayMode: .inline)
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
         .onChange(of: appModel.landmarks[landmarkIndex].isFavorite) { value in
             viewModel.hikeService?.setFavorite(to: value, on: appModel.landmarks[landmarkIndex])
@@ -49,7 +65,9 @@ extension LandmarkDetail {
 }
 
 struct LandmarkDetail_Previews: PreviewProvider {
+
     static var previews: some View {
+        let appModel = AppModel()
         // swiftlint:disable:next force_try
         let landmark = try! JSONDecoder().decode(Landmark.self, from: Data("""
 {
@@ -69,6 +87,8 @@ struct LandmarkDetail_Previews: PreviewProvider {
     "imageName": "turtlerock"
 }
 """.utf8))
-        LandmarkDetail(landmark: landmark)
+        appModel.landmarks = [landmark]
+        return LandmarkDetail(landmark: landmark)
+            .environmentObject(appModel)
     }
 }
