@@ -14,5 +14,7 @@ extension LandmarkDetail: Inspectable { }
 extension MapView: Inspectable { }
 extension CircleImage: Inspectable { }
 extension FavoriteButton: Inspectable { }
+extension LandmarkList: Inspectable { }
+extension LandmarkRow: Inspectable { }
 
 extension Inspection: InspectionEmissary where V: Inspectable { }

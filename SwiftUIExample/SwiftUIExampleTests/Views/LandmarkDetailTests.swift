@@ -9,10 +9,15 @@ import Cuckoo
 import Foundation
 import ViewInspector
 import XCTest
+import Swinject
 import SwiftUI
 @testable import SwiftUIExample
 
 class LandmarkDetailTests: XCTestCase {
+    override func setUpWithError() throws {
+        Container.default.removeAll()
+    }
+
     func testLandmarkDetail() throws {
         let appModel = AppModel()
         appModel.landmarks = try JSONDecoder().decode([Landmark].self, from: landmarksJson)

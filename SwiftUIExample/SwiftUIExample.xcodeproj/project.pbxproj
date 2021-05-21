@@ -24,6 +24,9 @@
 		002D475225E05E36000525C3 /* Hike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002D475125E05E36000525C3 /* Hike.swift */; };
 		0052A2292608F7E900F672F4 /* LandmarkExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052A2282608F7E900F672F4 /* LandmarkExtensions.swift */; };
 		0A950C9F5DD37D53DCA75612 /* Pods_SwiftUIExample_SwiftUIExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA850DC8186F668A5BD2821 /* Pods_SwiftUIExample_SwiftUIExampleUITests.framework */; };
+		AD3B93EF26580DE100BEF831 /* LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B93EE26580DE100BEF831 /* LandmarkList.swift */; };
+		AD3B93F426580DE800BEF831 /* LandmarkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B93F326580DE800BEF831 /* LandmarkRow.swift */; };
+		AD3B93F926580E2800BEF831 /* LandmarkListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B93F826580E2800BEF831 /* LandmarkListTests.swift */; };
 		AD8B3DEF2656EC6300C7296F /* FavoriteButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B3DEE2656EC6300C7296F /* FavoriteButtonTests.swift */; };
 		AD8B3DFD265806FF00C7296F /* CircleImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B3DFC265806FF00C7296F /* CircleImageTests.swift */; };
 		BBB9738EC168E1F562E76E6C /* Pods_SwiftUIExample_SwiftUIExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E0F83637ED7E88C374F551 /* Pods_SwiftUIExample_SwiftUIExampleTests.framework */; };
@@ -111,6 +114,9 @@
 		7FA850DC8186F668A5BD2821 /* Pods_SwiftUIExample_SwiftUIExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIExample_SwiftUIExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81E0F83637ED7E88C374F551 /* Pods_SwiftUIExample_SwiftUIExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIExample_SwiftUIExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACB0CEF0A1BFD5FEB504A1D /* Pods-SwiftUIExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIExample.release.xcconfig"; path = "Target Support Files/Pods-SwiftUIExample/Pods-SwiftUIExample.release.xcconfig"; sourceTree = "<group>"; };
+		AD3B93EE26580DE100BEF831 /* LandmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkList.swift; sourceTree = "<group>"; };
+		AD3B93F326580DE800BEF831 /* LandmarkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRow.swift; sourceTree = "<group>"; };
+		AD3B93F826580E2800BEF831 /* LandmarkListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkListTests.swift; sourceTree = "<group>"; };
 		AD8B3DEE2656EC6300C7296F /* FavoriteButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonTests.swift; sourceTree = "<group>"; };
 		AD8B3DFC265806FF00C7296F /* CircleImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageTests.swift; sourceTree = "<group>"; };
 		CA45048A25B79A7800153FC4 /* SwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +195,8 @@
 				0011EB2725E80A5700E48AE8 /* ContentView.swift */,
 				CCBC1F772656ADF1009AF666 /* LandmarkDetail.swift */,
 				CCBC1FCA2656B35A009AF666 /* MapView.swift */,
+				AD3B93EE26580DE100BEF831 /* LandmarkList.swift */,
+				AD3B93F326580DE800BEF831 /* LandmarkRow.swift */,
 				CCBC1FD22656B548009AF666 /* CircleImage.swift */,
 				CCBC1FD72656B897009AF666 /* FavoriteButton.swift */,
 				0011EA7F25E5578700E48AE8 /* Badges */,
@@ -455,6 +463,7 @@
 				CCBC1FC52656AF0F009AF666 /* LandmarkDetailTests.swift */,
 				AD8B3DFC265806FF00C7296F /* CircleImageTests.swift */,
 				AD8B3DEE2656EC6300C7296F /* FavoriteButtonTests.swift */,
+				AD3B93F826580E2800BEF831 /* LandmarkListTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -832,12 +841,14 @@
 				CA45048E25B79A7800153FC4 /* SwiftUIExampleApp.swift in Sources */,
 				CAD904C325F18FE400C6132A /* URLRequestExtensions.swift in Sources */,
 				0011EB3125E82F5100E48AE8 /* Profile.swift in Sources */,
+				AD3B93F426580DE800BEF831 /* LandmarkRow.swift in Sources */,
 				002D474825E05C45000525C3 /* Landmark.swift in Sources */,
 				0011EA8825E557A600E48AE8 /* BadgeBackground.swift in Sources */,
 				CAD904DB25F1924500C6132A /* ContainerExtensions.swift in Sources */,
 				CAD904DA25F1924500C6132A /* DependencyInjected.swift in Sources */,
 				0011EA8525E557A600E48AE8 /* Badge.swift in Sources */,
 				CCBC1FD32656B548009AF666 /* CircleImage.swift in Sources */,
+				AD3B93EF26580DE100BEF831 /* LandmarkList.swift in Sources */,
 				CCBC1FCB2656B35A009AF666 /* MapView.swift in Sources */,
 				CCBC1FDE2656C267009AF666 /* Inspection.swift in Sources */,
 				CAD904C825F1904800C6132A /* BaseAPI.swift in Sources */,
@@ -860,6 +871,7 @@
 				CA9575AD25F6C6E6009507C6 /* MockExtensions.swift in Sources */,
 				CCBC1F7F2656AE4E009AF666 /* InspectableExtensions.swift in Sources */,
 				CAD904E025F1927A00C6132A /* APITests.swift in Sources */,
+				AD3B93F926580E2800BEF831 /* LandmarkListTests.swift in Sources */,
 				CA4504A025B79A7900153FC4 /* SwiftUIExampleTests.swift in Sources */,
 				AD8B3DEF2656EC6300C7296F /* FavoriteButtonTests.swift in Sources */,
 				0016336425F6A9DE00A227A4 /* hikesData.swift in Sources */,
