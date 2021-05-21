@@ -46,7 +46,13 @@ struct ContentView: View {
                     EmptyView()
                 default:
                     CategoryHome()
+                        .tabItem {
+                            Label("Featured", systemImage: "star")
+                        }
                     LandmarkList()
+                        .tabItem {
+                            Label("List", systemImage: "list.bullet")
+                        }
             }
         }
         .onAppear {
