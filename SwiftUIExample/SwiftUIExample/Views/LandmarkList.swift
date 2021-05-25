@@ -49,21 +49,21 @@ struct LandmarkList: View {
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
         .onAppear {
             viewModel.hikeService?.fetchLandmarks
-                .subscribe(on: DispatchQueue.global(qos: .background))
+//                .subscribe(on: DispatchQueue.global(qos: .background))
                 .receive(on: DispatchQueue.main)
                 .map { Optional($0) }
                 .assign(to: \.landmarksResult, on: self)
                 .store(in: &viewModel.subscribers)
         }
-        .alert(isPresented: $showAlert) {
-            let error: String = {
-                if case .failure(let err) = landmarksResult,
-                   case .apiBorked(let underlyingError) = err { return underlyingError.localizedDescription }
-                return ""
-            }()
-
-            return Alert(title: Text(error))
-        }
+//        .alert(isPresented: $showAlert) {
+//            let error: String = {
+//                if case .failure(let err) = landmarksResult,
+//                   case .apiBorked(let underlyingError) = err { return underlyingError.localizedDescription }
+//                return ""
+//            }()
+//
+//            return Alert(title: Text(error))
+//        }
     }
 }
 

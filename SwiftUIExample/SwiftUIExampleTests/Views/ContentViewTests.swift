@@ -102,6 +102,89 @@ class ContentViewTests: XCTestCase {
         wait(for: [exp], timeout: 0.5)
     }
 
+    func testWhenFetchingLandmarksFails_AlertIsPresented() throws {
+        enum Err: Error {
+            case e1
+        }
+
+        let mock = MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get)
+                .thenReturn(Result.Publisher(.failure(API.HikesService.Error.apiBorked(Err.e1))).eraseToAnyPublisher())
+            when(stub.fetchHikes.get)
+                .thenReturn(Result.Publisher(.success([])).eraseToAnyPublisher())
+        }.registerIn(.default)
+
+        let appModel = AppModel()
+
+        let exp = ViewHosting.loadView(ContentView(), data: appModel).inspection.inspect { contentView in
+            clearInvocations(mock)
+            try contentView.tabView().callOnAppear()
+
+            verify(mock, times(1)).fetchLandmarks.get()
+            let alert = XCTAssertNoThrowAndAssign(try contentView.find(ViewType.Alert.self))
+
+            XCTAssertEqual(try alert?.title().string(), Err.e1.localizedDescription)
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
+
+    func testWhenFetchingHikesFails_AlertIsPresented() throws {
+        enum Err: Error {
+            case e1
+        }
+
+        let mock = MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get)
+                .thenReturn(Result.Publisher(.success([])).eraseToAnyPublisher())
+            when(stub.fetchHikes.get)
+                .thenReturn(Result.Publisher(.failure(API.HikesService.Error.apiBorked(Err.e1))).eraseToAnyPublisher())
+        }.registerIn(.default)
+
+        let appModel = AppModel()
+
+        let exp = ViewHosting.loadView(ContentView(), data: appModel).inspection.inspect { contentView in
+            clearInvocations(mock)
+            try contentView.tabView().callOnAppear()
+
+            verify(mock, times(1)).fetchHikes.get()
+            let alert = XCTAssertNoThrowAndAssign(try contentView.find(ViewType.Alert.self))
+
+            XCTAssertEqual(try alert?.title().string(), Err.e1.localizedDescription)
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
+
+    func testWhenFetchingBothHikesAndLandmarksFails_AlertIsPresented() throws {
+        enum Err: Error {
+            case e1
+            case e2
+        }
+
+        let mock = MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get)
+                .thenReturn(Result.Publisher(.failure(API.HikesService.Error.apiBorked(Err.e1))).eraseToAnyPublisher())
+            when(stub.fetchHikes.get)
+                .thenReturn(Result.Publisher(.failure(API.HikesService.Error.apiBorked(Err.e2))).eraseToAnyPublisher())
+        }.registerIn(.default)
+
+        let appModel = AppModel()
+
+        let exp = ViewHosting.loadView(ContentView(), data: appModel).inspection.inspect { contentView in
+            clearInvocations(mock)
+            try contentView.tabView().callOnAppear()
+
+            verify(mock, times(1)).fetchHikes.get()
+            verify(mock, times(1)).fetchLandmarks.get()
+            let alert = XCTAssertNoThrowAndAssign(try contentView.find(ViewType.Alert.self))
+
+            XCTAssertEqual(try alert?.title().string(), [Err.e2.localizedDescription, Err.e1.localizedDescription].joined(separator: "\n"))
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
+
     func testProgressViewExistsWhileMakingNetworkCall() throws {
         MockHikesServiceProtocol().stub { stub in
             when(stub.fetchLandmarks.get)

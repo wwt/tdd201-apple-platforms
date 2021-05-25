@@ -21,4 +21,6 @@ extension CategoryRow: Inspectable { }
 extension CategoryItem: Inspectable { }
 extension ContentView: Inspectable { }
 
+extension InspectableAlert: AlertProvider { }
+
 extension Inspection: InspectionEmissary where V: Inspectable { }

@@ -66,6 +66,8 @@
 		CAD904E525F192CD00C6132A /* StubAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904E425F192CD00C6132A /* StubAPIResponse.swift */; };
 		CAD9052C25F193B100C6132A /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD9052B25F193B100C6132A /* URLRequestExtensions.swift */; };
 		CAD9053425F1971800C6132A /* ContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD9053325F1971800C6132A /* ContractTests.swift */; };
+		CC457FDD265D50CD007A595C /* InspectableAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC457FDC265D50CD007A595C /* InspectableAlert.swift */; };
+		CC457FE2265D50D6007A595C /* InspectableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC457FE1265D50D6007A595C /* InspectableSheet.swift */; };
 		CC8870C82656C67E008684E1 /* ViewHostingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8870C72656C67E008684E1 /* ViewHostingExtensions.swift */; };
 		CCBC1F782656ADF1009AF666 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBC1F772656ADF1009AF666 /* LandmarkDetail.swift */; };
 		CCBC1F7F2656AE4E009AF666 /* InspectableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBC1F7E2656AE4E009AF666 /* InspectableExtensions.swift */; };
@@ -167,6 +169,8 @@
 		CAD904E425F192CD00C6132A /* StubAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIResponse.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/StubAPIResponse.swift; sourceTree = "<group>"; };
 		CAD9052B25F193B100C6132A /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLRequestExtensions.swift; path = ../../../HTTPStubbing/HTTPStubbingTests/URLRequestExtensions.swift; sourceTree = "<group>"; };
 		CAD9053325F1971800C6132A /* ContractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTests.swift; sourceTree = "<group>"; };
+		CC457FDC265D50CD007A595C /* InspectableAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableAlert.swift; sourceTree = "<group>"; };
+		CC457FE1265D50D6007A595C /* InspectableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableSheet.swift; sourceTree = "<group>"; };
 		CC8870C72656C67E008684E1 /* ViewHostingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHostingExtensions.swift; sourceTree = "<group>"; };
 		CCBC1F772656ADF1009AF666 /* LandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
 		CCBC1F7E2656AE4E009AF666 /* InspectableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableExtensions.swift; sourceTree = "<group>"; };
@@ -496,6 +500,8 @@
 			isa = PBXGroup;
 			children = (
 				CCBC1FDD2656C267009AF666 /* Inspection.swift */,
+				CC457FDC265D50CD007A595C /* InspectableAlert.swift */,
+				CC457FE1265D50D6007A595C /* InspectableSheet.swift */,
 			);
 			path = ViewInspector;
 			sourceTree = "<group>";
@@ -562,6 +568,8 @@
 				CA45049D25B79A7900153FC4 /* PBXTargetDependency */,
 			);
 			name = SwiftUIExampleTests;
+			packageProductDependencies = (
+			);
 			productName = SwiftUIExampleTests;
 			productReference = CA45049B25B79A7800153FC4 /* SwiftUIExampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -597,6 +605,8 @@
 				Base,
 			);
 			mainGroup = CA45048125B79A7800153FC4;
+			packageReferences = (
+			);
 			productRefGroup = CA45048B25B79A7800153FC4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -866,6 +876,7 @@
 				CCBC1FD82656B897009AF666 /* FavoriteButton.swift in Sources */,
 				CA45048E25B79A7800153FC4 /* SwiftUIExampleApp.swift in Sources */,
 				CAD904C325F18FE400C6132A /* URLRequestExtensions.swift in Sources */,
+				CC457FE2265D50D6007A595C /* InspectableSheet.swift in Sources */,
 				0011EB3125E82F5100E48AE8 /* Profile.swift in Sources */,
 				AD3B93F426580DE800BEF831 /* LandmarkRow.swift in Sources */,
 				002D474825E05C45000525C3 /* Landmark.swift in Sources */,
@@ -880,6 +891,7 @@
 				CCBC1FDE2656C267009AF666 /* Inspection.swift in Sources */,
 				CAD904C825F1904800C6132A /* BaseAPI.swift in Sources */,
 				0011EA8925E557A600E48AE8 /* BadgeSymbol.swift in Sources */,
+				CC457FDD265D50CD007A595C /* InspectableAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

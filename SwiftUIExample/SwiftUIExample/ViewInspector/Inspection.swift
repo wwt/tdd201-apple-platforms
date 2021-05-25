@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+
 final class Inspection<V> where V: View {
     let notice = PassthroughSubject<UInt, Never>()
     var callbacks = [UInt: (V)->Void]()

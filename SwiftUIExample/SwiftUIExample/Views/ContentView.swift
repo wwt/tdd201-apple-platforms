@@ -57,29 +57,29 @@ struct ContentView: View {
         }
         .onAppear {
             viewModel.hikeService?.fetchLandmarks
-                .subscribe(on: DispatchQueue.global(qos: .background))
+//                .subscribe(on: DispatchQueue.global(qos: .background))
                 .receive(on: DispatchQueue.main)
                 .map { Optional($0) }
                 .assign(to: \.landmarksResult, on: self)
                 .store(in: &viewModel.subscribers)
 
             viewModel.hikeService?.fetchHikes
-                .subscribe(on: DispatchQueue.global(qos: .background))
+//                .subscribe(on: DispatchQueue.global(qos: .background))
                 .receive(on: DispatchQueue.main)
                 .map { Optional($0) }
                 .assign(to: \.hikesResult, on: self)
                 .store(in: &viewModel.subscribers)
         }
-        .alert(isPresented: $showAlert) {
-            let errors: [String] = {
-                var allErrors = [String]()
-                if case .failure(let err) = hikesResult,
-                   case .apiBorked(let underlyingError) = err { allErrors.append(underlyingError.localizedDescription) }
-                if case .failure(let err) = landmarksResult,
-                   case .apiBorked(let underlyingError) = err { allErrors.append(underlyingError.localizedDescription) }
-                return allErrors
-            }()
-            return Alert(title: Text(errors.joined(separator: "\n")))
+        .testableAlert(isPresented: $showAlert) {
+                        let errors: [String] = {
+                            var allErrors = [String]()
+                            if case .failure(let err) = hikesResult,
+                               case .apiBorked(let underlyingError) = err { allErrors.append(underlyingError.localizedDescription) }
+                            if case .failure(let err) = landmarksResult,
+                               case .apiBorked(let underlyingError) = err { allErrors.append(underlyingError.localizedDescription) }
+                            return allErrors
+                        }()
+                        return Alert(title: Text(errors.joined(separator: "\n")))
         }
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }

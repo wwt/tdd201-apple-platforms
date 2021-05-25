@@ -35,7 +35,6 @@ class CategoryHomeTests: XCTestCase {
                 XCTAssertEqual(try categoryRow?.actualView().items, sortedCategories[offset].value)
             }
         }
-
         wait(for: [exp], timeout: 0.5)
     }
 }
