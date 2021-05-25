@@ -23,4 +23,11 @@ extension ViewHosting {
         }
         return view
     }
+
+    static func loadView<V: View, O: ObservableObject, E>(_ view: V, data: O, keyPath: WritableKeyPath<EnvironmentValues, E>, keyValue: E) -> V {
+        defer {
+            Self.host(view: view.environmentObject(data).environment(keyPath, keyValue))
+        }
+        return view
+    }
 }

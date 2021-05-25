@@ -7,7 +7,7 @@ A representation of user profile data.
 
 import Foundation
 
-struct Profile {
+struct Profile: Equatable {
     var username: String
     var prefersNotifications = true
     var seasonalPhoto = Season.winter

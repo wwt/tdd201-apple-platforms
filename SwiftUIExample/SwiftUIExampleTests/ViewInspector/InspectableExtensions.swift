@@ -21,6 +21,8 @@ extension CategoryRow: Inspectable { }
 extension CategoryItem: Inspectable { }
 extension ContentView: Inspectable { }
 extension ProfileHost: Inspectable { }
+extension ProfileEditor: Inspectable { }
+extension ProfileSummary: Inspectable { }
 
 extension InspectableAlert: AlertProvider { }
 extension InspectableSheet: SheetProvider { }

@@ -8,8 +8,31 @@
 import SwiftUI
 
 struct ProfileHost: View {
+    @Environment(\.editMode) private var editMode
+    @EnvironmentObject private var appModel: AppModel
+    @State private var draftProfile = Profile.default
+    let inspection = Inspection<Self>()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Group {
+            if editMode?.wrappedValue == .active {
+                Button("Cancel") {
+                    editMode?.wrappedValue = .inactive
+                }
+                ProfileEditor(profile: $draftProfile)
+                    .onAppear {
+                        draftProfile = appModel.profile
+                    }
+                    .onDisappear {
+                        appModel.profile = draftProfile
+                    }
+            } else {
+                ProfileSummary()
+            }
+            EditButton()
+        }
+        .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
+
     }
 }
 
