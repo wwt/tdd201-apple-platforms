@@ -20,7 +20,9 @@ extension CategoryHome: Inspectable { }
 extension CategoryRow: Inspectable { }
 extension CategoryItem: Inspectable { }
 extension ContentView: Inspectable { }
+extension ProfileHost: Inspectable { }
 
 extension InspectableAlert: AlertProvider { }
+extension InspectableSheet: SheetProvider { }
 
 extension Inspection: InspectionEmissary where V: Inspectable { }

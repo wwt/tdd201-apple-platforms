@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CategoryHome: View {
     @EnvironmentObject var appModel: AppModel
+    @State private var showingProfile = false
     let inspection = Inspection<Self>()
 
     var body: some View {
@@ -28,6 +29,21 @@ struct CategoryHome: View {
             }
             .padding(1)
             .navigationTitle("Featured")
+            .toolbar {
+                Button { showingProfile.toggle() }
+                    label: {
+                        Image(systemName: "person.crop.circle")
+                            .accessibilityLabel("User Profile")
+                    }
+            }
+        }
+        .gesture(DragGesture().onChanged { (value) in
+            if value.startLocation.y > value.location.y {
+                showingProfile = true
+            }
+        })
+        .testableSheet(isPresented: $showingProfile) {
+            ProfileHost()
         }
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }
