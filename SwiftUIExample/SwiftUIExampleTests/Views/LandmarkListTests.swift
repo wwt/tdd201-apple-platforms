@@ -97,4 +97,29 @@ class LandmarkListTests: XCTestCase {
 
         wait(for: [exp], timeout: 0.5)
     }
+
+    func testWhenFetchingLandmarksFails_AlertIsPresented() throws {
+        enum Err: Error {
+            case e1
+        }
+
+        let mock = MockHikesServiceProtocol().stub { stub in
+            when(stub.fetchLandmarks.get)
+                .thenReturn(Result.Publisher(.failure(API.HikesService.Error.apiBorked(Err.e1))).eraseToAnyPublisher())
+        }.registerIn(.default)
+
+        let appModel = AppModel()
+
+        let exp = ViewHosting.loadView(LandmarkList(), data: appModel).inspection.inspect { landmarkList in
+            clearInvocations(mock)
+            try landmarkList.navigationView().callOnAppear()
+
+            verify(mock, times(1)).fetchLandmarks.get()
+            let alert = XCTAssertNoThrowAndAssign(try landmarkList.find(ViewType.Alert.self))
+
+            XCTAssertEqual(try alert?.title().string(), Err.e1.localizedDescription)
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
 }

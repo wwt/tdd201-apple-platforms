@@ -11,7 +11,20 @@ struct ProfileEditor: View {
     @Binding var profile: Profile
 
     var body: some View {
-        Text("Hello, World!")
+        Text("Username")
+        TextField("Username", text: $profile.username)
+        Toggle(isOn: $profile.prefersNotifications) {
+            Text("Enable Notifications")
+        }
+        Text("Seasonal Photo")
+        Picker("Seasonal Photo", selection: $profile.seasonalPhoto) {
+            ForEach(Profile.Season.allCases) {
+                Text($0.rawValue).tag($0)
+            }
+        }
+        DatePicker(selection: $profile.goalDate, displayedComponents: .date) {
+            Text("Goal Date")
+        }
     }
 }
 

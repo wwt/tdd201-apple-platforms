@@ -14,11 +14,17 @@ struct ProfileHost: View {
     let inspection = Inspection<Self>()
 
     var body: some View {
-        Group {
-            if editMode?.wrappedValue == .active {
-                Button("Cancel") {
-                    editMode?.wrappedValue = .inactive
+        VStack(alignment: .leading, spacing: 20) {
+            HStack {
+                if editMode?.wrappedValue == .active {
+                    Button("Cancel") {
+                        editMode?.animation().wrappedValue = .inactive
+                    }
                 }
+                Spacer()
+                EditButton()
+            }
+            if editMode?.wrappedValue == .active {
                 ProfileEditor(profile: $draftProfile)
                     .onAppear {
                         draftProfile = appModel.profile
@@ -29,8 +35,8 @@ struct ProfileHost: View {
             } else {
                 ProfileSummary()
             }
-            EditButton()
         }
+        .padding()
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
 
     }
@@ -39,5 +45,6 @@ struct ProfileHost: View {
 struct ProfileHost_Previews: PreviewProvider {
     static var previews: some View {
         ProfileHost()
+            .environmentObject(AppModel())
     }
 }
