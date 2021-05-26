@@ -586,8 +586,6 @@
 				CA45049D25B79A7900153FC4 /* PBXTargetDependency */,
 			);
 			name = SwiftUIExampleTests;
-			packageProductDependencies = (
-			);
 			productName = SwiftUIExampleTests;
 			productReference = CA45049B25B79A7800153FC4 /* SwiftUIExampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -623,8 +621,6 @@
 				Base,
 			);
 			mainGroup = CA45048125B79A7800153FC4;
-			packageReferences = (
-			);
 			productRefGroup = CA45048B25B79A7800153FC4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
