@@ -37,7 +37,7 @@ class CategoryHomeTests: XCTestCase {
 
             }
         }
-        wait(for: [exp], timeout: 0.5)
+        wait(for: [exp], timeout: 1.0)
     }
 
     func testWhenDragGestureThenShowSheet() throws {

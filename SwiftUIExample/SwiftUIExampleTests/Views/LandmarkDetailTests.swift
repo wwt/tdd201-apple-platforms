@@ -41,19 +41,19 @@ class LandmarkDetailTests: XCTestCase {
 
             XCTAssertEqual(try favoriteBtn?.actualView().isSet, landmark.isFavorite)
 
-            let landmarkPark = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, traversal: .depthFirst, skipFound: 3))
+            let landmarkPark = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, traversal: .depthFirst, skipFound: 2))
 
             XCTAssertEqual(try landmarkPark?.string(), landmark.park)
 
-            let landmarkState = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, traversal: .depthFirst, skipFound: 4))
+            let landmarkState = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, traversal: .depthFirst, skipFound: 3))
 
             XCTAssertEqual(try landmarkState?.string(), landmark.state)
 
-            let landmarkAbout = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, traversal: .depthFirst, skipFound: 5))
+            let landmarkAbout = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, traversal: .depthFirst, skipFound: 4))
 
             XCTAssertEqual(try landmarkAbout?.string(), "About \(landmark.name)")
 
-            let landmarkDescription = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, traversal: .depthFirst, skipFound: 6))
+            let landmarkDescription = XCTAssertNoThrowAndAssign(try scrollView?.find(ViewType.Text.self, traversal: .depthFirst, skipFound: 5))
 
             XCTAssertEqual(try landmarkDescription?.string(), landmark.description)
         }
@@ -77,7 +77,7 @@ class LandmarkDetailTests: XCTestCase {
             XCTAssertNotEqual(appModel.landmarks[landmarkIndex].isFavorite, landmark.isFavorite)
         }
 
-        wait(for: [exp], timeout: 0.5)
+        wait(for: [exp], timeout: 1.0)
     }
 
     func testTappingFavoriteButton_CallsHikeService() throws {
@@ -93,7 +93,7 @@ class LandmarkDetailTests: XCTestCase {
             XCTAssertNoThrow(try landmarkDetail.find(FavoriteButton.self).button().tap())
         }
 
-        wait(for: [exp], timeout: 0.5)
+        wait(for: [exp], timeout: 1.0)
 
         let landmarkUpdated = ArgumentCaptor<Landmark>()
         let changedTo = ArgumentCaptor<Bool>()

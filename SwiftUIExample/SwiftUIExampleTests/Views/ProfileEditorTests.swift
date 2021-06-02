@@ -21,12 +21,12 @@ class ProfileEditorTests: XCTestCase {
                                       goalDate: Faker().date.forward(5))
         let profileEditor = try ProfileEditor(profile: .constant(expectedProfile)).inspect()
 
-        XCTAssertEqual(try profileEditor.find(ViewType.Text.self).string(), "Username")
+        XCTAssertEqual(try profileEditor.find(ViewType.Text.self, traversal: .depthFirst).string(), "Username")
         XCTAssertEqual(try profileEditor.find(ViewType.TextField.self).labelView().text().string(), "Username")
         XCTAssertEqual(try profileEditor.find(ViewType.TextField.self).input(), expectedProfile.username)
         XCTAssertEqual(try profileEditor.find(ViewType.Toggle.self).labelView().text().string(), "Enable Notifications")
         XCTAssert(try profileEditor.find(ViewType.Toggle.self).isOn())
-        XCTAssertEqual(try profileEditor.find(ViewType.Text.self, skipFound: 4).string(), "Seasonal Photo")
+        XCTAssertEqual(try profileEditor.find(ViewType.Text.self, skipFound: 3).string(), "Seasonal Photo")
 
         let picker = try profileEditor.find(ViewType.Picker.self)
 
