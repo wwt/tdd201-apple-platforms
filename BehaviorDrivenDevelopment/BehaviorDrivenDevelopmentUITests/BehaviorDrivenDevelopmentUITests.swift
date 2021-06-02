@@ -6,7 +6,36 @@
 //
 
 import XCTest
+enum Screens {
+    static let login = LoginScreen()
+    static let categoryHome = CategoryHomeScreen()
+}
 
+extension Screen {
+    @discardableResult func goTo<S: Screen>(_ nextScreen: S) -> S {
+        nextScreen
+    }
+}
+
+final class LoginScreen: Screen/*<LoginView>*/ {
+    func enterUsername(_ nameToEnter: String) -> Self {
+        // I die if no username field
+        self
+    }
+    func tapNextFieldButton() -> Self {
+        // I die if no next button
+        self
+    }
+    func enterPassword(_ nameToEnter: String) -> Self {
+        self
+    }
+}
+
+final class CategoryHomeScreen: Screen {
+    var categories: [String] {
+        []
+    }
+}
 class BehaviorDrivenDevelopmentUITests: XCTestCase {
 
     override func setUpWithError() throws {
