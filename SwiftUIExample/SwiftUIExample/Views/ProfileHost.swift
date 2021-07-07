@@ -33,7 +33,7 @@ struct ProfileHost: View {
                         appModel.profile = draftProfile
                     }
             } else {
-                ProfileSummary()
+                ProfileSummary(hikes: $appModel.hikes, profile: draftProfile)
             }
         }
         .padding()

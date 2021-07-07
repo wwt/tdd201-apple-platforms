@@ -23,6 +23,12 @@ extension ContentView: Inspectable { }
 extension ProfileHost: Inspectable { }
 extension ProfileEditor: Inspectable { }
 extension ProfileSummary: Inspectable { }
+extension Badge: Inspectable { }
+extension HikeBadge: Inspectable { }
+extension HikeView: Inspectable { }
+extension HikeDetail: Inspectable { }
+extension HikeGraph: Inspectable { }
+extension GraphCapsule: Inspectable { }
 
 extension InspectableAlert: AlertProvider { }
 extension InspectableSheet: SheetProvider { }

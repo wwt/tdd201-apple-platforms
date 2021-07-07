@@ -24,5 +24,6 @@ struct MapView: View {
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView(coordinate: CLLocationCoordinate2D(latitude: 38.63, longitude: -90.20))
+            .frame(height: 300)
     }
 }
